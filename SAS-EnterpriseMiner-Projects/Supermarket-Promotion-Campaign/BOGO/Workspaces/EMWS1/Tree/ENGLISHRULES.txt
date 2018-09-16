@@ -1,0 +1,313 @@
+*------------------------------------------------------------*
+ Node = 6
+*------------------------------------------------------------*
+if Age >= 44.5 or MISSING
+AND AffluenceGrade < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 6
+ Number of Observations = 14264
+ Predicted: TargetBuy=1 = 0.12
+ Predicted: TargetBuy=0 = 0.88
+ 
+*------------------------------------------------------------*
+ Node = 16
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 0
+AND Gender IS ONE OF: F
+AND Age < 20.5
+then 
+ Tree Node Identifier   = 16
+ Number of Observations = 602
+ Predicted: TargetBuy=1 = 0.19
+ Predicted: TargetBuy=0 = 0.81
+ 
+*------------------------------------------------------------*
+ Node = 19
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 1 or MISSING
+AND Gender IS ONE OF: F
+AND Age < 44.5
+AND AffluenceGrade >= 7.5 or MISSING
+then 
+ Tree Node Identifier   = 19
+ Number of Observations = 1720
+ Predicted: TargetBuy=1 = 0.81
+ Predicted: TargetBuy=0 = 0.19
+ 
+*------------------------------------------------------------*
+ Node = 22
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 1 or MISSING
+AND Gender IS ONE OF: U, M or MISSING
+AND Age < 44.5
+AND AffluenceGrade >= 12.5
+then 
+ Tree Node Identifier   = 22
+ Number of Observations = 167
+ Predicted: TargetBuy=1 = 0.74
+ Predicted: TargetBuy=0 = 0.26
+ 
+*------------------------------------------------------------*
+ Node = 28
+*------------------------------------------------------------*
+if Gender IS ONE OF: U, M or MISSING
+AND Age >= 44.5 or MISSING
+AND AffluenceGrade < 17.5 AND AffluenceGrade >= 12.5 or MISSING
+then 
+ Tree Node Identifier   = 28
+ Number of Observations = 543
+ Predicted: TargetBuy=1 = 0.18
+ Predicted: TargetBuy=0 = 0.82
+ 
+*------------------------------------------------------------*
+ Node = 29
+*------------------------------------------------------------*
+if Gender IS ONE OF: U, M or MISSING
+AND Age >= 44.5 or MISSING
+AND AffluenceGrade >= 17.5
+then 
+ Tree Node Identifier   = 29
+ Number of Observations = 35
+ Predicted: TargetBuy=1 = 0.66
+ Predicted: TargetBuy=0 = 0.34
+ 
+*------------------------------------------------------------*
+ Node = 31
+*------------------------------------------------------------*
+if Gender IS ONE OF: F
+AND Age >= 44.5 or MISSING
+AND AffluenceGrade >= 16.5
+then 
+ Tree Node Identifier   = 31
+ Number of Observations = 137
+ Predicted: TargetBuy=1 = 0.86
+ Predicted: TargetBuy=0 = 0.14
+ 
+*------------------------------------------------------------*
+ Node = 35
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 0
+AND Gender IS ONE OF: F
+AND Age < 44.5 AND Age >= 20.5 or MISSING
+AND AffluenceGrade >= 9.5 or MISSING
+then 
+ Tree Node Identifier   = 35
+ Number of Observations = 701
+ Predicted: TargetBuy=1 = 0.71
+ Predicted: TargetBuy=0 = 0.29
+ 
+*------------------------------------------------------------*
+ Node = 36
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 1 or MISSING
+AND Gender IS ONE OF: F
+AND Age < 32.5
+AND AffluenceGrade < 7.5
+then 
+ Tree Node Identifier   = 36
+ Number of Observations = 163
+ Predicted: TargetBuy=1 = 0.78
+ Predicted: TargetBuy=0 = 0.22
+ 
+*------------------------------------------------------------*
+ Node = 41
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 0 or MISSING
+AND Gender IS ONE OF: U, M or MISSING
+AND Age < 9
+AND AffluenceGrade < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 41
+ Number of Observations = 551
+ Predicted: TargetBuy=1 = 0.06
+ Predicted: TargetBuy=0 = 0.94
+ 
+*------------------------------------------------------------*
+ Node = 43
+*------------------------------------------------------------*
+if Gender IS ONE OF: U, M or MISSING
+AND Age < 44.5 AND Age >= 29.5 or MISSING
+AND AffluenceGrade < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 43
+ Number of Observations = 1650
+ Predicted: TargetBuy=1 = 0.23
+ Predicted: TargetBuy=0 = 0.77
+ 
+*------------------------------------------------------------*
+ Node = 46
+*------------------------------------------------------------*
+if TotalSpend < 1400 or MISSING
+AND MobileApplications IS ONE OF: 0
+AND Gender IS ONE OF: U, M or MISSING
+AND Age < 44.5
+AND AffluenceGrade >= 12.5
+then 
+ Tree Node Identifier   = 46
+ Number of Observations = 88
+ Predicted: TargetBuy=1 = 0.61
+ Predicted: TargetBuy=0 = 0.39
+ 
+*------------------------------------------------------------*
+ Node = 47
+*------------------------------------------------------------*
+if TotalSpend >= 1400
+AND MobileApplications IS ONE OF: 0
+AND Gender IS ONE OF: U, M or MISSING
+AND Age < 44.5
+AND AffluenceGrade >= 12.5
+then 
+ Tree Node Identifier   = 47
+ Number of Observations = 58
+ Predicted: TargetBuy=1 = 0.22
+ Predicted: TargetBuy=0 = 0.78
+ 
+*------------------------------------------------------------*
+ Node = 59
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 0
+AND Gender IS ONE OF: F
+AND Age >= 44.5 or MISSING
+AND AffluenceGrade < 16.5 AND AffluenceGrade >= 12.5 or MISSING
+then 
+ Tree Node Identifier   = 59
+ Number of Observations = 334
+ Predicted: TargetBuy=1 = 0.37
+ Predicted: TargetBuy=0 = 0.63
+ 
+*------------------------------------------------------------*
+ Node = 64
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 0
+AND Gender IS ONE OF: F
+AND Age < 39.5 AND Age >= 20.5 or MISSING
+AND AffluenceGrade < 9.5
+then 
+ Tree Node Identifier   = 64
+ Number of Observations = 524
+ Predicted: TargetBuy=1 = 0.52
+ Predicted: TargetBuy=0 = 0.48
+ 
+*------------------------------------------------------------*
+ Node = 65
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 0
+AND Gender IS ONE OF: F
+AND Age < 44.5 AND Age >= 39.5
+AND AffluenceGrade < 9.5
+then 
+ Tree Node Identifier   = 65
+ Number of Observations = 337
+ Predicted: TargetBuy=1 = 0.31
+ Predicted: TargetBuy=0 = 0.69
+ 
+*------------------------------------------------------------*
+ Node = 70
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 1 or MISSING
+AND Gender IS ONE OF: F
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND Age < 44.5 AND Age >= 32.5 or MISSING
+AND AffluenceGrade < 7.5
+then 
+ Tree Node Identifier   = 70
+ Number of Observations = 238
+ Predicted: TargetBuy=1 = 0.33
+ Predicted: TargetBuy=0 = 0.67
+ 
+*------------------------------------------------------------*
+ Node = 71
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 1 or MISSING
+AND Gender IS ONE OF: F
+AND FacebookLike IS ONE OF: 1
+AND Age < 44.5 AND Age >= 32.5 or MISSING
+AND AffluenceGrade < 7.5
+then 
+ Tree Node Identifier   = 71
+ Number of Observations = 185
+ Predicted: TargetBuy=1 = 0.56
+ Predicted: TargetBuy=0 = 0.44
+ 
+*------------------------------------------------------------*
+ Node = 76
+*------------------------------------------------------------*
+if TotalSpend < 515 or MISSING
+AND MobileApplications IS ONE OF: 1
+AND Gender IS ONE OF: U, M or MISSING
+AND Age < 9
+AND AffluenceGrade < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 76
+ Number of Observations = 76
+ Predicted: TargetBuy=1 = 0.14
+ Predicted: TargetBuy=0 = 0.86
+ 
+*------------------------------------------------------------*
+ Node = 77
+*------------------------------------------------------------*
+if TotalSpend >= 515
+AND MobileApplications IS ONE OF: 1
+AND Gender IS ONE OF: U, M or MISSING
+AND Age < 9
+AND AffluenceGrade < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 77
+ Number of Observations = 40
+ Predicted: TargetBuy=1 = 0.65
+ Predicted: TargetBuy=0 = 0.35
+ 
+*------------------------------------------------------------*
+ Node = 80
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 0 or MISSING
+AND Gender IS ONE OF: U, M or MISSING
+AND Age < 29.5 AND Age >= 9
+AND AffluenceGrade < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 80
+ Number of Observations = 102
+ Predicted: TargetBuy=1 = 0.36
+ Predicted: TargetBuy=0 = 0.64
+ 
+*------------------------------------------------------------*
+ Node = 81
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 1
+AND Gender IS ONE OF: U, M or MISSING
+AND Age < 29.5 AND Age >= 9
+AND AffluenceGrade < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 81
+ Number of Observations = 64
+ Predicted: TargetBuy=1 = 0.92
+ Predicted: TargetBuy=0 = 0.08
+ 
+*------------------------------------------------------------*
+ Node = 100
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 1 or MISSING
+AND Gender IS ONE OF: F
+AND DayCareProducts < 0.5
+AND Age >= 44.5 or MISSING
+AND AffluenceGrade < 16.5 AND AffluenceGrade >= 12.5 or MISSING
+then 
+ Tree Node Identifier   = 100
+ Number of Observations = 85
+ Predicted: TargetBuy=1 = 0.31
+ Predicted: TargetBuy=0 = 0.69
+ 
+*------------------------------------------------------------*
+ Node = 101
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 1 or MISSING
+AND Gender IS ONE OF: F
+AND DayCareProducts >= 0.5 or MISSING
+AND Age >= 44.5 or MISSING
+AND AffluenceGrade < 16.5 AND AffluenceGrade >= 12.5 or MISSING
+then 
+ Tree Node Identifier   = 101
+ Number of Observations = 336
+ Predicted: TargetBuy=1 = 0.68
+ Predicted: TargetBuy=0 = 0.32
+ 

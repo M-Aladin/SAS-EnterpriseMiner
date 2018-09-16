@@ -1,0 +1,588 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 13, 2018
+Time:                20:18:33
+Site:                12400032
+Platform:            X64_10HOME
+Maintenance Release: 9.04.01M4P110916
+EM Version:          14.2
+* 
+*------------------------------------------------------------*
+* Training Log
+Date:                May 13, 2018
+Time:                20:18:29
+*------------------------------------------------------------*
+15255  proc freq data=EMWS6.DMDB_VariableSet noprint;
+15256  table ROLE*LEVEL/out=WORK.DMDBMETA;
+15257  run;
+ 
+NOTE: There were 13 observations read from the data set EMWS6.DMDB_VARIABLESET.
+NOTE: The data set WORK.DMDBMETA has 6 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.04 seconds
+ 
+ 
+15258  proc print data=WORK.DMDBMETA label noobs;
+15259  var ROLE LEVEL COUNT;
+15260  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+15261  title9 ' ';
+15262  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+15263  run;
+ 
+NOTE: There were 6 observations read from the data set WORK.DMDBMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+15264  title10;
+ 
+15265  %let EMEXCEPTIONSTRING=;
+PERFORMANCE  DETAILS
+15583  *------------------------------------------------------------*;
+15584  * DMDB: Generation of macros and macro variables;
+15585  * To see the code generated, set the EM_DEBUG macro variable to SOURCE or _ALL_;
+15586  *------------------------------------------------------------*;
+ 
+15587  %let EMEXCEPTIONSTRING=;
+15588  *------------------------------------------------------------*;
+15589  * TRAIN: DMDB;
+15590  *------------------------------------------------------------*;
+15591  %let EM_ACTION = TRAIN;
+15592  %let syscc = 0;
+15593  %macro main;
+15594
+15595     filename temp catalog 'sashelp.emexpl.dmdb_macros.source';
+15596     %include temp;
+15597     filename temp;
+15598
+15599     %SetProperties;
+15600
+15601     %if %upcase(&EM_ACTION) = CREATE %then %do;
+15602
+15603         filename temp catalog 'sashelp.emexpl.dmdb_create.source';
+15604         %include temp;
+15605         filename temp;
+15606
+15607         %create;
+15608     %end;
+15609     %else
+15610     %if %upcase(&EM_ACTION) = TRAIN %then %do;
+15611
+15612         filename temp catalog 'sashelp.emexpl.dmdb_train.source';
+15613         %include temp;
+15614         filename temp;
+15615
+15616         %train;
+15617     %end;
+15618     %else
+15619     %if %upcase(&EM_ACTION) = REPORT %then %do;
+15620
+15621         filename temp catalog 'sashelp.emexpl.dmdb_report.source';
+15622         %include temp;
+15623         filename temp;
+15624
+15625         %report;
+15626
+15627     %end;
+15628
+15629     %doendm:
+15630  %mend main;
+15631
+15632  %main;
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMEXPL.DMDB_MACROS.SOURCE.
+15633 +%macro SetProperties;
+15634 +   %em_checkmacro(name=EM_PROPERTY_INTERVAL,      global=Y, value=Y);
+15635 +   %em_checkmacro(name=EM_PROPERTY_CLASS,         global=Y, value=Y);
+15636 +   %em_checkmacro(name=EM_PROPERTY_MAXVALUES,     global=Y, value=25);
+15637 +%mend SetProperties;
+15638 +
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMEXPL.DMDB_TRAIN.SOURCE.
+15639 +%macro train;
+15640 +
+15641 +   %em_getname(key=INTERVAL, type=DATA);
+15642 +   %em_getname(key=CLASS,    type=DATA);
+15643 +
+15644 +   %if "&em_import_data" eq "" %then %do;
+15645 +       %let emexceptionString = exception.server.IMPORT.NOTRAIN,1;
+15646 +       %goto doendm;
+15647 +   %end;
+15648 +
+15649 +    proc dmdb data=&EM_IMPORT_DATA batch
+15650 +
+15651 +    %if &EM_PROPERTY_MAXVALUES  %then %do;
+15652 +        %let maxlevel = %eval(&EM_PROPERTY_MAXVALUES + 1);
+15653 +        %if &maxlevel < 3 %then %let maxlevel = 3;
+15654 +
+15655 +        maxlevel = &maxlevel
+15656 +
+15657 +    %end;
+15658 +
+15659 +    %if &em_property_interval eq Y %then %do;
+15660 +        varout=&em_user_interval
+15661 +    %end;
+15662 +    %if &em_property_class eq Y  %then %do;
+15663 +        classout=&em_user_class
+15664 +    %end;
+15665 +
+15666 +    ;
+15667 +
+15668 +    %if %em_interval_target %em_interval_input  %em_interval_rejected %em_sequence ne %then %do;
+15669 +        var %em_interval_target %em_interval_input  %em_interval_rejected %em_sequence;
+15670 +    %end ;
+15671 +    %if %em_binary_target %em_nominal_target %em_ordinal_target
+15672 +        %em_binary_input %em_nominal_input %em_ordinal_input
+15673 +        %em_binary_rejected %em_nominal_rejected %em_ordinal_rejected ne %then %do;
+15674 +         class %em_binary_target %em_nominal_target %em_ordinal_target
+15675 +               %em_binary_input %em_nominal_input %em_ordinal_input
+15676 +               %em_binary_rejected %em_nominal_rejected %em_ordinal_rejected;
+15677 +    %end ;
+15678 +    %if %em_freq    ne  %then %do ; freq %em_freq   ; %end ;
+15679 +    %if %em_id      ne  %then %do ; id %em_id       ; %end ;
+15680 +
+15681 +    %if %em_target ne %then %do ;
+15682 +          target %em_target ;
+15683 +    %end ;
+15684 +
+15685 +    run ;
+15686 +    %em_checkerror();
+15687 +
+15688 +    %doendm:
+15689 +
+15690 +%mend train;
+15691 +
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+ 
+NOTE: Records processed = 22223   Memory used = 511K.
+NOTE: View EMWS6.IDS_DATA.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+NOTE: There were 22223 observations read from the data set HW2.HW2_BA8880_SUPERMARKETDATASET.
+NOTE: There were 22223 observations read from the data set EMWS6.IDS_DATA.
+NOTE: The data set EMWS6.DMDB_INTERVAL has 4 observations and 9 variables.
+NOTE: The data set EMWS6.DMDB_CLASS has 38 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.11 seconds
+      cpu time            0.12 seconds
+ 
+ 
+ 
+15692  %let SYSCC = 0;
+NOTE: PROCEDURE DISPLAY used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+15693  *------------------------------------------------------------*;
+15694  * End TRAIN: DMDB;
+15695  *------------------------------------------------------------*;
+15696
+ 
+15697  *------------------------------------------------------------*;
+15698  * Close any missing semi colons;
+15699  *------------------------------------------------------------*;
+15700  ;
+15701  ;
+15702  ;
+15703  ;
+15704  quit;
+15705  *------------------------------------------------------------*;
+15706  * Close any unbalanced quotes;
+15707  *------------------------------------------------------------*;
+15708  /*; *"; *'; */
+15709  ;
+15710  run;
+15711  quit;
+15712  /* Reset EM Options */
+15713  options formchar="|----|+|---+=|-/\<>*";
+15714  options nocenter ls=256 ps=10000;
+15715  goptions reset=all device=GIF NODISPLAY;
+ 
+*------------------------------------------------------------*
+* Score Log
+Date:                May 13, 2018
+Time:                20:18:31
+*------------------------------------------------------------*
+15817  %let EMEXCEPTIONSTRING=;
+15818  *------------------------------------------------------------*;
+15819  * SCORE: DMDB;
+15820  *------------------------------------------------------------*;
+15821  %let EM_ACTION = SCORE;
+15822  %let syscc = 0;
+15823  %macro main;
+15824
+15825     filename temp catalog 'sashelp.emexpl.dmdb_macros.source';
+15826     %include temp;
+15827     filename temp;
+15828
+15829     %SetProperties;
+15830
+15831     %if %upcase(&EM_ACTION) = CREATE %then %do;
+15832
+15833         filename temp catalog 'sashelp.emexpl.dmdb_create.source';
+15834         %include temp;
+15835         filename temp;
+15836
+15837         %create;
+15838     %end;
+15839     %else
+15840     %if %upcase(&EM_ACTION) = TRAIN %then %do;
+15841
+15842         filename temp catalog 'sashelp.emexpl.dmdb_train.source';
+15843         %include temp;
+15844         filename temp;
+15845
+15846         %train;
+15847     %end;
+15848     %else
+15849     %if %upcase(&EM_ACTION) = REPORT %then %do;
+15850
+15851         filename temp catalog 'sashelp.emexpl.dmdb_report.source';
+15852         %include temp;
+15853         filename temp;
+15854
+15855         %report;
+15856
+15857     %end;
+15858
+15859     %doendm:
+15860  %mend main;
+15861
+15862  %main;
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMEXPL.DMDB_MACROS.SOURCE.
+15863 +%macro SetProperties;
+15864 +   %em_checkmacro(name=EM_PROPERTY_INTERVAL,      global=Y, value=Y);
+15865 +   %em_checkmacro(name=EM_PROPERTY_CLASS,         global=Y, value=Y);
+15866 +   %em_checkmacro(name=EM_PROPERTY_MAXVALUES,     global=Y, value=25);
+15867 +%mend SetProperties;
+15868 +
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+15869  *------------------------------------------------------------*;
+15870  * End SCORE: DMDB;
+15871  *------------------------------------------------------------*;
+15872
+ 
+15873  *------------------------------------------------------------*;
+15874  * DMDB: Scoring DATA data;
+15875  *------------------------------------------------------------*;
+15876  data EMWS6.DMDB_TRAIN
+15877  / view=EMWS6.DMDB_TRAIN
+15878  ;
+15879  set EMWS6.Ids_DATA
+15880  ;
+15881  run;
+ 
+NOTE: DATA STEP view saved on file EMWS6.DMDB_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS6.IDS_DATA.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+ 
+15882  quit;
+ 
+15884  *------------------------------------------------------------*;
+15885  * DMDB: Computing metadata for TRAIN data;
+15886  *------------------------------------------------------------*;
+ 
+NOTE: View EMWS6.DMDB_TRAIN.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.10 seconds
+ 
+NOTE: View EMWS6.DMDB_TRAIN.VIEW used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.07 seconds
+ 
+*------------------------------------------------------------*
+* Report Log
+Date:                May 13, 2018
+Time:                20:18:32
+*------------------------------------------------------------*
+16247  %let EMEXCEPTIONSTRING=;
+16248  *------------------------------------------------------------*;
+16249  * REPORT: DMDB;
+16250  *------------------------------------------------------------*;
+16251  %let EM_ACTION = REPORT;
+16252  %let syscc = 0;
+16253  %macro main;
+16254
+16255     filename temp catalog 'sashelp.emexpl.dmdb_macros.source';
+16256     %include temp;
+16257     filename temp;
+16258
+16259     %SetProperties;
+16260
+16261     %if %upcase(&EM_ACTION) = CREATE %then %do;
+16262
+16263         filename temp catalog 'sashelp.emexpl.dmdb_create.source';
+16264         %include temp;
+16265         filename temp;
+16266
+16267         %create;
+16268     %end;
+16269     %else
+16270     %if %upcase(&EM_ACTION) = TRAIN %then %do;
+16271
+16272         filename temp catalog 'sashelp.emexpl.dmdb_train.source';
+16273         %include temp;
+16274         filename temp;
+16275
+16276         %train;
+16277     %end;
+16278     %else
+16279     %if %upcase(&EM_ACTION) = REPORT %then %do;
+16280
+16281         filename temp catalog 'sashelp.emexpl.dmdb_report.source';
+16282         %include temp;
+16283         filename temp;
+16284
+16285         %report;
+16286
+16287     %end;
+16288
+16289     %doendm:
+16290  %mend main;
+16291
+16292  %main;
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMEXPL.DMDB_MACROS.SOURCE.
+16293 +%macro SetProperties;
+16294 +   %em_checkmacro(name=EM_PROPERTY_INTERVAL,      global=Y, value=Y);
+16295 +   %em_checkmacro(name=EM_PROPERTY_CLASS,         global=Y, value=Y);
+16296 +   %em_checkmacro(name=EM_PROPERTY_MAXVALUES,     global=Y, value=25);
+16297 +%mend SetProperties;
+16298 +
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMEXPL.DMDB_REPORT.SOURCE.
+16299 +%macro report;
+16300 +
+16301 +    %em_getname(key=INTERVAL, type=DATA);
+16302 +    %em_getname(key=CLASS,    type=DATA);
+16303 +
+16304 +    proc sort data=&em_data_variableset(keep=NAME LABEL) out=_dmdbtemp;
+16305 +       by NAME;
+16306 +    run;
+16307 +
+16308 +    %if %sysfunc(exist(&EM_USER_INTERVAL)) %then %do;
+16309 +        proc sort data=&em_user_interval;
+16310 +           by NAME;
+16311 +        run;
+16312 +        data &em_user_interval;
+16313 +           merge _dmdbtemp &em_user_interval(in=_a);
+16314 +           by NAME;
+16315 +           if _a then output;
+16316 +        run;
+16317 +        proc datasets lib=&em_lib nolist;
+16318 +           modify &em_nodeid._INTERVAL;
+16319 +           label Name  ="%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))";
+16320 +           label label ="%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel,   NOQUOTE))";
+16321 +           label NMiss ="%sysfunc(sasmsg(sashelp.dmine, rpt_missing_vlabel,  NOQUOTE))";
+16322 +           label MIN   ="%sysfunc(sasmsg(sashelp.dmine, rpt_minimum_vlabel,  NOQUOTE))";
+16323 +           label MAX   ="%sysfunc(sasmsg(sashelp.dmine, rpt_maximum_vlabel,  NOQUOTE))";
+16324 +           label MEAN  ="%sysfunc(sasmsg(sashelp.dmine, rpt_mean_vlabel,  NOQUOTE))";
+16325 +           label STD   ="%sysfunc(sasmsg(sashelp.dmine, rpt_std_vlabel,  NOQUOTE))";
+16326 +           label SKEWNESS ="%sysfunc(sasmsg(sashelp.dmine, rpt_skewness_vlabel,  NOQUOTE))";
+16327 +           label KURTOSIS ="%sysfunc(sasmsg(sashelp.dmine, rpt_kurtosis_vlabel,  NOQUOTE))";
+16328 +        run;
+16329 +        proc print data=&em_user_interval label noobs;
+16330 +           title9 ' ';
+16331 +           title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_intervalStats_title,  NOQUOTE))";
+16332 +        run;
+16333 +
+16334 +        %em_report(key=INTERVAL,localize=Y, description=intrvlstat, block=stats);
+16335 +    %end;
+16336 +
+16337 +    %if %sysfunc(exist(&EM_USER_CLASS)) %then %do;
+16338 +        proc sort data=&EM_USER_CLASS;
+16339 +           by NAME NRAW CRAW;
+16340 +        run;
+16341 +        proc freq data=&EM_USER_CLASS noprint;
+16342 +           table NAME /out =TEMP(drop=PERCENT);
+16343 +           where LEVEL ^in('.', '');
+16344 +        run;
+16345 +        proc sort data=TEMP;
+16346 +           by NAME;
+16347 +        run;
+16348 +        data &EM_USER_CLASS(keep=NAME TYPE MISSING);
+16349 +           set &EM_USER_CLASS;
+16350 +           by NAME;
+16351 +           if first.NAME then do;
+16352 +              if LEVEL in('.' '') then MISSING=FREQUENCY;
+16353 +              else MISSING=0;
+16354 +              output;
+16355 +           end;
+16356 +        run;
+16357 +        data &em_user_class;
+16358 +           label Name    ="%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))";
+16359 +           label label ="%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel,   NOQUOTE))";
+16360 +           label Type    ="%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel, NOQUOTE))";
+16361 +           label Count   ="%sysfunc(sasmsg(sashelp.dmine, rpt_numcat_vlabel, NOQUOTE))";
+16362 +           label Missing ="%sysfunc(sasmsg(sashelp.dmine, rpt_missing_vlabel, NOQUOTE))";
+16363 +           merge _dmdbtemp &em_user_class(in=_a) TEMP;
+16364 +           by NAME;
+16365 +           if _a then output;
+16366 +        run;
+16367 +        proc print data=&em_user_class label noobs;
+16368 +           title9 ' ';
+16369 +           title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_classStats_title,  NOQUOTE))";
+16370 +        run;
+16371 +        title9;
+16372 +        title10;
+16373 +
+16374 +        %em_report(key=CLASS, localize=Y, description=classstat, block=stats);
+16375 +
+16376 +    %end;
+16377 +
+16378 +    proc datasets lib=work nolist;
+16379 +       delete _dmdbtemp;
+16380 +       run;
+16381 +    quit;
+16382 +
+16383 +%mend report;
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+ 
+NOTE: There were 13 observations read from the data set EMWS6.DMDB_VARIABLESET.
+NOTE: The data set WORK._DMDBTEMP has 13 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 4 observations read from the data set EMWS6.DMDB_INTERVAL.
+NOTE: The data set EMWS6.DMDB_INTERVAL has 4 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 13 observations read from the data set WORK._DMDBTEMP.
+NOTE: There were 4 observations read from the data set EMWS6.DMDB_INTERVAL.
+NOTE: The data set EMWS6.DMDB_INTERVAL has 4 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: MODIFY was successful for EMWS6.DMDB_INTERVAL.DATA.
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+ 
+ 
+ 
+NOTE: There were 4 observations read from the data set EMWS6.DMDB_INTERVAL.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: The data set WORK.EM_USER_REPORT has 132 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+ 
+ 
+ 
+NOTE: There were 38 observations read from the data set EMWS6.DMDB_CLASS.
+NOTE: The data set EMWS6.DMDB_CLASS has 38 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 34 observations read from the data set EMWS6.DMDB_CLASS.
+      WHERE LEVEL not in (' ', '.');
+NOTE: The data set WORK.TEMP has 6 observations and 2 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 6 observations read from the data set WORK.TEMP.
+NOTE: The data set WORK.TEMP has 6 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 38 observations read from the data set EMWS6.DMDB_CLASS.
+NOTE: The data set EMWS6.DMDB_CLASS has 6 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: There were 13 observations read from the data set WORK._DMDBTEMP.
+NOTE: There were 6 observations read from the data set EMWS6.DMDB_CLASS.
+NOTE: There were 6 observations read from the data set WORK.TEMP.
+NOTE: The data set EMWS6.DMDB_CLASS has 6 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+NOTE: There were 6 observations read from the data set EMWS6.DMDB_CLASS.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+ 
+ 
+ 
+NOTE: There were 132 observations read from the data set WORK.EM_USER_REPORT.
+NOTE: The data set WORK.EM_USER_REPORT has 264 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+ 
+ 
+ 
+NOTE: Deleting WORK._DMDBTEMP (memtype=DATA).
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+16384  *------------------------------------------------------------*;
+16385  * End REPORT: DMDB;
+16386  *------------------------------------------------------------*;
+16387
+ 
+16388  /* Reset EM Options */
+16389  options formchar="|----|+|---+=|-/\<>*";
+16390  options nocenter ls=256 ps=10000;
+16391  goptions reset=all device=GIF NODISPLAY;
+ 
+16392  proc sort data=WORK.EM_USER_REPORT;
+16393  by ID VIEW;
+16394  run;
+ 
+NOTE: There were 264 observations read from the data set WORK.EM_USER_REPORT.
+NOTE: The data set WORK.EM_USER_REPORT has 264 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 

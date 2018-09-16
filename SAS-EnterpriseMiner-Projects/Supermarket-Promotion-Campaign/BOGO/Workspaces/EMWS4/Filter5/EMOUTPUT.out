@@ -1,0 +1,55 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                15:11:25
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          4
+REJECTED     NOMINAL           5
+SEGMENT      NOMINAL           1
+TARGET       BINARY            1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+Excluded Class Values
+(maximum 500 observations printed)
+ 
+                                                Train     Train                            Filter
+   Variable          Role       Level           Count    Percent           Label           Method
+ 
+_SEGMENT_LABEL_    REJECTED    Cluster1          6224    31.0656    Segment Description    MANUAL
+_SEGMENT_LABEL_    REJECTED    Cluster3          4168    20.8036    Segment Description    MANUAL
+_SEGMENT_LABEL_    REJECTED    Cluster4          5933    29.6132    Segment Description    MANUAL
+ 
+ 
+ 
+ 
+Number Of Observations
+ 
+Data
+Role     Filtered    Excluded     DATA
+ 
+TRAIN      3710        16325     20035
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

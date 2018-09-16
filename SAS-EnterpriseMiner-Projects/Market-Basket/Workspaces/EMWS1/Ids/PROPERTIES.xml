@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  DataSource="bankdataset" Scope="LOCAL" Role="TRANSACTION" Library="DATASETS" Table="BANK_DATASET"
+ NCols="3" NObs="32367" NBytes="795648" Segment="" DataSourceRole="TRANSACTION" OutputType="VIEW"
+ ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE" NewTable="" MetaAdvisor="BASIC"
+ ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20" ApplyMaxPercentMissing="Y"
+ MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20" IdentifyEmptyColumns="Y"
+ VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y" DsId="bankdataset"
+ DsSampleName="" DsSampleSizeType="" DsSampleSize="" DsCreatedBy="Mohamed" DsCreateDate="1842193938.1"
+ DsModifiedBy="Mohamed" DsModifyDate="1842193938.2" DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT"
+ SampleSizePercent="20" SampleSizeObs="10000" DBPassThrough="Y" RunAction="Train"
+ Component="DataSource" RawCreateTime="1842193952.1" CreateTime="17MAY2018:16:32:32"
+ Description="" Data="DATASETS.BANK_DATASET" CMeta="WORK.M35BB9D4" RunId="48d4374e-e541-4a13-8cff-9cc8ab1a8c27"
+>
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

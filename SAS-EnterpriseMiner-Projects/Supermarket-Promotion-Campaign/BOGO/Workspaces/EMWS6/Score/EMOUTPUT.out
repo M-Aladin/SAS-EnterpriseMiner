@@ -1,0 +1,269 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 13, 2018
+Time:                21:29:43
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+           Measurement    Frequency
+ Role         Level         Count
+ 
+SEGMENT      NOMINAL          1
+TARGET       BINARY           1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Score Input Variables
+ 
+                                                                                               Used in
+                                                                                   Variable     Score
+Variable Name       Role     Creator    Comment    Label                            Hidden      Code
+ 
+DemAffl            INPUT                           Affluence Grade                    Y           Y
+DemAge             INPUT                           Age                                Y           Y
+DemClusterGroup    INPUT                           Neighborhood Cluster-7 Level       Y           Y
+DemGender          INPUT                           Gender                             Y           Y
+DemReg             INPUT                           Geographic Region                  Y           Y
+DemTVReg           INPUT                           Television Region                  Y           Y
+PromClass          INPUT                           Loyalty Status                     N           Y
+PromSpend          INPUT                           Total Spend                        N           Y
+PromTime           INPUT                           Loyalty Card Tenure                Y           Y
+TargetBuy          TARGET                          Organics Purchase Indicator        N           N
+ 
+ 
+ 
+ 
+Score Output Variables
+ 
+Variable Name          Function          Creator    Label
+ 
+D_TARGETBUY            DECISION          Neural     Decision: TargetBuy
+EM_CLASSIFICATION      CLASSIFICATION    Score      Prediction for TargetBuy
+EM_DECISION            DECISION          Score      Recommended Decision for TargetBuy
+EM_EVENTPROBABILITY    PREDICT           Score      Probability for level 1 of TargetBuy
+EM_PROBABILITY         PREDICT           Score      Probability of Classification
+EM_PROFIT              ASSESS            Score      Expected Profit for TargetBuy
+EM_SEGMENT             TRANSFORM         Score      Segment
+EP_TARGETBUY           ASSESS            Neural     Expected Profit: TargetBuy
+IMP_DemAffl            TRANSFORM         Impt       Imputed: Affluence Grade
+IMP_DemAge             TRANSFORM         Impt       Imputed: Age
+IMP_DemClusterGroup    TRANSFORM         Impt       Imputed: Neighborhood Cluster-7 Level
+IMP_DemGender          TRANSFORM         Impt       Imputed: Gender
+IMP_DemReg             TRANSFORM         Impt       Imputed: Geographic Region
+IMP_DemTVReg           TRANSFORM         Impt       Imputed: Television Region
+IMP_PromTime           TRANSFORM         Impt       Imputed: Loyalty Card Tenure
+I_TargetBuy            CLASSIFICATION    Neural     Into: TargetBuy
+M_DemAffl              TRANSFORM         Impt       Imputation Indicator for DemAffl
+M_DemAge               TRANSFORM         Impt       Imputation Indicator for DemAge
+M_DemClusterGroup      TRANSFORM         Impt       Imputation Indicator for DemClusterGroup
+M_DemGender            TRANSFORM         Impt       Imputation Indicator for DemGender
+M_DemReg               TRANSFORM         Impt       Imputation Indicator for DemReg
+M_DemTVReg             TRANSFORM         Impt       Imputation Indicator for DemTVReg
+M_PromTime             TRANSFORM         Impt       Imputation Indicator for PromTime
+P_TargetBuy0           PREDICT           Neural     Predicted: TargetBuy=0
+P_TargetBuy1           PREDICT           Neural     Predicted: TargetBuy=1
+U_TargetBuy            CLASSIFICATION    Neural     Unnormalized Into: TargetBuy
+_WARN_                 ASSESS            Neural     Warnings
+b_TargetBuy            TRANSFORM         MdlComp
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Class Variable Summary Statistics
+ 
+Data Role=SCORE Output Type=C
+ 
+               Numeric    Formatted    Frequency
+ Variable       Value       Value        Count      Percent
+ 
+D_TARGETBUY       .           0           1511       6.7993
+D_TARGETBUY       .           1          20712      93.2007
+ 
+ 
+Data Role=SCORE Output Type=CLASSIFICATION
+ 
+               Numeric    Formatted    Frequency
+ Variable       Value       Value        Count      Percent
+ 
+I_TargetBuy       .           0          18810      84.6420
+I_TargetBuy       .           1           3413      15.3580
+ 
+ 
+Data Role=SCORE Output Type=SEGMENT
+ 
+               Numeric    Formatted    Frequency
+ Variable       Value       Value        Count      Percent
+ 
+b_TargetBuy        1         1            1095      4.92733
+b_TargetBuy        2         2            1100      4.94983
+b_TargetBuy        3         3            1134      5.10282
+b_TargetBuy        4         4            1118      5.03082
+b_TargetBuy        5         5            1079      4.85533
+b_TargetBuy        6         6            1131      5.08932
+b_TargetBuy        7         7            1109      4.99033
+b_TargetBuy        8         8            1136      5.11182
+b_TargetBuy        9         9            1141      5.13432
+b_TargetBuy       10         10           1093      4.91833
+b_TargetBuy       11         11           1093      4.91833
+b_TargetBuy       12         12           1129      5.08032
+b_TargetBuy       13         13           1111      4.99933
+b_TargetBuy       14         14           1116      5.02182
+b_TargetBuy       15         15           1114      5.01282
+b_TargetBuy       16         16           1097      4.93633
+b_TargetBuy       17         17           1043      4.69334
+b_TargetBuy       18         18           1124      5.05782
+b_TargetBuy       19         19           1129      5.08032
+b_TargetBuy       20         20           1131      5.08932
+ 
+ 
+Data Role=TRAIN Output Type=C
+ 
+               Numeric    Formatted    Frequency
+ Variable       Value       Value        Count      Percent
+ 
+D_TARGETBUY       .           0            748       6.7315
+D_TARGETBUY       .           1          10364      93.2685
+ 
+ 
+Data Role=TRAIN Output Type=CLASSIFICATION
+ 
+               Numeric    Formatted    Frequency
+ Variable       Value       Value        Count      Percent
+ 
+I_TargetBuy       .           0           9402      84.6112
+I_TargetBuy       .           1           1710      15.3888
+ 
+ 
+Data Role=TRAIN Output Type=SEGMENT
+ 
+               Numeric    Formatted    Frequency
+ Variable       Value       Value        Count      Percent
+ 
+b_TargetBuy        1         1            556       5.00360
+b_TargetBuy        2         2            556       5.00360
+b_TargetBuy        3         3            555       4.99460
+b_TargetBuy        4         4            556       5.00360
+b_TargetBuy        5         5            555       4.99460
+b_TargetBuy        6         6            556       5.00360
+b_TargetBuy        7         7            556       5.00360
+b_TargetBuy        8         8            555       4.99460
+b_TargetBuy        9         9            556       5.00360
+b_TargetBuy       10         10           555       4.99460
+b_TargetBuy       11         11           556       5.00360
+b_TargetBuy       12         12           556       5.00360
+b_TargetBuy       13         13           555       4.99460
+b_TargetBuy       14         14           556       5.00360
+b_TargetBuy       15         15           555       4.99460
+b_TargetBuy       16         16           556       5.00360
+b_TargetBuy       17         17           556       5.00360
+b_TargetBuy       18         18           555       4.99460
+b_TargetBuy       19         19           556       5.00360
+b_TargetBuy       20         20           555       4.99460
+ 
+ 
+Data Role=VALIDATE Output Type=C
+ 
+               Numeric    Formatted    Frequency
+ Variable       Value       Value        Count      Percent
+ 
+D_TARGETBUY       .           0            763       6.8671
+D_TARGETBUY       .           1          10348      93.1329
+ 
+ 
+Data Role=VALIDATE Output Type=CLASSIFICATION
+ 
+               Numeric    Formatted    Frequency
+ Variable       Value       Value        Count      Percent
+ 
+I_TargetBuy       .           0           9408      84.6728
+I_TargetBuy       .           1           1703      15.3272
+ 
+ 
+Data Role=VALIDATE Output Type=SEGMENT
+ 
+               Numeric    Formatted    Frequency
+ Variable       Value       Value        Count      Percent
+ 
+b_TargetBuy        1         1            539       4.85105
+b_TargetBuy        2         2            544       4.89605
+b_TargetBuy        3         3            579       5.21105
+b_TargetBuy        4         4            562       5.05805
+b_TargetBuy        5         5            524       4.71605
+b_TargetBuy        6         6            575       5.17505
+b_TargetBuy        7         7            553       4.97705
+b_TargetBuy        8         8            581       5.22905
+b_TargetBuy        9         9            585       5.26505
+b_TargetBuy       10         10           538       4.84205
+b_TargetBuy       11         11           537       4.83305
+b_TargetBuy       12         12           573       5.15705
+b_TargetBuy       13         13           556       5.00405
+b_TargetBuy       14         14           560       5.04005
+b_TargetBuy       15         15           559       5.03105
+b_TargetBuy       16         16           541       4.86905
+b_TargetBuy       17         17           487       4.38304
+b_TargetBuy       18         18           569       5.12105
+b_TargetBuy       19         19           573       5.15705
+b_TargetBuy       20         20           576       5.18405
+ 
+ 
+ 
+ 
+Interval Variable Summary Statistics
+ 
+Variable Name=EP_TARGETBUY
+ 
+Statistics    Label                    TRAIN    VALIDATE    SCORE
+ 
+  MEAN        Mean                      3.35        .         .
+  STD         Standard Deviation        3.55        .         .
+  N           Non Missing           11112.00        .         .
+  MIN         Minimum                   0.00        .         .
+  P25         25th Percentile           0.62        .         .
+  MEDIAN      Median                    2.00        .         .
+  P75         75th Percentile           5.00        .         .
+  MAX         Maximum                  14.49        .         .
+ 
+ 
+Variable Name=P_TargetBuy0
+ 
+Statistics    Label                    TRAIN    VALIDATE       SCORE
+ 
+  MEAN        Mean                      0.75        0.75        0.75
+  STD         Standard Deviation        0.23        0.23        0.23
+  N           Non Missing           11112.00    11111.00    22223.00
+  MIN         Minimum                   0.03        0.03        0.03
+  P25         25th Percentile           0.65        0.65        0.65
+  MEDIAN      Median                    0.84        0.84        0.84
+  P75         75th Percentile           0.93        0.93        0.93
+  MAX         Maximum                   0.98        0.98        0.98
+ 
+ 
+Variable Name=P_TargetBuy1
+ 
+Statistics    Label                    TRAIN    VALIDATE       SCORE
+ 
+  MEAN        Mean                      0.25        0.25        0.25
+  STD         Standard Deviation        0.23        0.23        0.23
+  N           Non Missing           11112.00    11111.00    22223.00
+  MIN         Minimum                   0.02        0.02        0.02
+  P25         25th Percentile           0.07        0.07        0.07
+  MEDIAN      Median                    0.16        0.16        0.16
+  P75         75th Percentile           0.35        0.35        0.35
+  MAX         Maximum                   0.97        0.97        0.97

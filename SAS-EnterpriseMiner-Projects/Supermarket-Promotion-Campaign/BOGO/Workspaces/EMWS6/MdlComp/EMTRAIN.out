@@ -1,0 +1,154 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+          Measurement    Frequency
+ Role        Level         Count
+
+TARGET      BINARY           1    
+ 
+                                                                                               
+ 
+ 
+
+
+
+
+
+
+
+Fit Statistics
+Model Selection based on Valid: Average Profit for TargetBuy (_VAPROF_)
+
+                                 Valid:    Train:                    Valid:
+                                 Average  Average       Train:      Average       Valid:
+Selected Model      Model      Profit for Squared Misclassification Squared Misclassification
+ Model   Node    Description    TargetBuy  Error         Rate        Error         Rate
+
+   Y     Neural Neural Network   3.36225  0.13348      0.18422      0.13387      0.18693     
+         Tree   Decision Tree    3.35069  0.15216      0.23542      0.15220      0.23850     
+         Reg    Regression       3.35055  0.13859      0.18898      0.13716      0.18756     
+ 
+                                                                                               
+ 
+ 
+
+
+
+
+
+
+
+Fit Statistics Table
+Target: TargetBuy
+
+Data Role=Train
+
+Statistics                                                         Neural       Tree        Reg
+
+Train: Bin-Based Two-Way Kolmogorov-Smirnov Probability Cutoff       0.28       0.31       0.29
+Train: Kolmogorov-Smirnov Statistic                                  0.48       0.44       0.45
+Train: Akaike's Information Criterion                             9567.07        .      9691.26
+Train: Average Profit for TargetBuy                                  3.35       3.36       3.34
+Train: Average Squared Error                                         0.13       0.15       0.14
+Train: Roc Index                                                     0.82       0.77       0.80
+Train: Average Error Function                                        0.42        .         0.44
+Train: Cumulative Percent Captured Response                         31.75      21.21      30.75
+Train: Percent Captured Response                                    14.24      10.61      13.53
+Selection Criterion: Valid: Average Profit for TargetBuy             3.36       3.35       3.35
+Train: Degrees of Freedom for Error                              10991.00        .     11104.00
+Train: Model Degrees of Freedom                                    121.00        .         8.00
+Train: Total Degrees of Freedom                                  11112.00   11112.00   11112.00
+Train: Divisor for ASE                                           22224.00   22224.00   22224.00
+Train: Error Function                                             9325.07        .      9675.26
+Train: Final Prediction Error                                        0.14        .         0.14
+Train: Gain                                                        217.24     111.97     207.26
+Train: Gini Coefficient                                              0.64       0.53       0.61
+Train: Bin-Based Two-Way Kolmogorov-Smirnov Statistic                0.48       0.43       0.45
+Train: Kolmogorov-Smirnov Probability Cutoff                         0.25       0.19       0.29
+Train: Cumulative Lift                                               3.17       2.12       3.07
+Train: Lift                                                          2.85       2.12       2.70
+Train: Maximum Absolute Error                                        0.98       0.99       0.99
+Train: Misclassification Rate                                        0.18       0.24       0.19
+Train: Mean Square Error                                             0.13        .         0.14
+Train: Sum of Frequencies                                        11112.00   11112.00   11112.00
+Train: Number of Estimate Weights                                  121.00        .         8.00
+Train: Total Profit for TargetBuy                                37241.50   37321.00   37169.00
+Train: Root Average Squared Error                                    0.37       0.39       0.37
+Train: Cumulative Percent Response                                  78.60      52.52      76.12
+Train: Percent Response                                             70.50      52.52      67.00
+Train: Root Final Prediction Error                                   0.37        .         0.37
+Train: Root Mean Squared Error                                       0.37        .         0.37
+Train: Schwarz's Bayesian Criterion                              10452.28        .      9749.78
+Train: Sum of Squared Errors                                      2966.54    3381.61    3079.95
+Train: Sum of Case Weights Times Freq                            22224.00        .     22224.00
+Train: Number of Wrong Classifications                            2047.00        .          .  
+
+
+Data Role=Valid
+
+Statistics                                                         Neural       Tree        Reg
+
+Valid: Kolmogorov-Smirnov Statistic                                  0.48       0.44       0.46
+Valid: Average Profit for TargetBuy                                  3.36       3.35       3.35
+Valid: Average Squared Error                                         0.13       0.15       0.14
+Valid: Roc Index                                                     0.82       0.77       0.81
+Valid: Average Error Function                                        0.42        .         0.43
+Valid: Bin-Based Two-Way Kolmogorov-Smirnov Probability Cutoff       0.28       0.31       0.29
+Valid: Cumulative Percent Captured Response                         31.03      20.95      30.83
+Valid: Percent Captured Response                                    13.95      10.47      13.64
+Valid: Divisor for VASE                                          22222.00   22222.00   22222.00
+Valid: Error Function                                             9346.23        .      9605.81
+Valid: Gain                                                        210.07     109.32     208.02
+Valid: Gini Coefficient                                              0.65       0.54       0.61
+Valid: Bin-Based Two-Way Kolmogorov-Smirnov Statistic                0.48       0.43       0.46
+Valid: Kolmogorov-Smirnov Probability Cutoff                         0.25       0.19       0.29
+Valid: Cumulative Lift                                               3.10       2.09       3.08
+Valid: Lift                                                          2.79       2.09       2.73
+Valid: Maximum Absolute Error                                        0.97       0.99       0.99
+Valid: Misclassification Rate                                        0.19       0.24       0.19
+Valid: Mean Square Error                                             0.13        .         0.14
+Valid: Sum of Frequencies                                        11111.00   11111.00   11111.00
+Valid: Total Profit for TargetBuy                                37358.00   37229.50   37228.00
+Valid: Root Average Squared Error                                    0.37       0.39       0.37
+Valid: Cumulative Percent Response                                  76.80      51.84      76.29
+Valid: Percent Response                                             69.06      51.84      67.51
+Valid: Root Mean Square Error                                        0.37        .         0.37
+Valid: Sum of Squared Errors                                      2974.84    3382.14    3047.89
+Valid: Sum of Case Weights Times Freq                            22222.00        .     22222.00
+Valid: Number of Wrong Classifications                            2077.00        .          .  
+ 
+                                                                                               
+ 
+ 
+
+
+
+
+
+
+
+Event Classification Table
+Model Selection based on Valid: Average Profit for TargetBuy (_VAPROF_)
+
+Model         Model         Data
+Node       Description      Role         Target             Target Label
+
+Tree      Decision Tree     TRAIN       TargetBuy    Organics Purchase Indicator
+Tree      Decision Tree     VALIDATE    TargetBuy    Organics Purchase Indicator
+Reg       Regression        TRAIN       TargetBuy    Organics Purchase Indicator
+Reg       Regression        VALIDATE    TargetBuy    Organics Purchase Indicator
+Neural    Neural Network    TRAIN       TargetBuy    Organics Purchase Indicator
+Neural    Neural Network    VALIDATE    TargetBuy    Organics Purchase Indicator
+
+  False       True        False       True
+Negative    Negative    Positive    Positive
+
+  1323        7066        1293        1430  
+  1318        7027        1332        1434  
+  1648        7907         452        1105  
+  1654        7929         430        1098  
+  1545        7857         502        1208  
+  1563        7845         514        1189  

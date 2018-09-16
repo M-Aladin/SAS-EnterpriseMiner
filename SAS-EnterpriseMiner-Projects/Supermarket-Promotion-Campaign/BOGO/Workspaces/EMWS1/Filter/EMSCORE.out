@@ -1,0 +1,97 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+Filter Limits for Interval Variables
+(maximum 500 observations printed)
+
+                                                              Keep
+                                                   Filter    Missing
+Variable           Role     Minimum     Maximum    Method    Values     Label
+
+AffluenceGrade     INPUT      0.99        30.10    MANUAL       N                               
+REP_Age            INPUT       .            .      NONE         N       Replacement: Age        
+REP_LoyaltyTime    INPUT       .            .      NONE         N       Replacement: LoyaltyTime
+TotalSpend         INPUT       .       50000.01    MANUAL       Y                               
+ 
+                                                                                                                                                                                                                                                                
+ 
+Excluded Class Values
+(maximum 500 observations printed)
+
+                                              Train     Train                            Filter
+  Variable      Role        Level             Count    Percent           Label           Method
+
+FacebookLike    INPUT               0         14000    60.8696                           MANUAL
+LoyaltyClass    INPUT    Diamond                867     3.7696                           MANUAL
+LoyaltyClass    INPUT    Silver                6700    29.1304                           MANUAL
+REP_Gender      INPUT    U                     4431    19.2652    Replacement: Gender    MANUAL
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Number Of Observations
+
+Data
+Role     Filtered    Excluded     DATA
+
+TRAIN      4224        18776     23000
+ 
+                                                                                                                                                                                                                                                                
+ 
+Statistics for Original and FILTERED Data
+(maximum 500 observations printed)
+
+Data Role=TRAIN Variable=AffluenceGrade
+
+Statistics            Original    Filtered
+
+Non Missing           21875.00     4224.00
+Missing                1125.00        0.00
+Minimum                   0.00        1.00
+Maximum                  34.00       29.00
+Mean                      8.71        9.04
+Standard Deviation        3.42        3.59
+Skewness                  0.90        0.93
+Kurtosis                  2.10        1.91
+
+
+Data Role=TRAIN Variable=REP_Age
+
+Statistics             Original    Filtered
+
+Non Missing            21390.00     4224.00
+Missing                 1610.00        0.00
+Minimum                   18.00       18.00
+Maximum                   79.00       79.00
+Mean                      53.79       54.39
+Standard Deviation        13.20       13.82
+Skewness                  -0.08       -0.22
+Kurtosis                  -0.84       -0.83
+
+
+Data Role=TRAIN Variable=REP_LoyaltyTime
+
+Statistics            Original    Filtered
+
+Non Missing           22707.00     4224.00
+Missing                 293.00        0.00
+Minimum                   0.00        0.00
+Maximum                  39.00       36.00
+Mean                      6.56        6.48
+Standard Deviation        4.64        5.14
+Skewness                  2.28        2.09
+Kurtosis                  8.08        6.39
+
+
+Data Role=TRAIN Variable=TotalSpend
+
+Statistics             Original    Filtered
+
+Non Missing            23000.00     4224.00
+Missing                    0.00        0.00
+Minimum                   10.00       10.00
+Maximum               296314.00    20000.00
+Mean                    4546.62     4581.20
+Standard Deviation      7474.78     4325.01
+Skewness                   8.12        1.31
+Kurtosis                 187.10        1.38

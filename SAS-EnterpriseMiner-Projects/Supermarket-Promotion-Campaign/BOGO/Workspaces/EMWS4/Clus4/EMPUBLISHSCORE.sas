@@ -1,0 +1,236 @@
+*****************************************;
+*** Begin Scoring Code from PROC DMVQ ***;
+*****************************************;
+
+
+*** Begin Class Look-up, Standardization, Replacement ;
+drop _dm_bad; _dm_bad = 0;
+
+*** Standardize AffluenceGrade ;
+drop T_AffluenceGrade ;
+if missing( AffluenceGrade ) then T_AffluenceGrade = .;
+else T_AffluenceGrade = (AffluenceGrade - 8.6988769653107) * 0.29378719520695;
+
+*** Standardize DayCareProducts ;
+drop T_DayCareProducts ;
+if missing( DayCareProducts ) then T_DayCareProducts = .;
+else T_DayCareProducts = (DayCareProducts
+         - 1.49114050411779) * 0.89771908387093;
+
+*** Standardize NightRepairProducts ;
+drop T_NightRepairProducts ;
+if missing( NightRepairProducts ) then T_NightRepairProducts = .;
+else T_NightRepairProducts = (NightRepairProducts
+         - 0.98727227352133) * 1.22065025771133;
+
+*** Standardize TimeSinceLastPurchase ;
+drop T_TimeSinceLastPurchase ;
+if missing( TimeSinceLastPurchase ) then T_TimeSinceLastPurchase = .;
+else T_TimeSinceLastPurchase = (TimeSinceLastPurchase
+         - 3.57499376091839) * 0.27270496289674;
+
+*** Generate dummy variables for LoyaltyClass ;
+drop LoyaltyClassDiamond LoyaltyClassGold LoyaltyClassPlatinum
+        LoyaltyClassSilver ;
+if missing( LoyaltyClass ) then do;
+   LoyaltyClassDiamond = .;
+   LoyaltyClassGold = .;
+   LoyaltyClassPlatinum = .;
+   LoyaltyClassSilver = .;
+end;
+else do;
+   length _dm8 $ 8; drop _dm8 ;
+   _dm8 = put( LoyaltyClass , $CHAR8. );
+   %DMNORMIP( _dm8 )
+   if _dm8 = 'GOLD'  then do;
+      LoyaltyClassDiamond = -0.09576598846315;
+      LoyaltyClassGold = 0.62811155380715;
+      LoyaltyClassPlatinum = -0.31752397019633;
+      LoyaltyClassSilver = -0.31903352436325;
+   end;
+   else if _dm8 = 'SILVER'  then do;
+      LoyaltyClassDiamond = -0.09576598846315;
+      LoyaltyClassGold = -0.39799860442232;
+      LoyaltyClassPlatinum = -0.31752397019633;
+      LoyaltyClassSilver = 0.78357759528791;
+   end;
+   else if _dm8 = 'PLATINUM'  then do;
+      LoyaltyClassDiamond = -0.09576598846315;
+      LoyaltyClassGold = -0.39799860442232;
+      LoyaltyClassPlatinum = 0.78730283475043;
+      LoyaltyClassSilver = -0.31903352436325;
+   end;
+   else if _dm8 = 'DIAMOND'  then do;
+      LoyaltyClassDiamond = 2.61039984913813;
+      LoyaltyClassGold = -0.39799860442232;
+      LoyaltyClassPlatinum = -0.31752397019633;
+      LoyaltyClassSilver = -0.31903352436325;
+   end;
+   else do;
+      LoyaltyClassDiamond = .;
+      LoyaltyClassGold = .;
+      LoyaltyClassPlatinum = .;
+      LoyaltyClassSilver = .;
+      _DM_BAD = 1;
+   end;
+end;
+
+*** Generate dummy variables for REP_Gender ;
+drop REP_GenderF REP_GenderM REP_GenderU ;
+if missing( REP_Gender ) then do;
+   REP_GenderF = .;
+   REP_GenderM = .;
+   REP_GenderU = .;
+end;
+else do;
+   length _dm1 $ 1; drop _dm1 ;
+   _dm1 = put( REP_Gender , $CHAR1. );
+   %DMNORMIP( _dm1 )
+   if _dm1 = 'F'  then do;
+      REP_GenderF = 0.52704276885837;
+      REP_GenderM = -0.3437201667065;
+      REP_GenderU = -0.28221406496068;
+   end;
+   else if _dm1 = 'M'  then do;
+      REP_GenderF = -0.63242817372179;
+      REP_GenderM = 0.96973273048303;
+      REP_GenderU = -0.28221406496068;
+   end;
+   else if _dm1 = 'U'  then do;
+      REP_GenderF = -0.63242817372179;
+      REP_GenderM = -0.3437201667065;
+      REP_GenderU = 1.18107754774309;
+   end;
+   else do;
+      REP_GenderF = .;
+      REP_GenderM = .;
+      REP_GenderU = .;
+      _DM_BAD = 1;
+   end;
+end;
+
+*** End Class Look-up, Standardization, Replacement ;
+
+
+*** Omitted Cases;
+if _dm_bad then do;
+   _SEGMENT_ = .; Distance = .;
+   goto CLUS4vlex ;
+end; *** omitted;
+
+*** Compute Distances and Cluster Membership;
+label _SEGMENT_ = 'Segment Id' ;
+label Distance = 'Distance' ;
+array CLUS4vads [4] _temporary_;
+drop _vqclus _vqmvar _vqnvar;
+_vqmvar = 0;
+do _vqclus = 1 to 4; CLUS4vads [_vqclus] = 0; end;
+if not missing( T_AffluenceGrade ) then do;
+   CLUS4vads [1] + ( T_AffluenceGrade - -0.16673684925418 )**2;
+   CLUS4vads [2] + ( T_AffluenceGrade - -0.34027502747893 )**2;
+   CLUS4vads [3] + ( T_AffluenceGrade - -0.37703594188649 )**2;
+   CLUS4vads [4] + ( T_AffluenceGrade - 1.32353246334067 )**2;
+end;
+else _vqmvar + 1;
+if not missing( T_DayCareProducts ) then do;
+   CLUS4vads [1] + ( T_DayCareProducts - -0.01664806346125 )**2;
+   CLUS4vads [2] + ( T_DayCareProducts - 0.13309792180229 )**2;
+   CLUS4vads [3] + ( T_DayCareProducts - -0.39778321831162 )**2;
+   CLUS4vads [4] + ( T_DayCareProducts - 0.43065732805488 )**2;
+end;
+else _vqmvar + 1;
+if not missing( T_NightRepairProducts ) then do;
+   CLUS4vads [1] + ( T_NightRepairProducts - 0.0117491835027 )**2;
+   CLUS4vads [2] + ( T_NightRepairProducts - -0.89500637622228 )**2;
+   CLUS4vads [3] + ( T_NightRepairProducts - 0.81849563918496 )**2;
+   CLUS4vads [4] + ( T_NightRepairProducts - 0.29123317501974 )**2;
+end;
+else _vqmvar + 1;
+if not missing( T_TimeSinceLastPurchase ) then do;
+   CLUS4vads [1] + ( T_TimeSinceLastPurchase - 3.55390152025036 )**2;
+   CLUS4vads [2] + ( T_TimeSinceLastPurchase - -0.17190559863206 )**2;
+   CLUS4vads [3] + ( T_TimeSinceLastPurchase - -0.18754942228396 )**2;
+   CLUS4vads [4] + ( T_TimeSinceLastPurchase - -0.18346346801752 )**2;
+end;
+else _vqmvar + 1;
+if not missing( LoyaltyClassDiamond ) then do;
+   CLUS4vads [1] + ( LoyaltyClassDiamond - 0.08054057593072 )**2;
+   CLUS4vads [2] + ( LoyaltyClassDiamond - -0.00115204951933 )**2;
+   CLUS4vads [3] + ( LoyaltyClassDiamond - 0.00058238552321 )**2;
+   CLUS4vads [4] + ( LoyaltyClassDiamond - -0.01757193584766 )**2;
+end;
+else _vqmvar + 0.24999999999999;
+if not missing( LoyaltyClassGold ) then do;
+   CLUS4vads [1] + ( LoyaltyClassGold - 0.05404165142644 )**2;
+   CLUS4vads [2] + ( LoyaltyClassGold - 0.00186619374442 )**2;
+   CLUS4vads [3] + ( LoyaltyClassGold - -0.00671980856737 )**2;
+   CLUS4vads [4] + ( LoyaltyClassGold - -0.00465225915352 )**2;
+end;
+else _vqmvar + 0.25;
+if not missing( LoyaltyClassPlatinum ) then do;
+   CLUS4vads [1] + ( LoyaltyClassPlatinum - 0.1646238185188 )**2;
+   CLUS4vads [2] + ( LoyaltyClassPlatinum - 0.01010362897379 )**2;
+   CLUS4vads [3] + ( LoyaltyClassPlatinum - -0.00486953528415 )**2;
+   CLUS4vads [4] + ( LoyaltyClassPlatinum - -0.04909867614593 )**2;
+end;
+else _vqmvar + 0.25;
+if not missing( LoyaltyClassSilver ) then do;
+   CLUS4vads [1] + ( LoyaltyClassSilver - -0.25518013997807 )**2;
+   CLUS4vads [2] + ( LoyaltyClassSilver - -0.01161929743486 )**2;
+   CLUS4vads [3] + ( LoyaltyClassSilver - 0.0118432795558 )**2;
+   CLUS4vads [4] + ( LoyaltyClassSilver - 0.06115889637849 )**2;
+end;
+else _vqmvar + 0.25;
+if not missing( REP_GenderF ) then do;
+   CLUS4vads [1] + ( REP_GenderF - -0.04849606510075 )**2;
+   CLUS4vads [2] + ( REP_GenderF - -0.05084334849751 )**2;
+   CLUS4vads [3] + ( REP_GenderF - -0.0363113667072 )**2;
+   CLUS4vads [4] + ( REP_GenderF - 0.16912277165447 )**2;
+end;
+else _vqmvar + 0.33333333333333;
+if not missing( REP_GenderM ) then do;
+   CLUS4vads [1] + ( REP_GenderM - 0.01893952672639 )**2;
+   CLUS4vads [2] + ( REP_GenderM - 0.0321985328464 )**2;
+   CLUS4vads [3] + ( REP_GenderM - 0.01739587425575 )**2;
+   CLUS4vads [4] + ( REP_GenderM - -0.09481878695976 )**2;
+end;
+else _vqmvar + 0.33333333333333;
+if not missing( REP_GenderU ) then do;
+   CLUS4vads [1] + ( REP_GenderU - 0.04010352915089 )**2;
+   CLUS4vads [2] + ( REP_GenderU - 0.02829428669509 )**2;
+   CLUS4vads [3] + ( REP_GenderU - 0.02644577931265 )**2;
+   CLUS4vads [4] + ( REP_GenderU - -0.10780295292399 )**2;
+end;
+else _vqmvar + 0.33333333333333;
+_vqnvar = 6 - _vqmvar;
+if _vqnvar <= 7.5033312896266E-12 then do;
+   _SEGMENT_ = .; Distance = .;
+end;
+else do;
+   _SEGMENT_ = 1; Distance = CLUS4vads [1];
+   _vqfzdst = Distance * 0.99999999999988; drop _vqfzdst;
+   do _vqclus = 2 to 4;
+      if CLUS4vads [_vqclus] < _vqfzdst then do;
+         _SEGMENT_ = _vqclus; Distance = CLUS4vads [_vqclus];
+         _vqfzdst = Distance * 0.99999999999988;
+      end;
+   end;
+   Distance = sqrt(Distance * (6 / _vqnvar));
+end;
+CLUS4vlex :;
+
+***************************************;
+*** End Scoring Code from PROC DMVQ ***;
+***************************************;
+*------------------------------------------------------------*;
+* Clus4: Creating Segment Label;
+*------------------------------------------------------------*;
+length _SEGMENT_LABEL_ $80;
+label _SEGMENT_LABEL_='Segment Description';
+if _SEGMENT_ = 1 then _SEGMENT_LABEL_="Cluster1";
+else
+if _SEGMENT_ = 2 then _SEGMENT_LABEL_="Cluster2";
+else
+if _SEGMENT_ = 3 then _SEGMENT_LABEL_="Cluster3";
+else
+if _SEGMENT_ = 4 then _SEGMENT_LABEL_="Cluster4";

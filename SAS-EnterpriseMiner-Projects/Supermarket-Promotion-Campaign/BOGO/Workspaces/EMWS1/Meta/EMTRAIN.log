@@ -1,0 +1,149 @@
+*------------------------------------------------------------*
+* Training Log
+Date:                May 01, 2018
+Time:                17:31:18
+*------------------------------------------------------------*
+11406  proc freq data=EMWS1.Meta_VariableSet noprint;
+11407  table ROLE*LEVEL/out=WORK.MetaMETA;
+11408  run;
+
+NOTE: There were 27 observations read from the data set EMWS1.META_VARIABLESET.
+NOTE: The data set WORK.METAMETA has 7 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+      
+
+11409  proc print data=WORK.MetaMETA label noobs;
+11410  var ROLE LEVEL COUNT;
+11411  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+11412  title9 ' ';
+11413  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+11414  run;
+
+NOTE: There were 7 observations read from the data set WORK.METAMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+
+11415  title10;
+
+11416  data WORK.META_CHANGE;
+11417  set EMWS1.Meta_VariableSet;
+11418  where (NEWROLE ne "DEFAULT" and NEWROLE ne ROLE) or (NEWLEVEL ne "DEFAULT" and NEWLEVEL ne LEVEL) or (NEWREPORT ne "D" and NEWREPORT ne REPORT) or (NEWORDER ne "DEFAULT" and NEWORDER ne ORDER);
+11419  run;
+
+NOTE: There were 0 observations read from the data set EMWS1.META_VARIABLESET.
+      WHERE ((NEWROLE not = 'DEFAULT') and (NEWROLE not = ROLE)) or ((NEWLEVEL not = 'DEFAULT') and (NEWLEVEL not = LEVEL)) or ((NEWREPORT not = 'D') and (NEWREPORT not = REPORT)) or ((NEWORDER not = 'DEFAULT') and (NEWORDER not = ORDER));
+NOTE: The data set WORK.META_CHANGE has 0 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+11420  %let EM_LIB=EMWS1;
+11421  %em_path(NODEID=Meta, OUTDS=META_PREDECESSOR, NODES=PREDECESSOR);
+
+11422  data META_PREDECESSOR;
+11423  length nodelabel $32 component $32;
+11424  nodelabel="Repl";
+11425  component="Replace";
+11426  output;
+11427  run;
+
+NOTE: The data set WORK.META_PREDECESSOR has 1 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: PROCEDURE DISPLAY used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+
+11428  data EMWS1.Meta_CHOICE(rename=(role=Key dataset=Choice));
+11429  retain Variable 'DATASET';
+11430  set
+11431  EMWS1.Repl_exportset
+11432  ;
+11433  where ROLE in('RAW', 'TRAIN', 'VALIDATE', 'TEST', 'SCORE', 'TRANSACTION') and export='Y';
+11434  if ROLE in('RAW','TRAIN') then ROLE='TRAIN';
+11435  drop export needupdate importport applydelta applyscore deltacode;
+11436  run;
+
+NOTE: There were 1 observations read from the data set EMWS1.REPL_EXPORTSET.
+      WHERE ROLE in ('RAW', 'SCORE', 'TEST', 'TRAIN', 'TRANSACTION', 'VALIDATE') and (export='Y');
+NOTE: The data set EMWS1.META_CHOICE has 1 observations and 13 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+11437  %let hiddenNum=0;
+11438  data _null_;
+11439  length string $200;
+11440  set EMWS1.Meta_VariableSet end = eof;
+11441  file #LN00139;
+11442  where HIDDEN = 'Y' and HIDE = 'N';
+11443  if _N_=1 then do;
+11444  put "*------------------------------------------------------------*;";
+11445  put '* Unhide Variables;';
+11446  put "*------------------------------------------------------------*;";
+11447  put 'length NAME $32 ROLE $32 LEVEL $10 ORDER $8 CREATOR $32 REPORT $1 FORMATTYPE $10';
+11448  put '       LABEL $200 FORMAT INFORMAT $36 INDEX $1 INDEXTYPE $9;';
+11449  end;
+11450  string = 'NAME="'!!strip(NAME)!!'";';
+11451  put string;
+11452  if NEWROLE ne 'DEFAULT' then ROLE = NEWROLE;
+11453  string = 'ROLE="'!!strip(ROLE)!!'";';
+11454  put string;
+11455  if NEWLEVEL ne 'DEFAULT' then LEVEL = NEWLEVEL;
+11456  string = 'LEVEL="'!!strip(LEVEL)!!'";';
+11457  put string;
+11458  if NEWREPORT ne 'D' then REPORT = NEWREPORT;
+11459  string = 'REPORT="'!!strip(REPORT)!!'";';
+11460  put string;
+11461  if NEWORDER ne 'DEFAULT' then ORDER = NEWORDER;
+11462  string = 'ORDER="'!!strip(ORDER)!!'";';
+11463  put string;
+11464  string = 'CREATOR="'!!strip(CREATOR)!!'";';
+11465  put string;
+11466  string = 'FORMATTYPE="'!!strip(FORMATTYPE)!!'";';
+11467  put string;
+11468  string = 'TYPE="'!!strip(TYPE)!!'";';
+11469  put string;
+11470  string = 'LABEL="'!!strip(LABEL)!!'";';
+11471  put string;
+11472  string = 'FORMAT="'!!strip(FORMAT)!!'";';
+11473  put string;
+11474  string = 'INFORMAT="'!!strip(INFORMAT)!!'";';
+11475  put string;
+11476  string = 'INDEX="'!!strip(INDEX)!!'";';
+11477  put string;
+11478  string = 'INDEXTYPE="'!!strip(INDEXTYPE)!!'";';
+11479  put string;
+11480  string = 'LENGTH='!!strip(put(length, best.))!!';';
+11481  put string;
+11482  put 'output;';
+11483  if eof then call symput('hiddenNum', '1');
+11484  run;
+
+NOTE: The file #LN00139 is:
+      Filename=D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Meta\UNHIDECODE_DATA.sas,
+      RECFM=V,LRECL=32767,File Size (bytes)=0,
+      Last Modified=01May2018:17:31:18,
+      Create Time=01May2018:17:31:18
+
+NOTE: 0 records were written to the file #LN00139.
+NOTE: There were 0 observations read from the data set EMWS1.META_VARIABLESET.
+      WHERE (HIDDEN='Y') and (HIDE='N');
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.

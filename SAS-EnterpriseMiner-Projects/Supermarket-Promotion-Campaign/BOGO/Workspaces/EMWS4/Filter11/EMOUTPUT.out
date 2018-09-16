@@ -1,0 +1,205 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                16:16:01
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          4
+REJECTED     NOMINAL           5
+SEGMENT      NOMINAL           1
+TARGET       BINARY            1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+Filter Limits for Interval Variables
+(maximum 500 observations printed)
+ 
+                                                                      Keep
+                                                           Filter    Missing
+Variable                 Role       Minimum     Maximum    Method    Values     Label
+ 
+AffluenceGrade           INPUT        -1.51       18.91    STDDEV       Y
+CleanserProducts         INPUT        -2.06        6.01    STDDEV       Y
+DayCareProducts          INPUT        -1.85        4.83    STDDEV       Y
+LotionProducts           INPUT        -2.48        6.91    STDDEV       Y
+NightRepairProducts      INPUT        -1.47        3.44    STDDEV       Y
+REP_Age                  INPUT        14.27       93.39    STDDEV       Y       Replacement: Age
+REP_LoyaltyTime          INPUT        -7.31       20.40    STDDEV       Y       Replacement: LoyaltyTime
+TimeSinceLastPurchase    INPUT        -7.43       14.58    STDDEV       Y
+TotalSpend               INPUT    -13845.29    22593.83    STDDEV       Y
+ 
+ 
+ 
+Excluded Class Values
+(maximum 500 observations printed)
+ 
+                                                      Train     Train                                       Filter
+      Variable           Role         Level           Count    Percent    Label                             Method
+ 
+REP_AdvertisementZone    INPUT       BORDER             177     0.8835    Replacement: AdvertisementZone    MINPCT
+_SEGMENT_LABEL_          REJECTED    Cluster1           965     4.8166    Segment Description               MANUAL
+_SEGMENT_LABEL_          REJECTED    Cluster3          7048    35.1784    Segment Description               MANUAL
+_SEGMENT_LABEL_          REJECTED    Cluster4          4202    20.9733    Segment Description               MANUAL
+ 
+ 
+ 
+ 
+Number Of Observations
+ 
+Data
+Role     Filtered    Excluded     DATA
+ 
+TRAIN      7584        12451     20035
+ 
+ 
+ 
+Statistics for Original and FILTERED Data
+(maximum 500 observations printed)
+ 
+Data Role=TRAIN Variable=AffluenceGrade
+ 
+Statistics            Original    Filtered
+ 
+Non Missing           20035.00     7584.00
+Missing                   0.00        0.00
+Minimum                   1.00        1.00
+Maximum                  30.00       14.00
+Mean                      8.70        7.55
+Standard Deviation        3.40        2.40
+Skewness                  0.86       -0.00
+Kurtosis                  1.82       -0.40
+ 
+ 
+Data Role=TRAIN Variable=CleanserProducts
+ 
+Statistics             Original    Filtered
+ 
+Non Missing            20035.00     7584.00
+Missing                    0.00        0.00
+Minimum                    0.00        0.00
+Maximum                    4.00        4.00
+Mean                       1.98        1.96
+Standard Deviation         1.35        1.32
+Skewness                   0.06        0.07
+Kurtosis                  -1.19       -1.15
+ 
+ 
+Data Role=TRAIN Variable=DayCareProducts
+ 
+Statistics             Original    Filtered
+ 
+Non Missing            20035.00     7584.00
+Missing                    0.00        0.00
+Minimum                    0.00        0.00
+Maximum                    3.00        3.00
+Mean                       1.49        1.64
+Standard Deviation         1.11        1.13
+Skewness                   0.03       -0.23
+Kurtosis                  -1.35       -1.33
+ 
+ 
+Data Role=TRAIN Variable=LotionProducts
+ 
+Statistics             Original    Filtered
+ 
+Non Missing            20035.00     7584.00
+Missing                    0.00        0.00
+Minimum                    0.00        0.00
+Maximum                    5.00        5.00
+Mean                       2.22        2.23
+Standard Deviation         1.57        1.57
+Skewness                   0.12        0.12
+Kurtosis                  -1.10       -1.10
+ 
+ 
+Data Role=TRAIN Variable=NightRepairProducts
+ 
+Statistics             Original    Filtered
+ 
+Non Missing            20035.00     7584.00
+Missing                    0.00        0.00
+Minimum                    0.00        0.00
+Maximum                    2.00        1.00
+Mean                       0.99        0.25
+Standard Deviation         0.82        0.43
+Skewness                   0.02        1.15
+Kurtosis                  -1.51       -0.68
+ 
+ 
+Data Role=TRAIN Variable=REP_Age
+ 
+Statistics             Original    Filtered
+ 
+Non Missing            20035.00     7584.00
+Missing                    0.00        0.00
+Minimum                   18.00       18.00
+Maximum                   79.00       79.00
+Mean                      53.83       54.23
+Standard Deviation        13.19       12.76
+Skewness                  -0.09       -0.10
+Kurtosis                  -0.83       -0.73
+ 
+ 
+Data Role=TRAIN Variable=REP_LoyaltyTime
+ 
+Statistics            Original    Filtered
+ 
+Non Missing           20035.00     7584.00
+Missing                   0.00        0.00
+Minimum                   0.00        0.00
+Maximum                  39.00       20.00
+Mean                      6.54        5.85
+Standard Deviation        4.62        3.09
+Skewness                  2.26        0.57
+Kurtosis                  8.02        0.60
+ 
+ 
+Data Role=TRAIN Variable=TimeSinceLastPurchase
+ 
+Statistics            Original    Filtered
+ 
+Non Missing           20035.00     7584.00
+Missing                   0.00        0.00
+Minimum                   1.00        1.00
+Maximum                  34.00       10.00
+Mean                      3.57        2.94
+Standard Deviation        3.67        1.90
+Skewness                  3.52        1.59
+Kurtosis                 15.57        1.90
+ 
+ 
+Data Role=TRAIN Variable=TotalSpend
+ 
+Statistics            Original    Filtered
+ 
+Non Missing           20035.00     7584.00
+Missing                   0.00        0.00
+Minimum                  10.00       10.00
+Maximum               50000.00    22500.00
+Mean                   4374.27     3894.17
+Standard Deviation     6073.19     4600.03
+Skewness                  2.79        1.71
+Kurtosis                 10.92        2.86
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

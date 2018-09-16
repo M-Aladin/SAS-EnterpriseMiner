@@ -1,0 +1,120 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 07, 2018
+Time:                13:55:18
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           NOMINAL           1
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          4
+REJECTED     NOMINAL           5
+SEGMENT      NOMINAL           1
+TARGET       BINARY            1
+ 
+ 
+ 
+ 
+Frequencies: _SEGMENT_
+ 
+                                     Percent of
+ Segment     Segment    Frequency       Total
+Variable      Value       Count       Frequency
+ 
+_SEGMENT_       2          17403       86.8630
+_SEGMENT_       1           1398        6.9778
+_SEGMENT_       3           1112        5.5503
+_SEGMENT_       4            122        0.6089
+ 
+ 
+ 
+Variable: _SEGMENT_ Segment: 2 Count: 17403
+Decision Tree Importance Profiles
+ 
+Variable                  Worth     Rank
+ 
+TotalSpend               0.11764      1
+REP_LoyaltyTime          0.08736      2
+TimeSinceLastPurchase    0.08047      3
+LoyaltyClass             0.06753      4
+REP_Age                  0.02431      5
+REP_ClusterGroup         0.00161      6
+LotionProducts           0.00083      7
+REP_AdvertisementZone    0.00069      8
+AffluenceGrade           0.00068      9
+CleanserProducts         0.00067     10
+ 
+ 
+ 
+Variable: _SEGMENT_ Segment: 1 Count: 1398
+Decision Tree Importance Profiles
+ 
+Variable                   Worth     Rank
+ 
+TotalSpend               0.097844      1
+LoyaltyClass             0.046511      2
+REP_LoyaltyTime          0.006176      3
+REP_Age                  0.005433      4
+TimeSinceLastPurchase    0.000582      5
+LotionProducts           0.000498      6
+REP_ClusterGroup         0.000449      7
+CleanserProducts         0.000370      8
+AffluenceGrade           0.000320      9
+REP_AdvertisementZone    0.000222     10
+ 
+ 
+ 
+Variable: _SEGMENT_ Segment: 3 Count: 1112
+Decision Tree Importance Profiles
+ 
+Variable                   Worth     Rank
+ 
+TimeSinceLastPurchase    0.082012      1
+REP_LoyaltyTime          0.081694      2
+REP_Age                  0.005972      3
+TotalSpend               0.002279      4
+LoyaltyClass             0.002151      5
+REP_AdvertisementZone    0.000348      6
+REP_Region               0.000296      7
+REP_ClusterGroup         0.000289      8
+AffluenceGrade           0.000146      9
+MobileApplications       0.000140     10
+ 
+ 
+ 
+Variable: _SEGMENT_ Segment: 4 Count: 122
+Decision Tree Importance Profiles
+ 
+Variable                      Worth    Rank
+ 
+TotalSpend               .003850544      1
+LoyaltyClass             .002022576      2
+REP_LoyaltyTime          .000603045      3
+TimeSinceLastPurchase    .000512311      4
+REP_Age                  .000093221      5
+REP_ClusterGroup         .000018038      6
+LotionProducts           .000011996      7
+REP_AdvertisementZone    .000010231      8
+REP_Region               .000007357      9
+AffluenceGrade           .000006181     10
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

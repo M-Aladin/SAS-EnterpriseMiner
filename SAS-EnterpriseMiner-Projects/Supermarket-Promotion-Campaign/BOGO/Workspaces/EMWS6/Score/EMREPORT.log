@@ -1,0 +1,1331 @@
+*------------------------------------------------------------*
+* Report Log
+Date:                May 13, 2018
+Time:                21:29:36
+*------------------------------------------------------------*
+16933  data WORK.SCOREFREQMETA;
+16934  length NAME $32 ROLE $32 LEVEL $8;
+16935  NAME="D_TargetBuy";
+16936  ROLE="INPUT";
+16937  LEVEL="NOMINAL";
+16938  TYPE="C";
+16939  output;
+16940  NAME="I_TargetBuy";
+16941  ROLE="INPUT";
+16942  LEVEL="NOMINAL";
+16943  TYPE="C";
+16944  output;
+16945  NAME="b_TargetBuy";
+16946  ROLE="INPUT";
+16947  LEVEL="NOMINAL";
+16948  TYPE="N";
+16949  output;
+16950  run;
+
+NOTE: The data set WORK.SCOREFREQMETA has 3 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+16951  data WORK.SCOREHISTMETA;
+16952  length NAME $32 ROLE $32 LEVEL $8;
+16953  NAME="P_TargetBuy1";
+16954  ROLE="INPUT";
+16955  LEVEL="INTERVAL";
+16956  TYPE="N";
+16957  output;
+16958  NAME="P_TargetBuy0";
+16959  ROLE="INPUT";
+16960  LEVEL="INTERVAL";
+16961  TYPE="N";
+16962  output;
+16963  NAME="EP_TARGETBUY";
+16964  ROLE="INPUT";
+16965  LEVEL="INTERVAL";
+16966  TYPE="N";
+16967  output;
+16968  run;
+
+NOTE: The data set WORK.SCOREHISTMETA has 3 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: View EMWS6.MDLCOMP_TRAIN.VIEW used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.18 seconds
+      
+16969  ods listing close;
+16970  ods output onewayfreqs=WORK.TEMPFREQ;
+16971  proc freq data = EMWS6.MdlComp_TRAIN order=formatted addnames;
+16972  table D_TargetBuy / missing;
+16973  table I_TargetBuy / missing;
+16974  table b_TargetBuy / missing;
+16975  run;
+
+NOTE: There were 11112 observations read from the data set EMWS6.PART_TRAIN.
+NOTE: There were 11112 observations read from the data set EMWS6.IMPT_TRAIN.
+NOTE: View EMWS6.MDLCOMP_TRAIN.VIEW used (Total process time):
+      real time           0.31 seconds
+      cpu time            0.31 seconds
+      
+NOTE: There were 11112 observations read from the data set EMWS6.NEURAL_TRAIN.
+NOTE: The data set WORK.TEMPFREQ has 24 observations and 12 variables.
+NOTE: There were 11112 observations read from the data set EMWS6.MDLCOMP_TRAIN.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.35 seconds
+      cpu time            0.34 seconds
+      
+
+16976  quit;
+16977  ods listing;
+16978  data WORK.Score_BAR(keep=_VARIABLE_ TYPE COUNT PERCENT _X_ _XLABEL_);
+16979  label _VARIABLE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" Type = "%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel,         NOQUOTE))" _X_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_numValue_vlabel, NOQUOTE))" _XLABEL_ =
+16980     "%sysfunc(sasmsg(sashelp.dmine, rpt_fmtValue_vlabel ,    NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel,        NOQUOTE))" PERCENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_percent_vlabel,      NOQUOTE))";
+16981  dsid = open("WORK.TEMPFREQ");
+16982  varnum = varnum(dsid, 'VARIABLE');
+16983  freqnum = varnum(dsid, 'FREQUENCY');
+16984  pvarnum = varnum(dsid, 'PERCENT');
+16985  typenum = varnum(dsid, '_TYPE_');
+16986  length _VARIABLE_ $32 TYPE $1 _XLABEL_ $32;
+16987  do while(^fetch(dsid));
+16988  _VARIABLE_ = strip(getvarc(dsid, varnum));
+16989  count = getvarn(dsid, freqnum);
+16990  percent= getvarn(dsid, pvarnum);
+16991  vvarnum = varnum(dsid, _VARIABLE_);
+16992  type = vartype(dsid, vvarnum);
+16993  fvarnum = varnum(dsid, 'F_'!!substr(_VARIABLE_, 1, 30));
+16994  _XLABEL_ = left(getvarc(dsid, fvarnum));
+16995  _X_ = .;
+16996  if TYPE eq 'N' then _X_ = getvarn(dsid, vvarnum);
+16997  output;
+16998  end;
+16999  dsid = close(dsid);
+17000  run;
+
+NOTE: The data set WORK.SCORE_BAR has 24 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+17001  proc sort data=WORK.Score_BAR NOTHREADS;
+17002  by _VARIABLE_;
+17003  run;
+
+NOTE: There were 24 observations read from the data set WORK.SCORE_BAR.
+NOTE: The data set WORK.SCORE_BAR has 24 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17004  proc sort data=WORK.M2IYR__C;
+17005  by Name;
+17006  run;
+
+NOTE: There were 3 observations read from the data set WORK.M2IYR__C.
+NOTE: The data set WORK.M2IYR__C has 3 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+17007  data WORK.Score_BAR;
+17008  merge WORK.Score_BAR(in=_a) WORK.M2IYR__C(keep=Name Role rename=(Name=_Variable_));
+17009  by _Variable_;
+17010  label Role = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel ,  NOQUOTE))";
+17011  if _a then output;
+17012  run;
+
+NOTE: There were 24 observations read from the data set WORK.SCORE_BAR.
+NOTE: There were 3 observations read from the data set WORK.M2IYR__C.
+NOTE: The data set WORK.SCORE_BAR has 24 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17013  data WORK.Score_BAR;
+17014  length DATAROLE $8 TYPE $14;
+17015  retain DATAROLE "TRAIN";
+17016  set WORK.Score_BAR;
+17017  run;
+
+NOTE: There were 24 observations read from the data set WORK.SCORE_BAR.
+NOTE: The data set WORK.SCORE_BAR has 24 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17018  proc append base=EMWS6.Score_BAR data=WORK.Score_BAR;
+17019  run;
+
+NOTE: Appending WORK.SCORE_BAR to EMWS6.SCORE_BAR.
+NOTE: BASE data set does not exist. DATA file is being copied to BASE file.
+NOTE: There were 24 observations read from the data set WORK.SCORE_BAR.
+NOTE: The data set EMWS6.SCORE_BAR has 24 observations and 8 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+17020  %var_profile(DATA=EMWS6.MdlComp_TRAIN, OUTPUT=work.Score_VARHIST, METADATA=WORK.SCOREHISTMETA, COMPUTESTAT=N, BINDATA=_bindata, STAT=_STAT, PCTLSTAT=work.Score_SUMDATA, FREQ=, BIN=Y, NUMBARS= 16);
+*------------------------------------------------------------*
+* EM: Computing Summary Statistics
+*------------------------------------------------------------*
+
+NOTE: There were 3 observations read from the data set WORK.SCOREHISTMETA.
+      WHERE (LEVEL='INTERVAL') and (ROLE not = 'FREQ');
+NOTE: The data set WORK._NULL has 3 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: The file _MAC is:
+      Catalog Name=WORK.MACROS.VARIABLES.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=4,
+      Created=Sun, May 13, 2018 09:29:36 PM,
+      Last Modified=Sun, May 13, 2018 09:29:36 PM,
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD7040_DESKTOP-MVTLU7L_\macros.sas7bcat,
+      Release Created=9.0401M4,
+      Host Created=X64_10HOME,
+      Owner Name=DESKTOP-MVTLU7L\Mohamed,
+      File Size=             5KB,
+      File Size (bytes)=5120
+
+NOTE: 3 records were written to the file _MAC.
+      The minimum record length was 12.
+      The maximum record length was 38.
+NOTE: There were 3 observations read from the data set WORK.SCOREHISTMETA.
+      WHERE (LEVEL='INTERVAL') or (ROLE='FREQ');
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Fileref _MAC has been deassigned.
+*------------------------------------------------------------*
+* computingmidpoints_note
+*------------------------------------------------------------*
+
+NOTE: Records processed = 11112   Memory used = 511K.
+NOTE: There were 11112 observations read from the data set EMWS6.PART_TRAIN.
+NOTE: There were 11112 observations read from the data set EMWS6.IMPT_TRAIN.
+NOTE: View EMWS6.MDLCOMP_TRAIN.VIEW used (Total process time):
+      real time           0.25 seconds
+      cpu time            0.25 seconds
+      
+NOTE: There were 11112 observations read from the data set EMWS6.NEURAL_TRAIN.
+NOTE: There were 11112 observations read from the data set EMWS6.MDLCOMP_TRAIN.
+NOTE: The data set WORK._CLASSOUT has 51 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.29 seconds
+      cpu time            0.26 seconds
+      
+
+
+NOTE: There were 51 observations read from the data set WORK._CLASSOUT.
+NOTE: The data set WORK._COUNT has 0 observations and 3 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: Input data set is empty.
+NOTE: The data set WORK._COUNT has 0 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 51 observations read from the data set WORK._CLASSOUT.
+NOTE: The data set WORK._CLASSOUT has 51 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 51 observations read from the data set WORK._CLASSOUT.
+NOTE: The data set WORK._DISCRETEMID has 3 observations and 18 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: Deleting WORK._CLASSOUT (memtype=DATA).
+NOTE: PROCEDURE DELETE used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 3 observations read from the data set WORK._DISCRETEMID.
+NOTE: There were 0 observations read from the data set WORK._COUNT.
+NOTE: The data set WORK._DISCRETEMID has 0 observations and 19 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: DATA STEP view saved on file WORK._EMVARDIST.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS6.MDLCOMP_TRAIN.VIEW used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.21 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.23 seconds
+      cpu time            0.25 seconds
+      
+
+
+NOTE: There were 11112 observations read from the data set EMWS6.PART_TRAIN.
+NOTE: There were 11112 observations read from the data set EMWS6.IMPT_TRAIN.
+NOTE: There were 11112 observations read from the data set EMWS6.NEURAL_TRAIN.
+NOTE: View WORK._EMVARDIST.VIEW used (Total process time):
+      real time           0.41 seconds
+      cpu time            0.37 seconds
+      
+NOTE: There were 11112 observations read from the data set EMWS6.MDLCOMP_TRAIN.
+NOTE: There were 11112 observations read from the data set WORK._EMVARDIST.
+NOTE: The data set WORK.SCORE_SUMDATA has 15 observations and 4 variables.
+NOTE: PROCEDURE STDIZE used (Total process time):
+      real time           0.44 seconds
+      cpu time            0.40 seconds
+      
+
+
+NOTE: Deleting WORK._EMVARDIST (memtype=VIEW).
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 4 observations read from the data set WORK.SCORE_SUMDATA.
+      WHERE _type_ in ('P0', 'P100', 'P5', 'P95');
+NOTE: The data set WORK._BINDATA has 3 observations and 6 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: There were 3 observations read from the data set WORK._BINDATA.
+NOTE: The data set WORK._BINDATA has 3 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 3 observations read from the data set WORK._BINDATA.
+NOTE: The data set WORK._BINDATA has 3 observations and 69 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+
+WARNING: Multiple lengths were specified for the BY variable VARIABLE by input data sets. This might cause unexpected results.
+NOTE: There were 3 observations read from the data set WORK._BINDATA.
+NOTE: There were 0 observations read from the data set WORK._DISCRETEMID.
+NOTE: The data set WORK._BINDATA has 3 observations and 71 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: The file FREF is:
+      Catalog Name=WORK.EM.PROFILEFORMAT.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=4,
+      Created=Sun, May 13, 2018 09:29:38 PM,
+      Last Modified=Sun, May 13, 2018 09:29:38 PM,
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD7040_DESKTOP-MVTLU7L_\em.sas7bcat,
+      Release Created=9.0401M4,
+      Host Created=X64_10HOME,
+      Owner Name=DESKTOP-MVTLU7L\Mohamed,
+      File Size=             5KB,
+      File Size (bytes)=5120
+
+NOTE: 56 records were written to the file FREF.
+      The minimum record length was 1.
+      The maximum record length was 43.
+NOTE: There were 3 observations read from the data set WORK._BINDATA.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Format F1_ has been output.
+NOTE: Format F2_ has been output.
+NOTE: Format F3_ has been output.
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Fileref FREF has been deassigned.
+
+NOTE: DATA STEP view saved on file WORK._BINNEDDATA.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS6.MDLCOMP_TRAIN.VIEW used (Total process time):
+      real time           0.16 seconds
+      cpu time            0.15 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.17 seconds
+      
+
+
+NOTE: Records processed = 11112   Memory used = 511K.
+NOTE: There were 11112 observations read from the data set EMWS6.PART_TRAIN.
+NOTE: There were 11112 observations read from the data set EMWS6.IMPT_TRAIN.
+NOTE: There were 11112 observations read from the data set EMWS6.NEURAL_TRAIN.
+NOTE: View WORK._BINNEDDATA.VIEW used (Total process time):
+      real time           0.35 seconds
+      cpu time            0.37 seconds
+      
+NOTE: There were 11112 observations read from the data set EMWS6.MDLCOMP_TRAIN.
+NOTE: There were 11112 observations read from the data set WORK._BINNEDDATA.
+NOTE: The data set WORK._TEMPTAB has 48 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.37 seconds
+      cpu time            0.39 seconds
+      
+
+
+NOTE: There were 48 observations read from the data set WORK._TEMPTAB.
+NOTE: The data set WORK.SCORE_VARHIST has 48 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: The file WORK._MINMAXDATA (memtype=(DATA VIEW)) was not found, but appears on a DELETE statement.
+NOTE: Deleting WORK._TEMPTAB (memtype=DATA).
+NOTE: Deleting WORK._BINNEDDATA (memtype=VIEW).
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+17080  data work.Score_VARHIST;
+17081  length DATAROLE $8 TYPE $14;
+17082  retain DATAROLE "TRAIN" TYPE "";
+17083  set work.Score_VARHIST(rename=(VALUE=X));
+17084  run;
+
+NOTE: There were 48 observations read from the data set WORK.SCORE_VARHIST.
+NOTE: The data set WORK.SCORE_VARHIST has 48 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17085  proc append base=work.Score_HIST data=work.Score_VARHIST;
+17086  run;
+
+NOTE: Appending WORK.SCORE_VARHIST to WORK.SCORE_HIST.
+NOTE: BASE data set does not exist. DATA file is being copied to BASE file.
+NOTE: There were 48 observations read from the data set WORK.SCORE_VARHIST.
+NOTE: The data set WORK.SCORE_HIST has 48 observations and 6 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17087  proc transpose data=work.Score_SUMDATA out=work.Score_SUMDATA( rename=(_NAME_=VARIABLE _LABEL_=LABEL LOCATION=MEAN SCALE=STD P0=MIN P50=MEDIAN P100=MAX));
+17088  where _TYPE_ in('LOCATION' 'SCALE' 'N' 'P0' 'P25' 'P50' 'P75' 'P100');
+17089  id _type_;
+17090  run;
+
+NOTE: There were 8 observations read from the data set WORK.SCORE_SUMDATA.
+      WHERE _TYPE_ in ('LOCATION', 'N', 'P0', 'P100', 'P25', 'P50', 'P75', 'SCALE');
+NOTE: The data set WORK.SCORE_SUMDATA has 3 observations and 10 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+17091  data work.Score_SUMDATA;
+17092  length DATAROLE $8 TYPE $14;
+17093  retain DATAROLE "TRAIN" Type "";
+17094  set work.Score_SUMDATA;
+17095  run;
+
+NOTE: There were 3 observations read from the data set WORK.SCORE_SUMDATA.
+NOTE: The data set WORK.SCORE_SUMDATA has 3 observations and 12 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+17096  proc append base=WORK.ScoreSTAT data=work.Score_SUMDATA;
+17097  run;
+
+NOTE: Appending WORK.SCORE_SUMDATA to WORK.SCORESTAT.
+NOTE: BASE data set does not exist. DATA file is being copied to BASE file.
+NOTE: There were 3 observations read from the data set WORK.SCORE_SUMDATA.
+NOTE: The data set WORK.SCORESTAT has 3 observations and 12 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17098  data WORK.SCOREFREQMETA;
+17099  length NAME $32 ROLE $32 LEVEL $8;
+17100  NAME="D_TargetBuy";
+17101  ROLE="INPUT";
+17102  LEVEL="NOMINAL";
+17103  TYPE="C";
+17104  output;
+17105  NAME="I_TargetBuy";
+17106  ROLE="INPUT";
+17107  LEVEL="NOMINAL";
+17108  TYPE="C";
+17109  output;
+17110  NAME="b_TargetBuy";
+17111  ROLE="INPUT";
+17112  LEVEL="NOMINAL";
+17113  TYPE="N";
+17114  output;
+17115  run;
+
+NOTE: The data set WORK.SCOREFREQMETA has 3 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17116  data WORK.SCOREHISTMETA;
+17117  length NAME $32 ROLE $32 LEVEL $8;
+17118  NAME="P_TargetBuy1";
+17119  ROLE="INPUT";
+17120  LEVEL="INTERVAL";
+17121  TYPE="N";
+17122  output;
+17123  NAME="P_TargetBuy0";
+17124  ROLE="INPUT";
+17125  LEVEL="INTERVAL";
+17126  TYPE="N";
+17127  output;
+17128  NAME="EP_TARGETBUY";
+17129  ROLE="INPUT";
+17130  LEVEL="INTERVAL";
+17131  TYPE="N";
+17132  output;
+17133  run;
+
+NOTE: The data set WORK.SCOREHISTMETA has 3 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: View EMWS6.MDLCOMP_VALIDATE.VIEW used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.17 seconds
+      
+17134  ods listing close;
+17135  ods output onewayfreqs=WORK.TEMPFREQ;
+17136  proc freq data = EMWS6.MdlComp_VALIDATE order=formatted addnames;
+17137  table D_TargetBuy / missing;
+17138  table I_TargetBuy / missing;
+17139  table b_TargetBuy / missing;
+17140  run;
+
+NOTE: There were 11111 observations read from the data set EMWS6.PART_VALIDATE.
+NOTE: There were 11111 observations read from the data set EMWS6.IMPT_VALIDATE.
+NOTE: View EMWS6.MDLCOMP_VALIDATE.VIEW used (Total process time):
+      real time           0.30 seconds
+      cpu time            0.29 seconds
+      
+NOTE: There were 11111 observations read from the data set EMWS6.NEURAL_VALIDATE.
+NOTE: The data set WORK.TEMPFREQ has 24 observations and 12 variables.
+NOTE: There were 11111 observations read from the data set EMWS6.MDLCOMP_VALIDATE.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.35 seconds
+      cpu time            0.34 seconds
+      
+
+17141  quit;
+17142  ods listing;
+17143  data WORK.Score_BAR(keep=_VARIABLE_ TYPE COUNT PERCENT _X_ _XLABEL_);
+17144  label _VARIABLE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" Type = "%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel,         NOQUOTE))" _X_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_numValue_vlabel, NOQUOTE))" _XLABEL_ =
+17145     "%sysfunc(sasmsg(sashelp.dmine, rpt_fmtValue_vlabel ,    NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel,        NOQUOTE))" PERCENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_percent_vlabel,      NOQUOTE))";
+17146  dsid = open("WORK.TEMPFREQ");
+17147  varnum = varnum(dsid, 'VARIABLE');
+17148  freqnum = varnum(dsid, 'FREQUENCY');
+17149  pvarnum = varnum(dsid, 'PERCENT');
+17150  typenum = varnum(dsid, '_TYPE_');
+17151  length _VARIABLE_ $32 TYPE $1 _XLABEL_ $32;
+17152  do while(^fetch(dsid));
+17153  _VARIABLE_ = strip(getvarc(dsid, varnum));
+17154  count = getvarn(dsid, freqnum);
+17155  percent= getvarn(dsid, pvarnum);
+17156  vvarnum = varnum(dsid, _VARIABLE_);
+17157  type = vartype(dsid, vvarnum);
+17158  fvarnum = varnum(dsid, 'F_'!!substr(_VARIABLE_, 1, 30));
+17159  _XLABEL_ = left(getvarc(dsid, fvarnum));
+17160  _X_ = .;
+17161  if TYPE eq 'N' then _X_ = getvarn(dsid, vvarnum);
+17162  output;
+17163  end;
+17164  dsid = close(dsid);
+17165  run;
+
+NOTE: The data set WORK.SCORE_BAR has 24 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+
+17166  proc sort data=WORK.Score_BAR NOTHREADS;
+17167  by _VARIABLE_;
+17168  run;
+
+NOTE: There were 24 observations read from the data set WORK.SCORE_BAR.
+NOTE: The data set WORK.SCORE_BAR has 24 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17169  proc sort data=WORK.M1UCZPJ_;
+17170  by Name;
+17171  run;
+
+NOTE: There were 3 observations read from the data set WORK.M1UCZPJ_.
+NOTE: The data set WORK.M1UCZPJ_ has 3 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+17172  data WORK.Score_BAR;
+17173  merge WORK.Score_BAR(in=_a) WORK.M1UCZPJ_(keep=Name Role rename=(Name=_Variable_));
+17174  by _Variable_;
+17175  label Role = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel ,  NOQUOTE))";
+17176  if _a then output;
+17177  run;
+
+NOTE: There were 24 observations read from the data set WORK.SCORE_BAR.
+NOTE: There were 3 observations read from the data set WORK.M1UCZPJ_.
+NOTE: The data set WORK.SCORE_BAR has 24 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+17178  data WORK.Score_BAR;
+17179  length DATAROLE $8 TYPE $14;
+17180  retain DATAROLE "VALIDATE";
+17181  set WORK.Score_BAR;
+17182  run;
+
+NOTE: There were 24 observations read from the data set WORK.SCORE_BAR.
+NOTE: The data set WORK.SCORE_BAR has 24 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17183  proc append base=EMWS6.Score_BAR data=WORK.Score_BAR;
+17184  run;
+
+NOTE: Appending WORK.SCORE_BAR to EMWS6.SCORE_BAR.
+NOTE: There were 24 observations read from the data set WORK.SCORE_BAR.
+NOTE: 24 observations added.
+NOTE: The data set EMWS6.SCORE_BAR has 48 observations and 8 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+17185  %var_profile(DATA=EMWS6.MdlComp_VALIDATE, OUTPUT=work.Score_VARHIST, METADATA=WORK.SCOREHISTMETA, COMPUTESTAT=N, BINDATA=_bindata, STAT=_STAT, PCTLSTAT=work.Score_SUMDATA, FREQ=, BIN=Y, NUMBARS= 16);
+*------------------------------------------------------------*
+* EM: Computing Summary Statistics
+*------------------------------------------------------------*
+
+NOTE: There were 3 observations read from the data set WORK.SCOREHISTMETA.
+      WHERE (LEVEL='INTERVAL') and (ROLE not = 'FREQ');
+NOTE: The data set WORK._NULL has 3 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: The file _MAC is:
+      Catalog Name=WORK.MACROS.VARIABLES.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=5,
+      Created=Sun, May 13, 2018 09:29:36 PM,
+      Last Modified=Sun, May 13, 2018 09:29:36 PM,
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD7040_DESKTOP-MVTLU7L_\macros.sas7bcat,
+      Release Created=9.0401M4,
+      Host Created=X64_10HOME,
+      Owner Name=DESKTOP-MVTLU7L\Mohamed,
+      File Size=            17KB,
+      File Size (bytes)=17408
+
+NOTE: 3 records were written to the file _MAC.
+      The minimum record length was 12.
+      The maximum record length was 38.
+NOTE: There were 3 observations read from the data set WORK.SCOREHISTMETA.
+      WHERE (LEVEL='INTERVAL') or (ROLE='FREQ');
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Fileref _MAC has been deassigned.
+
+NOTE: DATA STEP view saved on file WORK._BINNEDDATA.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS6.MDLCOMP_VALIDATE.VIEW used (Total process time):
+      real time           0.16 seconds
+      cpu time            0.17 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.16 seconds
+      cpu time            0.17 seconds
+      
+
+
+NOTE: Records processed = 11111   Memory used = 511K.
+NOTE: There were 11111 observations read from the data set EMWS6.PART_VALIDATE.
+NOTE: There were 11111 observations read from the data set EMWS6.IMPT_VALIDATE.
+NOTE: There were 11111 observations read from the data set EMWS6.NEURAL_VALIDATE.
+NOTE: View WORK._BINNEDDATA.VIEW used (Total process time):
+      real time           0.36 seconds
+      cpu time            0.36 seconds
+      
+NOTE: There were 11111 observations read from the data set EMWS6.MDLCOMP_VALIDATE.
+NOTE: There were 11111 observations read from the data set WORK._BINNEDDATA.
+NOTE: The data set WORK._TEMPTAB has 48 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.39 seconds
+      cpu time            0.39 seconds
+      
+
+
+NOTE: There were 48 observations read from the data set WORK._TEMPTAB.
+NOTE: The data set WORK.SCORE_VARHIST has 48 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: The file WORK._MINMAXDATA (memtype=(DATA VIEW)) was not found, but appears on a DELETE statement.
+NOTE: Deleting WORK._TEMPTAB (memtype=DATA).
+NOTE: Deleting WORK._BINNEDDATA (memtype=VIEW).
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+17189  data work.Score_VARHIST;
+17190  length DATAROLE $8 TYPE $14;
+17191  retain DATAROLE "VALIDATE" TYPE "";
+17192  set work.Score_VARHIST(rename=(VALUE=X));
+17193  run;
+
+NOTE: There were 48 observations read from the data set WORK.SCORE_VARHIST.
+NOTE: The data set WORK.SCORE_VARHIST has 48 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17194  proc append base=work.Score_HIST data=work.Score_VARHIST;
+17195  run;
+
+NOTE: Appending WORK.SCORE_VARHIST to WORK.SCORE_HIST.
+NOTE: There were 48 observations read from the data set WORK.SCORE_VARHIST.
+NOTE: 48 observations added.
+NOTE: The data set WORK.SCORE_HIST has 96 observations and 6 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+17196  proc stdize data=EMWS6.MdlComp_VALIDATE(obs=1000000) outstat=work.Score_SUMDATA out=_null_ pctlpts=(0 5 25 50 75 95 100);
+17197  var
+17198  P_TargetBuy1
+17199  P_TargetBuy0
+17200  ;
+17201  run;
+
+NOTE: There were 11111 observations read from the data set EMWS6.PART_VALIDATE.
+NOTE: There were 11111 observations read from the data set EMWS6.IMPT_VALIDATE.
+NOTE: View EMWS6.MDLCOMP_VALIDATE.VIEW used (Total process time):
+      real time           0.36 seconds
+      cpu time            0.36 seconds
+      
+NOTE: There were 11111 observations read from the data set EMWS6.NEURAL_VALIDATE.
+NOTE: There were 11111 observations read from the data set EMWS6.MDLCOMP_VALIDATE.
+NOTE: The data set WORK.SCORE_SUMDATA has 15 observations and 3 variables.
+NOTE: PROCEDURE STDIZE used (Total process time):
+      real time           0.37 seconds
+      cpu time            0.37 seconds
+      
+
+17202  quit;
+
+17203  proc transpose data=work.Score_SUMDATA out=work.Score_SUMDATA( rename=(_NAME_=VARIABLE _LABEL_=LABEL LOCATION=MEAN SCALE=STD P0=MIN P50=MEDIAN P100=MAX));
+17204  where _TYPE_ in('LOCATION' 'SCALE' 'N' 'P0' 'P25' 'P50' 'P75' 'P100');
+17205  id _type_;
+17206  run;
+
+NOTE: There were 8 observations read from the data set WORK.SCORE_SUMDATA.
+      WHERE _TYPE_ in ('LOCATION', 'N', 'P0', 'P100', 'P25', 'P50', 'P75', 'SCALE');
+NOTE: The data set WORK.SCORE_SUMDATA has 2 observations and 10 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+17207  data work.Score_SUMDATA;
+17208  length DATAROLE $8 TYPE $14;
+17209  retain DATAROLE "VALIDATE" Type "";
+17210  set work.Score_SUMDATA;
+17211  run;
+
+NOTE: There were 2 observations read from the data set WORK.SCORE_SUMDATA.
+NOTE: The data set WORK.SCORE_SUMDATA has 2 observations and 12 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17212  proc append base=WORK.ScoreSTAT data=work.Score_SUMDATA;
+17213  run;
+
+NOTE: Appending WORK.SCORE_SUMDATA to WORK.SCORESTAT.
+NOTE: There were 2 observations read from the data set WORK.SCORE_SUMDATA.
+NOTE: 2 observations added.
+NOTE: The data set WORK.SCORESTAT has 5 observations and 12 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+17214  data WORK.SCOREFREQMETA;
+17215  length NAME $32 ROLE $32 LEVEL $8;
+17216  NAME="D_TargetBuy";
+17217  ROLE="INPUT";
+17218  LEVEL="NOMINAL";
+17219  TYPE="C";
+17220  output;
+17221  NAME="I_TargetBuy";
+17222  ROLE="INPUT";
+17223  LEVEL="NOMINAL";
+17224  TYPE="C";
+17225  output;
+17226  NAME="b_TargetBuy";
+17227  ROLE="INPUT";
+17228  LEVEL="NOMINAL";
+17229  TYPE="N";
+17230  output;
+17231  run;
+
+NOTE: The data set WORK.SCOREFREQMETA has 3 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17232  data WORK.SCOREHISTMETA;
+17233  length NAME $32 ROLE $32 LEVEL $8;
+17234  NAME="P_TargetBuy1";
+17235  ROLE="INPUT";
+17236  LEVEL="INTERVAL";
+17237  TYPE="N";
+17238  output;
+17239  NAME="P_TargetBuy0";
+17240  ROLE="INPUT";
+17241  LEVEL="INTERVAL";
+17242  TYPE="N";
+17243  output;
+17244  NAME="EP_TARGETBUY";
+17245  ROLE="INPUT";
+17246  LEVEL="INTERVAL";
+17247  TYPE="N";
+17248  output;
+17249  run;
+
+NOTE: The data set WORK.SCOREHISTMETA has 3 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: View EMWS6.SCORE_SCORE.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.09 seconds
+      
+17250  ods listing close;
+17251  ods output onewayfreqs=WORK.TEMPFREQ;
+17252  proc freq data = EMWS6.Score_SCORE order=formatted addnames;
+17253  table D_TargetBuy / missing;
+17254  table I_TargetBuy / missing;
+17255  table b_TargetBuy / missing;
+17256  run;
+
+NOTE: There were 22223 observations read from the data set HW2.HW2_BA8880_SUPERMARKETDATASET.
+NOTE: View EMWS6.SCORE_SCORE.VIEW used (Total process time):
+      real time           0.31 seconds
+      cpu time            0.31 seconds
+      
+NOTE: There were 22223 observations read from the data set EMWS6.IDS2_DATA.
+NOTE: The data set WORK.TEMPFREQ has 24 observations and 12 variables.
+NOTE: There were 22223 observations read from the data set EMWS6.SCORE_SCORE.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.34 seconds
+      cpu time            0.34 seconds
+      
+
+17257  quit;
+17258  ods listing;
+17259  data WORK.Score_BAR(keep=_VARIABLE_ TYPE COUNT PERCENT _X_ _XLABEL_);
+17260  label _VARIABLE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" Type = "%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel,         NOQUOTE))" _X_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_numValue_vlabel, NOQUOTE))" _XLABEL_ =
+17261     "%sysfunc(sasmsg(sashelp.dmine, rpt_fmtValue_vlabel ,    NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel,        NOQUOTE))" PERCENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_percent_vlabel,      NOQUOTE))";
+17262  dsid = open("WORK.TEMPFREQ");
+17263  varnum = varnum(dsid, 'VARIABLE');
+17264  freqnum = varnum(dsid, 'FREQUENCY');
+17265  pvarnum = varnum(dsid, 'PERCENT');
+17266  typenum = varnum(dsid, '_TYPE_');
+17267  length _VARIABLE_ $32 TYPE $1 _XLABEL_ $32;
+17268  do while(^fetch(dsid));
+17269  _VARIABLE_ = strip(getvarc(dsid, varnum));
+17270  count = getvarn(dsid, freqnum);
+17271  percent= getvarn(dsid, pvarnum);
+17272  vvarnum = varnum(dsid, _VARIABLE_);
+17273  type = vartype(dsid, vvarnum);
+17274  fvarnum = varnum(dsid, 'F_'!!substr(_VARIABLE_, 1, 30));
+17275  _XLABEL_ = left(getvarc(dsid, fvarnum));
+17276  _X_ = .;
+17277  if TYPE eq 'N' then _X_ = getvarn(dsid, vvarnum);
+17278  output;
+17279  end;
+17280  dsid = close(dsid);
+17281  run;
+
+NOTE: The data set WORK.SCORE_BAR has 24 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+
+17282  proc sort data=WORK.Score_BAR NOTHREADS;
+17283  by _VARIABLE_;
+17284  run;
+
+NOTE: There were 24 observations read from the data set WORK.SCORE_BAR.
+NOTE: The data set WORK.SCORE_BAR has 24 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17285  proc sort data=WORK.M23GSMOM;
+17286  by Name;
+17287  run;
+
+NOTE: There were 3 observations read from the data set WORK.M23GSMOM.
+NOTE: The data set WORK.M23GSMOM has 3 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+17288  data WORK.Score_BAR;
+17289  merge WORK.Score_BAR(in=_a) WORK.M23GSMOM(keep=Name Role rename=(Name=_Variable_));
+17290  by _Variable_;
+17291  label Role = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel ,  NOQUOTE))";
+17292  if _a then output;
+17293  run;
+
+NOTE: There were 24 observations read from the data set WORK.SCORE_BAR.
+NOTE: There were 3 observations read from the data set WORK.M23GSMOM.
+NOTE: The data set WORK.SCORE_BAR has 24 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+17294  data WORK.Score_BAR;
+17295  length DATAROLE $8 TYPE $14;
+17296  retain DATAROLE "SCORE";
+17297  set WORK.Score_BAR;
+17298  run;
+
+NOTE: There were 24 observations read from the data set WORK.SCORE_BAR.
+NOTE: The data set WORK.SCORE_BAR has 24 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17299  proc append base=EMWS6.Score_BAR data=WORK.Score_BAR;
+17300  run;
+
+NOTE: Appending WORK.SCORE_BAR to EMWS6.SCORE_BAR.
+NOTE: There were 24 observations read from the data set WORK.SCORE_BAR.
+NOTE: 24 observations added.
+NOTE: The data set EMWS6.SCORE_BAR has 72 observations and 8 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+17301  %var_profile(DATA=EMWS6.Score_SCORE, OUTPUT=work.Score_VARHIST, METADATA=WORK.SCOREHISTMETA, COMPUTESTAT=N, BINDATA=_bindata, STAT=_STAT, PCTLSTAT=work.Score_SUMDATA, FREQ=, BIN=Y, NUMBARS= 16);
+*------------------------------------------------------------*
+* EM: Computing Summary Statistics
+*------------------------------------------------------------*
+
+NOTE: There were 3 observations read from the data set WORK.SCOREHISTMETA.
+      WHERE (LEVEL='INTERVAL') and (ROLE not = 'FREQ');
+NOTE: The data set WORK._NULL has 3 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: The file _MAC is:
+      Catalog Name=WORK.MACROS.VARIABLES.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=5,
+      Created=Sun, May 13, 2018 09:29:36 PM,
+      Last Modified=Sun, May 13, 2018 09:29:39 PM,
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD7040_DESKTOP-MVTLU7L_\macros.sas7bcat,
+      Release Created=9.0401M4,
+      Host Created=X64_10HOME,
+      Owner Name=DESKTOP-MVTLU7L\Mohamed,
+      File Size=            21KB,
+      File Size (bytes)=21504
+
+NOTE: 3 records were written to the file _MAC.
+      The minimum record length was 12.
+      The maximum record length was 38.
+NOTE: There were 3 observations read from the data set WORK.SCOREHISTMETA.
+      WHERE (LEVEL='INTERVAL') or (ROLE='FREQ');
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: Fileref _MAC has been deassigned.
+
+NOTE: DATA STEP view saved on file WORK._BINNEDDATA.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS6.SCORE_SCORE.VIEW used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.14 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.17 seconds
+      
+
+
+NOTE: Records processed = 22223   Memory used = 511K.
+NOTE: There were 22223 observations read from the data set HW2.HW2_BA8880_SUPERMARKETDATASET.
+NOTE: There were 22223 observations read from the data set EMWS6.IDS2_DATA.
+NOTE: View WORK._BINNEDDATA.VIEW used (Total process time):
+      real time           0.36 seconds
+      cpu time            0.35 seconds
+      
+NOTE: There were 22223 observations read from the data set EMWS6.SCORE_SCORE.
+NOTE: There were 22223 observations read from the data set WORK._BINNEDDATA.
+NOTE: The data set WORK._TEMPTAB has 48 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.38 seconds
+      cpu time            0.37 seconds
+      
+
+
+NOTE: There were 48 observations read from the data set WORK._TEMPTAB.
+NOTE: The data set WORK.SCORE_VARHIST has 48 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+
+NOTE: The file WORK._MINMAXDATA (memtype=(DATA VIEW)) was not found, but appears on a DELETE statement.
+NOTE: Deleting WORK._TEMPTAB (memtype=DATA).
+NOTE: Deleting WORK._BINNEDDATA (memtype=VIEW).
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+17305  data work.Score_VARHIST;
+17306  length DATAROLE $8 TYPE $14;
+17307  retain DATAROLE "SCORE" TYPE "";
+17308  set work.Score_VARHIST(rename=(VALUE=X));
+17309  run;
+
+NOTE: There were 48 observations read from the data set WORK.SCORE_VARHIST.
+NOTE: The data set WORK.SCORE_VARHIST has 48 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17310  proc append base=work.Score_HIST data=work.Score_VARHIST;
+17311  run;
+
+NOTE: Appending WORK.SCORE_VARHIST to WORK.SCORE_HIST.
+NOTE: There were 48 observations read from the data set WORK.SCORE_VARHIST.
+NOTE: 48 observations added.
+NOTE: The data set WORK.SCORE_HIST has 144 observations and 6 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+17312  proc stdize data=EMWS6.Score_SCORE(obs=1000000) outstat=work.Score_SUMDATA out=_null_ pctlpts=(0 5 25 50 75 95 100);
+17313  var
+17314  P_TargetBuy1
+17315  P_TargetBuy0
+17316  ;
+17317  run;
+
+NOTE: There were 22223 observations read from the data set HW2.HW2_BA8880_SUPERMARKETDATASET.
+NOTE: View EMWS6.SCORE_SCORE.VIEW used (Total process time):
+      real time           0.33 seconds
+      cpu time            0.29 seconds
+      
+NOTE: There were 22223 observations read from the data set EMWS6.IDS2_DATA.
+NOTE: There were 22223 observations read from the data set EMWS6.SCORE_SCORE.
+NOTE: The data set WORK.SCORE_SUMDATA has 15 observations and 3 variables.
+NOTE: PROCEDURE STDIZE used (Total process time):
+      real time           0.35 seconds
+      cpu time            0.31 seconds
+      
+
+17318  quit;
+
+17319  proc transpose data=work.Score_SUMDATA out=work.Score_SUMDATA( rename=(_NAME_=VARIABLE _LABEL_=LABEL LOCATION=MEAN SCALE=STD P0=MIN P50=MEDIAN P100=MAX));
+17320  where _TYPE_ in('LOCATION' 'SCALE' 'N' 'P0' 'P25' 'P50' 'P75' 'P100');
+17321  id _type_;
+17322  run;
+
+NOTE: There were 8 observations read from the data set WORK.SCORE_SUMDATA.
+      WHERE _TYPE_ in ('LOCATION', 'N', 'P0', 'P100', 'P25', 'P50', 'P75', 'SCALE');
+NOTE: The data set WORK.SCORE_SUMDATA has 2 observations and 10 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17323  data work.Score_SUMDATA;
+17324  length DATAROLE $8 TYPE $14;
+17325  retain DATAROLE "SCORE" Type "";
+17326  set work.Score_SUMDATA;
+17327  run;
+
+NOTE: There were 2 observations read from the data set WORK.SCORE_SUMDATA.
+NOTE: The data set WORK.SCORE_SUMDATA has 2 observations and 12 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17328  proc append base=WORK.ScoreSTAT data=work.Score_SUMDATA;
+17329  run;
+
+NOTE: Appending WORK.SCORE_SUMDATA to WORK.SCORESTAT.
+NOTE: There were 2 observations read from the data set WORK.SCORE_SUMDATA.
+NOTE: 2 observations added.
+NOTE: The data set WORK.SCORESTAT has 7 observations and 12 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+17330  data EMWS6.Score_BAR(DROP=ROLE rename = (_VARIABLE_=VARIABLE _XLABEL_=X));
+17331  set EMWS6.Score_BAR;
+17332  label VARIABLE= "%sysfunc(sasmsg(sashelp.dmine, meta_name_vlabel,  NOQUOTE))" DATAROLE= "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel,  NOQUOTE))" TYPE = "%sysfunc(sasmsg(sashelp.dmine, rpt_outputType_vlabel,  NOQUOTE))";
+17333  select(_VARIABLE_);
+17334  when("I_TargetBuy") TYPE = 'CLASSIFICATION';
+17335  when("D_TargetBuy") TYPE = 'MODELDECISION';
+17336  when("b_TargetBuy") TYPE = 'SEGMENT';
+17337  otherwise;
+17338  end;
+17339  run;
+
+NOTE: Variable VARIABLE is uninitialized.
+NOTE: There were 72 observations read from the data set EMWS6.SCORE_BAR.
+NOTE: The data set EMWS6.SCORE_BAR has 72 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17340  proc sort data = EMWS6.Score_BAR NOTHREADS;
+17341  by DATAROLE TYPE;
+17342  run;
+
+NOTE: There were 72 observations read from the data set EMWS6.SCORE_BAR.
+NOTE: The data set EMWS6.SCORE_BAR has 72 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17343  %let _cn = %sysfunc(getoption(CENTER));
+17344  %let _nb = %sysfunc(getoption(NUMBER));
+17345  options nonumber nocenter;
+17346  title;
+17347  proc print data = EMWS6.Score_BAR noobs label;
+17348  by DATAROLE TYPE;
+17349  title9 ' ';
+17350  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_classStats_title, NOQUOTE))";
+17351  run;
+
+NOTE: There were 72 observations read from the data set EMWS6.SCORE_BAR.
+NOTE: The PROCEDURE PRINT printed page 4.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17352  title10;
+17353  options &_cn &_nb;
+
+17354  data EMWS6.Score_HIST;
+17355  set work.Score_HIST(rename=(Percent=Value));
+17356  label VARIABLE= "%sysfunc(sasmsg(sashelp.dmine, meta_name_vlabel,      NOQUOTE))" DATAROLE= "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel,   NOQUOTE))" TYPE = "%sysfunc(sasmsg(sashelp.dmine, rpt_outputType_vlabel, NOQUOTE))" X =
+17357     "%sysfunc(sasmsg(sashelp.dmine, rpt_numValue_vlabel,   NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel,      NOQUOTE))" Value = "%sysfunc(sasmsg(sashelp.dmine, rpt_percent_vlabel,    NOQUOTE))";
+17358  select(VARIABLE);
+17359  when("P_TargetBuy1") TYPE = 'PROBABILITY';
+17360  when("P_TargetBuy0") TYPE = 'PROBABILITY';
+17361  when("EP_TARGETBUY") TYPE = 'PROFIT';
+17362  when("b_TargetBuy") TYPE= 'SEGMENT';
+17363  otherwise;
+17364  end;
+17365  run;
+
+NOTE: There were 144 observations read from the data set WORK.SCORE_HIST.
+NOTE: The data set EMWS6.SCORE_HIST has 144 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+17366  data WORK.ScoreSTAT;
+17367  set WORK.ScoreSTAT;
+17368  label VARIABLE= "%sysfunc(sasmsg(sashelp.dmine, meta_name_vlabel,  NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel,  NOQUOTE))" MEAN = "%sysfunc(sasmsg(sashelp.dmine, rpt_mean_vlabel,  NOQUOTE))" N =
+17369     "%sysfunc(sasmsg(sashelp.dmine, rpt_nonmiss_vlabel,  NOQUOTE))" STD = "%sysfunc(sasmsg(sashelp.dmine, rpt_std_vlabel,  NOQUOTE))" MIN = "%sysfunc(sasmsg(sashelp.dmine, rpt_minimum_vlabel,  NOQUOTE))" MAX =
+17370     "%sysfunc(sasmsg(sashelp.dmine, rpt_maximum_vlabel,  NOQUOTE))" MEDIAN = "%sysfunc(sasmsg(sashelp.dmine, rpt_median_vlabel,  NOQUOTE))" P25 = "%sysfunc(sasmsg(sashelp.dmine, rpt_p25_vlabel,  NOQUOTE))" P75 =
+17371     "%sysfunc(sasmsg(sashelp.dmine, rpt_p75_vlabel,  NOQUOTE))";
+17372  select(VARIABLE);
+17373  when("P_TargetBuy1") TYPE = 'PROBABILITY';
+17374  when("P_TargetBuy0") TYPE = 'PROBABILITY';
+17375  when("EP_TARGETBUY") TYPE = 'PROFIT';
+17376  when("b_TargetBuy") TYPE= 'SEGMENT';
+17377  otherwise;
+17378  end;
+17379  run;
+
+NOTE: There were 7 observations read from the data set WORK.SCORESTAT.
+NOTE: The data set WORK.SCORESTAT has 7 observations and 12 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+
+17380  proc sort data = WORK.ScoreSTAT NOTHREADS;
+17381  by VARIABLE;
+17382  run;
+
+NOTE: There were 7 observations read from the data set WORK.SCORESTAT.
+NOTE: The data set WORK.SCORESTAT has 7 observations and 12 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.04 seconds
+      
+
+17383  proc transpose data = WORK.ScoreSTAT out=WORK.ScoreSTAT(rename=(_NAME_=STATISTICS _LABEL_=LABEL));
+17384  by VARIABLE;
+17385  id DATAROLE;
+17386  run;
+
+NOTE: There were 7 observations read from the data set WORK.SCORESTAT.
+NOTE: The data set WORK.SCORESTAT has 24 observations and 6 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+17387  proc datasets library=WORK nolist;
+17388  modify ScoreSTAT;
+17389  label STATISTICS = "%sysfunc(sasmsg(sashelp.dmine, rpt_statistics_vlabel,  NOQUOTE))" VARIABLE= "%sysfunc(sasmsg(sashelp.dmine, meta_name_vlabel,  NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel,  NOQUOTE))" TYPE =
+WARNING: Variable TYPE not found in data set WORK.SCORESTAT.
+17390     "%sysfunc(sasmsg(sashelp.dmine, rpt_outputType_vlabel,  NOQUOTE))";
+17391  run;
+
+NOTE: MODIFY was successful for WORK.SCORESTAT.DATA.
+17392  %let _cn = %sysfunc(getoption(CENTER));
+17393  %let _nb = %sysfunc(getoption(NUMBER));
+17394  options nonumber nocenter;
+17395  title;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+
+17396  proc print data = WORK.ScoreSTAT label noobs;
+17397  by VARIABLE;
+17398  title9 ' ';
+17399  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_intervalStats_title, NOQUOTE))";
+17400  run;
+
+NOTE: There were 24 observations read from the data set WORK.SCORESTAT.
+NOTE: The PROCEDURE PRINT printed page 5.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+17401  title10;
+17402  options &_cn &_nb;
+

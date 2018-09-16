@@ -1,0 +1,77 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                16:12:18
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           NOMINAL           1
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          4
+REJECTED     NOMINAL           5
+SEGMENT      NOMINAL           1
+TARGET       BINARY            1
+ 
+ 
+ 
+ 
+Partition Summary
+ 
+                                       Number of
+Type              Data Set           Observations
+ 
+DATA        EMWS4.Filter10_TRAIN          377
+TRAIN       EMWS4.Part11_TRAIN            188
+VALIDATE    EMWS4.Part11_VALIDATE         189
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Summary Statistics for Class Targets
+ 
+Data=DATA
+ 
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+ 
+TargetBuy       0           0           318       84.3501
+TargetBuy       1           1            59       15.6499
+ 
+ 
+Data=TRAIN
+ 
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+ 
+TargetBuy       0           0           158       84.0426
+TargetBuy       1           1            30       15.9574
+ 
+ 
+Data=VALIDATE
+ 
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+ 
+TargetBuy       0           0           160       84.6561
+TargetBuy       1           1            29       15.3439

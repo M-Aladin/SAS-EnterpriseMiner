@@ -1,0 +1,1686 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                14:56:14
+Site:                12400032
+Platform:            X64_10HOME
+Maintenance Release: 9.04.01M4P110916
+EM Version:          14.2
+* 
+*------------------------------------------------------------*
+* Training Log
+Date:                May 09, 2018
+Time:                14:56:03
+*------------------------------------------------------------*
+11405  proc freq data=EMWS1.Filter3_VariableSet noprint;
+11406  table ROLE*LEVEL/out=WORK.Filter3META;
+11407  run;
+ 
+NOTE: There were 29 observations read from the data set EMWS1.FILTER3_VARIABLESET.
+NOTE: The data set WORK.FILTER3META has 7 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+ 
+11408  proc print data=WORK.Filter3META label noobs;
+11409  var ROLE LEVEL COUNT;
+11410  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+11411  title9 ' ';
+11412  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+11413  run;
+ 
+NOTE: There were 7 observations read from the data set WORK.FILTER3META.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11414  title10;
+ 
+11437  filename cdist catalog 'SASHELP.EMUTIL.EM_CLASSDIST.SOURCE';
+11438  %inc cdist;
+11552  filename cdist;
+NOTE: Fileref CDIST has been deassigned.
+11553  data work.tempSummaryClass;
+11554  set EMWS1.Filter3_CLASSDIST(drop=Count Percent);
+11555  where Filter='Y';
+11556  run;
+ 
+NOTE: There were 0 observations read from the data set EMWS1.FILTER3_CLASSDIST.
+      WHERE Filter='Y';
+NOTE: The data set WORK.TEMPSUMMARYCLASS has 0 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11557  proc sort data=work.tempSummaryClass;
+11558  by variable value;
+11559  run;
+ 
+NOTE: Input data set is empty.
+NOTE: The data set WORK.TEMPSUMMARYCLASS has 0 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11560  %class_profile(DATA=EMWS1.Clus2_TRAIN, OUTPUT=EMWS1.Filter3_CLASSDIST, METADATA=EMWS1.Filter3_VariableSet, STAT=_STAT);
+ 
+NOTE: There were 16 observations read from the data set EMWS1.FILTER3_VARIABLESET.
+      WHERE (LEVEL not = 'INTERVAL') and (ROLE not = 'FREQ');
+NOTE: The data set WORK._NULL has 16 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: The file _MAC is:
+      Catalog Name=WORK.MACROS.VARIABLES.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=4,
+      Created=Wed, May  9, 2018 02:56:04 PM,
+      Last Modified=Wed, May  9, 2018 02:56:04 PM,
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD4324_DESKTOP-MVTLU7L_\macros.sas7bcat,
+      Release Created=9.0401M4,
+      Host Created=X64_10HOME,
+      Owner Name=DESKTOP-MVTLU7L\Mohamed,
+      File Size=             5KB,
+      File Size (bytes)=5120
+ 
+NOTE: 6 records were written to the file _MAC.
+      The minimum record length was 12.
+      The maximum record length was 70.
+NOTE: There were 16 observations read from the data set EMWS1.FILTER3_VARIABLESET.
+      WHERE (LEVEL not = 'INTERVAL') or (ROLE='FREQ');
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+NOTE: Fileref _MAC has been deassigned.
+ 
+NOTE: Records processed = 4224   Memory used = 511K.
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: View EMWS1.CLUS2_TRAIN.VIEW used (Total process time):
+      real time           0.34 seconds
+      cpu time            0.34 seconds
+ 
+NOTE: There were 4224 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: There were 4224 observations read from the data set EMWS1.CLUS2_TRAIN.
+NOTE: The data set WORK._TEMPCLASS has 76 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.36 seconds
+      cpu time            0.35 seconds
+ 
+ 
+ 
+NOTE: There were 76 observations read from the data set WORK._TEMPCLASS.
+NOTE: The data set WORK._TEMPCLASS has 76 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 76 observations read from the data set WORK._TEMPCLASS.
+NOTE: The data set EMWS1.FILTER3_CLASSDIST has 76 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+ 
+NOTE: There were 76 observations read from the data set EMWS1.FILTER3_CLASSDIST.
+NOTE: The data set WORK._STAT has 17 observations and 4 variables.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 16 observations read from the data set WORK._STAT.
+      WHERE _TYPE_=1;
+NOTE: The data set WORK._STAT has 16 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+NOTE: Deleting WORK._TEMPCLASS (memtype=DATA).
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+11567  data EMWS1.Filter3_CLASSDIST;
+11568  set EMWS1.Filter3_CLASSDIST;
+11569  length Filter $1;
+11570  retain Filter 'N';
+11571  run;
+ 
+NOTE: There were 76 observations read from the data set EMWS1.FILTER3_CLASSDIST.
+NOTE: The data set EMWS1.FILTER3_CLASSDIST has 76 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11572  proc sort data=EMWS1.Filter3_CLASSDIST;
+11573  by variable value;
+11574  run;
+ 
+NOTE: There were 76 observations read from the data set EMWS1.FILTER3_CLASSDIST.
+NOTE: The data set EMWS1.FILTER3_CLASSDIST has 76 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11575  data EMWS1.Filter3_CLASSDIST;
+11576  merge EMWS1.Filter3_CLASSDIST(in=_a) work.tempSummaryClass(in=_b);
+11577  by variable value;
+11578  if _a then output;
+11579  run;
+ 
+NOTE: There were 76 observations read from the data set EMWS1.FILTER3_CLASSDIST.
+NOTE: There were 0 observations read from the data set WORK.TEMPSUMMARYCLASS.
+NOTE: The data set EMWS1.FILTER3_CLASSDIST has 76 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11580  data EMWS1.Filter3_CLASSFILTER / view=EMWS1.Filter3_CLASSFILTER;
+11581  set EMWS1.Filter3_CLASSDIST;
+11582  where Filter eq 'Y';
+11583  run;
+ 
+NOTE: DATA STEP view saved on file EMWS1.FILTER3_CLASSFILTER.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11584  %let EM_CODEBAR = *------------------------------------------------------------*;
+11585  filename cdist catalog 'SASHELP.EMUTIL.EM_VARDIST.SOURCE';
+11586  %inc cdist;
+11982  filename cdist;
+NOTE: Fileref CDIST has been deassigned.
+11983  %var_profile(DATA=EMWS1.Clus2_TRAIN, OUTPUT=EMWS1.Filter3_VARDIST, METADATA=EMWS1.Filter3_VariableSet, COMPUTESTAT=N, FREQ=, BIN=Y, NUMBARS= 16, minmax=Y);
+*------------------------------------------------------------*
+* EM: Computing Summary Statistics
+*------------------------------------------------------------*
+ 
+NOTE: There were 13 observations read from the data set EMWS1.FILTER3_VARIABLESET.
+      WHERE (LEVEL='INTERVAL') and (ROLE not = 'FREQ');
+NOTE: The data set WORK._NULL has 13 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: The file _MAC is:
+      Catalog Name=WORK.MACROS.VARIABLES.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=5,
+      Created=Wed, May  9, 2018 02:56:04 PM,
+      Last Modified=Wed, May  9, 2018 02:56:04 PM,
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD4324_DESKTOP-MVTLU7L_\macros.sas7bcat,
+      Release Created=9.0401M4,
+      Host Created=X64_10HOME,
+      Owner Name=DESKTOP-MVTLU7L\Mohamed,
+      File Size=            17KB,
+      File Size (bytes)=17408
+ 
+NOTE: 5 records were written to the file _MAC.
+      The minimum record length was 12.
+      The maximum record length was 75.
+NOTE: There were 13 observations read from the data set EMWS1.FILTER3_VARIABLESET.
+      WHERE (LEVEL='INTERVAL') or (ROLE='FREQ');
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+NOTE: Fileref _MAC has been deassigned.
+ 
+NOTE: The file WORK._BOUNDS (memtype=(DATA VIEW)) was not found, but appears on a DELETE statement.
+*------------------------------------------------------------*
+* computingmidpoints_note
+*------------------------------------------------------------*
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: Records processed = 4224   Memory used = 511K.
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: View EMWS1.CLUS2_TRAIN.VIEW used (Total process time):
+      real time           0.34 seconds
+      cpu time            0.34 seconds
+ 
+NOTE: There were 4224 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: There were 4224 observations read from the data set EMWS1.CLUS2_TRAIN.
+NOTE: The data set WORK._CLASSOUT has 158 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.35 seconds
+      cpu time            0.35 seconds
+ 
+ 
+ 
+NOTE: There were 158 observations read from the data set WORK._CLASSOUT.
+NOTE: The data set WORK._COUNT has 5 observations and 3 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 5 observations read from the data set WORK._COUNT.
+NOTE: The data set WORK._COUNT has 5 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 158 observations read from the data set WORK._CLASSOUT.
+NOTE: The data set WORK._CLASSOUT has 158 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 158 observations read from the data set WORK._CLASSOUT.
+NOTE: The data set WORK._DISCRETEMID has 13 observations and 18 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: Deleting WORK._CLASSOUT (memtype=DATA).
+NOTE: PROCEDURE DELETE used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: There were 13 observations read from the data set WORK._DISCRETEMID.
+NOTE: There were 5 observations read from the data set WORK._COUNT.
+NOTE: The data set WORK._DISCRETEMID has 5 observations and 19 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: DATA STEP view saved on file WORK._EMVARDIST.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.CLUS2_TRAIN.VIEW used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.20 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.21 seconds
+      cpu time            0.21 seconds
+ 
+ 
+ 
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: There were 4224 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: View WORK._EMVARDIST.VIEW used (Total process time):
+      real time           0.70 seconds
+      cpu time            0.53 seconds
+ 
+NOTE: There were 4224 observations read from the data set EMWS1.CLUS2_TRAIN.
+NOTE: There were 4224 observations read from the data set WORK._EMVARDIST.
+NOTE: The data set WORK._PCTLSTAT has 15 observations and 14 variables.
+NOTE: PROCEDURE STDIZE used (Total process time):
+      real time           0.71 seconds
+      cpu time            0.53 seconds
+ 
+ 
+ 
+NOTE: Deleting WORK._EMVARDIST (memtype=VIEW).
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: There were 2 observations read from the data set WORK._PCTLSTAT.
+      WHERE _type_ in ('P0', 'P100');
+NOTE: The data set WORK._MINMAXDATA has 13 observations and 4 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+ 
+NOTE: There were 13 observations read from the data set WORK._MINMAXDATA.
+NOTE: The data set WORK._MINMAXDATA has 26 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 4 observations read from the data set WORK._PCTLSTAT.
+      WHERE _type_ in ('P0', 'P100', 'P5', 'P95');
+NOTE: The data set WORK._BOUNDS has 13 observations and 6 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+ 
+NOTE: There were 13 observations read from the data set WORK._BOUNDS.
+NOTE: The data set WORK._BOUNDS has 13 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 13 observations read from the data set WORK._BOUNDS.
+NOTE: The data set WORK._BOUNDS has 13 observations and 69 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+ 
+WARNING: Multiple lengths were specified for the BY variable VARIABLE by input data sets. This might cause unexpected results.
+NOTE: There were 13 observations read from the data set WORK._BOUNDS.
+NOTE: There were 5 observations read from the data set WORK._DISCRETEMID.
+NOTE: The data set WORK._BOUNDS has 13 observations and 71 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: The file FREF is:
+      Catalog Name=WORK.EM.PROFILEFORMAT.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=4,
+      Created=Wed, May  9, 2018 02:56:06 PM,
+      Last Modified=Wed, May  9, 2018 02:56:06 PM,
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD4324_DESKTOP-MVTLU7L_\em.sas7bcat,
+      Release Created=9.0401M4,
+      Host Created=X64_10HOME,
+      Owner Name=DESKTOP-MVTLU7L\Mohamed,
+      File Size=             5KB,
+      File Size (bytes)=5120
+ 
+NOTE: 218 records were written to the file FREF.
+      The minimum record length was 1.
+      The maximum record length was 43.
+NOTE: There were 13 observations read from the data set WORK._BOUNDS.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+ 
+ 
+NOTE: Format F1_ has been output.
+NOTE: Format F2_ has been output.
+NOTE: Format F3_ has been output.
+NOTE: Format F4_ has been output.
+NOTE: Format F5_ has been output.
+NOTE: Format F6_ has been output.
+NOTE: Format F7_ has been output.
+NOTE: Format F8_ has been output.
+NOTE: Format F9_ has been output.
+NOTE: Format F10_ has been output.
+NOTE: Format F11_ has been output.
+NOTE: Format F12_ has been output.
+NOTE: Format F13_ has been output.
+ 
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+NOTE: Fileref FREF has been deassigned.
+ 
+NOTE: DATA STEP view saved on file WORK._BINNEDDATA.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.CLUS2_TRAIN.VIEW used (Total process time):
+      real time           0.23 seconds
+      cpu time            0.21 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.25 seconds
+      cpu time            0.25 seconds
+ 
+ 
+ 
+NOTE: Records processed = 4224   Memory used = 511K.
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: There were 4224 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: View WORK._BINNEDDATA.VIEW used (Total process time):
+      real time           0.43 seconds
+      cpu time            0.45 seconds
+ 
+NOTE: There were 4224 observations read from the data set EMWS1.CLUS2_TRAIN.
+NOTE: There were 4224 observations read from the data set WORK._BINNEDDATA.
+NOTE: The data set WORK._TEMPTAB has 179 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.45 seconds
+      cpu time            0.48 seconds
+ 
+ 
+ 
+NOTE: There were 179 observations read from the data set WORK._TEMPTAB.
+NOTE: The data set EMWS1.FILTER3_VARDIST has 179 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+ 
+NOTE: There were 179 observations read from the data set EMWS1.FILTER3_VARDIST.
+NOTE: There were 26 observations read from the data set WORK._MINMAXDATA.
+NOTE: The data set EMWS1.FILTER3_VARDIST has 205 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: There were 205 observations read from the data set EMWS1.FILTER3_VARDIST.
+      WHERE VALUE not = .;
+NOTE: The data set EMWS1.FILTER3_VARDIST has 205 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: Deleting WORK._TEMPTAB (memtype=DATA).
+NOTE: Deleting WORK._BINNEDDATA (memtype=VIEW).
+NOTE: Deleting WORK._MINMAXDATA (memtype=DATA).
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+12217  *------------------------------------------------------------* ;
+12218  * Filter3: DMDBClass Macro ;
+12219  *------------------------------------------------------------* ;
+12220  %macro DMDBClass;
+12221      CampaignViewedEmail(ASC) FacebookLike(ASC) LoyaltyClass(ASC)
+12222     MobileApplications(ASC) PreviousCampaign(ASC) REP_AdvertisementZone(ASC)
+12223     REP_ClusterGroup(ASC) REP_Gender(ASC) REP_Region(ASC)
+12224  %mend DMDBClass;
+12225  *------------------------------------------------------------* ;
+12226  * Filter3: DMDBVar Macro ;
+12227  *------------------------------------------------------------* ;
+12228  %macro DMDBVar;
+12229      AffluenceGrade CleanserProducts DayCareProducts LotionProducts
+12230     NightRepairProducts REP_Age REP_LoyaltyTime TimeSinceLastPurchase TotalSpend
+12231  %mend DMDBVar;
+12232  *------------------------------------------------------------*;
+12233  * Filter3: Create DMDB;
+12234  *------------------------------------------------------------*;
+12235  proc dmdb batch data=EMWS1.Clus2_TRAIN
+12236  classout=WORK._EMFILTERCLASS
+12237  varout=WORK._EMFILTERVAR
+12238  maxlevel = 26
+12239  ;
+12240  class %DMDBClass;
+12241  var %DMDBVar;
+12242  run;
+ 
+NOTE: Records processed = 4224   Memory used = 511K.
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: View EMWS1.CLUS2_TRAIN.VIEW used (Total process time):
+      real time           0.32 seconds
+      cpu time            0.31 seconds
+ 
+NOTE: There were 4224 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: There were 4224 observations read from the data set EMWS1.CLUS2_TRAIN.
+NOTE: The data set WORK._EMFILTERCLASS has 38 observations and 9 variables.
+NOTE: The data set WORK._EMFILTERVAR has 9 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.37 seconds
+      cpu time            0.36 seconds
+ 
+ 
+12243  quit;
+12244  *--- end code ---*;
+ 
+12245  data WORK.M3LFNB74;
+12246  set WORK.M3LFNB74;
+12247  if ROLE ^in('TARGET', 'INPUT', 'FREQ') and CALCMETHOD ne 'NONE' then ROLE ='INPUT';
+12248  if LEVEL ne 'INTERVAL' and KEEPMISSING='N';
+12249  run;
+ 
+NOTE: There were 18 observations read from the data set WORK.M3LFNB74.
+NOTE: The data set WORK.M3LFNB74 has 0 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12250  proc freq data=WORK._EMFILTERCLASS noprint;
+12251  table NAME / out=WORK._EMFILTERFREQ(keep=NAME COUNT rename=(COUNT=NUMLEVELS));
+12252  run;
+ 
+NOTE: There were 38 observations read from the data set WORK._EMFILTERCLASS.
+NOTE: The data set WORK._EMFILTERFREQ has 9 observations and 2 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12253  data WORK._EMFILTERCLASS;
+12254  set WORK._EMFILTERCLASS (rename=(FREQUENCY=COUNT FREQPERCENT=PERCENT));
+12255  _OBS_= _N_;
+12256  if (CRAW eq '' and NRAW eq .) then _OBS_=0;
+12257  run;
+ 
+NOTE: There were 38 observations read from the data set WORK._EMFILTERCLASS.
+NOTE: The data set WORK._EMFILTERCLASS has 38 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12258  proc sort data=WORK._EMFILTERCLASS nodupkey;
+12259  by NAME _OBS_;
+12260  run;
+ 
+NOTE: There were 38 observations read from the data set WORK._EMFILTERCLASS.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK._EMFILTERCLASS has 38 observations and 10 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12261  proc sort data=WORK._EMFILTERFREQ;
+12262  by NAME;
+12263  run;
+ 
+NOTE: There were 9 observations read from the data set WORK._EMFILTERFREQ.
+NOTE: The data set WORK._EMFILTERFREQ has 9 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12264  data WORK._EMFILTERCLASS;
+12265  merge WORK._EMFILTERCLASS WORK._EMFILTERFREQ;
+12266  by NAME;
+12267  run;
+ 
+NOTE: There were 38 observations read from the data set WORK._EMFILTERCLASS.
+NOTE: There were 9 observations read from the data set WORK._EMFILTERFREQ.
+NOTE: The data set WORK._EMFILTERCLASS has 38 observations and 11 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12268  data work._FilterMinFreq;
+12269  set WORK.M09KV7AW;
+12270  where level ne 'INTERVAL';
+12271  if KEEPMISSING in('D', '') then
+12272  KEEPMISSING = "Y";
+12273  *if ROLE='REJECTED' and CALCMETHOD in('', 'DEFAULT') and KEEPMISSING="Y" then delete;
+12274  if ROLE ^in('INPUT','TARGET') and CALCMETHOD in('', 'DEFAULT') and KEEPMISSING="Y" then delete;
+12275  if CALCMETHOD in('', 'DEFAULT') then CALCMETHOD = "MINPCT";
+12276  if minfreq = . then minfreq=1;
+12277  if MAXVALUES = . then MAXVALUES = 25;
+12278  minClassPct = 0.01;
+12279  run;
+ 
+NOTE: There were 9 observations read from the data set WORK.M09KV7AW.
+      WHERE level not = 'INTERVAL';
+NOTE: The data set WORK._FILTERMINFREQ has 9 observations and 27 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12280  proc sort data=work._FilterMinFreq;
+12281  by NAME;
+12282  run;
+ 
+NOTE: There were 9 observations read from the data set WORK._FILTERMINFREQ.
+NOTE: The data set WORK._FILTERMINFREQ has 9 observations and 27 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12283  proc sort data=WORK._EMFILTERCLASS;
+12284  by NAME;
+12285  run;
+ 
+NOTE: There were 38 observations read from the data set WORK._EMFILTERCLASS.
+NOTE: The data set WORK._EMFILTERCLASS has 38 observations and 11 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12286  data work._FilterMinFreq;
+12287  merge work._FilterMinFreq(drop=LEVEL in=_a) WORK._EMFILTERCLASS (in=_b);
+12288  if _a and _b then output;
+12289  by NAME;
+12290  run;
+ 
+NOTE: There were 9 observations read from the data set WORK._FILTERMINFREQ.
+NOTE: There were 38 observations read from the data set WORK._EMFILTERCLASS.
+NOTE: The data set WORK._FILTERMINFREQ has 38 observations and 35 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+12291  data work._FilterExclude;
+12292  set work._FilterMinFreq;
+12293  where ( ((CALCMETHOD = 'MINFREQ' and (COUNT ne . and COUNT <= minfreq)) or (CALCMETHOD = 'MINPCT' and (NMISSPERCENT ne . and 0.01*NMISSPERCENT <=minClassPct))) and (NUMLEVELS <= MAXVALUES)) or (KEEPMISSING eq 'N' and NRAW=. and CRAW='');
+12294  run;
+ 
+NOTE: There were 0 observations read from the data set WORK._FILTERMINFREQ.
+      WHERE ((((CALCMETHOD='MINFREQ') and (COUNT not = .) and (COUNT<=minfreq)) or ((CALCMETHOD='MINPCT') and (NMISSPERCENT not = .) and (minClassPct>=(0.01*NMISSPERCENT)))) and (NUMLEVELS<=MAXVALUES)) or ((KEEPMISSING='N') and (NRAW=.) and (CRAW=' '));
+NOTE: The data set WORK._FILTEREXCLUDE has 0 observations and 35 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12295  data work._ManualExclude;
+12296  set WORK.M09KV7AW;
+12297  if CALCMETHOD in('', 'DEFAULT') then CALCMETHOD = "MINPCT";
+12298  if level ne 'INTERVAL' and calcmethod='MANUAL' then output;
+12299  run;
+ 
+NOTE: There were 18 observations read from the data set WORK.M09KV7AW.
+NOTE: The data set WORK._MANUALEXCLUDE has 0 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12300  proc sort data=work._ManualExclude;
+12301  by NAME;
+12302  run;
+ 
+NOTE: Input data set is empty.
+NOTE: The data set WORK._MANUALEXCLUDE has 0 observations and 26 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12303  proc sort data=EMWS1.Filter3_CLASSFILTER(rename=(VARIABLE=NAME VALUE=LEVEL)) out=_temp;
+12304  by NAME;
+12305  run;
+ 
+NOTE: There were 0 observations read from the data set EMWS1.FILTER3_CLASSFILTER.
+NOTE: View EMWS1.FILTER3_CLASSFILTER.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+NOTE: There were 0 observations read from the data set EMWS1.FILTER3_CLASSDIST.
+      WHERE Filter='Y';
+NOTE: Input data set is empty.
+NOTE: The data set WORK._TEMP has 0 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+ 
+ 
+12306  data work._ManualExclude;
+12307  merge work._ManualExclude(drop=LEVEL in=_a) _temp(in=_b);
+12308  _OBS_=_N_;
+12309  if strip(Level) in('.', '') then _OBS_=0;
+12310  if _a and _b then output;
+12311  by NAME;
+12312  run;
+ 
+NOTE: There were 0 observations read from the data set WORK._MANUALEXCLUDE.
+NOTE: There were 0 observations read from the data set WORK._TEMP.
+NOTE: The data set WORK._MANUALEXCLUDE has 0 observations and 30 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12313  data work._FilterExclude;
+12314  set work._ManualExclude work._FilterExclude;
+12315  if type = 'N' and format='' then level= strip(level);
+12316  run;
+ 
+NOTE: There were 0 observations read from the data set WORK._MANUALEXCLUDE.
+NOTE: There were 0 observations read from the data set WORK._FILTEREXCLUDE.
+NOTE: The data set WORK._FILTEREXCLUDE has 0 observations and 36 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12317  proc sort data=work._FilterExclude nodupkey;
+12318  by NAME _OBS_;
+12319  run;
+ 
+NOTE: Input data set is empty.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK._FILTEREXCLUDE has 0 observations and 36 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12320  %let _FilterClassNum= 0;
+12321  data work._FilterExclude;
+12322  retain newvarindex 0;
+12323  length newvar normvar $32;
+12324  drop newvarindex string;
+12325  set work._FilterExclude end=eof;
+12326  by NAME;
+12327  if first.NAME then do;
+12328  newvarindex + 1;
+12329  if format ne '' then do;
+12330  newvar = strip("_FILTERFMT")!!strip(put(newvarindex, best.));
+12331  end;
+12332  else newvar = name;
+12333  if CALCMETHOD ne 'MANUAL' then do;
+12334  if format ne '' or type = 'C' then do;
+12335  normvar = strip("_FILTERNORM")!!strip(put(newvarindex, best.));
+12336  end;
+12337  end;
+12338  end;
+12339  if eof then call symput('_FilterClassNum', strip(put(_N_, best.)));
+12340  run;
+ 
+WARNING: The variable string in the DROP, KEEP, or RENAME list has never been referenced.
+NOTE: There were 0 observations read from the data set WORK._FILTEREXCLUDE.
+NOTE: The data set WORK._FILTEREXCLUDE has 0 observations and 38 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12341  data EMWS1.Filter3_CLASS;
+12342  label NAME = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel,     NOQUOTE))" ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel,        NOQUOTE))" VALUE = "%sysfunc(sasmsg(sashelp.dmine, rpt_value_vlabel,        NOQUOTE))" COUNT =
+12343     "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel,        NOQUOTE))" PERCENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_percent_vlabel,      NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel,       NOQUOTE))" CALCMETHOD =
+12344     "%sysfunc(sasmsg(sashelp.dmine, rpt_filtermethod_vlabel, NOQUOTE))";
+12345  length VALUE $80;
+12346  set work._FilterExclude;
+12347  keep NAME ROLE VALUE COUNT PERCENT LABEL CALCMETHOD;
+12348  if COUNT = . then COUNT = 0;
+12349  if PERCENT = . then PERCENT = 0;
+12350  VALUE = LEVEL;
+12351  if _OBS_ = 0 and KEEPMISSING='N' then do;
+12352  CALCMETHOD= '';
+12353  KEEPMISSING = '';
+12354  if VALUE = '' and type eq 'C' then VALUE = '_BLANK_';
+12355  if type eq 'N' then do;
+12356  VALUE = strip(VALUE);
+12357  if VALUE = '' then VALUE = '.';
+12358  end;
+12359  end;
+12360  run;
+ 
+NOTE: There were 0 observations read from the data set WORK._FILTEREXCLUDE.
+NOTE: The data set EMWS1.FILTER3_CLASS has 0 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+ 
+12361  %let _FilterIntervalNum= 0;
+12362  proc sort data=EMWS1.Filter3_INTERVAL;
+12363  by NAME;
+12364  run;
+ 
+NOTE: There were 9 observations read from the data set EMWS1.FILTER3_INTERVAL.
+NOTE: The data set EMWS1.FILTER3_INTERVAL has 9 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12365  filename _X "C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD4324_DESKTOP-MVTLU7L_\INTERVALFILTERCODE.txt";
+12366  data _null_;
+12367  length string $200;
+12368  set EMWS1.Filter3_INTERVAL end=eof;
+12369  file _X;
+12370  where (INTERVALMIN ne . or INTERVALMAX ne . or KEEPMISSING eq 'N')
+12371  ;
+12372  by NAME;
+12373  if _N_ = 1 then do;
+12374  string = ' (';
+12375  end;
+12376  else do;
+12377  string = ' and (';
+12378  end;
+12379  if INTERVALMIN ne . or INTERVALMAX ne . then do;
+12380  if KEEPMISSING = 'N' then string = trim(string)!!' '!!strip(NAME)!!' ne . and ';
+12381  else string = trim(string)!!' '!!strip(NAME)!!' eq . or ';
+12382  if INTERVALMIN ne . and INTERVALMAX ne . then do;
+12383  string = trim(string)!!' ('!!strip(put(INTERVALMIN, best12.))!!'<='!!strip(NAME)!!') and ('!!strip(NAME)!!'<='!!strip(put(INTERVALMAX, best12.))!!')';
+12384  end;
+12385  else if INTERVALMIN eq . and INTERVALMAX ne . then do;
+12386  string = trim(string)!!' ('!!strip(NAME)!!'<='!!strip(put(INTERVALMAX, best12.))!!')';
+12387  end;
+12388  else if INTERVALMIN ne . and INTERVALMAX eq . then do;
+12389  string = trim(string)!!' ('!!strip(put(INTERVALMIN, best12.)) || '<=' || NAME||')';
+12390  end;
+12391  end;
+12392  else do;
+12393  string = trim(string)!!' '!!strip(name)!!' ne .';
+12394  end;
+12395  string = trim(string)!!')';
+12396  put string;
+12397  if eof then call symput('_FilterIntervalNum', strip(put(_N_, best.)));
+12398  run;
+ 
+NOTE: The file _X is:
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD4324_DESKTOP-MVTLU7L_\INTERVALFILTERCODE.txt,
+      RECFM=V,LRECL=32767,File Size (bytes)=0,
+      Last Modified=09May2018:14:56:08,
+      Create Time=09May2018:14:56:08
+ 
+NOTE: 9 records were written to the file _X.
+      The minimum record length was 74.
+      The maximum record length was 116.
+NOTE: There were 9 observations read from the data set EMWS1.FILTER3_INTERVAL.
+      WHERE (INTERVALMIN not = .) or (INTERVALMAX not = .) or (KEEPMISSING='N');
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12399  %let _FilterIntervalNum= 0;
+12400  proc sort data=EMWS1.Filter3_INTERVAL;
+12401  by NAME;
+12402  run;
+ 
+NOTE: Input data set is already sorted, no sorting done.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12403  filename _X "C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD4324_DESKTOP-MVTLU7L_\INTERVALPUBLISHFILTERCODE.txt";
+12404  data _null_;
+12405  length string $200;
+12406  set EMWS1.Filter3_INTERVAL end=eof;
+12407  file _X;
+12408  where (INTERVALMIN ne . or INTERVALMAX ne . or KEEPMISSING eq 'N')
+12409  and ROLE ne 'TARGET';
+12410  ;
+12411  by NAME;
+12412  if _N_ = 1 then do;
+12413  string = ' (';
+12414  end;
+12415  else do;
+12416  string = ' and (';
+12417  end;
+12418  if INTERVALMIN ne . or INTERVALMAX ne . then do;
+12419  if KEEPMISSING = 'N' then string = trim(string)!!' '!!strip(NAME)!!' ne . and ';
+12420  else string = trim(string)!!' '!!strip(NAME)!!' eq . or ';
+12421  if INTERVALMIN ne . and INTERVALMAX ne . then do;
+12422  string = trim(string)!!' ('!!strip(put(INTERVALMIN, best12.))!!'<='!!strip(NAME)!!') and ('!!strip(NAME)!!'<='!!strip(put(INTERVALMAX, best12.))!!')';
+12423  end;
+12424  else if INTERVALMIN eq . and INTERVALMAX ne . then do;
+12425  string = trim(string)!!' ('!!strip(NAME)!!'<='!!strip(put(INTERVALMAX, best12.))!!')';
+12426  end;
+12427  else if INTERVALMIN ne . and INTERVALMAX eq . then do;
+12428  string = trim(string)!!' ('!!strip(put(INTERVALMIN, best12.)) || '<=' || NAME||')';
+12429  end;
+12430  end;
+12431  else do;
+12432  string = trim(string)!!' '!!strip(name)!!' ne .';
+12433  end;
+12434  string = trim(string)!!')';
+12435  put string;
+12436  if eof then call symput('_FilterIntervalNum', strip(put(_N_, best.)));
+12437  run;
+ 
+NOTE: The file _X is:
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD4324_DESKTOP-MVTLU7L_\INTERVALPUBLISHFILTERCODE.txt,
+      RECFM=V,LRECL=32767,File Size (bytes)=0,
+      Last Modified=09May2018:14:56:08,
+      Create Time=09May2018:14:56:08
+ 
+NOTE: 9 records were written to the file _X.
+      The minimum record length was 74.
+      The maximum record length was 116.
+NOTE: There were 9 observations read from the data set EMWS1.FILTER3_INTERVAL.
+      WHERE ((INTERVALMIN not = .) or (INTERVALMAX not = .) or (KEEPMISSING='N')) and (ROLE not = 'TARGET');
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+12438  data EMWS1.Filter3_TRAIN / view=EMWS1.Filter3_TRAIN;
+12439  set EMWS1.Clus2_TRAIN;
+12440  if
+12441  ( AffluenceGrade eq . or (-1.73870392<=AffluenceGrade) and (AffluenceGrade<=19.815408465))
+12442  and ( CleanserProducts eq . or (-2.153632835<=CleanserProducts) and (CleanserProducts<=6.0423638952))
+12443  and ( DayCareProducts eq . or (-1.785289188<=DayCareProducts) and (DayCareProducts<=4.8004407033))
+12444  and ( LotionProducts eq . or (-2.548731498<=LotionProducts) and (LotionProducts<=6.9431443768))
+12445  and ( NightRepairProducts eq . or (-1.466534627<=NightRepairProducts) and (NightRepairProducts<=3.4447543237))
+12446  and ( REP_Age eq . or (12.925958323<=REP_Age) and (REP_Age<=95.856712132))
+12447  and ( REP_LoyaltyTime eq . or (-8.93196608<=REP_LoyaltyTime) and (REP_LoyaltyTime<=21.888405474))
+12448  and ( TimeSinceLastPurchase eq . or (-8.380010657<=TimeSinceLastPurchase) and (TimeSinceLastPurchase<=15.884745505))
+12449  and ( TotalSpend eq . or (-8393.824079<=TotalSpend) and (TotalSpend<=17556.229383))
+12450  ;
+12451  run;
+ 
+NOTE: DATA STEP view saved on file EMWS1.FILTER3_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.CLUS2_TRAIN.VIEW used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.20 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.20 seconds
+ 
+ 
+12452  data WORK.Filter3FILTERVAR;
+12453  set
+12454  EMWS1.Filter3_INTERVAL(where=(INTERVALMIN ne . or INTERVALMAX ne . or KEEPMISSING='N'))
+12455  EMWS1.Filter3_CLASS(where=(CALCMETHOD ne 'NONE'))
+12456  ;
+12457  keep NAME;
+12458  run;
+ 
+NOTE: There were 9 observations read from the data set EMWS1.FILTER3_INTERVAL.
+      WHERE (INTERVALMIN not = .) or (INTERVALMAX not = .) or (KEEPMISSING='N');
+NOTE: There were 0 observations read from the data set EMWS1.FILTER3_CLASS.
+      WHERE CALCMETHOD not = 'NONE';
+NOTE: The data set WORK.FILTER3FILTERVAR has 9 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12459  proc sort data= WORK.Filter3FILTERVAR nodupkey;
+12460  by NAME;
+12461  run;
+ 
+NOTE: There were 9 observations read from the data set WORK.FILTER3FILTERVAR.
+NOTE: 0 observations with duplicate key values were deleted.
+NOTE: The data set WORK.FILTER3FILTERVAR has 9 observations and 1 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12462  proc sort data=WORK.M1U8KNQ_;
+12463  by NAME;
+12464  run;
+ 
+NOTE: There were 29 observations read from the data set WORK.M1U8KNQ_.
+NOTE: The data set WORK.M1U8KNQ_ has 29 observations and 26 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12465  data WORK.Filter3DMDBC;
+12466  merge WORK.M1U8KNQ_ WORK.Filter3FILTERVAR(in=_b);
+12467  by NAME;
+12468  if (REPORT = 'Y' or ROLE in('FREQ','TARGET') or _b) then output;
+12469  run;
+ 
+NOTE: There were 29 observations read from the data set WORK.M1U8KNQ_.
+NOTE: There were 9 observations read from the data set WORK.FILTER3FILTERVAR.
+NOTE: The data set WORK.FILTER3DMDBC has 10 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12470  *------------------------------------------------------------* ;
+12471  * Filter3: DMDBClass Macro ;
+12472  *------------------------------------------------------------* ;
+12473  %macro DMDBClass;
+12474      TargetBuy(DESC)
+12475  %mend DMDBClass;
+12476  *------------------------------------------------------------* ;
+12477  * Filter3: DMDBVar Macro ;
+12478  *------------------------------------------------------------* ;
+12479  %macro DMDBVar;
+12480      AffluenceGrade CleanserProducts DayCareProducts LotionProducts
+12481     NightRepairProducts REP_Age REP_LoyaltyTime TimeSinceLastPurchase TotalSpend
+12482  %mend DMDBVar;
+12483  *------------------------------------------------------------*;
+12484  * Filter3: Create DMDB;
+12485  *------------------------------------------------------------*;
+12486  proc dmdb batch data=EMWS1.Clus2_TRAIN
+12487  dmdbcat=WORK.Filter3_DMDB
+12488  varout=WORK.FILTER_VARSTATS
+12489  maxlevel = 513
+12490  ;
+12491  class %DMDBClass;
+12492  var %DMDBVar;
+12493  target
+12494  TargetBuy
+12495  ;
+12496  run;
+ 
+NOTE: Records processed = 4224   Memory used = 511K.
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: View EMWS1.CLUS2_TRAIN.VIEW used (Total process time):
+      real time           0.34 seconds
+      cpu time            0.34 seconds
+ 
+NOTE: There were 4224 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: There were 4224 observations read from the data set EMWS1.CLUS2_TRAIN.
+NOTE: The data set WORK.FILTER_VARSTATS has 9 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.36 seconds
+      cpu time            0.35 seconds
+ 
+ 
+12497  quit;
+12498  *--- end code ---*;
+ 
+12499  data WORK.FILTER_VARSTATS;
+12500  length DATAROLE $10 TYPE $8 NAME $32;
+12501  label DATAROLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel, NOQUOTE))";
+12502  label N = "%sysfunc(sasmsg(sashelp.dmine, rpt_nonMiss_vlabel, NOQUOTE))";
+12503  label NMISS = "%sysfunc(sasmsg(sashelp.dmine, rpt_missing_vlabel, NOQUOTE))";
+12504  label MIN = "%sysfunc(sasmsg(sashelp.dmine, rpt_minimum_vlabel, NOQUOTE))";
+12505  label MAX = "%sysfunc(sasmsg(sashelp.dmine, rpt_maximum_vlabel, NOQUOTE))";
+12506  label MEAN = "%sysfunc(sasmsg(sashelp.dmine, rpt_mean_vlabel,    NOQUOTE))";
+12507  label STD = "%sysfunc(sasmsg(sashelp.dmine, rpt_std_vlabel,     NOQUOTE))";
+12508  label SKEWNESS = "%sysfunc(sasmsg(sashelp.dmine, rpt_skewness_vlabel, NOQUOTE))";
+12509  label KURTOSIS = "%sysfunc(sasmsg(sashelp.dmine, rpt_kurtosis_vlabel, NOQUOTE))";
+12510  label NUMCAT = "%sysfunc(sasmsg(sashelp.dmine, rpt_numcat_vlabel,   NOQUOTE))";
+12511  retain DATAROLE "TRAIN" type "ORIGINAL";
+12512  set WORK.FILTER_VARSTATS;
+12513  run;
+ 
+NOTE: Variable NUMCAT is uninitialized.
+NOTE: There were 9 observations read from the data set WORK.FILTER_VARSTATS.
+NOTE: The data set WORK.FILTER_VARSTATS has 9 observations and 11 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+ 
+12514  proc append base=EMWS1.Filter3_STATS data=WORK.FILTER_VARSTATS;
+12515  run;
+ 
+NOTE: Appending WORK.FILTER_VARSTATS to EMWS1.FILTER3_STATS.
+NOTE: BASE data set does not exist. DATA file is being copied to BASE file.
+NOTE: There were 9 observations read from the data set WORK.FILTER_VARSTATS.
+NOTE: The data set EMWS1.FILTER3_STATS has 9 observations and 11 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+*------------------------------------------------------------*
+* Score Log
+Date:                May 09, 2018
+Time:                14:56:09
+*------------------------------------------------------------*
+12617  proc sort data=EMWS1.Filter3_INTERVAL;
+12618  by name;
+12619  run;
+ 
+NOTE: Input data set is already sorted, no sorting done.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12620  proc print data=EMWS1.Filter3_INTERVAL(obs=500) noobs label;
+12621  where (INTERVALMIN ne . or INTERVALMAX ne . or KEEPMISSING='N');
+12622  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_filterintervallimits_title,    NOQUOTE))";
+12623  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+12624  run;
+ 
+NOTE: There were 9 observations read from the data set EMWS1.FILTER3_INTERVAL.
+      WHERE (INTERVALMIN not = .) or (INTERVALMAX not = .) or (KEEPMISSING='N');
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12625  title9;
+12626  title10;
+ 
+12627  proc sort data=EMWS1.Filter3_CLASS;
+12628  by NAME VALUE;
+12629  run;
+ 
+NOTE: Input data set is empty.
+NOTE: The data set EMWS1.FILTER3_CLASS has 0 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12630  proc datasets library=EMWS1 nolist;
+12631  modify Filter3_CLASS;
+12632  label NAME = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel,      NOQUOTE))" ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel,         NOQUOTE))" VALUE = "%sysfunc(sasmsg(sashelp.dmine, rpt_level_vlabel,        NOQUOTE))" LABEL =
+12633     "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel,        NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_traincount_vlabel,    NOQUOTE))" PERCENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_trainpercent_vlabel,  NOQUOTE))";
+12634  run;
+ 
+NOTE: MODIFY was successful for EMWS1.FILTER3_CLASS.DATA.
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+ 
+ 
+12635  proc print data=EMWS1.Filter3_CLASS(obs=500) noobs label;
+12636  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_filterexcludeclass_title,    NOQUOTE))";
+12637  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+12638  run;
+ 
+NOTE: No observations in data set EMWS1.FILTER3_CLASS.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12639  title9;
+12640  title10;
+ 
+12641  data WORK.DATA_FILTERED / view=WORK.DATA_FILTERED;
+12642  set EMWS1.Clus2_TRAIN;
+12643  if
+12644  ( AffluenceGrade eq . or (-1.73870392<=AffluenceGrade) and (AffluenceGrade<=19.815408465))
+12645  and ( CleanserProducts eq . or (-2.153632835<=CleanserProducts) and (CleanserProducts<=6.0423638952))
+12646  and ( DayCareProducts eq . or (-1.785289188<=DayCareProducts) and (DayCareProducts<=4.8004407033))
+12647  and ( LotionProducts eq . or (-2.548731498<=LotionProducts) and (LotionProducts<=6.9431443768))
+12648  and ( NightRepairProducts eq . or (-1.466534627<=NightRepairProducts) and (NightRepairProducts<=3.4447543237))
+12649  and ( REP_Age eq . or (12.925958323<=REP_Age) and (REP_Age<=95.856712132))
+12650  and ( REP_LoyaltyTime eq . or (-8.93196608<=REP_LoyaltyTime) and (REP_LoyaltyTime<=21.888405474))
+12651  and ( TimeSinceLastPurchase eq . or (-8.380010657<=TimeSinceLastPurchase) and (TimeSinceLastPurchase<=15.884745505))
+12652  and ( TotalSpend eq . or (-8393.824079<=TotalSpend) and (TotalSpend<=17556.229383))
+12653  then do;
+12654  if M_FILTER eq . then M_FILTER = 0;
+12655  else M_FILTER = M_FILTER + 0;
+12656  end;
+12657  else M_FILTER = 1;
+12658  length M_FILTER 8;
+12659  label M_FILTER = 'Filtered Indicator';
+12660  if M_FILTER = 0;
+12661  run;
+ 
+NOTE: DATA STEP view saved on file WORK.DATA_FILTERED.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.CLUS2_TRAIN.VIEW used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.20 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.21 seconds
+      cpu time            0.21 seconds
+ 
+ 
+12662  data WORK.DATA_EXCLUDED / view=WORK.DATA_EXCLUDED;
+12663  set EMWS1.Clus2_TRAIN;
+12664  if
+12665  ( AffluenceGrade eq . or (-1.73870392<=AffluenceGrade) and (AffluenceGrade<=19.815408465))
+12666  and ( CleanserProducts eq . or (-2.153632835<=CleanserProducts) and (CleanserProducts<=6.0423638952))
+12667  and ( DayCareProducts eq . or (-1.785289188<=DayCareProducts) and (DayCareProducts<=4.8004407033))
+12668  and ( LotionProducts eq . or (-2.548731498<=LotionProducts) and (LotionProducts<=6.9431443768))
+12669  and ( NightRepairProducts eq . or (-1.466534627<=NightRepairProducts) and (NightRepairProducts<=3.4447543237))
+12670  and ( REP_Age eq . or (12.925958323<=REP_Age) and (REP_Age<=95.856712132))
+12671  and ( REP_LoyaltyTime eq . or (-8.93196608<=REP_LoyaltyTime) and (REP_LoyaltyTime<=21.888405474))
+12672  and ( TimeSinceLastPurchase eq . or (-8.380010657<=TimeSinceLastPurchase) and (TimeSinceLastPurchase<=15.884745505))
+12673  and ( TotalSpend eq . or (-8393.824079<=TotalSpend) and (TotalSpend<=17556.229383))
+12674  then do;
+12675  if M_FILTER eq . then M_FILTER = 0;
+12676  else M_FILTER = M_FILTER + 0;
+12677  end;
+12678  else M_FILTER = 1;
+12679  length M_FILTER 8;
+12680  label M_FILTER = 'Filtered Indicator';
+12681  if M_FILTER = 1;
+12682  run;
+ 
+NOTE: DATA STEP view saved on file WORK.DATA_EXCLUDED.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.CLUS2_TRAIN.VIEW used (Total process time):
+      real time           0.21 seconds
+      cpu time            0.20 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.21 seconds
+      cpu time            0.20 seconds
+ 
+ 
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: View EMWS1.CLUS2_TRAIN.VIEW used (Total process time):
+      real time           0.32 seconds
+      cpu time            0.31 seconds
+ 
+NOTE: There were 4224 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: There were 4224 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: View WORK.DATA_FILTERED.VIEW used (Total process time):
+      real time           0.39 seconds
+      cpu time            0.39 seconds
+ 
+NOTE: There were 4224 observations read from the data set EMWS1.CLUS2_TRAIN.
+12683  data WORK.Filter3COUNT;
+12684  length DATAROLE $16;
+12685  label DATAROLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel, NOQUOTE))" FILTERED = "%sysfunc(sasmsg(sashelp.dmine, rpt_filtered_vlabel, NOQUOTE))" EXCLUDED = "%sysfunc(sasmsg(sashelp.dmine, rpt_excluded_vlabel, NOQUOTE))";
+12686  DATAROLE = 'TRAIN';
+12687  DATA = 4224;
+12688  FILTERED = 3947;
+12689  EXCLUDED = 277;
+12690  output;
+12691  run;
+ 
+NOTE: The data set WORK.FILTER3COUNT has 1 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12692  proc print data=WORK.Filter3COUNT noobs label;
+12693  title9 ' ';
+12694  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_numberobs_title, NOQUOTE))";
+12695  run;
+ 
+NOTE: There were 1 observations read from the data set WORK.FILTER3COUNT.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12696  title9;
+12697  title10;
+ 
+12698  *------------------------------------------------------------*;
+12699  * createstattable;
+12700  *------------------------------------------------------------*;
+12701  *------------------------------------------------------------* ;
+12702  * Filter3: DMDBClass Macro ;
+12703  *------------------------------------------------------------* ;
+12704  %macro DMDBClass;
+12705      TargetBuy(DESC)
+12706  %mend DMDBClass;
+12707  *------------------------------------------------------------* ;
+12708  * Filter3: DMDBVar Macro ;
+12709  *------------------------------------------------------------* ;
+12710  %macro DMDBVar;
+12711      AffluenceGrade CleanserProducts DayCareProducts LotionProducts
+12712     NightRepairProducts REP_Age REP_LoyaltyTime TimeSinceLastPurchase TotalSpend
+12713  %mend DMDBVar;
+12714  *------------------------------------------------------------*;
+12715  * Filter3: Create DMDB;
+12716  *------------------------------------------------------------*;
+12717  proc dmdb batch data=WORK.DATA_FILTERED
+12718  dmdbcat=WORK.Filter3_DMDB
+12719  varout=WORK.FILTER_VARSTATS
+12720  maxlevel = 513
+12721  ;
+12722  class %DMDBClass;
+12723  var %DMDBVar;
+12724  target
+12725  TargetBuy
+12726  ;
+12727  run;
+ 
+NOTE: Records processed = 3947   Memory used = 511K.
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: There were 4224 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: View WORK.DATA_FILTERED.VIEW used (Total process time):
+      real time           0.43 seconds
+      cpu time            0.39 seconds
+ 
+NOTE: There were 4224 observations read from the data set EMWS1.CLUS2_TRAIN.
+NOTE: There were 3947 observations read from the data set WORK.DATA_FILTERED.
+NOTE: The data set WORK.FILTER_VARSTATS has 9 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.45 seconds
+      cpu time            0.40 seconds
+ 
+ 
+12728  quit;
+12729  *--- end code ---*;
+ 
+12730  data WORK.FILTER_VARSTATS;
+12731  length DATAROLE $10 TYPE $8 NAME $32;
+12732  label DATAROLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel, NOQUOTE))";
+12733  label N = "%sysfunc(sasmsg(sashelp.dmine, rpt_nonMiss_vlabel, NOQUOTE))";
+12734  label NMISS = "%sysfunc(sasmsg(sashelp.dmine, rpt_missing_vlabel, NOQUOTE))";
+12735  label MIN = "%sysfunc(sasmsg(sashelp.dmine, rpt_minimum_vlabel, NOQUOTE))";
+12736  label MAX = "%sysfunc(sasmsg(sashelp.dmine, rpt_maximum_vlabel, NOQUOTE))";
+12737  label MEAN = "%sysfunc(sasmsg(sashelp.dmine, rpt_mean_vlabel,    NOQUOTE))";
+12738  label STD = "%sysfunc(sasmsg(sashelp.dmine, rpt_std_vlabel,     NOQUOTE))";
+12739  label SKEWNESS = "%sysfunc(sasmsg(sashelp.dmine, rpt_skewness_vlabel, NOQUOTE))";
+12740  label KURTOSIS = "%sysfunc(sasmsg(sashelp.dmine, rpt_kurtosis_vlabel, NOQUOTE))";
+12741  label NUMCAT = "%sysfunc(sasmsg(sashelp.dmine, rpt_numcat_vlabel,   NOQUOTE))";
+12742  retain DATAROLE "TRAIN" type "FILTERED";
+12743  set WORK.FILTER_VARSTATS;
+12744  run;
+ 
+NOTE: Variable NUMCAT is uninitialized.
+NOTE: There were 9 observations read from the data set WORK.FILTER_VARSTATS.
+NOTE: The data set WORK.FILTER_VARSTATS has 9 observations and 11 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+ 
+12745  proc append base=EMWS1.Filter3_STATS data=WORK.FILTER_VARSTATS;
+12746  run;
+ 
+NOTE: Appending WORK.FILTER_VARSTATS to EMWS1.FILTER3_STATS.
+NOTE: There were 9 observations read from the data set WORK.FILTER_VARSTATS.
+NOTE: 9 observations added.
+NOTE: The data set EMWS1.FILTER3_STATS has 18 observations and 11 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12747  proc sort data=EMWS1.Filter3_STATS;
+12748  by DATAROLE NAME;
+12749  run;
+ 
+NOTE: There were 18 observations read from the data set EMWS1.FILTER3_STATS.
+NOTE: The data set EMWS1.FILTER3_STATS has 18 observations and 11 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12750  proc transpose data=EMWS1.Filter3_STATS out=EMWS1.Filter3_STATS(rename=(NAME=VARIABLE _LABEL_=STATISTIC));
+12751  by DATAROLE NAME;
+12752  id TYPE;
+12753  run;
+ 
+NOTE: There were 18 observations read from the data set EMWS1.FILTER3_STATS.
+NOTE: The data set EMWS1.FILTER3_STATS has 72 observations and 6 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12754  proc datasets library=EMWS1 nolist;
+12755  modify Filter3_STATS;
+12756  label VARIABLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" STATISTIC = "%sysfunc(sasmsg(sashelp.dmine, rpt_statistics_vlabel, NOQUOTE))" FILTERED="Filtered" ORIGINAL = "%sysfunc(sasmsg(sashelp.dmine, rpt_original_vlabel,
+12756! NOQUOTE))";
+12757  run;
+ 
+NOTE: MODIFY was successful for EMWS1.FILTER3_STATS.DATA.
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+ 
+ 
+12758  proc sort data=EMWS1.Filter3_STATS;
+12759  by DATAROLE VARIABLE;
+12760  run;
+ 
+NOTE: There were 72 observations read from the data set EMWS1.FILTER3_STATS.
+NOTE: The data set EMWS1.FILTER3_STATS has 72 observations and 6 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12761  %let _cn = %sysfunc(getoption(CENTER));
+12762  options nocenter;
+12763  proc print data=EMWS1.Filter3_STATS(obs=500) noobs label;
+12764  var STATISTIC ORIGINAL
+12765  FILTERED
+12766  ;
+12767  by DATAROLE VARIABLE;
+12768  where ORIGINAL ne .;
+12769  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_filterstat_title,    NOQUOTE, FILTERED))";
+12770  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+12771  run;
+ 
+NOTE: There were 72 observations read from the data set EMWS1.FILTER3_STATS.
+      WHERE ORIGINAL not = .;
+NOTE: The PROCEDURE PRINT printed page 4.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12772  options &_cn;
+12773  title9;
+12774  title10;
+ 
+12775  *------------------------------------------------------------*;
+12776  * createhistogramtable;
+12777  *------------------------------------------------------------*;
+12778  data WORK.Filter3DMDBC;
+12779  set WORK.Filter3DMDBC(where=(report='Y'));
+12780  run;
+ 
+NOTE: There were 0 observations read from the data set WORK.FILTER3DMDBC.
+      WHERE report='Y';
+NOTE: The data set WORK.FILTER3DMDBC has 0 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12781  filename vdist catalog 'SASHELP.EMUTIL.EM_VARDIST.SOURCE';
+12782  %inc vdist;
+13178  filename vdist;
+NOTE: Fileref VDIST has been deassigned.
+13179  %let em_nodeid = Filter3;
+13180  %var_profile(DATA=EMWS1.Clus2_TRAIN, OUTPUT=WORK._HISTDATA, METADATA=WORK.Filter3DMDBC, COMPUTESTAT=N, BINDATA=_bindata, STAT=_STAT, FREQ=, BIN=Y, NUMBARS= 16);
+*------------------------------------------------------------*
+* Filter3: Computing Summary Statistics
+*------------------------------------------------------------*
+ 
+NOTE: There were 0 observations read from the data set WORK.FILTER3DMDBC.
+      WHERE (LEVEL='INTERVAL') and (ROLE not = 'FREQ');
+NOTE: The data set WORK._NULL has 0 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: The file _MAC is:
+      Catalog Name=WORK.MACROS.VARIABLES.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=5,
+      Created=Wed, May  9, 2018 02:56:04 PM,
+      Last Modified=Wed, May  9, 2018 02:56:04 PM,
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD4324_DESKTOP-MVTLU7L_\macros.sas7bcat,
+      Release Created=9.0401M4,
+      Host Created=X64_10HOME,
+      Owner Name=DESKTOP-MVTLU7L\Mohamed,
+      File Size=            21KB,
+      File Size (bytes)=21504
+ 
+NOTE: 2 records were written to the file _MAC.
+      The minimum record length was 12.
+      The maximum record length was 13.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+NOTE: Fileref _MAC has been deassigned.
+ 
+13183  %var_profile(DATA=WORK.DATA_FILTERED, OUTPUT=WORK._HISTDATA, METADATA=WORK.Filter3DMDBC, COMPUTESTAT=N, STAT=_STAT, BIN=Y, BINDATA=_bindata, NUMBARS= 16);
+*------------------------------------------------------------*
+* Filter3: Computing Summary Statistics
+*------------------------------------------------------------*
+ 
+NOTE: There were 0 observations read from the data set WORK.FILTER3DMDBC.
+      WHERE (LEVEL='INTERVAL') and (ROLE not = 'FREQ');
+NOTE: The data set WORK._NULL has 0 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+ 
+NOTE: The file _MAC is:
+      Catalog Name=WORK.MACROS.VARIABLES.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=5,
+      Created=Wed, May  9, 2018 02:56:04 PM,
+      Last Modified=Wed, May  9, 2018 02:56:12 PM,
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD4324_DESKTOP-MVTLU7L_\macros.sas7bcat,
+      Release Created=9.0401M4,
+      Host Created=X64_10HOME,
+      Owner Name=DESKTOP-MVTLU7L\Mohamed,
+      File Size=            21KB,
+      File Size (bytes)=21504
+ 
+NOTE: 2 records were written to the file _MAC.
+      The minimum record length was 12.
+      The maximum record length was 13.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+NOTE: Fileref _MAC has been deassigned.
+ 
+13186  *------------------------------------------------------------*;
+13187  * Filter3: Creating Bar Chart Table;
+13188  *------------------------------------------------------------*;
+13189  filename cdist catalog 'SASHELP.EMUTIL.EM_CLASSDIST.SOURCE';
+13190  %inc cdist;
+13304  filename cdist;
+NOTE: Fileref CDIST has been deassigned.
+13305  %let em_nodeid = Filter3;
+13306  %class_profile(DATA=EMWS1.Clus2_TRAIN, OUTPUT=WORK._BARDATA, METADATA=WORK.Filter3DMDBC, STAT=_STAT);
+ 
+NOTE: There were 0 observations read from the data set WORK.FILTER3DMDBC.
+      WHERE (LEVEL not = 'INTERVAL') and (ROLE not = 'FREQ');
+NOTE: The data set WORK._NULL has 0 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+ 
+NOTE: The file _MAC is:
+      Catalog Name=WORK.MACROS.VARIABLES.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=5,
+      Created=Wed, May  9, 2018 02:56:04 PM,
+      Last Modified=Wed, May  9, 2018 02:56:12 PM,
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD4324_DESKTOP-MVTLU7L_\macros.sas7bcat,
+      Release Created=9.0401M4,
+      Host Created=X64_10HOME,
+      Owner Name=DESKTOP-MVTLU7L\Mohamed,
+      File Size=            21KB,
+      File Size (bytes)=21504
+ 
+NOTE: 2 records were written to the file _MAC.
+      The minimum record length was 12.
+      The maximum record length was 13.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+NOTE: Fileref _MAC has been deassigned.
+ 
+13309  %class_profile(DATA=WORK.DATA_FILTERED, OUTPUT=WORK._BARDATA, METADATA=WORK.Filter3DMDBC, STAT=_STAT);
+ 
+NOTE: There were 0 observations read from the data set WORK.FILTER3DMDBC.
+      WHERE (LEVEL not = 'INTERVAL') and (ROLE not = 'FREQ');
+NOTE: The data set WORK._NULL has 0 observations and 26 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+ 
+NOTE: The file _MAC is:
+      Catalog Name=WORK.MACROS.VARIABLES.SOURCE,
+      Catalog Page Size=4096,
+      Number of Catalog Pages=5,
+      Created=Wed, May  9, 2018 02:56:04 PM,
+      Last Modified=Wed, May  9, 2018 02:56:12 PM,
+      Filename=C:\Users\Mohamed\AppData\Local\Temp\SAS Temporary Files\_TD4324_DESKTOP-MVTLU7L_\macros.sas7bcat,
+      Release Created=9.0401M4,
+      Host Created=X64_10HOME,
+      Owner Name=DESKTOP-MVTLU7L\Mohamed,
+      File Size=            21KB,
+      File Size (bytes)=21504
+ 
+NOTE: 2 records were written to the file _MAC.
+      The minimum record length was 12.
+      The maximum record length was 13.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+NOTE: Fileref _MAC has been deassigned.
+ 
+13312  *------------------------------------------------------------*;
+13313  * Filter3: Computing metadata for TRAIN data;
+13314  *------------------------------------------------------------*;
+ 
+NOTE: View EMWS1.FILTER3_TRAIN.VIEW used (Total process time):
+      real time           0.25 seconds
+      cpu time            0.24 seconds
+ 
+NOTE: View EMWS1.FILTER3_TRAIN.VIEW used (Total process time):
+      real time           0.25 seconds
+      cpu time            0.25 seconds
+ 
+*------------------------------------------------------------*
+* Report Log
+Date:                May 09, 2018
+Time:                14:56:14
+*------------------------------------------------------------*

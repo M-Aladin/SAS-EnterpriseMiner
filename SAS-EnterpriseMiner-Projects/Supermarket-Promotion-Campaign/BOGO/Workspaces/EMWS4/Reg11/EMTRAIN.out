@@ -1,0 +1,244 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+INPUT        BINARY            4    
+INPUT        INTERVAL          9    
+INPUT        NOMINAL           5    
+REJECTED     INTERVAL          4    
+REJECTED     NOMINAL           5    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Model Events
+
+                                     Number
+                      Measurement      of
+ Target      Event       Level       Levels      Order       Label
+
+TargetBuy      1        BINARY          2      Descending         
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type           Variable              Label
+
+TARGET       TargetBuy                             
+PREDICTED    P_TargetBuy1    Predicted: TargetBuy=1
+RESIDUAL     R_TargetBuy1    Residual: TargetBuy=1 
+PREDICTED    P_TargetBuy0    Predicted: TargetBuy=0
+RESIDUAL     R_TargetBuy0    Residual: TargetBuy=0 
+FROM         F_TargetBuy     From: TargetBuy       
+INTO         I_TargetBuy     Into: TargetBuy       
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+                Model Information
+
+Training Data Set              WORK.EM_DMREG.VIEW
+DMDB Catalog                   WORK.REG11_DMDB   
+Target Variable                TargetBuy         
+Target Measurement Level       Ordinal           
+Number of Target Categories    2                 
+Error                          MBernoulli        
+Link Function                  Logit             
+Number of Model Parameters     42                
+Number of Observations         188               
+
+
+          Target Profile
+ 
+ Ordered     Target         Total
+   Value     Buy        Frequency
+
+       1     1                 30
+       2     0                158
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates              37
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       82.525152344
+Max Abs Gradient Element                 13.425531915                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0         59.08612      23.4390     11.8546         0        0.886
+   2            0           3              0         54.40122       4.6849      2.0123         0        1.155
+   3            0           4              0         53.75229       0.6489      0.3835         0        1.143
+   4            0           5              0         53.70160       0.0507      0.0341         0        1.106
+   5            0           6              0         53.69566      0.00593     0.00348         0        1.253
+   6            0           7              0         53.69356      0.00210     0.00122         0        1.264
+   7            0           8              0         53.69279     0.000772    0.000449         0        1.264
+   8            0           9              0         53.69251     0.000284    0.000165         0        1.264
+   9            0          10              0         53.69240     0.000104    0.000061         0        1.264
+  10            0          11              0         53.69236     0.000038    0.000022         0        1.264
+
+                                            Optimization Results
+
+Iterations                                         10  Function Calls                                     13
+Hessian Calls                                      11  Active Constraints                                  0
+Objective Function                       53.692363125  Max Abs Gradient Element                 0.0000223381
+Ridge                                               0  Actual Over Pred Change                  1.2642370583
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+    165.050         107.385        57.6656       36         0.0124
+
+
+               Type 3 Analysis of Effects
+ 
+                                       Wald
+Effect                     DF    Chi-Square    Pr > ChiSq
+
+AffluenceGrade              1        9.0198        0.0027
+CampaignViewedEmail         1        0.0786        0.7792
+CleanserProducts            1        2.0504        0.1522
+DayCareProducts             1        1.2422        0.2650
+FacebookLike                1        1.6287        0.2019
+LotionProducts              1        3.0311        0.0817
+LoyaltyClass                3        2.5631        0.4640
+MobileApplications          1        4.9054        0.0268
+NightRepairProducts         1        0.3953        0.5295
+PreviousCampaign            1        0.8241        0.3640
+REP_AdvertisementZone      12        5.6135        0.9343
+REP_Age                     1        0.5659        0.4519
+REP_ClusterGroup            6        2.2026        0.9002
+REP_Gender                  2        9.9505        0.0069
+REP_LoyaltyTime             1        0.9140        0.3391
+REP_Region                  0        0.0000         .    
+TimeSinceLastPurchase       1        0.7317        0.3923
+TotalSpend                  1        0.9046        0.3416
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -3.0457     35.9728          0.01        0.9325                       0.048
+AffluenceGrade                       1      0.3389      0.1128          9.02        0.0027          0.5139       1.403
+CampaignViewedEmail   0              1     -0.0798      0.2847          0.08        0.7792                       0.923
+CleanserProducts                     1     -0.2956      0.2064          2.05        0.1522         -0.2284       0.744
+DayCareProducts                      1     -0.3229      0.2897          1.24        0.2650         -0.1925       0.724
+FacebookLike          0              1     -0.3866      0.3030          1.63        0.2019                       0.679
+LotionProducts                       1     -0.3651      0.2097          3.03        0.0817         -0.3180       0.694
+LoyaltyClass          Diamond        1      1.7905      1.3662          1.72        0.1900                       5.992
+LoyaltyClass          Gold           1     -1.1634      0.7341          2.51        0.1130                       0.312
+LoyaltyClass          Platinum       1     -0.1330      0.6174          0.05        0.8294                       0.875
+MobileApplications    0              1      0.7509      0.3390          4.91        0.0268                       2.119
+NightRepairProducts                  1     -0.2525      0.4016          0.40        0.5295         -0.1018       0.777
+PreviousCampaign      0              1     -0.2878      0.3170          0.82        0.3640                       0.750
+REP_AdvertisementZone Central Z1     1      1.4522     35.8095          0.00        0.9677                       4.272
+REP_AdvertisementZone E Central      1      1.4938     35.8045          0.00        0.9667                       4.454
+REP_AdvertisementZone N Central      1     -9.7519       362.0          0.00        0.9785                       0.000
+REP_AdvertisementZone N East         1      2.2198     35.8784          0.00        0.9507                       9.205
+REP_AdvertisementZone N West         1     -0.0117     35.8290          0.00        0.9997                       0.988
+REP_AdvertisementZone NE Z1          1      1.7444     35.8151          0.00        0.9612                       5.722
+REP_AdvertisementZone NE Z2          1      0.9009     35.8231          0.00        0.9799                       2.462
+REP_AdvertisementZone NE Z3          1      0.8935     35.8211          0.00        0.9801                       2.444
+REP_AdvertisementZone S Central      1      1.6026     35.8067          0.00        0.9643                       4.966
+REP_AdvertisementZone S East         1      2.5878     35.8081          0.01        0.9424                      13.301
+REP_AdvertisementZone S West         1      0.1375     35.8211          0.00        0.9969                       1.147
+REP_AdvertisementZone U              1     -6.0817       234.1          0.00        0.9793                       0.002
+REP_Age                              1     -0.0222      0.0295          0.57        0.4519         -0.1317       0.978
+REP_ClusterGroup      A              1     -0.4324      1.0210          0.18        0.6719                       0.649
+REP_ClusterGroup      B              1     -0.3183      0.7000          0.21        0.6493                       0.727
+REP_ClusterGroup      C              1     -0.6441      0.6643          0.94        0.3322                       0.525
+REP_ClusterGroup      D              1    -0.00793      0.6134          0.00        0.9897                       0.992
+REP_ClusterGroup      E              1     -0.3779      0.7497          0.25        0.6142                       0.685
+REP_ClusterGroup      F              1     -0.3740      0.9659          0.15        0.6986                       0.688
+REP_Gender            F              1      1.5572      0.5009          9.67        0.0019                       4.746
+REP_Gender            M              1     -0.1663      0.5827          0.08        0.7754                       0.847
+REP_LoyaltyTime                      1     -0.1556      0.1627          0.91        0.3391         -0.2086       0.856
+REP_Region            Central        0           0           .           .           .                   .        .   
+REP_Region            North          0           0           .           .           .                   .        .   
+REP_Region            NorthEast      0           0           .           .           .                   .        .   
+REP_Region            South East     0           0           .           .           .                   .        .   
+REP_Region            South West     0           0           .           .           .                   .        .   
+TimeSinceLastPurchase                1      0.2477      0.2896          0.73        0.3923          0.1700       1.281
+TotalSpend                           1    -0.00009    0.000090          0.90        0.3416         -0.2386       1.000
+
+
+                   Odds Ratio Estimates
+                             
+                                                     Point
+Effect                                            Estimate
+
+AffluenceGrade                                       1.403
+CampaignViewedEmail   0 vs 1                         0.852
+CleanserProducts                                     0.744
+DayCareProducts                                      0.724
+FacebookLike          0 vs 1                         0.462
+LotionProducts                                       0.694
+LoyaltyClass          Diamond vs Silver              9.822
+LoyaltyClass          Gold vs Silver                 0.512
+LoyaltyClass          Platinum vs Silver             1.435
+MobileApplications    0 vs 1                         4.490
+NightRepairProducts                                  0.777
+PreviousCampaign      0 vs 1                         0.562
+REP_AdvertisementZone Central Z1 vs W Central        0.256
+REP_AdvertisementZone E Central vs W Central         0.267
+REP_AdvertisementZone N Central vs W Central        <0.001
+REP_AdvertisementZone N East vs W Central            0.553
+REP_AdvertisementZone N West vs W Central            0.059
+REP_AdvertisementZone NE Z1 vs W Central             0.343
+REP_AdvertisementZone NE Z2 vs W Central             0.148
+REP_AdvertisementZone NE Z3 vs W Central             0.147
+REP_AdvertisementZone S Central vs W Central         0.298
+REP_AdvertisementZone S East vs W Central            0.798
+REP_AdvertisementZone S West vs W Central            0.069
+REP_AdvertisementZone U vs W Central                <0.001
+REP_Age                                              0.978
+REP_ClusterGroup      A vs U                         0.075
+REP_ClusterGroup      B vs U                         0.084
+REP_ClusterGroup      C vs U                         0.061
+REP_ClusterGroup      D vs U                         0.115
+REP_ClusterGroup      E vs U                         0.079
+REP_ClusterGroup      F vs U                         0.080
+REP_Gender            F vs U                        19.071
+REP_Gender            M vs U                         3.403
+REP_LoyaltyTime                                      0.856
+REP_Region            Central vs U                    .   
+REP_Region            North vs U                      .   
+REP_Region            NorthEast vs U                  .   
+REP_Region            South East vs U                 .   
+REP_Region            South West vs U                 .   
+TimeSinceLastPurchase                                1.281
+TotalSpend                                           1.000

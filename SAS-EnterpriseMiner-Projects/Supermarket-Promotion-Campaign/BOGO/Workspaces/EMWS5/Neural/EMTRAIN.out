@@ -1,0 +1,423 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+INPUT        INTERVAL          4    
+INPUT        NOMINAL           5    
+REJECTED     INTERVAL          1    
+REJECTED     NOMINAL           1    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Model Events
+
+                                     Number
+                      Measurement      of
+ Target      Event       Level       Levels      Order                  Label
+
+TargetBuy      1        BINARY          2      Descending    Organics Purchase Indicator
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Decision Matrix and Prior Vector
+
+Target      Training                   Decision
+ Buy      Proportions      1      0     Priors
+
+  1         0.24772       15.0    0      0.05  
+  0         0.75228       -1.5    0      0.95  
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type                Variable      Label
+
+TARGET            TargetBuy       Organics Purchase Indicator
+PREDICTED         P_TargetBuy1    Predicted: TargetBuy=1     
+RESIDUAL          R_TargetBuy1    Residual: TargetBuy=1      
+PREDICTED         P_TargetBuy0    Predicted: TargetBuy=0     
+RESIDUAL          R_TargetBuy0    Residual: TargetBuy=0      
+FROM              F_TargetBuy     From: TargetBuy            
+INTO              I_TargetBuy     Into: TargetBuy            
+MODELDECISION     D_TargetBuy     Decision: TargetBuy        
+EXPECTEDPROFIT    EP_TARGETBUY    Expected Profit: TargetBuy 
+COMPUTEDPROFIT    CP_TARGETBUY    Computed Profit: TargetBuy 
+BESTPROFIT        BP_TARGETBUY    Best Profit: TargetBuy     
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+Preliminary       Starting         Objective         Number
+ Training          Random           Function           of        Terminating
+    Run             Seed             Value         Iterations     Criteria
+
+        1               12345     0.43967057762           10                
+        2          1272262437    0.435923503182           10                
+        3          1356277451    0.439530948337           10                
+        4          1409083667     0.42734522271           10                
+        5           393403510    0.434637115322           10                
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+                      Optimization Start
+                      Parameter Estimates
+                                                      Gradient
+                                                     Objective
+  N Parameter                         Estimate        Function
+
+  1 IMP_DemAffl_H11                   0.359576       -0.005599
+  2 IMP_DemAge_H11                    0.007559       -0.001867
+  3 IMP_PromTime_H11                  0.048011        0.000722
+  4 PromSpend_H11                     0.000337       -0.006833
+  5 IMP_DemAffl_H12                  -0.649921        0.000841
+  6 IMP_DemAge_H12                    0.272395        0.001878
+  7 IMP_PromTime_H12                  0.205759    -0.000015050
+  8 PromSpend_H12                     0.044603        0.001534
+  9 IMP_DemAffl_H13                  -0.324322       -0.001279
+ 10 IMP_DemAge_H13                    1.281540       -0.001149
+ 11 IMP_PromTime_H13                  0.018268       -0.000421
+ 12 PromSpend_H13                     0.143489        0.002913
+ 13 IMP_DemClusterGroupA_H11         -0.142177       -0.001536
+ 14 IMP_DemClusterGroupB_H11          0.195258     0.000097431
+ 15 IMP_DemClusterGroupC_H11          0.059123        0.000290
+ 16 IMP_DemClusterGroupD_H11          0.101720        0.000313
+ 17 IMP_DemClusterGroupE_H11          0.046955        0.000224
+ 18 IMP_DemClusterGroupF_H11         -0.041765        0.000256
+ 19 IMP_DemGenderF_H11                0.564399        0.006197
+ 20 IMP_DemGenderM_H11               -0.086799       -0.009498
+ 21 IMP_DemRegMidlands_H11            0.068923       -0.001070
+ 22 IMP_DemRegNorth_H11              -0.136651        0.001857
+ 23 IMP_DemRegScottish_H11            0.030192        0.000679
+ 24 IMP_DemRegSouthEast_H11           0.015394        0.002437
+ 25 IMP_DemRegSouthWest_H11           0.173808     0.000056376
+ 26 IMP_DemTVRegBorder_H11           -0.122404       -0.001644
+ 27 IMP_DemTVRegCScotland_H11        -0.045300       -0.002368
+ 28 IMP_DemTVRegEast_H11             -0.013177       -0.002095
+ 29 IMP_DemTVRegLondon_H11            0.058365       -0.000909
+ 30 IMP_DemTVRegMidlands_H11         -0.207190       -0.004268
+ 31 IMP_DemTVRegNEast_H11             0.032736       -0.002127
+ 32 IMP_DemTVRegNScot_H11            -0.056825       -0.002321
+ 33 IMP_DemTVRegNWest_H11            -0.050046       -0.003028
+ 34 IMP_DemTVRegS_SEast_H11          -0.091694       -0.001395
+ 35 IMP_DemTVRegSWest_H11            -0.051449       -0.002415
+ 36 IMP_DemTVRegU_H11                 0.166306       -0.002472
+ 37 IMP_DemTVRegUlster_H11           -0.029810       -0.001776
+ 38 IMP_DemTVRegWales_West_H11        0.004270       -0.002212
+ 39 PromClassGold_H11                 0.112864       -0.000706
+ 40 PromClassPlatinum_H11            -0.177012       -0.000329
+ 41 PromClassSilver_H11               0.068802        0.006470
+ 42 IMP_DemClusterGroupA_H12         -0.044963        0.000180
+ 43 IMP_DemClusterGroupB_H12          0.256387        0.000114
+ 44 IMP_DemClusterGroupC_H12         -0.205479       -0.000360
+ 45 IMP_DemClusterGroupD_H12         -0.027788       -0.000171
+ 46 IMP_DemClusterGroupE_H12         -0.360525       -0.000591
+ 47 IMP_DemClusterGroupF_H12         -0.330449       -0.000606
+ 48 IMP_DemGenderF_H12               -0.420220       -0.001426
+ 49 IMP_DemGenderM_H12               -0.122225        0.001113
+ 50 IMP_DemRegMidlands_H12            0.025019     0.000046391
+ 51 IMP_DemRegNorth_H12               0.066042       -0.000124
+ 52 IMP_DemRegScottish_H12           -0.203304       -0.000539
+ 53 IMP_DemRegSouthEast_H12           0.095061       -0.000695
+ 54 IMP_DemRegSouthWest_H12          -0.237256       -0.000223
+ 55 IMP_DemTVRegBorder_H12           -0.128899    -0.000011781
+ 56 IMP_DemTVRegCScotland_H12        -0.127750     0.000084002
+ 57 IMP_DemTVRegEast_H12              0.096397     0.000005887
+ 58 IMP_DemTVRegLondon_H12            0.002748       -0.000398
+ 59 IMP_DemTVRegMidlands_H12         -0.066809        0.000438
+ 60 IMP_DemTVRegNEast_H12            -0.246108        0.000378
+ 61 IMP_DemTVRegNScot_H12            -0.050838     0.000049521
+ 62 IMP_DemTVRegNWest_H12            -0.022552        0.000158
+ 63 IMP_DemTVRegS_SEast_H12           0.041772        0.000181
+ 64 IMP_DemTVRegSWest_H12            -0.052301     0.000071587
+ 65 IMP_DemTVRegU_H12                 0.182175        0.000295
+ 66 IMP_DemTVRegUlster_H12           -0.069180        0.000214
+ 67 IMP_DemTVRegWales_West_H12       -0.338008        0.000232
+ 68 PromClassGold_H12                 0.198122        0.000536
+ 69 PromClassPlatinum_H12             0.049137        0.000134
+ 70 PromClassSilver_H12              -0.251171       -0.001792
+ 71 IMP_DemClusterGroupA_H13         -0.071260        0.000282
+ 72 IMP_DemClusterGroupB_H13          0.210245        0.000356
+ 73 IMP_DemClusterGroupC_H13          0.153144       -0.000359
+ 74 IMP_DemClusterGroupD_H13          0.160613        0.001357
+ 75 IMP_DemClusterGroupE_H13          0.264540        0.000378
+ 76 IMP_DemClusterGroupF_H13          0.126035     0.000034353
+ 77 IMP_DemGenderF_H13               -0.045745       -0.004633
+ 78 IMP_DemGenderM_H13                0.200996        0.003694
+ 79 IMP_DemRegMidlands_H13            0.033875        0.000578
+ 80 IMP_DemRegNorth_H13              -0.028147       -0.001259
+ 81 IMP_DemRegScottish_H13            0.163220       -0.000247
+ 82 IMP_DemRegSouthEast_H13          -0.064019       -0.002306
+ 83 IMP_DemRegSouthWest_H13           0.203022       -0.000219
+ 84 IMP_DemTVRegBorder_H13           -0.100658        0.000564
+ 85 IMP_DemTVRegCScotland_H13        -0.106955        0.000756
+ 86 IMP_DemTVRegEast_H13             -0.038019        0.000755
+ 87 IMP_DemTVRegLondon_H13           -0.064102       -0.001508
+ 88 IMP_DemTVRegMidlands_H13         -0.068155        0.001626
+ 89 IMP_DemTVRegNEast_H13            -0.126482        0.001153
+ 90 IMP_DemTVRegNScot_H13            -0.039998        0.000773
+ 91 IMP_DemTVRegNWest_H13            -0.135633    -0.000072179
+ 92 IMP_DemTVRegS_SEast_H13          -0.028718        0.000726
+ 93 IMP_DemTVRegSWest_H13             0.033882        0.000490
+ 94 IMP_DemTVRegU_H13                 0.136502        0.000709
+ 95 IMP_DemTVRegUlster_H13            0.284167        0.000381
+ 96 IMP_DemTVRegWales_West_H13        0.039865        0.000972
+ 97 PromClassGold_H13                -0.016268    -0.000026221
+ 98 PromClassPlatinum_H13             0.065151        0.001194
+ 99 PromClassSilver_H13               0.091331       -0.002773
+100 BIAS_H11                         -0.082259        0.002747
+101 BIAS_H12                          1.751961       -0.000865
+102 BIAS_H13                          1.075260       -0.004095
+103 H11_TargetBuy1                    1.745822        0.001785
+104 H12_TargetBuy1                   -0.636789        0.002593
+105 H13_TargetBuy1                   -1.096319        0.003275
+106 BIAS_TargetBuy1                  -0.709930        0.002469
+
+Value of Objective Function = 0.4273452227
+
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+Dual Quasi-Newton Optimization
+
+
+Minimum Iterations                                0
+Maximum Iterations                               50
+Maximum Function Calls                   2147483647
+Maximum CPU Time                              14400
+ABSGCONV Gradient Criterion                 0.00001
+GCONV Gradient Criterion                       1E-8
+ABSFCONV Function Criterion                       0
+FCONV Function Criterion                     0.0001
+FCONV2 Function Criterion                         0
+FSIZE Parameter                                   0
+ABSXCONV Parameter Change Criterion               0
+XCONV Parameter Change Criterion                  0
+XSIZE Parameter                                   0
+ABSCONV Function Criterion             0.0016800212
+Line Search Method                                2
+Starting Alpha for Line Search                    1
+Line Search Precision LSPRECISION               0.4
+DAMPSTEP Parameter for Line Search                .
+Singularity Tolerance (SINGULAR)               1E-8
+
+Dual Quasi-Newton Optimization
+
+Dual Broyden - Fletcher - Goldfarb - Shanno Update (DBFGS)
+
+Parameter Estimates             106
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       0.4273452227
+Max Abs Gradient Element                 0.0094975125                                                       
+
+
+                                                                 Objective     Max Abs                Slope of
+                     Function         Active        Objective     Function    Gradient       Step       Search
+Iter     Restarts       Calls    Constraints         Function       Change     Element       Size    Direction
+
+   1            0           5              0          0.42633      0.00101      0.0108     0.0417      -0.0483
+   2            0           8              0          0.42578     0.000556     0.00310      0.538      -0.0021
+   3            0          12              0          0.42532     0.000454     0.00546      2.100      -0.0004
+   4            0          14              0          0.42494     0.000379     0.00442      1.000      -0.0006
+   5            0          18              0          0.42385      0.00109      0.0107      2.816      -0.0008
+   6            0          20              0          0.42289     0.000957     0.00549      3.171      -0.0009
+   7            0          23              0          0.42252     0.000376     0.00180      1.527      -0.0005
+   8            0          25              0          0.42195     0.000571     0.00222      3.753      -0.0003
+   9            0          28              0          0.42162     0.000326     0.00229      1.951      -0.0003
+  10            0          30              0          0.42142     0.000201     0.00570      3.375      -0.0002
+  11            0          32              0          0.42119     0.000229     0.00317      1.621      -0.0003
+  12            0          34              0          0.42093     0.000260     0.00526      3.570      -0.0002
+  13            0          36              0          0.42068     0.000245     0.00222      2.297      -0.0003
+  14            0          39              0          0.42053     0.000158     0.00193      1.944      -0.0002
+  15            0          41              0          0.42038     0.000151     0.00191      3.366      -0.0001
+  16            0          43              0          0.42032     0.000052     0.00396      3.087      -0.0001
+  17            0          47              0          0.42018     0.000145    0.000852      1.420      -0.0002
+  18            0          49              0          0.42010     0.000082     0.00330      5.023      -0.0001
+  19            0          51              0          0.41999     0.000112     0.00106      1.022      -0.0002
+  20            0          53              0          0.41989     0.000100     0.00211      4.905      -569E-7
+  21            0          55              0          0.41978     0.000103     0.00196      2.067      -0.0001
+  22            0          57              0          0.41971     0.000078     0.00473      3.665      -0.0001
+  23            0          59              0          0.41960     0.000105     0.00137      1.594      -0.0001
+  24            0          62              0          0.41953     0.000067     0.00124      2.289      -603E-7
+  25            0          64              0          0.41949     0.000041     0.00291      3.931      -428E-7
+  26            0          68              0          0.41938     0.000108     0.00150      2.115      -0.0001
+  27            0          70              0          0.41925     0.000132     0.00291      3.366      -0.0001
+  28            0          72              0          0.41919     0.000061     0.00664      3.518      -0.0001
+  29            0          76              0          0.41905     0.000136     0.00205      1.497      -0.0002
+  30            0          79              0          0.41899     0.000065     0.00170      1.759      -0.0001
+  31            0          81              0          0.41893     0.000060     0.00221      1.767      -0.0001
+  32            0          83              0          0.41886     0.000073     0.00199      1.386      -0.0001
+  33            0          85              0          0.41877     0.000084     0.00449      1.339      -0.0001
+  34            0          87              0          0.41865     0.000119     0.00251      1.458      -0.0001
+  35            0          90              0          0.41858     0.000073     0.00285      0.830      -0.0002
+  36            0          93              0          0.41853     0.000047     0.00210      0.648      -0.0001
+  37            0          95              0          0.41846     0.000069     0.00116      0.838      -0.0001
+  38            0          98              0          0.41842     0.000048     0.00242      1.117      -0.0001
+  39            0         100              0          0.41834     0.000076     0.00127      0.998      -0.0001
+  40            0         102              0          0.41830     0.000044     0.00411      1.731      -0.0001
+  41            0         104              0          0.41824     0.000057     0.00219      0.699      -0.0002
+  42            0         107              0          0.41821     0.000029     0.00124      0.772      -0.0001
+  43            0         109              0          0.41819     0.000021     0.00272      1.425      -515E-7
+  44            0         111              0          0.41816     0.000034    0.000784      0.938      -549E-7
+  45            0         114              0          0.41813     0.000023    0.000965      1.012      -447E-7
+  46            0         116              0          0.41812     0.000018     0.00202      2.311      -249E-7
+  47            0         118              0          0.41810     0.000013     0.00303      1.516      -291E-7
+  48            0         120              0          0.41809     0.000015     0.00121      0.966      -345E-7
+  49            0         122              0          0.41807     0.000021     0.00139      1.536      -244E-7
+  50            0         124              0          0.41803     0.000032     0.00198      1.357       -38E-6
+
+                                            Optimization Results
+
+Iterations                                         50  Function Calls                                    126
+Gradient Calls                                     57  Active Constraints                                  0
+Objective Function                       0.4180348868  Max Abs Gradient Element                 0.0019758235
+Slope of Search Direction                -0.000038018                                                       
+
+QUANEW needs more than 50 iterations or 2147483647 function calls.                                
+
+WARNING: QUANEW Optimization cannot be completed.
+
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+                     Optimization Results
+                      Parameter Estimates
+                                                      Gradient
+                                                     Objective
+  N Parameter                         Estimate        Function
+
+  1 IMP_DemAffl_H11                   0.232068        0.000298
+  2 IMP_DemAge_H11                    0.011994       -0.000953
+  3 IMP_PromTime_H11                  0.004065        0.000393
+  4 PromSpend_H11                    -0.003456       -0.001976
+  5 IMP_DemAffl_H12                  -1.174010       -0.000115
+  6 IMP_DemAge_H12                    0.246142        0.000119
+  7 IMP_PromTime_H12                  0.043082     0.000003803
+  8 PromSpend_H12                    -0.045281     0.000076776
+  9 IMP_DemAffl_H13                  -0.279830        0.000132
+ 10 IMP_DemAge_H13                    4.371122       -0.000269
+ 11 IMP_PromTime_H13                  0.003841        0.000163
+ 12 PromSpend_H13                     0.266303        0.000174
+ 13 IMP_DemClusterGroupA_H11         -0.021928       -0.000211
+ 14 IMP_DemClusterGroupB_H11          0.077483        0.000125
+ 15 IMP_DemClusterGroupC_H11          0.074324    -0.000012885
+ 16 IMP_DemClusterGroupD_H11          0.046951    -0.000067215
+ 17 IMP_DemClusterGroupE_H11         -0.002051       -0.000249
+ 18 IMP_DemClusterGroupF_H11          0.012594        0.000220
+ 19 IMP_DemGenderF_H11                0.284385    -0.000060584
+ 20 IMP_DemGenderM_H11               -0.016350       -0.000217
+ 21 IMP_DemRegMidlands_H11            0.078547       -0.000574
+ 22 IMP_DemRegNorth_H11              -0.090382        0.000404
+ 23 IMP_DemRegScottish_H11            0.025037        0.000473
+ 24 IMP_DemRegSouthEast_H11           0.013911       -0.001181
+ 25 IMP_DemRegSouthWest_H11           0.161975        0.000311
+ 26 IMP_DemTVRegBorder_H11           -0.176558    -0.000009830
+ 27 IMP_DemTVRegCScotland_H11         0.005177        0.000131
+ 28 IMP_DemTVRegEast_H11             -0.027698    -0.000066756
+ 29 IMP_DemTVRegLondon_H11            0.048100       -0.001085
+ 30 IMP_DemTVRegMidlands_H11         -0.088177       -0.000490
+ 31 IMP_DemTVRegNEast_H11             0.000351        0.000399
+ 32 IMP_DemTVRegNScot_H11            -0.000372        0.000121
+ 33 IMP_DemTVRegNWest_H11             0.086539       -0.000227
+ 34 IMP_DemTVRegS_SEast_H11          -0.049043       -0.000270
+ 35 IMP_DemTVRegSWest_H11            -0.053476        0.000195
+ 36 IMP_DemTVRegU_H11                 0.176112       -0.000116
+ 37 IMP_DemTVRegUlster_H11           -0.014946    -0.000004679
+ 38 IMP_DemTVRegWales_West_H11       -0.023465       -0.000302
+ 39 PromClassGold_H11                 0.038846       -0.000576
+ 40 PromClassPlatinum_H11            -0.090736       -0.000179
+ 41 PromClassSilver_H11               0.030230        0.000589
+ 42 IMP_DemClusterGroupA_H12          0.077666        0.000248
+ 43 IMP_DemClusterGroupB_H12          0.127270       -0.000100
+ 44 IMP_DemClusterGroupC_H12          0.652833    -0.000085129
+ 45 IMP_DemClusterGroupD_H12          0.343241    -0.000041647
+ 46 IMP_DemClusterGroupE_H12          0.367005     0.000052384
+ 47 IMP_DemClusterGroupF_H12          0.135185        0.000103
+ 48 IMP_DemGenderF_H12               -0.180149    -0.000077864
+ 49 IMP_DemGenderM_H12               -0.038770     0.000025288
+ 50 IMP_DemRegMidlands_H12            0.861044    -0.000090572
+ 51 IMP_DemRegNorth_H12              -0.516731       -0.000244
+ 52 IMP_DemRegScottish_H12            0.152914     0.000015175
+ 53 IMP_DemRegSouthEast_H12           0.117700     0.000069109
+ 54 IMP_DemRegSouthWest_H12          -0.002369    -0.000064191
+ 55 IMP_DemTVRegBorder_H12           -0.105470     0.000012483
+ 56 IMP_DemTVRegCScotland_H12         0.091579    -0.000034762
+ 57 IMP_DemTVRegEast_H12              0.242544     0.000094865
+ 58 IMP_DemTVRegLondon_H12           -0.148589        0.000110
+ 59 IMP_DemTVRegMidlands_H12         -0.836552    -0.000070548
+ 60 IMP_DemTVRegNEast_H12            -0.840444    -0.000063528
+ 61 IMP_DemTVRegNScot_H12            -0.190997        0.000136
+ 62 IMP_DemTVRegNWest_H12            -0.264608    -0.000081727
+ 63 IMP_DemTVRegS_SEast_H12           0.085274     0.000028366
+ 64 IMP_DemTVRegSWest_H12             0.175257    -0.000025259
+ 65 IMP_DemTVRegU_H12                 0.174846     0.000038932
+ 66 IMP_DemTVRegUlster_H12            0.070075    -0.000039821
+ 67 IMP_DemTVRegWales_West_H12        0.605592     0.000053632
+ 68 PromClassGold_H12                 0.084653     0.000041812
+ 69 PromClassPlatinum_H12             0.012337        0.000136
+ 70 PromClassSilver_H12               0.231087     0.000035565
+ 71 IMP_DemClusterGroupA_H13         -0.312935     0.000004914
+ 72 IMP_DemClusterGroupB_H13          0.426100    -0.000070922
+ 73 IMP_DemClusterGroupC_H13          0.556680     0.000038985
+ 74 IMP_DemClusterGroupD_H13          0.102994     0.000045296
+ 75 IMP_DemClusterGroupE_H13         -0.445593    -0.000017539
+ 76 IMP_DemClusterGroupF_H13          0.214616        0.000101
+ 77 IMP_DemGenderF_H13                0.017346     0.000031191
+ 78 IMP_DemGenderM_H13               -0.181702     0.000018089
+ 79 IMP_DemRegMidlands_H13           -0.071126        0.000169
+ 80 IMP_DemRegNorth_H13               0.152576    -0.000073833
+ 81 IMP_DemRegScottish_H13           -0.040334    -0.000063763
+ 82 IMP_DemRegSouthEast_H13           0.207603     0.000099349
+ 83 IMP_DemRegSouthWest_H13           0.567438        0.000124
+ 84 IMP_DemTVRegBorder_H13           -0.265177     0.000076191
+ 85 IMP_DemTVRegCScotland_H13        -0.471795     0.000065757
+ 86 IMP_DemTVRegEast_H13              0.343496        0.000171
+ 87 IMP_DemTVRegLondon_H13            0.234771        0.000181
+ 88 IMP_DemTVRegMidlands_H13          0.117228        0.000177
+ 89 IMP_DemTVRegNEast_H13            -1.187867    -0.000045313
+ 90 IMP_DemTVRegNScot_H13             0.025625     0.000003653
+ 91 IMP_DemTVRegNWest_H13             0.846293        0.000181
+ 92 IMP_DemTVRegS_SEast_H13          -0.144510     0.000053102
+ 93 IMP_DemTVRegSWest_H13             0.481400        0.000185
+ 94 IMP_DemTVRegU_H13                 0.219605     0.000060903
+ 95 IMP_DemTVRegUlster_H13           -0.214410     0.000084661
+ 96 IMP_DemTVRegWales_West_H13       -0.565281     0.000020148
+ 97 PromClassGold_H13                 0.489091    -0.000073174
+ 98 PromClassPlatinum_H13            -1.166392    -0.000008190
+ 99 PromClassSilver_H13               0.447544     0.000061099
+100 BIAS_H11                         -0.130378       -0.000911
+101 BIAS_H12                          3.313857       -0.000260
+102 BIAS_H13                          3.111935        0.000175
+103 H11_TargetBuy1                    3.248434     0.000039612
+104 H12_TargetBuy1                   -1.673435       -0.000202
+105 H13_TargetBuy1                   -1.021922       -0.000524
+106 BIAS_TargetBuy1                   0.553809    -0.000066061
+
+Value of Objective Function = 0.4180348868
+

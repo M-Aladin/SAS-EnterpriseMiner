@@ -1,0 +1,77 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                15:10:24
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           NOMINAL           1
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          4
+REJECTED     NOMINAL           5
+SEGMENT      NOMINAL           1
+TARGET       BINARY            1
+ 
+ 
+ 
+ 
+Partition Summary
+ 
+                                      Number of
+Type              Data Set          Observations
+ 
+DATA        EMWS4.Filter3_TRAIN         6224
+TRAIN       EMWS4.Part5_TRAIN           3111
+VALIDATE    EMWS4.Part5_VALIDATE        3113
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Summary Statistics for Class Targets
+ 
+Data=DATA
+ 
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+ 
+TargetBuy       0           0           5043      81.0251
+TargetBuy       1           1           1181      18.9749
+ 
+ 
+Data=TRAIN
+ 
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+ 
+TargetBuy       0           0           2521      81.0350
+TargetBuy       1           1            590      18.9650
+ 
+ 
+Data=VALIDATE
+ 
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+ 
+TargetBuy       0           0           2522      81.0151
+TargetBuy       1           1            591      18.9849

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  Method="DEFAULT" TrainPct="50" ValidatePct="50" TestPct="0" RandomSeed="12345" OutputType="DATA"
+ IntervalDistribution="Y" ClassDistribution="Y" ForceRun="N" RunAction="Train" Component="Partition"
+ RawCreateTime="1841497165.3" CreateTime="09MAY2018:14:59:25" RunId="4c3e0ae8-aa7a-4ec0-9dd1-66253b3e0ff7"
+ RawLastTimeRun="1841497959.7" RawRunTime="8.1259999275" LastTimeRun="09MAY2018:15:12:40"
+ RunTime="0 Hr. 0 Min. 8.13 Sec.">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES ><![CDATA[
+EMNOTES
+]]>
+</FILEPROPERTIES><EMTARGETATTRIBUTES/>
+</_ROOT_>

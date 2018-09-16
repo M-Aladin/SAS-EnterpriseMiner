@@ -1,0 +1,92 @@
+*------------------------------------------------------------*
+* Training Log
+Date:                May 13, 2018
+Time:                21:29:28
+*------------------------------------------------------------*
+11408  proc freq data=EMWS6.Score_VariableSet noprint;
+11409  table ROLE*LEVEL/out=WORK.ScoreMETA;
+11410  run;
+
+NOTE: There were 2 observations read from the data set EMWS6.SCORE_VARIABLESET.
+NOTE: The data set WORK.SCOREMETA has 2 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+
+11411  proc print data=WORK.ScoreMETA label noobs;
+11412  var ROLE LEVEL COUNT;
+11413  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+11414  title9 ' ';
+11415  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+11416  run;
+
+NOTE: There were 2 observations read from the data set WORK.SCOREMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+
+11417  title10;
+
+11418  %let groupid =;
+11419  %let endGroupid =;
+11420  %let prescoreid =;
+11421  %let idsTable =;
+11422  %let hpdmTable =;
+11423  %let lasthptm =;
+11424  data _null_;
+11425  set EMWS6.Neural_EMINFO;
+11426  where upcase(key) in('LASTHPTM', 'IDSTABLE', 'HPDMSAMPLE', 'PRESCORECODE','ENDGROUP', 'GROUPINFO', 'BOOSTINFO', 'BAGINFO', 'TARGETINFO', 'INDEXINFO');
+11427  select(upcase(key));
+11428  when('LASTHPTM') call symput('lasthptm', DATA);
+11429  when('IDSTABLE') call symput('idsTable', DATA);
+11430  when('HPDMSAMPLE') call symput('hpdmSample', DATA);
+11431  when('PRESCORECODE') call symput('prescoreId', DATA);
+11432  when('ENDGROUP') call symput('endGroupId', DATA);
+11433  otherwise call symput('groupId', DATA);
+11434  end;
+11435  run;
+
+NOTE: There were 1 observations read from the data set EMWS6.NEURAL_EMINFO.
+      WHERE UPCASE(key) in ('BAGINFO', 'BOOSTINFO', 'ENDGROUP', 'GROUPINFO', 'HPDMSAMPLE', 'IDSTABLE', 'INDEXINFO', 'LASTHPTM', 'PRESCORECODE', 'TARGETINFO');
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL setMetaData >> 
+NOTE: There were 1 observations read from the data set EMWS6.NEURAL_EMINFO.
+      WHERE (TARGET='TargetBuy') and (KEY='MODEL');
+NOTE: The data set WORK.EMINFO41VKBZPY has 1 observations and 3 variables.
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL NUMELEMENTS >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL setMetaData >> 
+NOTE: There were 1 observations read from the data set EMWS6.NEURAL_EMINFO.
+      WHERE (TARGET='TargetBuy') and (KEY='DECMETA');
+NOTE: The data set WORK.EMINFO411BC2FR has 1 observations and 3 variables.
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >> 
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >> 
+11436  %let em_rootkey=;
+11437  %let em_keytype=;
+11438  %let em_keylen=;
+11439  data _null_;
+11440  set EMWS6.Ids_cmeta_data;
+11441  where role='KEY';
+11442  call symput('em_rootkey', strip(NAME));
+11443  call symput('em_keytype', strip(TYPE));
+11444  call symput('em_rootlen', strip(put(length, best.)));
+11445  run;
+
+NOTE: There were 0 observations read from the data set EMWS6.IDS_CMETA_DATA.
+      WHERE role='KEY';
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.

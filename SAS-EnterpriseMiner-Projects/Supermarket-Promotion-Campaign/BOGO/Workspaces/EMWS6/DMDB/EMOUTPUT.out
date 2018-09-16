@@ -1,0 +1,61 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 13, 2018
+Time:                20:18:33
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           NOMINAL           1
+INPUT        INTERVAL          4
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          1
+REJECTED     NOMINAL           1
+TARGET       BINARY            1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Interval Variable Summary Statistics
+ 
+                                                                                                  Standard
+Variable     Label                    Missing            N    Minimum      Maximum       Mean    Deviation    Skewness    Kurtosis
+ 
+DemAffl      Affluence Grade             1085        21138      0.00         34.00       8.71        3.42      0.89168       2.097
+DemAge       Age                         1508        20715     18.00         79.00      53.80       13.21     -0.07983      -0.844
+PromSpend    Total Spend                    0        22223      0.01     296313.85    4420.59     7559.05      8.03719     184.872
+PromTime     Loyalty Card Tenure          281        21942      0.00         39.00       6.56        4.66      2.28279       8.078
+ 
+ 
+ 
+ 
+Class Variable Summary Statistics
+ 
+                                                           Number
+                                                             of
+Variable           Label                           Type    Levels    Missing
+ 
+DemClusterGroup    Neighborhood Cluster-7 Level     C         7         674
+DemGender          Gender                           C         3        2512
+DemReg             Geographic Region                C         5         465
+DemTVReg           Television Region                C        13         465
+PromClass          Loyalty Status                   C         4           0
+TargetBuy          Organics Purchase Indicator      N         2           0

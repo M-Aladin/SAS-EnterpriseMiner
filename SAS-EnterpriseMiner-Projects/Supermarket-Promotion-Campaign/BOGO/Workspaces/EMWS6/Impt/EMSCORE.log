@@ -1,0 +1,123 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                May 13, 2018
+Time:                21:05:29
+*------------------------------------------------------------*
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+11710  data _null_;
+11711  set EMWS6.Impt_META end=eof;
+11712  length string $34;
+11713  retain missTotal;
+11714  file #LN00206;
+11715  if _n_=1 then misstotal = percentmiss;
+11716  missTotal = percentmiss+misstotal;
+11717  if IMP ne '' and METHOD ne 'NONE' then do;
+11718  string = '"'!!strip(NAME)!!'"';
+11719  put 'if NAME = ' string 'then delete;';
+11720  put 'else ';
+11721  string = '"'!!strip(IMP)!!'"';
+11722  put 'if NAME    = ' string ' then do;';
+11723  string = '"'!!strip(ROLE)!!'"';
+11724  put '   ROLE    = ' string ';';
+11725  string = '"'!!strip(FAMILY)!!'"';
+11726  put '   FAMILY  = ' string ';';
+11727  string = '"'!!strip(REPORT)!!'"';
+11728  put '   REPORT  = ' string ';';
+11729  string = '"'!!strip(LEVEL)!!'"';
+11730  put '   LEVEL   = ' string ';';
+11731  string = '"'!!strip(ORDER)!!'"';
+11732  put '   ORDER   = ' string ';';
+11733  put 'end;';
+11734  end;
+11735  if percentmiss>50 and ROLE ne 'TARGET' then do;
+11736  string = '"'!!strip(NAME)!!'"';
+11737  put 'if NAME = ' string ' then do;';
+11738  put '   ROLE ="REJECTED";';
+11739  put '   COMMENT = "Percent of missing exceeds 50%";';
+11740  put 'end;';
+11741  end;
+11742  put 'else ';
+11743  put 'if NAME  = "' M '" then do;';
+11744  put '   ROLE  ="INPUT";';
+11745  if percentmiss>0 then put '   LEVEL ="BINARY";';
+11746  else put '   LEVEL ="UNARY";';
+11747  put ' end;';
+11748  run;
+
+NOTE: The file #LN00206 is:
+      Filename=D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS6\Impt\CDELTA_TRAIN.sas,
+      RECFM=V,LRECL=32767,File Size (bytes)=0,
+      Last Modified=13May2018:21:05:29,
+      Create Time=13May2018:21:05:29
+
+NOTE: 113 records were written to the file #LN00206.
+      The minimum record length was 4.
+      The maximum record length was 44.
+NOTE: There were 10 observations read from the data set EMWS6.IMPT_META.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11749  filename emflow "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS6\Impt\EMFLOWSCORE.sas";
+11750  *------------------------------------------------------------*;
+11751  * Impt: Scoring DATA data;
+11752  *------------------------------------------------------------*;
+11753  data EMWS6.Impt_TRAIN
+11754  / view=EMWS6.Impt_TRAIN
+11755  ;
+11756  set EMWS6.Part_TRAIN
+11757  ;
+11758  %inc emflow;
+11817  run;
+
+NOTE: DATA STEP view saved on file EMWS6.IMPT_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11818  quit;
+11819  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11820  filename emflow "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS6\Impt\EMFLOWSCORE.sas";
+11821  *------------------------------------------------------------*;
+11822  * Impt: Scoring VALIDATE data;
+11823  *------------------------------------------------------------*;
+11824  data EMWS6.Impt_VALIDATE
+11825  / view=EMWS6.Impt_VALIDATE
+11826  ;
+11827  set EMWS6.Part_VALIDATE
+11828  ;
+11829  %inc emflow;
+11888  run;
+
+NOTE: DATA STEP view saved on file EMWS6.IMPT_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11889  quit;
+11890  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11891  *------------------------------------------------------------*;
+11892  * Impt: Computing metadata for TRAIN data;
+11893  *------------------------------------------------------------*;
+
+NOTE: View EMWS6.IMPT_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+NOTE: View EMWS6.IMPT_TRAIN.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.06 seconds
+      
+NOTE: View EMWS6.IMPT_VALIDATE.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      

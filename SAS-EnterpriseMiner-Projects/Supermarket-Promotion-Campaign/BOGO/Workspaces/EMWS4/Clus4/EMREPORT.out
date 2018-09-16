@@ -1,0 +1,16 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Importance
+
+                                                Number of    Number of
+                                                Splitting    Surrogate
+Variable Name                   Label             Rules        Rules      Importance
+
+NightRepairProducts                                  5           1          1.00000 
+AffluenceGrade                                      10           5          0.90810 
+TimeSinceLastPurchase                                3           4          0.65827 
+DayCareProducts                                      5           1          0.50498 
+LoyaltyClass                                         0           2          0.47870 
+REP_Gender               Replacement: Gender         0           1          0.31339 

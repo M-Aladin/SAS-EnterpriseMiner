@@ -1,0 +1,82 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+INPUT        BINARY            4    
+INPUT        INTERVAL          9    
+INPUT        NOMINAL           5    
+REJECTED     INTERVAL          3    
+REJECTED     NOMINAL           4    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+Class Variables
+
+Obs    NAME                     LEVEL           CODE     FREQUENCY    TYPE    CRAW          NRAW    FREQPERCENT    NMISSPERCENT
+
+  1    CampaignViewedEmail      0                  1         11898     N                      0       51.7304         51.7304  
+  2    CampaignViewedEmail      1                  0         11102     N                      1       48.2696         48.2696  
+  3    FacebookLike             0                  0         14000     N                      0       60.8696         60.8696  
+  4    FacebookLike             1                  1          9000     N                      1       39.1304         39.1304  
+  5    LoyaltyClass             DIAMOND            3           867     C      Diamond         .        3.7696          3.7696  
+  6    LoyaltyClass             GOLD               0          8891     C      Gold            .       38.6565         38.6565  
+  7    LoyaltyClass             PLATINUM           1          6542     C      Platinum        .       28.4435         28.4435  
+  8    LoyaltyClass             SILVER             2          6700     C      Silver          .       29.1304         29.1304  
+  9    MobileApplications       0                  1         12090     N                      0       52.5652         52.5652  
+ 10    MobileApplications       1                  0         10910     N                      1       47.4348         47.4348  
+ 11    PreviousCampaign         0                  0         12213     N                      0       53.1000         53.1000  
+ 12    PreviousCampaign         1                  1         10787     N                      1       46.9000         46.9000  
+ 13    REP_AdvertisementZone    BORDER            12           205     C      Border          .        0.8913          0.8913  
+ 14    REP_AdvertisementZone    CENTRAL Z1         4          1710     C      Central Z1      .        7.4348          7.4348  
+ 15    REP_AdvertisementZone    E CENTRAL          0          6406     C      E Central       .       27.8522         27.8522  
+ 16    REP_AdvertisementZone    N CENTRAL          8           278     C      N Central       .        1.2087          1.2087  
+ 17    REP_AdvertisementZone    N EAST             5           813     C      N East          .        3.5348          3.5348  
+ 18    REP_AdvertisementZone    N WEST             3          2175     C      N West          .        9.4565          9.4565  
+ 19    REP_AdvertisementZone    NE Z1              9           861     C      NE Z1           .        3.7435          3.7435  
+ 20    REP_AdvertisementZone    NE Z2             13           338     C      NE Z2           .        1.4696          1.4696  
+ 21    REP_AdvertisementZone    NE Z3             11          1498     C      NE Z3           .        6.5130          6.5130  
+ 22    REP_AdvertisementZone    S CENTRAL          2          3233     C      S Central       .       14.0565         14.0565  
+ 23    REP_AdvertisementZone    S EAST             7          2531     C      S East          .       11.0043         11.0043  
+ 24    REP_AdvertisementZone    S WEST            10           717     C      S West          .        3.1174          3.1174  
+ 25    REP_AdvertisementZone    U                  6           481     C      U               .        2.0913          2.0913  
+ 26    REP_AdvertisementZone    W CENTRAL          1          1754     C      W Central       .        7.6261          7.6261  
+ 27    REP_ClusterGroup         A                  0          1900     C      A               .        8.2609          8.2609  
+ 28    REP_ClusterGroup         B                  4          4298     C      B               .       18.6870         18.6870  
+ 29    REP_ClusterGroup         C                  1          4730     C      C               .       20.5652         20.5652  
+ 30    REP_ClusterGroup         D                  2          4528     C      D               .       19.6870         19.6870  
+ 31    REP_ClusterGroup         E                  6          2705     C      E               .       11.7609         11.7609  
+ 32    REP_ClusterGroup         F                  3          4091     C      F               .       17.7870         17.7870  
+ 33    REP_ClusterGroup         U                  5           748     C      U               .        3.2522          3.2522  
+ 34    REP_Gender               F                  0         12539     C      F               .       54.5174         54.5174  
+ 35    REP_Gender               M                  2          6030     C      M               .       26.2174         26.2174  
+ 36    REP_Gender               U                  1          4431     C      U               .       19.2652         19.2652  
+ 37    REP_Region               CENTRAL            1          6975     C      Central         .       30.3261         30.3261  
+ 38    REP_Region               NORTH              2          4486     C      North           .       19.5043         19.5043  
+ 39    REP_Region               NORTHEAST          4          1404     C      NorthEast       .        6.1043          6.1043  
+ 40    REP_Region               SOUTH EAST         0          8937     C      South East      .       38.8565         38.8565  
+ 41    REP_Region               SOUTH WEST         5           717     C      South West      .        3.1174          3.1174  
+ 42    REP_Region               U                  3           481     C      U               .        2.0913          2.0913  
+ 43    TargetBuy                1                  1          5799     N                      1       25.2130         25.2130  
+ 44    TargetBuy                0                  0         17201     N                      0       74.7870         74.7870  
+ 
+                                                                                                                                                                                                                                                                
+ 
+Interval Variables
+
+Obs    NAME                         NMISS            N    MIN       MAX       MEAN        STD    SKEWNESS    KURTOSIS
+
+ 1     AffluenceGrade                1125        21875      0        34       8.71       3.42     0.89554       2.101
+ 2     CleanserProducts                 0        23000      0         4       1.97       1.35     0.06494      -1.192
+ 3     DayCareProducts                  0        23000      0         3       1.49       1.11     0.02700      -1.348
+ 4     LotionProducts                   0        23000      0         5       2.21       1.57     0.12512      -1.095
+ 5     NightRepairProducts              0        23000      0         2       0.99       0.82     0.02537      -1.505
+ 6     REP_Age                       1610        21390     18        79      53.79      13.20    -0.08187      -0.838
+ 7     REP_LoyaltyTime                293        22707      0        39       6.56       4.64     2.27922       8.084
+ 8     TimeSinceLastPurchase            0        23000      1        34       3.57       3.67     3.55278      15.839
+ 9     TotalSpend                       0        23000     10    296314    4546.62    7474.78     8.11803     187.101

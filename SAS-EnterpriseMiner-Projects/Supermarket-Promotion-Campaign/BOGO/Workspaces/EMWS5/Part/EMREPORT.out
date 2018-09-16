@@ -1,0 +1,31 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Summary Statistics for Class Targets
+
+Data=DATA
+
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent               Label
+
+TargetBuy       0           0          16718      75.2284    Organics Purchase Indicator
+TargetBuy       1           1           5505      24.7716    Organics Purchase Indicator
+
+
+Data=TRAIN
+
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent               Label
+
+TargetBuy       0           0           8359      75.2250    Organics Purchase Indicator
+TargetBuy       1           1           2753      24.7750    Organics Purchase Indicator
+
+
+Data=VALIDATE
+
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent               Label
+
+TargetBuy       0           0           8359      75.2318    Organics Purchase Indicator
+TargetBuy       1           1           2752      24.7682    Organics Purchase Indicator

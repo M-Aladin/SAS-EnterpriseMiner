@@ -1,0 +1,701 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                17:32:27
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+INPUT        INTERVAL          4
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          1
+REJECTED     NOMINAL           1
+TARGET       BINARY            1
+ 
+ 
+ 
+ 
+Model Events
+ 
+                                     Number
+                      Measurement      of
+ Target      Event       Level       Levels      Order                  Label
+ 
+TargetBuy      1        BINARY          2      Descending    Organics Purchase Indicator
+ 
+ 
+ 
+ 
+Decision Matrix and Prior Vector
+ 
+Target      Training                   Decision
+ Buy      Proportions      1      0     Priors
+ 
+  1         0.24772       15.0    0      0.05
+  0         0.75228       -1.5    0      0.95
+ 
+ 
+ 
+ 
+Predicted and decision variables
+ 
+Type                Variable      Label
+ 
+TARGET            TargetBuy       Organics Purchase Indicator
+PREDICTED         P_TargetBuy1    Predicted: TargetBuy=1
+RESIDUAL          R_TargetBuy1    Residual: TargetBuy=1
+PREDICTED         P_TargetBuy0    Predicted: TargetBuy=0
+RESIDUAL          R_TargetBuy0    Residual: TargetBuy=0
+FROM              F_TargetBuy     From: TargetBuy
+INTO              I_TargetBuy     Into: TargetBuy
+MODELDECISION     D_TargetBuy     Decision: TargetBuy
+EXPECTEDPROFIT    EP_TARGETBUY    Expected Profit: TargetBuy
+COMPUTEDPROFIT    CP_TARGETBUY    Computed Profit: TargetBuy
+BESTPROFIT        BP_TARGETBUY    Best Profit: TargetBuy
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+                          Model Information
+ 
+Training Data Set              WORK.EM_DMREG.VIEW
+DMDB Catalog                   WORK.REG_DMDB
+Target Variable                TargetBuy (Organics Purchase Indicator)
+Target Measurement Level       Ordinal
+Number of Target Categories    2
+Error                          MBernoulli
+Link Function                  Logit
+Number of Model Parameters     34
+Number of Observations         11112
+ 
+ 
+           Target Profile
+ 
+ Ordered                       Total
+   Value     TargetBuy     Frequency
+ 
+       1             1          2753
+       2             0          8359
+ 
+ 
+ 
+ 
+Stepwise Selection Procedure
+ 
+ 
+Step 0: Intercept entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               1
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       6221.0525303
+Max Abs Gradient Element                  2.87731E-12
+ 
+                                            Optimization Results
+ 
+Iterations                                          0  Function Calls                                      3
+Hessian Calls                                       1  Active Constraints                                  0
+Objective Function                       6221.0525303  Max Abs Gradient Element                  2.87731E-12
+Ridge                                               0  Actual Over Pred Change                             0
+ 
+Convergence criterion (ABSGCONV=0.00001) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+  12442.105       12442.105         0.0000        0          .
+ 
+ 
+ 
+ 
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                            1     -1.1106      0.0220       2554.59        <.0001                       0.329
+ 
+ 
+ 
+ 
+Step 1: Effect IMP_DemAffl entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               2
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       6221.0525303
+Max Abs Gradient Element                 364.30391503
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             5551        670.0       246.0         0        0.972
+   2            0           3              0             5533      17.6665      9.1925         0        1.029
+   3            0           4              0             5533       0.0407      0.0255         0        1.002
+   4            0           5              0             5533     4.518E-7    2.654E-7         0        1.000
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       5533.3208735  Max Abs Gradient Element                 2.6542682E-7
+Ridge                                               0  Actual Over Pred Change                  0.9997518932
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+  12442.105       11066.642      1375.4633        1         <.0001
+ 
+ 
+              Type 3 Analysis of Effects
+ 
+                                     Wald
+Effect                   DF    Chi-Square    Pr > ChiSq
+ 
+IMP_DemAffl               1     1118.3697        <.0001
+ 
+ 
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                            1     -3.5049      0.0782       2011.09        <.0001                       0.030
+IMP_DemAffl                          1      0.2585     0.00773       1118.37        <.0001          0.4763       1.295
+ 
+ 
+                    Odds Ratio Estimates
+ 
+                                                       Point
+Effect                                              Estimate
+ 
+IMP_DemAffl                                            1.295
+ 
+ 
+Step 2: Effect IMP_DemAge entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               3
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       6221.0525303
+Max Abs Gradient Element                 598.00641751
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             5183       1038.0       357.3         0        0.998
+   2            0           3              0             5132      51.0691     28.2014         0        1.065
+   3            0           4              0             5131       0.6090      0.3837         0        1.010
+   4            0           5              0             5131     0.000150    0.000092         0        1.000
+ 
+                                            Optimization Results
+ 
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       5131.3531632  Max Abs Gradient Element                 0.0000919163
+Ridge                                               0  Actual Over Pred Change                  1.0001707919
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+  12442.105       10262.706      2179.3987        2         <.0001
+ 
+ 
+              Type 3 Analysis of Effects
+ 
+                                     Wald
+Effect                   DF    Chi-Square    Pr > ChiSq
+ 
+IMP_DemAffl               1      952.3297        <.0001
+IMP_DemAge                1      724.1352        <.0001
+ 
+ 
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                            1     -0.5804      0.1275         20.71        <.0001                       0.560
+IMP_DemAffl                          1      0.2507     0.00812        952.33        <.0001          0.4618       1.285
+IMP_DemAge                           1     -0.0551     0.00205        724.14        <.0001         -0.3867       0.946
+ 
+ 
+                    Odds Ratio Estimates
+ 
+                                                       Point
+Effect                                              Estimate
+ 
+IMP_DemAffl                                            1.285
+IMP_DemAge                                             0.946
+ 
+ 
+Step 3: Effect IMP_DemGender entered.
+ 
+ 
+ 
+ 
+ 
+The DMREG Procedure
+ 
+Newton-Raphson Ridge Optimization
+ 
+Without Parameter Scaling
+ 
+Parameter Estimates               5
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       6221.0525303
+Max Abs Gradient Element                 906.08027358
+ 
+ 
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+ 
+   1            0           2              0             4945       1275.7       425.9         0        1.015
+   2            0           3              0             4851      94.3122     50.4521         0        1.104
+   3            0           4              0             4848       3.3202      2.1279         0        1.035
+   4            0           5              0             4848       0.0104     0.00738         0        1.003
+   5            0           6              0             4848     1.755E-7    1.267E-7         0        1.000
+ 
+                                            Optimization Results
+ 
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       4847.6832266  Max Abs Gradient Element                 1.2670034E-7
+Ridge                                               0  Actual Over Pred Change                   0.999962473
+ 
+Convergence criterion (GCONV=1E-6) satisfied.
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+  12442.105        9695.366      2746.7386        4         <.0001
+ 
+ 
+              Type 3 Analysis of Effects
+ 
+                                     Wald
+Effect                   DF    Chi-Square    Pr > ChiSq
+ 
+IMP_DemAffl               1      882.3367        <.0001
+IMP_DemAge                1      672.2951        <.0001
+IMP_DemGender             2      479.2496        <.0001
+ 
+ 
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                            1     -1.0104      0.1333         57.42        <.0001                       0.364
+IMP_DemAffl                          1      0.2482     0.00835        882.34        <.0001          0.4572       1.282
+IMP_DemAge                           1     -0.0545     0.00210        672.30        <.0001         -0.3825       0.947
+IMP_DemGender       F                1      0.8606      0.0393        479.24        <.0001                       2.365
+IMP_DemGender       M                1     -0.0171      0.0466          0.13        0.7145                       0.983
+ 
+ 
+                    Odds Ratio Estimates
+ 
+                                                       Point
+Effect                                              Estimate
+ 
+IMP_DemAffl                                            1.282
+IMP_DemAge                                             0.947
+IMP_DemGender       F vs U                             5.497
+IMP_DemGender       M vs U                             2.285
+ 
+ 
+NOTE: No (additional) effects met the 0.05 significance level for entry into the model.
+ 
+ 
+                                   Summary of Stepwise Selection
+ 
+               Effect                Number         Score          Wald                  Validation
+    Step    Entered            DF        In    Chi-Square    Chi-Square    Pr > ChiSq        Profit
+ 
+       1    IMP_DemAffl         1         1     1379.1010                      <.0001        1266.5
+       2    IMP_DemAge          1         2      783.0549                      <.0001        2111.7
+       3    IMP_DemGender       2         3      526.8359                      <.0001        2851.3
+ 
+ 
+The selected model, based on the total profit for the validation data, is the model trained in Step 3. It consists of the following effects:
+ 
+Intercept  IMP_DemAffl  IMP_DemAge  IMP_DemGender
+ 
+ 
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+ 
+  12442.105        9695.366      2746.7386        4         <.0001
+ 
+ 
+              Type 3 Analysis of Effects
+ 
+                                     Wald
+Effect                   DF    Chi-Square    Pr > ChiSq
+ 
+IMP_DemAffl               1      882.3367        <.0001
+IMP_DemAge                1      672.2951        <.0001
+IMP_DemGender             2      479.2496        <.0001
+ 
+ 
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+ 
+Intercept                            1     -1.0104      0.1333         57.42        <.0001                       0.364
+IMP_DemAffl                          1      0.2482     0.00835        882.34        <.0001          0.4572       1.282
+IMP_DemAge                           1     -0.0545     0.00210        672.30        <.0001         -0.3825       0.947
+IMP_DemGender       F                1      0.8606      0.0393        479.24        <.0001                       2.365
+IMP_DemGender       M                1     -0.0171      0.0466          0.13        0.7145                       0.983
+ 
+ 
+                    Odds Ratio Estimates
+ 
+                                                       Point
+Effect                                              Estimate
+ 
+IMP_DemAffl                                            1.282
+IMP_DemAge                                             0.947
+IMP_DemGender       F vs U                             5.497
+IMP_DemGender       M vs U                             2.285
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+ 
+The FREQ Procedure
+ 
+                         Target
+ 
+                                 Cumulative    Cumulative
+FROM    Frequency     Percent     Frequency      Percent
+---------------------------------------------------------
+0       75.22498       75.22      75.22498        75.22
+1       24.77502       24.78           100       100.00
+ 
+ 
+ 
+ 
+Fit Statistics
+ 
+Target=TargetBuy Target Label=Organics Purchase Indicator
+ 
+   Fit
+Statistics    Statistics Label                     Train    Validation
+ 
+ _AIC_        Akaike's Information Criterion     9705.37          .
+ _ASE_        Average Squared Error                 0.14         0.14
+ _AVERR_      Average Error Function                0.44         0.43
+ _DFE_        Degrees of Freedom for Error      11107.00          .
+ _DFM_        Model Degrees of Freedom              5.00          .
+ _DFT_        Total Degrees of Freedom          11112.00          .
+ _DIV_        Divisor for ASE                   22224.00     22222.00
+ _ERR_        Error Function                     9695.37      9619.27
+ _FPE_        Final Prediction Error                0.14          .
+ _MAX_        Maximum Absolute Error                0.99         0.99
+ _MSE_        Mean Square Error                     0.14         0.14
+ _NOBS_       Sum of Frequencies                11112.00     11111.00
+ _NW_         Number of Estimate Weights            5.00          .
+ _RASE_       Root Average Sum of Squares           0.37         0.37
+ _RFPE_       Root Final Prediction Error           0.37          .
+ _RMSE_       Root Mean Squared Error               0.37         0.37
+ _SBC_        Schwarz's Bayesian Criterion       9741.95          .
+ _SSE_        Sum of Squared Errors              3087.67      3054.71
+ _SUMW_       Sum of Case Weights Times Freq    22224.00     22222.00
+ _MISC_       Misclassification Rate                0.23         0.23
+ _PROF_       Total Profit for TargetBuy         2537.88      2851.33
+ _APROF_      Average Profit for TargetBuy          0.23         0.26
+ 
+ 
+ 
+ 
+Classification Table
+ 
+Data Role=TRAIN Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+                                                                            Adjusted Percent
+                                                                                   of
+                       Target        Outcome     Frequency       Total      Predict/Decision
+Target    Outcome    Percentage    Percentage      Count      Percentage        Variable
+ 
+  0          0         76.2226       99.9402        8354        75.1800          94.9432
+  0          1          3.2895        0.0598           5         0.0450           0.0568
+  1          0         23.7774       94.6604        2606        23.4521           4.7330
+  1          1         96.7105        5.3396         147         1.3229           0.2670
+ 
+ 
+Data Role=VALIDATE Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+                                                                            Adjusted Percent
+                                                                                   of
+                       Target        Outcome     Frequency       Total      Predict/Decision
+Target    Outcome    Percentage    Percentage      Count      Percentage        Variable
+ 
+  0          0         76.2879       99.9163        8352        75.1688          94.9290
+  0          1          4.2945        0.0837           7         0.0630           0.0796
+  1          0         23.7121       94.3314        2596        23.3642           4.7153
+  1          1         95.7055        5.6686         156         1.4040           0.2834
+ 
+ 
+ 
+ 
+Decision Table
+ 
+Data Role=TRAIN Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+                                                                            Adjusted Percent
+                                                                                   of
+                       Target        Outcome     Frequency       Total      Predict/Decision
+Target    Outcome    Percentage    Percentage      Count      Percentage        Variable
+ 
+  0          0         85.2162       87.7138        7332        65.9827          83.3281
+  0          1         40.9490       12.2862        1027         9.2423          11.6719
+  1          0         14.7838       46.2041        1272        11.4471           2.3102
+  1          1         59.0510       53.7959        1481        13.3279           2.6898
+ 
+ 
+Data Role=VALIDATE Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+                                                                            Adjusted Percent
+                                                                                   of
+                       Target        Outcome     Frequency       Total      Predict/Decision
+Target    Outcome    Percentage    Percentage      Count      Percentage        Variable
+ 
+  0          0         85.8133       88.8623        7428        66.8527          84.4268
+  0          1         37.9226       11.1377         931         8.3791          10.5818
+  1          0         14.1867       44.6221        1228        11.0521           2.2305
+  1          1         62.0774       55.3779        1524        13.7161           2.7681
+ 
+ 
+ 
+ 
+Event Classification Table
+ 
+Data Role=TRAIN Target=TargetBuy Target Label=Organics Purchase Indicator
+ 
+  False       True        False       True
+Negative    Negative    Positive    Positive
+ 
+  2606        8354          5          147
+ 
+ 
+Data Role=VALIDATE Target=TargetBuy Target Label=Organics Purchase Indicator
+ 
+  False       True        False       True
+Negative    Negative    Positive    Positive
+ 
+  2596        8352          7          156
+ 
+ 
+ 
+ 
+Assessment Score Rankings
+ 
+Data Role=TRAIN Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+                                                                                    Mean
+                            Cumulative       %      Cumulative     Number of     Posterior
+Depth      Gain     Lift       Lift      Response   % Response   Observations   Probability
+ 
+   5    535.567   6.35567     6.35567     31.7783     31.7783       556.452       0.28223
+  10    368.467   3.01027     4.68467     15.0513     23.4233       555.324       0.13765
+  15    264.845   1.57466     3.64845      7.8733     18.2423       555.523       0.10025
+  20    206.769   1.32395     3.06769      6.6197     15.3385       555.299       0.07875
+  25    172.793   1.37009     2.72793      6.8505     13.6397       556.144       0.06381
+  30    140.731   0.80241     2.40731      4.0120     12.0366       555.125       0.05292
+  35    118.354   0.84243     2.18354      4.2122     10.9177       556.275       0.04470
+  40    100.656   0.76700     2.00656      3.8350     10.0328       555.407       0.03826
+  45     85.315   0.62506     1.85315      3.1253      9.2657       555.342       0.03287
+  50     72.731   0.59558     1.72731      2.9779      8.6366       556.051       0.02812
+  55     61.546   0.49610     1.61546      2.4805      8.0773       555.287       0.02408
+  60     52.122   0.48455     1.52122      2.4228      7.6061       555.620       0.02057
+  65     43.102   0.34866     1.43102      1.7433      7.1551       555.673       0.01777
+  70     35.013   0.29798     1.35013      1.4899      6.7507       555.364       0.01508
+  75     27.809   0.26892     1.27809      1.3446      6.3904       555.345       0.01275
+  80     21.594   0.28344     1.21594      1.4172      6.0797       555.383       0.01045
+  85     15.466   0.17432     1.15466      0.8716      5.7733       555.721       0.00842
+  90     10.098   0.18880     1.10098      0.9440      5.5049       555.862       0.00641
+  95      4.874   0.10891     1.04874      0.5446      5.2437       555.905       0.00446
+ 100      0.000   0.07274     1.00000      0.3637      5.0000       554.896       0.00245
+ 
+ 
+Data Role=VALIDATE Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+                                                                                    Mean
+                            Cumulative       %      Cumulative     Number of     Posterior
+Depth      Gain     Lift       Lift      Response   % Response   Observations   Probability
+ 
+   5    563.950   6.63950     6.63950     33.1975     33.1975       556.430       0.27992
+  10    385.516   3.06579     4.85516     15.3290     24.2758       554.867       0.13319
+  15    278.898   1.65819     3.78898      8.2909     18.9449       556.052       0.09608
+  20    214.989   1.23279     3.14989      6.1639     15.7494       555.840       0.07798
+  25    173.998   1.09740     2.73998      5.4870     13.6999       554.793       0.06376
+  30    142.224   0.83417     2.42224      4.1708     12.1112       555.832       0.05313
+  35    117.884   0.71732     2.17884      3.5866     10.8942       555.193       0.04529
+  40    100.477   0.78651     2.00477      3.9326     10.0238       555.699       0.03829
+  45     84.832   0.59617     1.84832      2.9808      9.2416       555.331       0.03265
+  50     71.997   0.56619     1.71997      2.8309      8.5999       556.209       0.02825
+  55     61.196   0.53091     1.61196      2.6545      8.0598       555.149       0.02458
+  60     51.292   0.42287     1.51292      2.1144      7.5646       555.264       0.02106
+  65     42.773   0.40570     1.42773      2.0285      7.1386       555.727       0.01775
+  70     34.958   0.33415     1.34958      1.6708      6.7479       555.800       0.01490
+  75     27.827   0.27967     1.27827      1.3984      6.3913       555.489       0.01251
+  80     21.589   0.28000     1.21589      1.4000      6.0794       555.448       0.01040
+  85     15.759   0.22520     1.15759      1.1260      5.7880       555.772       0.00832
+  90     10.299   0.17445     1.10299      0.8722      5.5149       555.461       0.00640
+  95      4.876   0.07268     1.04876      0.3634      5.2438       555.533       0.00456
+ 100      0.000   0.07273     1.00000      0.3637      5.0000       555.110       0.00252
+ 
+ 
+ 
+ 
+Assessment Score Distribution
+ 
+Data Role=TRAIN Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+ Posterior      Number                     Mean
+Probability         of    Number of     Posterior
+   Range        Events    Nonevents    Probability    Percentage
+ 
+ 0.95-1.00       0.807        0.00       0.96823         0.0073
+ 0.90-0.95       1.816        0.00       0.92310         0.0163
+ 0.85-0.90       2.018        0.00       0.87242         0.0182
+ 0.80-0.85       1.211        0.00       0.82470         0.0109
+ 0.75-0.80       2.422        0.00       0.77258         0.0218
+ 0.70-0.75       4.642        1.26       0.72689         0.0531
+ 0.65-0.70       2.825        0.00       0.67058         0.0254
+ 0.60-0.65       4.238        1.26       0.62262         0.0495
+ 0.55-0.60       4.238        0.00       0.57404         0.0381
+ 0.50-0.55       5.449        3.79       0.52288         0.0831
+ 0.45-0.50       9.082        3.79       0.47092         0.1158
+ 0.40-0.45      11.705       13.89       0.42521         0.2304
+ 0.35-0.40      18.769       12.63       0.37435         0.2826
+ 0.30-0.35      18.769       40.41       0.32251         0.5326
+ 0.25-0.30      21.594       58.09       0.27295         0.7171
+ 0.20-0.25      41.574      117.45       0.22372         1.4311
+ 0.15-0.20      53.078      243.74       0.17171         2.6711
+ 0.10-0.15      79.919      606.18       0.12068         6.1744
+ 0.05-0.10     114.833     1742.77       0.07026        16.7171
+ 0.00-0.05     156.609     7711.14       0.01938        70.8040
+ 
+ 
+Data Role=VALIDATE Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+ Posterior      Number                     Mean
+Probability         of    Number of     Posterior
+   Range        Events    Nonevents    Probability    Percentage
+ 
+ 0.95-1.00       0.807        0.00       0.97288         0.0073
+ 0.90-0.95       2.422        0.00       0.92175         0.0218
+ 0.85-0.90       1.413        0.00       0.88190         0.0127
+ 0.80-0.85       1.817        0.00       0.82589         0.0164
+ 0.75-0.80       3.634        0.00       0.76901         0.0327
+ 0.70-0.75       2.624        0.00       0.73088         0.0236
+ 0.65-0.70       3.028        0.00       0.68077         0.0273
+ 0.60-0.65       4.643        0.00       0.62974         0.0418
+ 0.55-0.60       5.249        2.53       0.57096         0.0700
+ 0.50-0.55       5.854        6.31       0.53011         0.1095
+ 0.45-0.50       9.690        5.05       0.47179         0.1327
+ 0.40-0.45      10.901       10.10       0.42798         0.1890
+ 0.35-0.40      14.333       15.15       0.37505         0.2654
+ 0.30-0.35      16.957       41.67       0.32238         0.5277
+ 0.25-0.30      24.023       47.99       0.27436         0.6481
+ 0.20-0.25      38.557      102.28       0.22290         1.2676
+ 0.15-0.20      56.726      220.98       0.17173         2.4994
+ 0.10-0.15      89.631      550.57       0.12140         5.7618
+ 0.05-0.10     109.414     1870.15       0.07051        17.8163
+ 0.00-0.05     153.826     7682.66       0.01933        70.5291

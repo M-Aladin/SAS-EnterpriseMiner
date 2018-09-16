@@ -1,0 +1,76 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                15:01:25
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           NOMINAL           1
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          3
+REJECTED     NOMINAL           4
+TARGET       BINARY            1
+ 
+ 
+ 
+ 
+Partition Summary
+ 
+                                      Number of
+Type              Data Set          Observations
+ 
+DATA        EMWS4.Filter_TRAIN          20035
+TRAIN       EMWS4.Part3_TRAIN           10016
+VALIDATE    EMWS4.Part3_VALIDATE        10019
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Summary Statistics for Class Targets
+ 
+Data=DATA
+ 
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+ 
+TargetBuy       0           0          15033      75.0337
+TargetBuy       1           1           5002      24.9663
+ 
+ 
+Data=TRAIN
+ 
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+ 
+TargetBuy       0           0           7516      75.0399
+TargetBuy       1           1           2500      24.9601
+ 
+ 
+Data=VALIDATE
+ 
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+ 
+TargetBuy       0           0           7517      75.0274
+TargetBuy       1           1           2502      24.9726

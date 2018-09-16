@@ -1,0 +1,76 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                14:55:55
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           NOMINAL           1
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          3
+REJECTED     NOMINAL           4
+TARGET       BINARY            1
+ 
+ 
+ 
+ 
+Partition Summary
+ 
+                                      Number of
+Type              Data Set          Observations
+ 
+DATA        EMWS1.Filter_TRAIN          4224
+TRAIN       EMWS1.Part2_TRAIN           2111
+VALIDATE    EMWS1.Part2_VALIDATE        2113
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Summary Statistics for Class Targets
+ 
+Data=DATA
+ 
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+ 
+TargetBuy       0           0           2694      63.7784
+TargetBuy       1           1           1530      36.2216
+ 
+ 
+Data=TRAIN
+ 
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+ 
+TargetBuy       0           0           1346      63.7613
+TargetBuy       1           1            765      36.2387
+ 
+ 
+Data=VALIDATE
+ 
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+ 
+TargetBuy       0           0           1348      63.7956
+TargetBuy       1           1            765      36.2044

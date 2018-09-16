@@ -1,0 +1,159 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+Filter Limits for Interval Variables
+(maximum 500 observations printed)
+
+                                                                     Keep
+                                                          Filter    Missing
+Variable                 Role      Minimum     Maximum    Method    Values     Label
+
+AffluenceGrade           INPUT       -1.74       19.82    STDDEV       Y                               
+CleanserProducts         INPUT       -2.15        6.04    STDDEV       Y                               
+DayCareProducts          INPUT       -1.79        4.80    STDDEV       Y                               
+LotionProducts           INPUT       -2.55        6.94    STDDEV       Y                               
+NightRepairProducts      INPUT       -1.47        3.44    STDDEV       Y                               
+REP_Age                  INPUT       12.93       95.86    STDDEV       Y       Replacement: Age        
+REP_LoyaltyTime          INPUT       -8.93       21.89    STDDEV       Y       Replacement: LoyaltyTime
+TimeSinceLastPurchase    INPUT       -8.38       15.88    STDDEV       Y                               
+TotalSpend               INPUT    -8393.82    17556.23    STDDEV       Y                               
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Number Of Observations
+
+Data
+Role     Filtered    Excluded    DATA
+
+TRAIN      3947         277      4224
+ 
+                                                                                                                                                                                                                                                                
+ 
+Statistics for Original and FILTERED Data
+(maximum 500 observations printed)
+
+Data Role=TRAIN Variable=AffluenceGrade
+
+Statistics            Original    Filtered
+
+Non Missing            4224.00     3947.00
+Missing                   0.00        0.00
+Minimum                   1.00        1.00
+Maximum                  29.00       19.00
+Mean                      9.04        8.89
+Standard Deviation        3.59        3.25
+Skewness                  0.93        0.41
+Kurtosis                  1.91       -0.01
+
+
+Data Role=TRAIN Variable=CleanserProducts
+
+Statistics            Original    Filtered
+
+Non Missing            4224.00     3947.00
+Missing                   0.00        0.00
+Minimum                   0.00        0.00
+Maximum                   4.00        4.00
+Mean                      1.94        1.93
+Standard Deviation        1.37        1.36
+Skewness                  0.08        0.09
+Kurtosis                 -1.22       -1.21
+
+
+Data Role=TRAIN Variable=DayCareProducts
+
+Statistics            Original    Filtered
+
+Non Missing            4224.00     3947.00
+Missing                   0.00        0.00
+Minimum                   0.00        0.00
+Maximum                   3.00        3.00
+Mean                      1.51        1.51
+Standard Deviation        1.10        1.10
+Skewness                  0.04        0.04
+Kurtosis                 -1.31       -1.31
+
+
+Data Role=TRAIN Variable=LotionProducts
+
+Statistics            Original    Filtered
+
+Non Missing            4224.00     3947.00
+Missing                   0.00        0.00
+Minimum                   0.00        0.00
+Maximum                   5.00        5.00
+Mean                      2.20        2.19
+Standard Deviation        1.58        1.58
+Skewness                  0.17        0.17
+Kurtosis                 -1.10       -1.10
+
+
+Data Role=TRAIN Variable=NightRepairProducts
+
+Statistics            Original    Filtered
+
+Non Missing            4224.00     3947.00
+Missing                   0.00        0.00
+Minimum                   0.00        0.00
+Maximum                   2.00        2.00
+Mean                      0.99        0.99
+Standard Deviation        0.82        0.82
+Skewness                  0.02        0.02
+Kurtosis                 -1.51       -1.51
+
+
+Data Role=TRAIN Variable=REP_Age
+
+Statistics            Original    Filtered
+
+Non Missing            4224.00     3947.00
+Missing                   0.00        0.00
+Minimum                  18.00       18.00
+Maximum                  79.00       79.00
+Mean                     54.39       54.04
+Standard Deviation       13.82       13.75
+Skewness                 -0.22       -0.19
+Kurtosis                 -0.83       -0.83
+
+
+Data Role=TRAIN Variable=REP_LoyaltyTime
+
+Statistics            Original    Filtered
+
+Non Missing            4224.00     3947.00
+Missing                   0.00        0.00
+Minimum                   0.00        0.00
+Maximum                  36.00       21.00
+Mean                      6.48        5.87
+Standard Deviation        5.14        3.75
+Skewness                  2.09        0.87
+Kurtosis                  6.39        1.00
+
+
+Data Role=TRAIN Variable=TimeSinceLastPurchase
+
+Statistics            Original    Filtered
+
+Non Missing            4224.00     3947.00
+Missing                   0.00        0.00
+Minimum                   1.00        1.00
+Maximum                  34.00       15.00
+Mean                      3.75        3.20
+Standard Deviation        4.04        2.45
+Skewness                  3.39        2.11
+Kurtosis                 13.77        4.76
+
+
+Data Role=TRAIN Variable=TotalSpend
+
+Statistics            Original    Filtered
+
+Non Missing            4224.00     3947.00
+Missing                   0.00        0.00
+Minimum                  10.00       10.00
+Maximum               20000.00    17218.00
+Mean                   4581.20     4221.67
+Standard Deviation     4325.01     3817.19
+Skewness                  1.31        1.10
+Kurtosis                  1.38        0.57

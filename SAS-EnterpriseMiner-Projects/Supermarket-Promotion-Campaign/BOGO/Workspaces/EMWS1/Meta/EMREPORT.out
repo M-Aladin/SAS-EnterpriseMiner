@@ -1,0 +1,36 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+Exported Attributes for TRAIN Port
+(maximum 500 observations printed)
+
+                                     Measurement
+Variable Name            Role           Level       Creator    Label
+
+AdvertisementZone        REJECTED     NOMINAL                                                  
+AffluenceGrade           INPUT        INTERVAL                                                 
+Age                      REJECTED     INTERVAL                                                 
+CampaignViewedEmail      INPUT        BINARY                                                   
+CleanserProducts         INPUT        INTERVAL                                                 
+ClusterGroup             REJECTED     NOMINAL                                                  
+DayCareProducts          INPUT        INTERVAL                                                 
+FacebookLike             INPUT        BINARY                                                   
+Gender                   REJECTED     NOMINAL                                                  
+LotionProducts           INPUT        INTERVAL                                                 
+LoyaltyClass             INPUT        NOMINAL                                                  
+LoyaltyTime              REJECTED     INTERVAL                                                 
+MobileApplications       INPUT        BINARY                                                   
+NightRepairProducts      INPUT        INTERVAL                                                 
+No                       ID           NOMINAL                                                  
+PreviousCampaign         INPUT        BINARY                                                   
+REP_AdvertisementZone    INPUT        NOMINAL        Repl      Replacement: AdvertisementZone  
+REP_Age                  INPUT        INTERVAL       Repl      Replacement: Age                
+REP_ClusterGroup         INPUT        NOMINAL        Repl      Replacement: ClusterGroup       
+REP_Gender               INPUT        NOMINAL        Repl      Replacement: Gender             
+REP_LoyaltyTime          INPUT        INTERVAL       Repl      Replacement: LoyaltyTime        
+REP_Region               INPUT        NOMINAL        Repl      Replacement: Region             
+Region                   REJECTED     NOMINAL                                                  
+TargetAmt                REJECTED     INTERVAL                                                 
+TargetBuy                TARGET       BINARY                                                   
+TimeSinceLastPurchase    INPUT        INTERVAL                                                 
+TotalSpend               INPUT        INTERVAL                                                 

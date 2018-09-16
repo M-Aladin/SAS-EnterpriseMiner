@@ -1,0 +1,31 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Summary Statistics for Class Targets
+
+Data=DATA
+
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+
+TargetBuy       0           0           5043      81.0251         
+TargetBuy       1           1           1181      18.9749         
+
+
+Data=TRAIN
+
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+
+TargetBuy       0           0           2521      81.0350         
+TargetBuy       1           1            590      18.9650         
+
+
+Data=VALIDATE
+
+             Numeric    Formatted    Frequency
+Variable      Value       Value        Count      Percent    Label
+
+TargetBuy       0           0           2522      81.0151         
+TargetBuy       1           1            591      18.9849         

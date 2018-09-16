@@ -1,0 +1,46 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                15:10:00
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           NOMINAL           1
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          3
+REJECTED     NOMINAL           4
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Importance
+ 
+                                Number of    Number of
+                                Splitting    Surrogate
+Variable Name          Label      Rules        Rules      Importance
+ 
+FacebookLike                        1            0          1.00000
+CampaignViewedEmail                 3            0          0.89589
+PreviousCampaign                    3            0          0.83749
+MobileApplications                  4            1          0.79722

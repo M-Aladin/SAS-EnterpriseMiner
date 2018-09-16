@@ -1,0 +1,103 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+ID           NOMINAL           1    
+INPUT        BINARY            4    
+INPUT        INTERVAL          9    
+INPUT        NOMINAL           5    
+REJECTED     INTERVAL          4    
+REJECTED     NOMINAL           5    
+SEGMENT      NOMINAL           1    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Frequencies: _SEGMENT_
+
+                                     Percent of
+ Segment     Segment    Frequency       Total
+Variable      Value       Count       Frequency
+
+_SEGMENT_       2           7820       39.0317 
+_SEGMENT_       3           7048       35.1784 
+_SEGMENT_       4           4202       20.9733 
+_SEGMENT_       1            965        4.8166 
+ 
+                                                                                                                                                                                                                                                                
+ 
+Variable: _SEGMENT_ Segment: 2 Count: 7820
+Decision Tree Importance Profiles
+
+Variable                  Worth     Rank
+
+NightRepairProducts      0.25407      1 
+AffluenceGrade           0.04474      2 
+TimeSinceLastPurchase    0.01451      3 
+DayCareProducts          0.01310      4 
+REP_LoyaltyTime          0.01022      5 
+REP_Gender               0.00242      6 
+REP_Age                  0.00194      7 
+TotalSpend               0.00181      8 
+REP_AdvertisementZone    0.00156      9 
+REP_Region               0.00087     10 
+ 
+                                                                                                                                                                                                                                                                
+ 
+Variable: _SEGMENT_ Segment: 3 Count: 7048
+Decision Tree Importance Profiles
+
+Variable                  Worth     Rank
+
+NightRepairProducts      0.16722      1 
+AffluenceGrade           0.04826      2 
+DayCareProducts          0.04646      3 
+TimeSinceLastPurchase    0.01320      4 
+REP_LoyaltyTime          0.01013      5 
+TotalSpend               0.00141      6 
+REP_Age                  0.00139      7 
+PreviousCampaign         0.00108      8 
+REP_Gender               0.00101      9 
+REP_AdvertisementZone    0.00045     10 
+ 
+                                                                                                                                                                                                                                                                
+ 
+Variable: _SEGMENT_ Segment: 4 Count: 4202
+Decision Tree Importance Profiles
+
+Variable                  Worth     Rank
+
+AffluenceGrade           0.18522      1 
+DayCareProducts          0.01643      2 
+NightRepairProducts      0.01333      3 
+REP_Gender               0.00817      4 
+REP_Age                  0.00784      5 
+TimeSinceLastPurchase    0.00404      6 
+REP_LoyaltyTime          0.00385      7 
+TotalSpend               0.00241      8 
+LoyaltyClass             0.00157      9 
+FacebookLike             0.00154     10 
+ 
+                                                                                                                                                                                                                                                                
+ 
+Variable: _SEGMENT_ Segment: 1 Count: 965
+Decision Tree Importance Profiles
+
+Variable                   Worth     Rank
+
+TimeSinceLastPurchase    0.086366      1 
+REP_LoyaltyTime          0.068061      2 
+REP_Age                  0.004301      3 
+TotalSpend               0.001846      4 
+LoyaltyClass             0.001405      5 
+REP_ClusterGroup         0.000282      6 
+REP_AdvertisementZone    0.000257      7 
+REP_Region               0.000197      8 
+AffluenceGrade           0.000173      9 
+MobileApplications       0.000132     10 

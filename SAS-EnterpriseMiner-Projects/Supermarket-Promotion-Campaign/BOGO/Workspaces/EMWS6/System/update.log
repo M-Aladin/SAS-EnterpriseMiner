@@ -1,0 +1,177 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+1 
+Traverser: Traverser invoked.  MPCONNECT command is sas. 
+Traverser: Beginning flow traversal 
+*------------------------------------------------------------* 
+* 
+* Ids : Beginning Update 
+* datetime : 13MAY2018:20:56:19 
+* 
+*------------------------------------------------------------* 
+22120      %let _HPDMGRIDHOST=;
+22121      %let _HPDMGRIDINSTALLLOC=;
+22122      %let _HPDMGRIDDATASERVER=;
+22123      %hpdm_gridSetOPtions;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+*------------------------------------------------------------* 
+* 
+* Ids : End Update 
+* datetime : 13MAY2018:20:56:19 
+* 
+*------------------------------------------------------------* 
+Traverser: WaitingNode "TREE2" 
+traverser_readyNode_note 
+*------------------------------------------------------------* 
+* 
+* Part : Beginning Update 
+* datetime : 13MAY2018:20:56:19 
+* 
+*------------------------------------------------------------* 
+22142      %let _HPDMGRIDHOST=;
+22143      %let _HPDMGRIDINSTALLLOC=;
+22144      %let _HPDMGRIDDATASERVER=;
+22145      %hpdm_gridSetOPtions;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+*------------------------------------------------------------* 
+* 
+* Part : End Update 
+* datetime : 13MAY2018:20:56:19 
+* 
+*------------------------------------------------------------* 
+traverser_readyNode_note 
+*------------------------------------------------------------* 
+* 
+* Tree2 : Beginning Update 
+* datetime : 13MAY2018:20:56:20 
+* 
+*------------------------------------------------------------* 
+PERFORMANCE  DETAILS
+22539      data EM_TARGETDECINFO;
+22540      length TARGET $32 DECDATA DECMETA $43;
+22541      TARGET="TargetBuy";
+22542      DECDATA="EMWS6.Ids_TargetBuy_DD";
+22543      DECMETA="EMWS6.Ids_TargetBuy_DM";
+22544      output;
+22545      run;
+
+NOTE: The data set WORK.EM_TARGETDECINFO has 1 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+22546      %let emexceptionString =;
+22547      %let EMEXCEPTIONSTRING=;
+22548      *------------------------------------------------------------*;
+22549      * UPDATE: Tree2;
+22550      *------------------------------------------------------------*;
+22551      %let EM_ACTION = UPDATE;
+22552      %let syscc = 0;
+22553      %macro main;
+22554      
+22555        %if %upcase(&EM_ACTION) = CREATE %then %do;
+22556          filename temp catalog 'sashelp.emmodl.tree_create.source';
+22557          %include temp;
+22558          filename temp;
+22559      
+22560          %em_tree_create;
+22561        %end;
+22562      
+22563         %else
+22564         %if %upcase(&EM_ACTION) = TRAIN %then %do;
+22565      
+22566             filename temp catalog 'sashelp.emmodl.tree_train.source';
+22567             %include temp;
+22568             filename temp;
+22569             %em_tree_train;
+22570         %end;
+22571      
+22572        %else
+22573        %if %upcase(&EM_ACTION) = SCORE %then %do;
+22574          filename temp catalog 'sashelp.emmodl.tree_score.source';
+22575          %include temp;
+22576          filename temp;
+22577      
+22578          %em_tree_score;
+22579      
+22580        %end;
+22581      
+22582        %else
+22583        %if %upcase(&EM_ACTION) = REPORT %then %do;
+22584      
+22585             filename temp catalog 'sashelp.emmodl.tree_report.source';
+22586             %include temp;
+22587             filename temp;
+22588      
+22589             %em_tree_report;
+22590         %end;
+22591      
+22592        %else
+22593        %if %upcase(&EM_ACTION) = OPENINT %then %do;
+22594      
+22595             filename temp catalog 'sashelp.emmodl.tree_actions.source';
+22596             %include temp;
+22597             filename temp;
+22598             %EM_TREE_OPENTREEVIEWER;
+22599      
+22600         %end;
+22601      
+22602        %else
+22603        %if %upcase(&EM_ACTION) = CLOSEINT %then %do;
+22604      
+22605             filename temp catalog 'sashelp.emmodl.tree_actions.source';
+22606             %include temp;
+22607             filename temp;
+22608             %EM_TREE_CLOSETREEVIEWER;
+22609      
+22610         %end;
+22611      
+22612      
+22613         %doendm:
+22614      %mend main;
+22615      
+22616      %main;
+22617      
+22618      *------------------------------------------------------------*;
+22619      * End UPDATE: Tree2;
+22620      *------------------------------------------------------------*;
+
+22621      %em_delMacro;
+
+22623      %let _HPDMGRIDHOST=;
+22624      %let _HPDMGRIDINSTALLLOC=;
+22625      %let _HPDMGRIDDATASERVER=;
+22626      %hpdm_gridSetOPtions;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+*------------------------------------------------------------* 
+* 
+* Tree2 : End Update 
+* datetime : 13MAY2018:20:56:21 
+* 
+*------------------------------------------------------------* 
+Traverser: Run Completed 
+22627      proc printto;
+22628      run;
+

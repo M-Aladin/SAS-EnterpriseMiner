@@ -1,0 +1,2785 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+INPUT        BINARY            4    
+INPUT        INTERVAL          9    
+INPUT        NOMINAL           5    
+REJECTED     INTERVAL          4    
+REJECTED     NOMINAL           5    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Model Events
+
+                                     Number
+                      Measurement      of
+ Target      Event       Level       Levels      Order       Label
+
+TargetBuy      1        BINARY          2      Descending         
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type           Variable              Label
+
+TARGET       TargetBuy                             
+PREDICTED    P_TargetBuy1    Predicted: TargetBuy=1
+RESIDUAL     R_TargetBuy1    Residual: TargetBuy=1 
+PREDICTED    P_TargetBuy0    Predicted: TargetBuy=0
+RESIDUAL     R_TargetBuy0    Residual: TargetBuy=0 
+FROM         F_TargetBuy     From: TargetBuy       
+INTO         I_TargetBuy     Into: TargetBuy       
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+Preliminary       Starting         Objective         Number
+ Training          Random           Function           of        Terminating
+    Run             Seed             Value         Iterations     Criteria
+
+        1               12345    0.475261154608           10                
+        2          2117202562    0.465080058996           10                
+        3          2008384161    0.480795421313           10                
+        4          1023583446    0.451224706802           10                
+        5          1095432304    0.451621693541           10                
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+                          Optimization Start
+                         Parameter Estimates
+                                                             Gradient
+                                                            Objective
+   N Parameter                               Estimate        Function
+
+   1 AffluenceGrade_H101                    -0.180338       -0.001385
+   2 CleanserProducts_H101                  -0.194995     0.000069416
+   3 DayCareProducts_H101                    0.045334        0.000304
+   4 LotionProducts_H101                     0.180398       -0.000636
+   5 NightRepairProducts_H101               -0.023834       -0.000113
+   6 REP_Age_H101                           -0.055482     0.000064634
+   7 REP_LoyaltyTime_H101                   -0.134315       -0.000680
+   8 TimeSinceLastPurchase_H101              0.336624       -0.000944
+   9 TotalSpend_H101                         0.120884       -0.001128
+  10 AffluenceGrade_H102                    -0.088179        0.001124
+  11 CleanserProducts_H102                  -0.064058        0.000266
+  12 DayCareProducts_H102                   -0.142220       -0.000294
+  13 LotionProducts_H102                    -0.011564       -0.000130
+  14 NightRepairProducts_H102               -0.113059    -0.000011687
+  15 REP_Age_H102                           -0.191697     0.000070027
+  16 REP_LoyaltyTime_H102                   -0.184451        0.000113
+  17 TimeSinceLastPurchase_H102             -0.044366        0.000191
+  18 TotalSpend_H102                        -0.025047        0.000628
+  19 AffluenceGrade_H103                    -0.200156        0.000997
+  20 CleanserProducts_H103                  -0.647094     0.000048640
+  21 DayCareProducts_H103                   -0.000675        0.000158
+  22 LotionProducts_H103                     0.208454        0.000128
+  23 NightRepairProducts_H103                0.240989        0.000246
+  24 REP_Age_H103                            0.122493       -0.000448
+  25 REP_LoyaltyTime_H103                    0.148716        0.000378
+  26 TimeSinceLastPurchase_H103             -0.036694        0.000521
+  27 TotalSpend_H103                         0.115671        0.000346
+  28 AffluenceGrade_H104                    -0.070478       -0.005932
+  29 CleanserProducts_H104                  -0.195662        0.000249
+  30 DayCareProducts_H104                    0.159643        0.001909
+  31 LotionProducts_H104                    -0.102539       -0.003365
+  32 NightRepairProducts_H104                0.015364       -0.000269
+  33 REP_Age_H104                            0.084942        0.000251
+  34 REP_LoyaltyTime_H104                    0.030132       -0.001659
+  35 TimeSinceLastPurchase_H104             -0.033254       -0.004165
+  36 TotalSpend_H104                         0.079883       -0.006395
+  37 AffluenceGrade_H105                     0.075273        0.001913
+  38 CleanserProducts_H105                  -0.068852     0.000081842
+  39 DayCareProducts_H105                    0.121798        0.000525
+  40 LotionProducts_H105                     0.185335       -0.000371
+  41 NightRepairProducts_H105               -0.145238        0.001240
+  42 REP_Age_H105                           -0.011610     0.000077801
+  43 REP_LoyaltyTime_H105                   -0.023209        0.001772
+  44 TimeSinceLastPurchase_H105             -0.161865        0.002434
+  45 TotalSpend_H105                        -0.200498        0.005122
+  46 AffluenceGrade_H106                     0.084572        0.000994
+  47 CleanserProducts_H106                   0.230951    -0.000025840
+  48 DayCareProducts_H106                   -0.097366        0.000142
+  49 LotionProducts_H106                    -0.052519    -0.000000734
+  50 NightRepairProducts_H106               -0.143410        0.000427
+  51 REP_Age_H106                           -0.154766       -0.000747
+  52 REP_LoyaltyTime_H106                    0.168271        0.000223
+  53 TimeSinceLastPurchase_H106              0.061488        0.000243
+  54 TotalSpend_H106                        -0.069256        0.000691
+  55 AffluenceGrade_H107                     0.101064       -0.023100
+  56 CleanserProducts_H107                   0.054827       -0.000153
+  57 DayCareProducts_H107                   -0.075171     0.000078899
+  58 LotionProducts_H107                    -0.029053       -0.009571
+  59 NightRepairProducts_H107               -0.078811       -0.000777
+  60 REP_Age_H107                            0.201048        0.003300
+  61 REP_LoyaltyTime_H107                   -0.132313        0.000555
+  62 TimeSinceLastPurchase_H107             -0.249185       -0.009606
+  63 TotalSpend_H107                        -0.098103       -0.010108
+  64 AffluenceGrade_H108                    -0.097580       -0.008219
+  65 CleanserProducts_H108                  -0.227571        0.002532
+  66 DayCareProducts_H108                    0.036624       -0.001249
+  67 LotionProducts_H108                     0.026478       -0.002413
+  68 NightRepairProducts_H108               -0.190333        0.001479
+  69 REP_Age_H108                           -0.082573        0.003596
+  70 REP_LoyaltyTime_H108                    0.138499        0.000455
+  71 TimeSinceLastPurchase_H108             -0.411538       -0.000941
+  72 TotalSpend_H108                        -0.110658       -0.006905
+  73 AffluenceGrade_H109                    -0.211448       -0.005842
+  74 CleanserProducts_H109                   0.058751        0.002380
+  75 DayCareProducts_H109                    0.208538       -0.001495
+  76 LotionProducts_H109                     0.087794       -0.000555
+  77 NightRepairProducts_H109                0.345378       -0.001180
+  78 REP_Age_H109                           -0.069391       -0.002016
+  79 REP_LoyaltyTime_H109                   -0.086199       -0.001636
+  80 TimeSinceLastPurchase_H109              0.154468       -0.005194
+  81 TotalSpend_H109                        -0.098605       -0.007311
+  82 AffluenceGrade_H110                    -0.142546       -0.007259
+  83 CleanserProducts_H110                  -0.120596        0.001692
+  84 DayCareProducts_H110                   -0.126028       -0.000468
+  85 LotionProducts_H110                     0.133579       -0.000783
+  86 NightRepairProducts_H110               -0.095055    -0.000049632
+  87 REP_Age_H110                           -0.004709        0.001646
+  88 REP_LoyaltyTime_H110                    0.156627       -0.002777
+  89 TimeSinceLastPurchase_H110              0.040056       -0.006122
+  90 TotalSpend_H110                        -0.483663       -0.002930
+  91 AffluenceGrade_H111                    -0.039622        0.009173
+  92 CleanserProducts_H111                  -0.131373        0.000826
+  93 DayCareProducts_H111                   -0.081205        0.000747
+  94 LotionProducts_H111                     0.156810        0.003682
+  95 NightRepairProducts_H111                0.051487        0.000995
+  96 REP_Age_H111                           -0.061682       -0.001596
+  97 REP_LoyaltyTime_H111                   -0.003429        0.003987
+  98 TimeSinceLastPurchase_H111             -0.184985        0.006557
+  99 TotalSpend_H111                        -0.045748        0.008522
+ 100 AffluenceGrade_H112                    -0.046100       -0.000482
+ 101 CleanserProducts_H112                   0.004673    -0.000060575
+ 102 DayCareProducts_H112                    0.061904    -0.000092442
+ 103 LotionProducts_H112                     0.218854    -0.000095073
+ 104 NightRepairProducts_H112               -0.142432       -0.000138
+ 105 REP_Age_H112                           -0.199814     0.000047674
+ 106 REP_LoyaltyTime_H112                    0.021781       -0.000199
+ 107 TimeSinceLastPurchase_H112             -0.297655       -0.000322
+ 108 TotalSpend_H112                         0.012783       -0.000452
+ 109 AffluenceGrade_H113                     0.052454       -0.000297
+ 110 CleanserProducts_H113                  -0.041595        0.000105
+ 111 DayCareProducts_H113                   -0.127228    -0.000019955
+ 112 LotionProducts_H113                     0.109377       -0.000139
+ 113 NightRepairProducts_H113               -0.017176     0.000031101
+ 114 REP_Age_H113                            0.089724     0.000007803
+ 115 REP_LoyaltyTime_H113                   -0.065884        0.000125
+ 116 TimeSinceLastPurchase_H113             -0.289871    -0.000044237
+ 117 TotalSpend_H113                        -0.304765    -0.000063634
+ 118 AffluenceGrade_H114                     0.226699        0.002722
+ 119 CleanserProducts_H114                   0.237766        0.000490
+ 120 DayCareProducts_H114                    0.260262        0.000423
+ 121 LotionProducts_H114                    -0.066982    -0.000047404
+ 122 NightRepairProducts_H114               -0.232754        0.000561
+ 123 REP_Age_H114                            0.016082       -0.000455
+ 124 REP_LoyaltyTime_H114                    0.029436       -0.000903
+ 125 TimeSinceLastPurchase_H114             -0.022928        0.000301
+ 126 TotalSpend_H114                         0.278537        0.000758
+ 127 AffluenceGrade_H115                    -0.190156       -0.014195
+ 128 CleanserProducts_H115                   0.115971       -0.004710
+ 129 DayCareProducts_H115                    0.425707       -0.004255
+ 130 LotionProducts_H115                    -0.312063       -0.004918
+ 131 NightRepairProducts_H115                0.006657       -0.002501
+ 132 REP_Age_H115                            0.103713        0.001105
+ 133 REP_LoyaltyTime_H115                   -0.047203       -0.010817
+ 134 TimeSinceLastPurchase_H115              0.171898       -0.012380
+ 135 TotalSpend_H115                         0.300581       -0.018779
+ 136 AffluenceGrade_H116                    -0.313469       -0.009305
+ 137 CleanserProducts_H116                  -0.201115    -0.000021576
+ 138 DayCareProducts_H116                   -0.129012       -0.002114
+ 139 LotionProducts_H116                    -0.214427       -0.004647
+ 140 NightRepairProducts_H116                0.061741       -0.001333
+ 141 REP_Age_H116                            0.212949        0.000734
+ 142 REP_LoyaltyTime_H116                   -0.158983       -0.005361
+ 143 TimeSinceLastPurchase_H116             -0.184501       -0.009229
+ 144 TotalSpend_H116                        -0.024503       -0.012050
+ 145 AffluenceGrade_H117                     0.057861    -0.000028354
+ 146 CleanserProducts_H117                  -0.031902    -0.000067821
+ 147 DayCareProducts_H117                    0.093745    -0.000034290
+ 148 LotionProducts_H117                    -0.433992    -0.000082344
+ 149 NightRepairProducts_H117                0.207555     0.000022583
+ 150 REP_Age_H117                            0.208339     0.000024565
+ 151 REP_LoyaltyTime_H117                   -0.241429    -0.000019438
+ 152 TimeSinceLastPurchase_H117              0.043957    -0.000028943
+ 153 TotalSpend_H117                        -0.171989    -0.000057973
+ 154 AffluenceGrade_H118                    -0.095769       -0.009469
+ 155 CleanserProducts_H118                  -0.216899        0.000318
+ 156 DayCareProducts_H118                   -0.060424        0.000672
+ 157 LotionProducts_H118                     0.103375       -0.002437
+ 158 NightRepairProducts_H118               -0.091768       -0.000139
+ 159 REP_Age_H118                            0.162398        0.002715
+ 160 REP_LoyaltyTime_H118                    0.123489       -0.004721
+ 161 TimeSinceLastPurchase_H118             -0.298679       -0.007110
+ 162 TotalSpend_H118                         0.011803       -0.005033
+ 163 AffluenceGrade_H119                    -0.107247        0.003836
+ 164 CleanserProducts_H119                   0.001370        0.000283
+ 165 DayCareProducts_H119                   -0.118210        0.000318
+ 166 LotionProducts_H119                    -0.127279        0.000925
+ 167 NightRepairProducts_H119               -0.167384       -0.001323
+ 168 REP_Age_H119                            0.069757       -0.000392
+ 169 REP_LoyaltyTime_H119                    0.107707        0.000763
+ 170 TimeSinceLastPurchase_H119             -0.171409        0.001658
+ 171 TotalSpend_H119                        -0.101787        0.004143
+ 172 AffluenceGrade_H120                     0.030016        0.001029
+ 173 CleanserProducts_H120                  -0.155985       -0.000250
+ 174 DayCareProducts_H120                    0.239590       -0.000401
+ 175 LotionProducts_H120                     0.324039     0.000069907
+ 176 NightRepairProducts_H120                0.049737        0.000209
+ 177 REP_Age_H120                            0.032051    -0.000085894
+ 178 REP_LoyaltyTime_H120                    0.065960       -0.000142
+ 179 TimeSinceLastPurchase_H120              0.247249       -0.000107
+ 180 TotalSpend_H120                         0.031648        0.000610
+ 181 AffluenceGrade_H121                     0.317741        0.006111
+ 182 CleanserProducts_H121                   0.210583       -0.000944
+ 183 DayCareProducts_H121                    0.296417        0.000225
+ 184 LotionProducts_H121                    -0.295223        0.003124
+ 185 NightRepairProducts_H121               -0.090370       -0.000631
+ 186 REP_Age_H121                            0.062786       -0.002532
+ 187 REP_LoyaltyTime_H121                    0.020289        0.001668
+ 188 TimeSinceLastPurchase_H121             -0.068938        0.005033
+ 189 TotalSpend_H121                         0.031987        0.008434
+ 190 AffluenceGrade_H122                    -0.156248       -0.009142
+ 191 CleanserProducts_H122                   0.144236        0.004360
+ 192 DayCareProducts_H122                    0.134786        0.001804
+ 193 LotionProducts_H122                    -0.188744    -0.000047718
+ 194 NightRepairProducts_H122               -0.081097       -0.001193
+ 195 REP_Age_H122                            0.657968       -0.012164
+ 196 REP_LoyaltyTime_H122                   -0.122727       -0.000280
+ 197 TimeSinceLastPurchase_H122              0.197638       -0.000943
+ 198 TotalSpend_H122                         0.263054       -0.002073
+ 199 AffluenceGrade_H123                    -0.206127       -0.001293
+ 200 CleanserProducts_H123                  -0.093719       -0.000125
+ 201 DayCareProducts_H123                    0.108563       -0.000277
+ 202 LotionProducts_H123                     0.120910       -0.000599
+ 203 NightRepairProducts_H123               -0.054125       -0.000282
+ 204 REP_Age_H123                           -0.115438        0.000268
+ 205 REP_LoyaltyTime_H123                    0.238293       -0.000775
+ 206 TimeSinceLastPurchase_H123             -0.206741       -0.001161
+ 207 TotalSpend_H123                         0.038964       -0.001352
+ 208 AffluenceGrade_H124                     0.062723        0.002441
+ 209 CleanserProducts_H124                   0.000541        0.000283
+ 210 DayCareProducts_H124                    0.185624     0.000061569
+ 211 LotionProducts_H124                    -0.113633        0.000712
+ 212 NightRepairProducts_H124               -0.076693       -0.000140
+ 213 REP_Age_H124                           -0.058368       -0.000948
+ 214 REP_LoyaltyTime_H124                   -0.079179        0.000545
+ 215 TimeSinceLastPurchase_H124              0.158325        0.001365
+ 216 TotalSpend_H124                        -0.096421        0.001833
+ 217 AffluenceGrade_H125                    -0.213866       -0.007388
+ 218 CleanserProducts_H125                   0.045291        0.000702
+ 219 DayCareProducts_H125                   -0.273190        0.002102
+ 220 LotionProducts_H125                    -0.266812       -0.000683
+ 221 NightRepairProducts_H125               -0.114707        0.000636
+ 222 REP_Age_H125                           -0.090604       -0.000228
+ 223 REP_LoyaltyTime_H125                    0.146830       -0.001332
+ 224 TimeSinceLastPurchase_H125             -0.087149       -0.007421
+ 225 TotalSpend_H125                        -0.250041       -0.005729
+ 226 AffluenceGrade_H126                    -0.065937       -0.000768
+ 227 CleanserProducts_H126                   0.001670       -0.000229
+ 228 DayCareProducts_H126                    0.079253       -0.000237
+ 229 LotionProducts_H126                     0.008918       -0.000286
+ 230 NightRepairProducts_H126               -0.157982       -0.000281
+ 231 REP_Age_H126                           -0.054049        0.000162
+ 232 REP_LoyaltyTime_H126                    0.240787       -0.000247
+ 233 TimeSinceLastPurchase_H126              0.015316       -0.000510
+ 234 TotalSpend_H126                        -0.085917       -0.000870
+ 235 AffluenceGrade_H127                    -0.015356        0.001056
+ 236 CleanserProducts_H127                   0.181805        0.000125
+ 237 DayCareProducts_H127                   -0.152685       -0.000144
+ 238 LotionProducts_H127                    -0.012082        0.000188
+ 239 NightRepairProducts_H127                0.200325    -0.000010922
+ 240 REP_Age_H127                           -0.111165       -0.000633
+ 241 REP_LoyaltyTime_H127                    0.021627        0.000327
+ 242 TimeSinceLastPurchase_H127              0.100117        0.000291
+ 243 TotalSpend_H127                        -0.264028        0.000949
+ 244 AffluenceGrade_H128                     0.203914        0.003667
+ 245 CleanserProducts_H128                  -0.006329        0.001766
+ 246 DayCareProducts_H128                   -0.027896        0.001673
+ 247 LotionProducts_H128                     0.104414        0.001551
+ 248 NightRepairProducts_H128                0.172307        0.000357
+ 249 REP_Age_H128                            0.055457       -0.001562
+ 250 REP_LoyaltyTime_H128                    0.107537        0.001039
+ 251 TimeSinceLastPurchase_H128              0.271279        0.002947
+ 252 TotalSpend_H128                         0.075359        0.004371
+ 253 AffluenceGrade_H129                    -0.227597        0.001733
+ 254 CleanserProducts_H129                   0.275079        0.000351
+ 255 DayCareProducts_H129                    0.049101        0.000857
+ 256 LotionProducts_H129                    -0.286543        0.000811
+ 257 NightRepairProducts_H129                0.591504        0.000279
+ 258 REP_Age_H129                           -0.055018       -0.000804
+ 259 REP_LoyaltyTime_H129                   -0.205241        0.001163
+ 260 TimeSinceLastPurchase_H129             -0.089154        0.002327
+ 261 TotalSpend_H129                        -0.199503        0.003052
+ 262 AffluenceGrade_H130                     0.080581        0.014759
+ 263 CleanserProducts_H130                  -0.221919       -0.006598
+ 264 DayCareProducts_H130                    0.327526    -0.000067788
+ 265 LotionProducts_H130                    -0.243179        0.000600
+ 266 NightRepairProducts_H130               -0.003587       -0.002249
+ 267 REP_Age_H130                           -0.100857       -0.007888
+ 268 REP_LoyaltyTime_H130                   -0.118109        0.002130
+ 269 TimeSinceLastPurchase_H130             -0.282309        0.005281
+ 270 TotalSpend_H130                        -0.246931        0.003654
+ 271 AffluenceGrade_H131                     0.054623        0.003277
+ 272 CleanserProducts_H131                  -0.190761        0.001264
+ 273 DayCareProducts_H131                    0.122546       -0.001323
+ 274 LotionProducts_H131                    -0.344098        0.001730
+ 275 NightRepairProducts_H131               -0.005080    -0.000093964
+ 276 REP_Age_H131                           -0.015546       -0.001390
+ 277 REP_LoyaltyTime_H131                    0.190899        0.001113
+ 278 TimeSinceLastPurchase_H131             -0.004396        0.001705
+ 279 TotalSpend_H131                         0.063994        0.002505
+ 280 AffluenceGrade_H132                     0.015845        0.000144
+ 281 CleanserProducts_H132                   0.042391     0.000023261
+ 282 DayCareProducts_H132                   -0.048663    -0.000096054
+ 283 LotionProducts_H132                     0.197128        0.000151
+ 284 NightRepairProducts_H132                0.114569        0.000113
+ 285 REP_Age_H132                            0.063449     0.000006590
+ 286 REP_LoyaltyTime_H132                   -0.076577        0.000151
+ 287 TimeSinceLastPurchase_H132              0.018624        0.000161
+ 288 TotalSpend_H132                         0.029746        0.000253
+ 289 CampaignViewedEmail0_H101              -0.093414        0.000124
+ 290 MobileApplications0_H101                0.112741       -0.000181
+ 291 PreviousCampaign0_H101                 -0.083600        0.001415
+ 292 CampaignViewedEmail0_H102              -0.026624       -0.000132
+ 293 MobileApplications0_H102                0.020268       -0.000512
+ 294 PreviousCampaign0_H102                  0.047852       -0.001304
+ 295 CampaignViewedEmail0_H103               0.219824    -0.000059887
+ 296 MobileApplications0_H103               -0.197806       -0.000128
+ 297 PreviousCampaign0_H103                 -0.059650       -0.000569
+ 298 CampaignViewedEmail0_H104               0.170234        0.000491
+ 299 MobileApplications0_H104                0.109086       -0.000544
+ 300 PreviousCampaign0_H104                 -0.030509        0.006986
+ 301 CampaignViewedEmail0_H105               0.046361        0.000617
+ 302 MobileApplications0_H105                0.124206       -0.000674
+ 303 PreviousCampaign0_H105                 -0.088201       -0.001174
+ 304 CampaignViewedEmail0_H106              -0.110770       -0.000145
+ 305 MobileApplications0_H106                0.173471       -0.000225
+ 306 PreviousCampaign0_H106                  0.079550     0.000031584
+ 307 CampaignViewedEmail0_H107               0.235910       -0.003779
+ 308 MobileApplications0_H107                0.163520       -0.003468
+ 309 PreviousCampaign0_H107                 -0.027198        0.019773
+ 310 CampaignViewedEmail0_H108              -0.041927        0.002350
+ 311 MobileApplications0_H108                0.146234       -0.002213
+ 312 PreviousCampaign0_H108                  0.147625        0.008956
+ 313 CampaignViewedEmail0_H109              -0.000292       -0.000756
+ 314 MobileApplications0_H109               -0.450533        0.004233
+ 315 PreviousCampaign0_H109                  0.502029       -0.000356
+ 316 CampaignViewedEmail0_H110              -0.007948        0.001441
+ 317 MobileApplications0_H110                0.131095        0.000117
+ 318 PreviousCampaign0_H110                 -0.209642        0.009549
+ 319 CampaignViewedEmail0_H111              -0.029520        0.000238
+ 320 MobileApplications0_H111               -0.112817       -0.001060
+ 321 PreviousCampaign0_H111                 -0.043300       -0.008853
+ 322 CampaignViewedEmail0_H112              -0.147361     0.000012477
+ 323 MobileApplications0_H112                0.177225    -0.000025559
+ 324 PreviousCampaign0_H112                  0.079143        0.000554
+ 325 CampaignViewedEmail0_H113              -0.036492    -0.000051290
+ 326 MobileApplications0_H113                0.075787        0.000155
+ 327 PreviousCampaign0_H113                  0.212682        0.000330
+ 328 CampaignViewedEmail0_H114              -0.152244       -0.000382
+ 329 MobileApplications0_H114                0.133937       -0.001255
+ 330 PreviousCampaign0_H114                 -0.193784       -0.001404
+ 331 CampaignViewedEmail0_H115               0.143599        0.002186
+ 332 MobileApplications0_H115                0.373163       -0.001162
+ 333 PreviousCampaign0_H115                  0.000557        0.014810
+ 334 CampaignViewedEmail0_H116               0.069997       -0.001255
+ 335 MobileApplications0_H116               -0.109935       -0.001088
+ 336 PreviousCampaign0_H116                 -0.178138        0.012172
+ 337 CampaignViewedEmail0_H117              -0.152756    -0.000000928
+ 338 MobileApplications0_H117               -0.320539    -0.000060473
+ 339 PreviousCampaign0_H117                  0.161445     0.000077035
+ 340 CampaignViewedEmail0_H118              -0.135411        0.000475
+ 341 MobileApplications0_H118               -0.259819       -0.001611
+ 342 PreviousCampaign0_H118                  0.026908        0.010613
+ 343 CampaignViewedEmail0_H119               0.007393       -0.000709
+ 344 MobileApplications0_H119               -0.204963       -0.000715
+ 345 PreviousCampaign0_H119                 -0.008273       -0.003585
+ 346 CampaignViewedEmail0_H120              -0.048358       -0.000270
+ 347 MobileApplications0_H120               -0.055939       -0.000235
+ 348 PreviousCampaign0_H120                 -0.017215       -0.001449
+ 349 CampaignViewedEmail0_H121               0.335120       -0.002629
+ 350 MobileApplications0_H121                0.059852       -0.000935
+ 351 PreviousCampaign0_H121                 -0.253482       -0.006954
+ 352 CampaignViewedEmail0_H122              -0.008005        0.003634
+ 353 MobileApplications0_H122                0.217871        0.000200
+ 354 PreviousCampaign0_H122                  0.101358        0.011302
+ 355 CampaignViewedEmail0_H123              -0.070856     0.000035293
+ 356 MobileApplications0_H123               -0.228835       -0.000145
+ 357 PreviousCampaign0_H123                 -0.010776        0.001048
+ 358 CampaignViewedEmail0_H124               0.268273       -0.000107
+ 359 MobileApplications0_H124               -0.018388        0.000295
+ 360 PreviousCampaign0_H124                  0.046423       -0.002123
+ 361 CampaignViewedEmail0_H125               0.095599       -0.000170
+ 362 MobileApplications0_H125               -0.197415        0.002768
+ 363 PreviousCampaign0_H125                  0.222515        0.008023
+ 364 CampaignViewedEmail0_H126              -0.136976        0.000143
+ 365 MobileApplications0_H126               -0.043027       -0.000209
+ 366 PreviousCampaign0_H126                 -0.049405        0.000925
+ 367 CampaignViewedEmail0_H127              -0.029525       -0.000228
+ 368 MobileApplications0_H127                0.355665        0.000283
+ 369 PreviousCampaign0_H127                  0.170115       -0.000382
+ 370 CampaignViewedEmail0_H128              -0.090857        0.000967
+ 371 MobileApplications0_H128               -0.019610        0.000930
+ 372 PreviousCampaign0_H128                  0.046638       -0.003581
+ 373 CampaignViewedEmail0_H129              -0.076558     0.000044359
+ 374 MobileApplications0_H129               -0.094908        0.001365
+ 375 PreviousCampaign0_H129                  0.152381       -0.003657
+ 376 CampaignViewedEmail0_H130               0.278492       -0.000114
+ 377 MobileApplications0_H130               -0.138971       -0.003797
+ 378 PreviousCampaign0_H130                 -0.294327       -0.016890
+ 379 CampaignViewedEmail0_H131               0.049120       -0.001243
+ 380 MobileApplications0_H131               -0.145574        0.002676
+ 381 PreviousCampaign0_H131                  0.202713       -0.004170
+ 382 CampaignViewedEmail0_H132              -0.036113    -0.000034347
+ 383 MobileApplications0_H132               -0.077863     0.000071430
+ 384 PreviousCampaign0_H132                 -0.038517    -0.000059167
+ 385 LoyaltyClassGold_H101                   0.104780        0.000950
+ 386 REP_AdvertisementZonBorder_H101         0.071008        0.000126
+ 387 REP_AdvertisementZonCentralZ1_H1        0.160440        0.000270
+ 388 REP_AdvertisementZonECentral_H10       -0.136032       -0.000616
+ 389 REP_AdvertisementZonNCentral_H10       -0.296016        0.000170
+ 390 REP_AdvertisementZonNEast_H101         -0.067243     0.000047627
+ 391 REP_AdvertisementZonNWest_H101          0.102113        0.000110
+ 392 REP_AdvertisementZonNEZ1_H101          -0.204249        0.000214
+ 393 REP_AdvertisementZonNEZ2_H101          -0.287945        0.000155
+ 394 REP_AdvertisementZonNEZ3_H101          -0.035394        0.000133
+ 395 REP_AdvertisementZonSCentral_H10       -0.023994        0.000611
+ 396 REP_AdvertisementZonSEast_H101          0.036182        0.000406
+ 397 REP_AdvertisementZonSWest_H101          0.091567     0.000074631
+ 398 REP_AdvertisementZonU_H101              0.047263        0.000340
+ 399 REP_ClusterGroupA_H101                  0.181197       -0.000314
+ 400 REP_ClusterGroupB_H101                 -0.249435       -0.000433
+ 401 REP_ClusterGroupC_H101                  0.043476       -0.000386
+ 402 REP_ClusterGroupD_H101                  0.083920        0.000157
+ 403 REP_ClusterGroupE_H101                  0.303930       -0.000244
+ 404 REP_ClusterGroupF_H101                  0.127136     0.000043253
+ 405 REP_GenderF_H101                        0.044384        0.001810
+ 406 REP_RegionCentral_H101                  0.115777        0.000261
+ 407 REP_RegionNorth_H101                   -0.173281       -0.000349
+ 408 REP_RegionNorthEast_H101                0.089176       -0.000145
+ 409 REP_RegionSouthEast_H101               -0.393693       -0.000699
+ 410 REP_RegionSouthWest_H101                0.211700       -0.000265
+ 411 LoyaltyClassGold_H102                  -0.063823       -0.000867
+ 412 REP_AdvertisementZonBorder_H102         0.156689       -0.000115
+ 413 _DUP                                    0.016113       -0.000190
+ 414 _DUP1                                  -0.197503        0.000441
+ 415 _DUP2                                   0.028025       -0.000178
+ 416 REP_AdvertisementZonNEast_H102          0.028484     0.000048351
+ 417 REP_AdvertisementZonNWest_H102         -0.086835       -0.000117
+ 418 REP_AdvertisementZonNEZ1_H102          -0.174489       -0.000297
+ 419 REP_AdvertisementZonNEZ2_H102           0.030062       -0.000233
+ 420 REP_AdvertisementZonNEZ3_H102          -0.196155    -0.000081932
+ 421 _DUP3                                   0.358111       -0.000928
+ 422 REP_AdvertisementZonSEast_H102         -0.374029       -0.000372
+ 423 REP_AdvertisementZonSWest_H102         -0.198333       -0.000185
+ 424 REP_AdvertisementZonU_H102              0.267194       -0.000549
+ 425 REP_ClusterGroupA_H102                  0.014202        0.000322
+ 426 REP_ClusterGroupB_H102                  0.164869        0.000513
+ 427 REP_ClusterGroupC_H102                 -0.226700        0.000608
+ 428 REP_ClusterGroupD_H102                 -0.016002    -0.000048956
+ 429 REP_ClusterGroupE_H102                 -0.122082        0.000138
+ 430 REP_ClusterGroupF_H102                 -0.249952        0.000145
+ 431 REP_GenderF_H102                        0.089581       -0.001741
+ 432 REP_RegionCentral_H102                 -0.299946       -0.000214
+ 433 REP_RegionNorth_H102                    0.021753        0.000754
+ 434 REP_RegionNorthEast_H102               -0.064463        0.000259
+ 435 REP_RegionSouthEast_H102                0.089814        0.000796
+ 436 REP_RegionSouthWest_H102               -0.072968        0.000364
+ 437 LoyaltyClassGold_H103                   0.206483       -0.000117
+ 438 REP_AdvertisementZonBorder_H103        -0.177288    -0.000053552
+ 439 _DUP4                                   0.042531       -0.000122
+ 440 _DUP5                                   0.166964        0.000442
+ 441 _DUP6                                  -0.046489    -0.000057173
+ 442 REP_AdvertisementZonNEast_H103         -0.075681    -0.000017087
+ 443 REP_AdvertisementZonNWest_H103          0.050984     0.000039855
+ 444 REP_AdvertisementZonNEZ1_H103          -0.053364    -0.000075517
+ 445 REP_AdvertisementZonNEZ2_H103           0.042186    -0.000081024
+ 446 REP_AdvertisementZonNEZ3_H103          -0.001911    -0.000079385
+ 447 _DUP7                                  -0.099147       -0.000165
+ 448 REP_AdvertisementZonSEast_H103         -0.112874       -0.000206
+ 449 REP_AdvertisementZonSWest_H103         -0.087402    -0.000060884
+ 450 REP_AdvertisementZonU_H103              0.015952       -0.000181
+ 451 REP_ClusterGroupA_H103                 -0.003986     0.000092754
+ 452 REP_ClusterGroupB_H103                 -0.070174     0.000096071
+ 453 REP_ClusterGroupC_H103                  0.020978     0.000092117
+ 454 REP_ClusterGroupD_H103                  0.120345     0.000048228
+ 455 REP_ClusterGroupE_H103                  0.099508     0.000075581
+ 456 REP_ClusterGroupF_H103                  0.246423    -0.000014283
+ 457 REP_GenderF_H103                        0.050473       -0.001181
+ 458 REP_RegionCentral_H103                  0.006728     0.000038775
+ 459 REP_RegionNorth_H103                   -0.044552        0.000259
+ 460 REP_RegionNorthEast_H103                0.037073        0.000106
+ 461 REP_RegionSouthEast_H103                0.144487        0.000484
+ 462 REP_RegionSouthWest_H103               -0.138807        0.000120
+ 463 LoyaltyClassGold_H104                   0.019950        0.005102
+ 464 REP_AdvertisementZonBorder_H104        -0.270349        0.000828
+ 465 _DUP8                                   0.074013        0.001762
+ 466 _DUP9                                   0.201820       -0.003212
+ 467 _DUP10                                 -0.044730        0.000911
+ 468 REP_AdvertisementZonNEast_H104         -0.050162        0.000292
+ 469 REP_AdvertisementZonNWest_H104         -0.271484        0.000440
+ 470 REP_AdvertisementZonNEZ1_H104          -0.030334        0.001374
+ 471 REP_AdvertisementZonNEZ2_H104          -0.009301        0.001178
+ 472 REP_AdvertisementZonNEZ3_H104           0.229675        0.000913
+ 473 _DUP11                                  0.093852        0.003886
+ 474 REP_AdvertisementZonSEast_H104         -0.292816        0.001847
+ 475 REP_AdvertisementZonSWest_H104         -0.296725        0.000309
+ 476 REP_AdvertisementZonU_H104              0.063813        0.001287
+ 477 REP_ClusterGroupA_H104                 -0.064652       -0.001410
+ 478 REP_ClusterGroupB_H104                  0.088236       -0.002712
+ 479 REP_ClusterGroupC_H104                  0.017675       -0.000275
+ 480 REP_ClusterGroupD_H104                 -0.061744        0.000124
+ 481 REP_ClusterGroupE_H104                  0.192038       -0.000495
+ 482 REP_ClusterGroupF_H104                  0.369214       -0.000574
+ 483 REP_GenderF_H104                       -0.000531        0.010096
+ 484 REP_RegionCentral_H104                 -0.434487        0.002478
+ 485 REP_RegionNorth_H104                    0.031986       -0.001503
+ 486 REP_RegionNorthEast_H104                0.172814        0.000231
+ 487 REP_RegionSouthEast_H104                0.129869       -0.003583
+ 488 REP_RegionSouthWest_H104               -0.156804       -0.000978
+ 489 LoyaltyClassGold_H105                   0.109999       -0.002796
+ 490 REP_AdvertisementZonBorder_H105         0.012309       -0.000145
+ 491 _DUP12                                 -0.235918       -0.000262
+ 492 _DUP13                                  0.017753        0.002121
+ 493 _DUP14                                 -0.317973       -0.000362
+ 494 REP_AdvertisementZonNEast_H105          0.205492       -0.000110
+ 495 REP_AdvertisementZonNWest_H105         -0.145500    -0.000046622
+ 496 REP_AdvertisementZonNEZ1_H105           0.051220    -0.000069456
+ 497 REP_AdvertisementZonNEZ2_H105          -0.090585       -0.000328
+ 498 REP_AdvertisementZonNEZ3_H105           0.295871       -0.000332
+ 499 _DUP15                                  0.210810       -0.000779
+ 500 REP_AdvertisementZonSEast_H105          0.074098       -0.000601
+ 501 REP_AdvertisementZonSWest_H105         -0.155723     0.000031942
+ 502 REP_AdvertisementZonU_H105             -0.192645       -0.000271
+ 503 REP_ClusterGroupA_H105                  0.100421        0.001203
+ 504 REP_ClusterGroupB_H105                  0.193302        0.001306
+ 505 REP_ClusterGroupC_H105                  0.096400        0.000194
+ 506 REP_ClusterGroupD_H105                 -0.184385        0.000787
+ 507 REP_ClusterGroupE_H105                  0.023556        0.000323
+ 508 REP_ClusterGroupF_H105                  0.260917        0.000627
+ 509 REP_GenderF_H105                        0.139949       -0.003698
+ 510 REP_RegionCentral_H105                 -0.324897       -0.000412
+ 511 REP_RegionNorth_H105                   -0.075872        0.000263
+ 512 REP_RegionNorthEast_H105               -0.191935        0.000209
+ 513 REP_RegionSouthEast_H105               -0.267039        0.002032
+ 514 REP_RegionSouthWest_H105               -0.026717        0.000303
+ 515 LoyaltyClassGold_H106                   0.070510       -0.000262
+ 516 REP_AdvertisementZonBorder_H106        -0.162239     0.000046338
+ 517 _DUP16                                  0.178200        0.000114
+ 518 _DUP17                                  0.031122        0.000828
+ 519 _DUP18                                 -0.194322     0.000046001
+ 520 REP_AdvertisementZonNEast_H106          0.134518     0.000046791
+ 521 REP_AdvertisementZonNWest_H106          0.400287     0.000003947
+ 522 REP_AdvertisementZonNEZ1_H106          -0.110981     0.000085733
+ 523 REP_AdvertisementZonNEZ2_H106          -0.356505     0.000013598
+ 524 REP_AdvertisementZonNEZ3_H106          -0.132858    -0.000020831
+ 525 _DUP19                                 -0.013214       -0.000115
+ 526 REP_AdvertisementZonSEast_H106         -0.000246       -0.000180
+ 527 REP_AdvertisementZonSWest_H106          0.048501     0.000024938
+ 528 REP_AdvertisementZonU_H106             -0.108063       -0.000205
+ 529 REP_ClusterGroupA_H106                  0.099332        0.000184
+ 530 REP_ClusterGroupB_H106                  0.172798    -0.000046993
+ 531 REP_ClusterGroupC_H106                 -0.012414        0.000271
+ 532 REP_ClusterGroupD_H106                 -0.068055    -0.000076426
+ 533 REP_ClusterGroupE_H106                 -0.075090     0.000016199
+ 534 REP_ClusterGroupF_H106                 -0.160551        0.000103
+ 535 REP_GenderF_H106                        0.116215       -0.001439
+ 536 REP_RegionCentral_H106                  0.068028        0.000171
+ 537 REP_RegionNorth_H106                    0.281573        0.000182
+ 538 REP_RegionNorthEast_H106               -0.022941        0.000298
+ 539 REP_RegionSouthEast_H106               -0.031939        0.000827
+ 540 REP_RegionSouthWest_H106                0.392487        0.000230
+ 541 LoyaltyClassGold_H107                   0.369442        0.007846
+ 542 REP_AdvertisementZonBorder_H107         0.289021        0.001308
+ 543 _DUP20                                  0.067746        0.001921
+ 544 _DUP21                                 -0.379212       -0.011931
+ 545 _DUP22                                 -0.105334        0.000936
+ 546 REP_AdvertisementZonNEast_H107         -0.094861       -0.000683
+ 547 REP_AdvertisementZonNWest_H107          0.197133        0.000254
+ 548 REP_AdvertisementZonNEZ1_H107          -0.145967        0.002245
+ 549 REP_AdvertisementZonNEZ2_H107          -0.024869        0.000755
+ 550 REP_AdvertisementZonNEZ3_H107          -0.013208        0.001177
+ 551 _DUP23                                  0.215026        0.005058
+ 552 REP_AdvertisementZonSEast_H107          0.134273        0.004409
+ 553 REP_AdvertisementZonSWest_H107         -0.200734       -0.000191
+ 554 REP_AdvertisementZonU_H107             -0.014528        0.004248
+ 555 REP_ClusterGroupA_H107                 -0.076455       -0.003491
+ 556 REP_ClusterGroupB_H107                  0.146361       -0.007665
+ 557 REP_ClusterGroupC_H107                  0.095147       -0.003205
+ 558 REP_ClusterGroupD_H107                 -0.002286        0.002163
+ 559 REP_ClusterGroupE_H107                 -0.197337       -0.001337
+ 560 REP_ClusterGroupF_H107                 -0.060561        0.002119
+ 561 REP_GenderF_H107                       -0.016271        0.028962
+ 562 REP_RegionCentral_H107                  0.292468        0.000580
+ 563 REP_RegionNorth_H107                    0.008012       -0.005557
+ 564 REP_RegionNorthEast_H107                0.163421       -0.001998
+ 565 REP_RegionSouthEast_H107               -0.225936       -0.012799
+ 566 REP_RegionSouthWest_H107                0.035003       -0.004439
+ 567 LoyaltyClassGold_H108                  -0.006471        0.005354
+ 568 REP_AdvertisementZonBorder_H108         0.076111        0.001226
+ 569 _DUP24                                  0.277337        0.001575
+ 570 _DUP25                                 -0.050553       -0.005983
+ 571 _DUP26                                 -0.349125        0.001608
+ 572 REP_AdvertisementZonNEast_H108         -0.254761        0.000519
+ 573 REP_AdvertisementZonNWest_H108         -0.029975        0.001337
+ 574 REP_AdvertisementZonNEZ1_H108          -0.020804        0.001814
+ 575 REP_AdvertisementZonNEZ2_H108          -0.016154        0.001439
+ 576 REP_AdvertisementZonNEZ3_H108          -0.000898        0.001024
+ 577 _DUP27                                  0.523383        0.004494
+ 578 REP_AdvertisementZonSEast_H108          0.143792        0.002543
+ 579 REP_AdvertisementZonSWest_H108         -0.247151        0.001308
+ 580 REP_AdvertisementZonU_H108             -0.001607        0.001907
+ 581 REP_ClusterGroupA_H108                 -0.288595       -0.001945
+ 582 REP_ClusterGroupB_H108                 -0.088654       -0.002671
+ 583 REP_ClusterGroupC_H108                 -0.033697       -0.001204
+ 584 REP_ClusterGroupD_H108                 -0.187071     0.000042582
+ 585 REP_ClusterGroupE_H108                 -0.185975       -0.000936
+ 586 REP_ClusterGroupF_H108                  0.227737       -0.001283
+ 587 REP_GenderF_H108                        0.066388        0.012778
+ 588 REP_RegionCentral_H108                 -0.195460        0.002087
+ 589 REP_RegionNorth_H108                    0.020779       -0.001482
+ 590 REP_RegionNorthEast_H108               -0.043372        0.000117
+ 591 REP_RegionSouthEast_H108               -0.191303       -0.006574
+ 592 REP_RegionSouthWest_H108               -0.167213       -0.000600
+ 593 LoyaltyClassGold_H109                  -0.062960        0.003643
+ 594 REP_AdvertisementZonBorder_H109        -0.118354    -0.000069031
+ 595 _DUP28                                 -0.051099        0.000679
+ 596 _DUP29                                 -0.152755       -0.004895
+ 597 _DUP30                                  0.339100        0.000220
+ 598 REP_AdvertisementZonNEast_H109          0.049299       -0.000539
+ 599 REP_AdvertisementZonNWest_H109         -0.013682       -0.000300
+ 600 REP_AdvertisementZonNEZ1_H109           0.146090     0.000068021
+ 601 REP_AdvertisementZonNEZ2_H109           0.178567        0.000715
+ 602 REP_AdvertisementZonNEZ3_H109          -0.105874        0.000388
+ 603 _DUP31                                 -0.008072        0.001012
+ 604 REP_AdvertisementZonSEast_H109          0.053904        0.002230
+ 605 REP_AdvertisementZonSWest_H109          0.060323       -0.000358
+ 606 REP_AdvertisementZonU_H109             -0.001537        0.001479
+ 607 REP_ClusterGroupA_H109                 -0.044756       -0.001549
+ 608 REP_ClusterGroupB_H109                  0.101607       -0.001563
+ 609 REP_ClusterGroupC_H109                  0.021531        0.002013
+ 610 REP_ClusterGroupD_H109                  0.119656        0.000283
+ 611 REP_ClusterGroupE_H109                 -0.017370       -0.001089
+ 612 REP_ClusterGroupF_H109                 -0.261448       -0.000428
+ 613 REP_GenderF_H109                       -0.282546        0.014555
+ 614 REP_RegionCentral_H109                 -0.199796        0.000129
+ 615 REP_RegionNorth_H109                    0.065766       -0.002132
+ 616 REP_RegionNorthEast_H109                0.022163       -0.000968
+ 617 REP_RegionSouthEast_H109               -0.145177       -0.004245
+ 618 REP_RegionSouthWest_H109               -0.219438       -0.001837
+ 619 LoyaltyClassGold_H110                   0.245893        0.004760
+ 620 REP_AdvertisementZonBorder_H110         0.126179        0.000813
+ 621 _DUP32                                 -0.282979        0.001295
+ 622 REP_AdvertisementZonECentral_H11       -0.075112       -0.003479
+ 623 REP_AdvertisementZonNCentral_H11       -0.008866        0.001367
+ 624 REP_AdvertisementZonNEast_H110          0.045583        0.000533
+ 625 REP_AdvertisementZonNWest_H110          0.227835        0.000807
+ 626 REP_AdvertisementZonNEZ1_H110           0.003708        0.001889
+ 627 REP_AdvertisementZonNEZ2_H110           0.052263        0.000867
+ 628 REP_AdvertisementZonNEZ3_H110          -0.072384        0.001355
+ 629 REP_AdvertisementZonSCentral_H11       -0.053424        0.004990
+ 630 REP_AdvertisementZonSEast_H110          0.189565        0.002197
+ 631 REP_AdvertisementZonSWest_H110         -0.198978        0.000891
+ 632 REP_AdvertisementZonU_H110              0.063094        0.002221
+ 633 REP_ClusterGroupA_H110                  0.003051       -0.001202
+ 634 REP_ClusterGroupB_H110                 -0.037720       -0.003559
+ 635 REP_ClusterGroupC_H110                 -0.111922     0.000072164
+ 636 REP_ClusterGroupD_H110                 -0.024936     0.000017805
+ 637 REP_ClusterGroupE_H110                 -0.194384       -0.002328
+ 638 REP_ClusterGroupF_H110                  0.103300       -0.000200
+ 639 REP_GenderF_H110                       -0.235305        0.016985
+ 640 REP_RegionCentral_H110                  0.077388        0.002125
+ 641 REP_RegionNorth_H110                   -0.068930       -0.001731
+ 642 REP_RegionNorthEast_H110               -0.202002       -0.000856
+ 643 REP_RegionSouthEast_H110               -0.056124       -0.004605
+ 644 REP_RegionSouthWest_H110                0.006956       -0.001330
+ 645 LoyaltyClassGold_H111                  -0.265504       -0.007302
+ 646 REP_AdvertisementZonBorder_H111         0.106235       -0.000890
+ 647 _DUP33                                 -0.018449       -0.001807
+ 648 _DUP34                                  0.316004        0.005852
+ 649 _DUP35                                  0.136713       -0.001348
+ 650 REP_AdvertisementZonNEast_H111         -0.265430       -0.000310
+ 651 REP_AdvertisementZonNWest_H111         -0.007625       -0.000894
+ 652 REP_AdvertisementZonNEZ1_H111           0.046385       -0.001354
+ 653 REP_AdvertisementZonNEZ2_H111          -0.114827       -0.001206
+ 654 REP_AdvertisementZonNEZ3_H111           0.022088       -0.000990
+ 655 _DUP36                                 -0.125750       -0.004109
+ 656 REP_AdvertisementZonSEast_H111         -0.091610       -0.002336
+ 657 REP_AdvertisementZonSWest_H111          0.203892       -0.000588
+ 658 REP_AdvertisementZonU_H111              0.480194       -0.002263
+ 659 REP_ClusterGroupA_H111                  0.041319        0.002875
+ 660 REP_ClusterGroupB_H111                 -0.092199        0.003605
+ 661 REP_ClusterGroupC_H111                  0.198731        0.000218
+ 662 REP_ClusterGroupD_H111                 -0.176390        0.000520
+ 663 REP_ClusterGroupE_H111                 -0.184613        0.001660
+ 664 REP_ClusterGroupF_H111                 -0.182674        0.001121
+ 665 REP_GenderF_H111                        0.091598       -0.015110
+ 666 REP_RegionCentral_H111                  0.093115       -0.001822
+ 667 REP_RegionNorth_H111                    0.283774        0.002189
+ 668 REP_RegionNorthEast_H111               -0.382137        0.000932
+ 669 REP_RegionSouthEast_H111                0.012343        0.006839
+ 670 REP_RegionSouthWest_H111                0.037977        0.001676
+ 671 LoyaltyClassGold_H112                  -0.053379        0.000318
+ 672 REP_AdvertisementZonBorder_H112        -0.024599     0.000030472
+ 673 _DUP37                                 -0.010685     0.000060026
+ 674 _DUP38                                 -0.199347       -0.000423
+ 675 _DUP39                                 -0.023555     0.000036483
+ 676 REP_AdvertisementZonNEast_H112         -0.154268     0.000003230
+ 677 REP_AdvertisementZonNWest_H112         -0.134602     0.000025295
+ 678 REP_AdvertisementZonNEZ1_H112           0.022018     0.000075685
+ 679 REP_AdvertisementZonNEZ2_H112          -0.395639     0.000052558
+ 680 REP_AdvertisementZonNEZ3_H112          -0.153064     0.000021234
+ 681 _DUP40                                  0.211233        0.000235
+ 682 REP_AdvertisementZonSEast_H112         -0.040891        0.000128
+ 683 REP_AdvertisementZonSWest_H112         -0.108874    -0.000000268
+ 684 REP_AdvertisementZonU_H112             -0.130512        0.000113
+ 685 REP_ClusterGroupA_H112                  0.046580       -0.000162
+ 686 REP_ClusterGroupB_H112                  0.014399       -0.000146
+ 687 REP_ClusterGroupC_H112                  0.375839    -0.000089251
+ 688 REP_ClusterGroupD_H112                 -0.066479     0.000066418
+ 689 REP_ClusterGroupE_H112                  0.127256       -0.000109
+ 690 REP_ClusterGroupF_H112                 -0.102107    -0.000050229
+ 691 REP_GenderF_H112                       -0.046357        0.000628
+ 692 REP_RegionCentral_H112                  0.110132        0.000103
+ 693 REP_RegionNorth_H112                   -0.267929       -0.000140
+ 694 REP_RegionNorthEast_H112               -0.092989    -0.000031170
+ 695 REP_RegionSouthEast_H112                0.284552       -0.000446
+ 696 REP_RegionSouthWest_H112               -0.062229       -0.000113
+ 697 LoyaltyClassGold_H113                  -0.087665        0.000204
+ 698 REP_AdvertisementZonBorder_H113        -0.391841     0.000057740
+ 699 _DUP41                                 -0.046400     0.000095263
+ 700 _DUP42                                  0.028913       -0.000103
+ 701 _DUP43                                 -0.102450     0.000068124
+ 702 REP_AdvertisementZonNEast_H113          0.281985     0.000028876
+ 703 REP_AdvertisementZonNWest_H113         -0.243059     0.000058838
+ 704 REP_AdvertisementZonNEZ1_H113           0.228439        0.000100
+ 705 REP_AdvertisementZonNEZ2_H113           0.157972     0.000068435
+ 706 REP_AdvertisementZonNEZ3_H113          -0.101141     0.000058837
+ 707 _DUP44                                 -0.123295        0.000155
+ 708 REP_AdvertisementZonSEast_H113          0.077015        0.000113
+ 709 REP_AdvertisementZonSWest_H113         -0.147767     0.000074960
+ 710 REP_AdvertisementZonU_H113             -0.149085     0.000090270
+ 711 REP_ClusterGroupA_H113                  0.107756    -0.000034765
+ 712 REP_ClusterGroupB_H113                 -0.057349       -0.000100
+ 713 REP_ClusterGroupC_H113                 -0.270116    -0.000036464
+ 714 REP_ClusterGroupD_H113                  0.217710     0.000026294
+ 715 REP_ClusterGroupE_H113                 -0.166087    -0.000003536
+ 716 REP_ClusterGroupF_H113                  0.286273    -0.000021481
+ 717 REP_GenderF_H113                        0.032115        0.000444
+ 718 REP_RegionCentral_H113                  0.115042     0.000045256
+ 719 REP_RegionNorth_H113                    0.036646    -0.000065609
+ 720 REP_RegionNorthEast_H113               -0.070393     0.000014474
+ 721 REP_RegionSouthEast_H113                0.109890       -0.000142
+ 722 REP_RegionSouthWest_H113                0.211167    -0.000015310
+ 723 LoyaltyClassGold_H114                   0.226022       -0.000711
+ 724 REP_AdvertisementZonBorder_H114        -0.180759     0.000032085
+ 725 _DUP45                                  0.117720    -0.000000367
+ 726 _DUP46                                 -0.306839        0.001490
+ 727 _DUP47                                 -0.021464       -0.000143
+ 728 REP_AdvertisementZonNEast_H114         -0.169897     0.000014343
+ 729 REP_AdvertisementZonNWest_H114          0.140171       -0.000267
+ 730 REP_AdvertisementZonNEZ1_H114          -0.101328       -0.000142
+ 731 REP_AdvertisementZonNEZ2_H114          -0.111828    -0.000093170
+ 732 REP_AdvertisementZonNEZ3_H114          -0.053112       -0.000322
+ 733 _DUP48                                 -0.043797       -0.000442
+ 734 REP_AdvertisementZonSEast_H114         -0.022634       -0.000873
+ 735 REP_AdvertisementZonSWest_H114         -0.090789    -0.000098598
+ 736 REP_AdvertisementZonU_H114             -0.037165       -0.000307
+ 737 REP_ClusterGroupA_H114                 -0.034550        0.000694
+ 738 REP_ClusterGroupB_H114                  0.171475        0.000544
+ 739 REP_ClusterGroupC_H114                 -0.166939        0.000341
+ 740 REP_ClusterGroupD_H114                  0.053127        0.000205
+ 741 REP_ClusterGroupE_H114                  0.160986        0.000471
+ 742 REP_ClusterGroupF_H114                 -0.410363    -0.000069902
+ 743 REP_GenderF_H114                        0.036879       -0.003931
+ 744 REP_RegionCentral_H114                  0.239056     0.000035045
+ 745 REP_RegionNorth_H114                    0.286223    -0.000058410
+ 746 REP_RegionNorthEast_H114               -0.080323        0.000313
+ 747 REP_RegionSouthEast_H114               -0.237627        0.001029
+ 748 REP_RegionSouthWest_H114                0.013676        0.000208
+ 749 LoyaltyClassGold_H115                   0.207405        0.016227
+ 750 REP_AdvertisementZonBorder_H115        -0.122521        0.001307
+ 751 _DUP49                                  0.111548        0.001861
+ 752 _DUP50                                 -0.191499       -0.009078
+ 753 _DUP51                                  0.221573        0.000939
+ 754 REP_AdvertisementZonNEast_H115         -0.126753    -0.000071100
+ 755 REP_AdvertisementZonNWest_H115          0.109743        0.000573
+ 756 REP_AdvertisementZonNEZ1_H115           0.091684        0.000701
+ 757 REP_AdvertisementZonNEZ2_H115          -0.264668        0.001057
+ 758 REP_AdvertisementZonNEZ3_H115          -0.097409        0.001515
+ 759 _DUP52                                  0.170653        0.005388
+ 760 REP_AdvertisementZonSEast_H115         -0.008350        0.003724
+ 761 REP_AdvertisementZonSWest_H115         -0.000538        0.000532
+ 762 REP_AdvertisementZonU_H115             -0.287319        0.002888
+ 763 REP_ClusterGroupA_H115                 -0.290571       -0.002845
+ 764 REP_ClusterGroupB_H115                 -0.182453       -0.005104
+ 765 REP_ClusterGroupC_H115                 -0.044834    -0.000007157
+ 766 REP_ClusterGroupD_H115                  0.054257        0.000576
+ 767 REP_ClusterGroupE_H115                  0.019217       -0.000302
+ 768 REP_ClusterGroupF_H115                 -0.408857        0.001720
+ 769 REP_GenderF_H115                        0.048304        0.024201
+ 770 REP_RegionCentral_H115                  0.163369        0.002722
+ 771 REP_RegionNorth_H115                   -0.090126       -0.002590
+ 772 REP_RegionNorthEast_H115               -0.124694       -0.001541
+ 773 REP_RegionSouthEast_H115                0.025943       -0.009102
+ 774 REP_RegionSouthWest_H115                0.021293       -0.002356
+ 775 LoyaltyClassGold_H116                  -0.130561        0.008039
+ 776 REP_AdvertisementZonBorder_H116         0.390590     0.000064032
+ 777 _DUP53                                  0.131858        0.001996
+ 778 _DUP54                                  0.092267       -0.007362
+ 779 _DUP55                                  0.114324        0.000490
+ 780 REP_AdvertisementZonNEast_H116         -0.002102       -0.001024
+ 781 REP_AdvertisementZonNWest_H116         -0.104893        0.000101
+ 782 REP_AdvertisementZonNEZ1_H116           0.034478       -0.000181
+ 783 REP_AdvertisementZonNEZ2_H116           0.203449        0.000406
+ 784 REP_AdvertisementZonNEZ3_H116           0.249327       -0.000418
+ 785 _DUP56                                  0.082395        0.003154
+ 786 REP_AdvertisementZonSEast_H116          0.112889        0.000105
+ 787 REP_AdvertisementZonSWest_H116          0.332018       -0.000255
+ 788 REP_AdvertisementZonU_H116              0.058424        0.001446
+ 789 REP_ClusterGroupA_H116                  0.133505       -0.003537
+ 790 REP_ClusterGroupB_H116                  0.004900       -0.005792
+ 791 REP_ClusterGroupC_H116                  0.068354        0.000415
+ 792 REP_ClusterGroupD_H116                 -0.077417       -0.000452
+ 793 REP_ClusterGroupE_H116                  0.147664       -0.003338
+ 794 REP_ClusterGroupF_H116                  0.084212       -0.001373
+ 795 REP_GenderF_H116                       -0.008363        0.017575
+ 796 REP_RegionCentral_H116                  0.025189        0.003665
+ 797 REP_RegionNorth_H116                    0.047935       -0.003139
+ 798 REP_RegionNorthEast_H116               -0.257703       -0.001509
+ 799 REP_RegionSouthEast_H116                0.331659       -0.008879
+ 800 REP_RegionSouthWest_H116               -0.286325       -0.001701
+ 801 LoyaltyClassGold_H117                   0.171834     0.000040389
+ 802 REP_AdvertisementZonBorder_H117         0.198013     0.000006354
+ 803 _DUP57                                  0.020451     0.000012294
+ 804 _DUP58                                 -0.322656    -0.000051040
+ 805 _DUP59                                  0.096259     0.000005718
+ 806 REP_AdvertisementZonNEast_H117          0.181855     0.000001503
+ 807 REP_AdvertisementZonNWest_H117          0.138902    -0.000004260
+ 808 REP_AdvertisementZonNEZ1_H117          -0.374088     0.000003888
+ 809 REP_AdvertisementZonNEZ2_H117           0.130606     0.000006654
+ 810 REP_AdvertisementZonNEZ3_H117          -0.043122     0.000011438
+ 811 _DUP60                                  0.493144     0.000003025
+ 812 REP_AdvertisementZonSEast_H117          0.060673     0.000001722
+ 813 REP_AdvertisementZonSWest_H117         -0.067736     0.000002059
+ 814 REP_AdvertisementZonU_H117             -0.012008     0.000004948
+ 815 REP_ClusterGroupA_H117                 -0.082345    -0.000018125
+ 816 REP_ClusterGroupB_H117                  0.117192    -0.000015253
+ 817 REP_ClusterGroupC_H117                 -0.118777    -0.000020043
+ 818 REP_ClusterGroupD_H117                  0.042963    -0.000004016
+ 819 REP_ClusterGroupE_H117                 -0.127379    -0.000005836
+ 820 REP_ClusterGroupF_H117                 -0.296559    -0.000013958
+ 821 REP_GenderF_H117                        0.030282    -0.000009467
+ 822 REP_RegionCentral_H117                  0.049735    -0.000001190
+ 823 REP_RegionNorth_H117                   -0.254468    -0.000007786
+ 824 REP_RegionNorthEast_H117                0.058562     0.000000429
+ 825 REP_RegionSouthEast_H117               -0.148867    -0.000060025
+ 826 REP_RegionSouthWest_H117               -0.206084    -0.000002889
+ 827 LoyaltyClassGold_H118                  -0.381092        0.006633
+ 828 REP_AdvertisementZonBorder_H118         0.139112        0.000920
+ 829 _DUP61                                  0.331494        0.002331
+ 830 _DUP62                                  0.025417       -0.004993
+ 831 _DUP63                                 -0.171343        0.001015
+ 832 REP_AdvertisementZonNEast_H118          0.092241     0.000022155
+ 833 REP_AdvertisementZonNWest_H118         -0.080041        0.000445
+ 834 REP_AdvertisementZonNEZ1_H118           0.122706        0.000846
+ 835 REP_AdvertisementZonNEZ2_H118           0.117495        0.001011
+ 836 REP_AdvertisementZonNEZ3_H118          -0.186323        0.000633
+ 837 _DUP64                                  0.056491        0.004079
+ 838 REP_AdvertisementZonSEast_H118          0.081630        0.001355
+ 839 REP_AdvertisementZonSWest_H118          0.142920        0.000582
+ 840 REP_AdvertisementZonU_H118              0.086534        0.001734
+ 841 REP_ClusterGroupA_H118                  0.052368       -0.002365
+ 842 REP_ClusterGroupB_H118                 -0.041951       -0.002975
+ 843 REP_ClusterGroupC_H118                 -0.094481       -0.000628
+ 844 REP_ClusterGroupD_H118                  0.089347       -0.000130
+ 845 REP_ClusterGroupE_H118                  0.215630       -0.000848
+ 846 REP_ClusterGroupF_H118                  0.137422       -0.000497
+ 847 REP_GenderF_H118                       -0.078298        0.013181
+ 848 REP_RegionCentral_H118                 -0.244047        0.002839
+ 849 REP_RegionNorth_H118                    0.044325       -0.002535
+ 850 REP_RegionNorthEast_H118               -0.066409       -0.000859
+ 851 REP_RegionSouthEast_H118                0.124705       -0.006322
+ 852 REP_RegionSouthWest_H118                0.173247       -0.001151
+ 853 LoyaltyClassGold_H119                  -0.064222       -0.002465
+ 854 REP_AdvertisementZonBorder_H119        -0.067725       -0.000514
+ 855 _DUP65                                 -0.159265       -0.000874
+ 856 _DUP66                                 -0.043640        0.003283
+ 857 _DUP67                                  0.273642       -0.000650
+ 858 REP_AdvertisementZonNEast_H119         -0.147315       -0.000131
+ 859 REP_AdvertisementZonNWest_H119         -0.013577       -0.000601
+ 860 REP_AdvertisementZonNEZ1_H119           0.025100       -0.000819
+ 861 REP_AdvertisementZonNEZ2_H119           0.259012       -0.000554
+ 862 REP_AdvertisementZonNEZ3_H119          -0.087285       -0.000715
+ 863 _DUP68                                  0.172289       -0.001681
+ 864 REP_AdvertisementZonSEast_H119          0.225475       -0.001370
+ 865 REP_AdvertisementZonSWest_H119         -0.052606       -0.000653
+ 866 REP_AdvertisementZonU_H119             -0.094585       -0.001109
+ 867 REP_ClusterGroupA_H119                  0.048349        0.001172
+ 868 REP_ClusterGroupB_H119                  0.009331        0.001212
+ 869 REP_ClusterGroupC_H119                  0.289220        0.000257
+ 870 REP_ClusterGroupD_H119                  0.395560        0.000145
+ 871 REP_ClusterGroupE_H119                  0.058848        0.000576
+ 872 REP_ClusterGroupF_H119                  0.123738    -0.000060346
+ 873 REP_GenderF_H119                        0.273382       -0.005730
+ 874 REP_RegionCentral_H119                  0.229395       -0.000381
+ 875 REP_RegionNorth_H119                    0.254067        0.000805
+ 876 REP_RegionNorthEast_H119                0.142307        0.000365
+ 877 REP_RegionSouthEast_H119                0.038340        0.003594
+ 878 REP_RegionSouthWest_H119               -0.020966        0.000456
+ 879 LoyaltyClassGold_H120                   0.020965       -0.000902
+ 880 REP_AdvertisementZonBorder_H120         0.280014       -0.000225
+ 881 _DUP69                                 -0.067450       -0.000181
+ 882 REP_AdvertisementZonECentral_H12       -0.009347        0.000484
+ 883 REP_AdvertisementZonNCentral_H12       -0.094263       -0.000371
+ 884 REP_AdvertisementZonNEast_H120          0.209331       -0.000141
+ 885 REP_AdvertisementZonNWest_H120          0.185563       -0.000181
+ 886 REP_AdvertisementZonNEZ1_H120           0.028320       -0.000255
+ 887 REP_AdvertisementZonNEZ2_H120          -0.250713       -0.000287
+ 888 REP_AdvertisementZonNEZ3_H120           0.023618       -0.000231
+ 889 REP_AdvertisementZonSCentral_H12        0.029992       -0.001116
+ 890 REP_AdvertisementZonSEast_H120          0.031760       -0.000484
+ 891 REP_AdvertisementZonSWest_H120         -0.103589       -0.000263
+ 892 REP_AdvertisementZonU_H120             -0.012880       -0.000252
+ 893 REP_ClusterGroupA_H120                  0.092970        0.000473
+ 894 REP_ClusterGroupB_H120                  0.101152        0.000867
+ 895 REP_ClusterGroupC_H120                  0.293242        0.000442
+ 896 REP_ClusterGroupD_H120                  0.325429        0.000114
+ 897 REP_ClusterGroupE_H120                 -0.102229     0.000051462
+ 898 REP_ClusterGroupF_H120                 -0.004864        0.000273
+ 899 REP_GenderF_H120                        0.124922       -0.002272
+ 900 REP_RegionCentral_H120                 -0.078381       -0.000650
+ 901 REP_RegionNorth_H120                   -0.002426        0.000210
+ 902 REP_RegionNorthEast_H120               -0.175733    -0.000004212
+ 903 REP_RegionSouthEast_H120                0.131645        0.000507
+ 904 REP_RegionSouthWest_H120               -0.102928    -0.000011617
+ 905 LoyaltyClassGold_H121                   0.230180       -0.005995
+ 906 REP_AdvertisementZonBorder_H121        -0.078587       -0.000344
+ 907 _DUP70                                  0.049015       -0.000928
+ 908 _DUP71                                 -0.130549        0.006340
+ 909 _DUP72                                 -0.108241       -0.000528
+ 910 REP_AdvertisementZonNEast_H121         -0.021825        0.000123
+ 911 REP_AdvertisementZonNWest_H121         -0.142805        0.000258
+ 912 REP_AdvertisementZonNEZ1_H121          -0.055914    -0.000055459
+ 913 REP_AdvertisementZonNEZ2_H121          -0.086966       -0.000394
+ 914 REP_AdvertisementZonNEZ3_H121          -0.079593       -0.000786
+ 915 _DUP73                                 -0.117405       -0.003260
+ 916 REP_AdvertisementZonSEast_H121         -0.123638       -0.001892
+ 917 REP_AdvertisementZonSWest_H121         -0.147448        0.000239
+ 918 REP_AdvertisementZonU_H121             -0.119676       -0.001348
+ 919 REP_ClusterGroupA_H121                 -0.071864        0.001572
+ 920 REP_ClusterGroupB_H121                  0.056051        0.002338
+ 921 REP_ClusterGroupC_H121                 -0.254869        0.001092
+ 922 REP_ClusterGroupD_H121                 -0.079805       -0.000912
+ 923 REP_ClusterGroupE_H121                 -0.097112        0.000795
+ 924 REP_ClusterGroupF_H121                  0.311897        0.000320
+ 925 REP_GenderF_H121                       -0.044223       -0.012293
+ 926 REP_RegionCentral_H121                 -0.066473       -0.002401
+ 927 REP_RegionNorth_H121                   -0.049132        0.001589
+ 928 REP_RegionNorthEast_H121               -0.259464        0.001200
+ 929 REP_RegionSouthEast_H121               -0.023249        0.006118
+ 930 REP_RegionSouthWest_H121                0.041555        0.001588
+ 931 LoyaltyClassGold_H122                   0.024804        0.001790
+ 932 REP_AdvertisementZonBorder_H122        -0.103480    -0.000073304
+ 933 _DUP74                                 -0.077387        0.001991
+ 934 _DUP75                                  0.022271       -0.004705
+ 935 _DUP76                                 -0.038495     0.000018359
+ 936 REP_AdvertisementZonNEast_H122          0.113786       -0.000556
+ 937 REP_AdvertisementZonNWest_H122         -0.001849       -0.000258
+ 938 REP_AdvertisementZonNEZ1_H122           0.117767        0.001287
+ 939 REP_AdvertisementZonNEZ2_H122           0.045866        0.000914
+ 940 REP_AdvertisementZonNEZ3_H122           0.254810    -0.000060239
+ 941 _DUP77                                 -0.081494        0.005360
+ 942 REP_AdvertisementZonSEast_H122         -0.213475        0.000999
+ 943 REP_AdvertisementZonSWest_H122         -0.153128       -0.000820
+ 944 REP_AdvertisementZonU_H122              0.030394        0.000474
+ 945 REP_ClusterGroupA_H122                  0.150634       -0.000472
+ 946 REP_ClusterGroupB_H122                 -0.091878       -0.003363
+ 947 REP_ClusterGroupC_H122                  0.330328       -0.000848
+ 948 REP_ClusterGroupD_H122                 -0.187784        0.000866
+ 949 REP_ClusterGroupE_H122                 -0.172240       -0.001516
+ 950 REP_ClusterGroupF_H122                  0.151587        0.000256
+ 951 REP_GenderF_H122                       -0.092259        0.008809
+ 952 REP_RegionCentral_H122                 -0.220966        0.005911
+ 953 REP_RegionNorth_H122                    0.095218       -0.002004
+ 954 REP_RegionNorthEast_H122                0.092163        0.000999
+ 955 REP_RegionSouthEast_H122               -0.009892       -0.004507
+ 956 REP_RegionSouthWest_H122                0.221905       -0.001294
+ 957 LoyaltyClassGold_H123                  -0.123251        0.000597
+ 958 REP_AdvertisementZonBorder_H123         0.204121        0.000164
+ 959 _DUP78                                  0.162246        0.000299
+ 960 _DUP79                                 -0.118649       -0.001148
+ 961 _DUP80                                  0.263909        0.000161
+ 962 REP_AdvertisementZonNEast_H123         -0.376782        0.000101
+ 963 REP_AdvertisementZonNWest_H123          0.095123     0.000096202
+ 964 REP_AdvertisementZonNEZ1_H123           0.029879        0.000182
+ 965 REP_AdvertisementZonNEZ2_H123          -0.197369        0.000217
+ 966 REP_AdvertisementZonNEZ3_H123          -0.139722        0.000242
+ 967 _DUP81                                  0.185883        0.000568
+ 968 REP_AdvertisementZonSEast_H123          0.026355        0.000529
+ 969 REP_AdvertisementZonSWest_H123          0.033519        0.000124
+ 970 REP_AdvertisementZonU_H123             -0.301575        0.000389
+ 971 REP_ClusterGroupA_H123                  0.056187       -0.000283
+ 972 REP_ClusterGroupB_H123                 -0.151244       -0.000280
+ 973 REP_ClusterGroupC_H123                  0.159699       -0.000164
+ 974 REP_ClusterGroupD_H123                  0.251444    -0.000023517
+ 975 REP_ClusterGroupE_H123                  0.194402       -0.000150
+ 976 REP_ClusterGroupF_H123                  0.068248     0.000066188
+ 977 REP_GenderF_H123                       -0.133103        0.002388
+ 978 REP_RegionCentral_H123                  0.001218        0.000102
+ 979 REP_RegionNorth_H123                   -0.081888       -0.000308
+ 980 REP_RegionNorthEast_H123               -0.169753       -0.000185
+ 981 REP_RegionSouthEast_H123               -0.084569       -0.001188
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+                          Optimization Start
+                         Parameter Estimates
+                                                             Gradient
+                                                            Objective
+   N Parameter                               Estimate        Function
+
+ 982 REP_RegionSouthWest_H123                0.130147       -0.000266
+ 983 LoyaltyClassGold_H124                   0.048214       -0.001472
+ 984 REP_AdvertisementZonBorder_H124        -0.064073       -0.000117
+ 985 _DUP82                                 -0.039866       -0.000315
+ 986 _DUP83                                 -0.146610        0.001678
+ 987 _DUP84                                  0.031224       -0.000187
+ 988 REP_AdvertisementZonNEast_H124          0.019915     0.000008513
+ 989 REP_AdvertisementZonNWest_H124         -0.224073       -0.000122
+ 990 REP_AdvertisementZonNEZ1_H124           0.156012       -0.000265
+ 991 REP_AdvertisementZonNEZ2_H124          -0.041660       -0.000196
+ 992 REP_AdvertisementZonNEZ3_H124           0.192480       -0.000157
+ 993 _DUP85                                 -0.137722       -0.000760
+ 994 REP_AdvertisementZonSEast_H124          0.069205       -0.000511
+ 995 REP_AdvertisementZonSWest_H124         -0.132550    -0.000060197
+ 996 REP_AdvertisementZonU_H124             -0.151765       -0.000412
+ 997 REP_ClusterGroupA_H124                 -0.198838        0.000579
+ 998 REP_ClusterGroupB_H124                 -0.102288        0.000731
+ 999 REP_ClusterGroupC_H124                 -0.142960        0.000144
+1000 REP_ClusterGroupD_H124                 -0.027976     0.000031508
+1001 REP_ClusterGroupE_H124                 -0.153173        0.000343
+1002 REP_ClusterGroupF_H124                 -0.102637        0.000139
+1003 REP_GenderF_H124                       -0.021791       -0.003376
+1004 REP_RegionCentral_H124                 -0.217906       -0.000429
+1005 REP_RegionNorth_H124                    0.104525        0.000423
+1006 REP_RegionNorthEast_H124                0.107787        0.000115
+1007 REP_RegionSouthEast_H124               -0.052265        0.001720
+1008 REP_RegionSouthWest_H124               -0.121649        0.000352
+1009 LoyaltyClassGold_H125                  -0.004224        0.005002
+1010 REP_AdvertisementZonBorder_H125        -0.106355        0.000565
+1011 _DUP86                                  0.033162        0.001365
+1012 _DUP87                                 -0.015345       -0.004420
+1013 _DUP88                                 -0.040696        0.001351
+1014 REP_AdvertisementZonNEast_H125         -0.251598     0.000073724
+1015 REP_AdvertisementZonNWest_H125         -0.194285        0.000572
+1016 REP_AdvertisementZonNEZ1_H125          -0.170731        0.002076
+1017 REP_AdvertisementZonNEZ2_H125          -0.148240        0.001045
+1018 REP_AdvertisementZonNEZ3_H125           0.168047        0.001860
+1019 _DUP89                                 -0.115754        0.005114
+1020 REP_AdvertisementZonSEast_H125          0.230254        0.002538
+1021 REP_AdvertisementZonSWest_H125         -0.035726        0.000876
+1022 REP_AdvertisementZonU_H125             -0.164812        0.001729
+1023 REP_ClusterGroupA_H125                  0.159886       -0.002604
+1024 REP_ClusterGroupB_H125                  0.200570       -0.003486
+1025 REP_ClusterGroupC_H125                 -0.087846        0.000661
+1026 REP_ClusterGroupD_H125                 -0.052403       -0.000438
+1027 REP_ClusterGroupE_H125                 -0.133515       -0.000412
+1028 REP_ClusterGroupF_H125                  0.007687        0.000400
+1029 REP_GenderF_H125                        0.054822        0.014766
+1030 REP_RegionCentral_H125                 -0.140610        0.002924
+1031 REP_RegionNorth_H125                    0.164637       -0.001343
+1032 REP_RegionNorthEast_H125               -0.140621       -0.000162
+1033 REP_RegionSouthEast_H125               -0.017920       -0.004670
+1034 REP_RegionSouthWest_H125                0.179690       -0.000853
+1035 LoyaltyClassGold_H126                  -0.215722        0.000421
+1036 REP_AdvertisementZonBorder_H126        -0.129752     0.000038043
+1037 _DUP90                                  0.337709     0.000098297
+1038 _DUP91                                  0.030766       -0.000728
+1039 _DUP92                                  0.080109     0.000062611
+1040 REP_AdvertisementZonNEast_H126          0.307202    -0.000023563
+1041 REP_AdvertisementZonNWest_H126          0.073821     0.000011782
+1042 REP_AdvertisementZonNEZ1_H126          -0.270466     0.000050327
+1043 REP_AdvertisementZonNEZ2_H126           0.134838     0.000051555
+1044 REP_AdvertisementZonNEZ3_H126          -0.021690     0.000041729
+1045 _DUP93                                  0.009085        0.000300
+1046 REP_AdvertisementZonSEast_H126          0.184303        0.000211
+1047 REP_AdvertisementZonSWest_H126          0.085319    -0.000025705
+1048 REP_AdvertisementZonU_H126              0.201033        0.000166
+1049 REP_ClusterGroupA_H126                 -0.306314       -0.000251
+1050 REP_ClusterGroupB_H126                 -0.226063       -0.000421
+1051 REP_ClusterGroupC_H126                 -0.041151       -0.000174
+1052 REP_ClusterGroupD_H126                  0.002359    -0.000083736
+1053 REP_ClusterGroupE_H126                  0.014779       -0.000251
+1054 REP_ClusterGroupF_H126                  0.154826    -0.000035114
+1055 REP_GenderF_H126                       -0.091941        0.001584
+1056 REP_RegionCentral_H126                  0.165091        0.000167
+1057 REP_RegionNorth_H126                    0.053851       -0.000221
+1058 REP_RegionNorthEast_H126               -0.045492       -0.000111
+1059 REP_RegionSouthEast_H126               -0.019273       -0.000726
+1060 REP_RegionSouthWest_H126               -0.202915       -0.000191
+1061 LoyaltyClassGold_H127                  -0.060145       -0.000302
+1062 REP_AdvertisementZonBorder_H127         0.194195    -0.000076910
+1063 _DUP94                                 -0.008842       -0.000138
+1064 _DUP95                                 -0.099716        0.000816
+1065 _DUP96                                  0.159037    -0.000090927
+1066 REP_AdvertisementZonNEast_H127         -0.014471    -0.000014438
+1067 REP_AdvertisementZonNWest_H127          0.292303    -0.000009746
+1068 REP_AdvertisementZonNEZ1_H127          -0.113070    -0.000015253
+1069 REP_AdvertisementZonNEZ2_H127           0.043712    -0.000094174
+1070 REP_AdvertisementZonNEZ3_H127          -0.233313    -0.000073085
+1071 _DUP97                                 -0.179972       -0.000396
+1072 REP_AdvertisementZonSEast_H127          0.069692       -0.000226
+1073 REP_AdvertisementZonSWest_H127          0.020890    -0.000054180
+1074 REP_AdvertisementZonU_H127             -0.217877       -0.000173
+1075 REP_ClusterGroupA_H127                  0.040711        0.000248
+1076 REP_ClusterGroupB_H127                 -0.014333        0.000308
+1077 REP_ClusterGroupC_H127                  0.130415        0.000166
+1078 REP_ClusterGroupD_H127                  0.175153        0.000125
+1079 REP_ClusterGroupE_H127                  0.126644     0.000040897
+1080 REP_ClusterGroupF_H127                  0.033683     0.000053794
+1081 REP_GenderF_H127                        0.228670       -0.001379
+1082 REP_RegionCentral_H127                 -0.010090       -0.000207
+1083 REP_RegionNorth_H127                    0.229865        0.000239
+1084 REP_RegionNorthEast_H127                0.384876        0.000150
+1085 REP_RegionSouthEast_H127                0.151925        0.000844
+1086 REP_RegionSouthWest_H127               -0.273111        0.000119
+1087 LoyaltyClassGold_H128                  -0.041491       -0.002470
+1088 REP_AdvertisementZonBorder_H128        -0.039758       -0.000152
+1089 _DUP98                                  0.013720       -0.000308
+1090 _DUP99                                  0.015276        0.003136
+1091 _DUP100                                -0.015948       -0.000216
+1092 REP_AdvertisementZonNEast_H128          0.086096    -0.000062471
+1093 REP_AdvertisementZonNWest_H128         -0.025769       -0.000199
+1094 REP_AdvertisementZonNEZ1_H128           0.194005       -0.000116
+1095 REP_AdvertisementZonNEZ2_H128          -0.030353       -0.000232
+1096 REP_AdvertisementZonNEZ3_H128           0.389290       -0.000145
+1097 _DUP101                                 0.157864       -0.000215
+1098 REP_AdvertisementZonSEast_H128          0.235240       -0.000567
+1099 REP_AdvertisementZonSWest_H128          0.187447        0.000310
+1100 REP_AdvertisementZonU_H128              0.066565       -0.000550
+1101 REP_ClusterGroupA_H128                 -0.279414        0.001078
+1102 REP_ClusterGroupB_H128                  0.315164        0.001776
+1103 REP_ClusterGroupC_H128                 -0.084932     0.000018867
+1104 REP_ClusterGroupD_H128                  0.315241        0.000378
+1105 REP_ClusterGroupE_H128                 -0.057407        0.000790
+1106 REP_ClusterGroupF_H128                  0.076431        0.000679
+1107 REP_GenderF_H128                       -0.078615       -0.005579
+1108 REP_RegionCentral_H128                 -0.094497        0.000226
+1109 REP_RegionNorth_H128                    0.057951        0.000420
+1110 REP_RegionNorthEast_H128                0.029292        0.000326
+1111 REP_RegionSouthEast_H128                0.151245        0.003257
+1112 REP_RegionSouthWest_H128               -0.161052        0.000860
+1113 LoyaltyClassGold_H129                  -0.321475       -0.002105
+1114 REP_AdvertisementZonBorder_H129         0.309906       -0.000405
+1115 _DUP102                                 0.170793       -0.000789
+1116 _DUP103                                -0.319207        0.002057
+1117 _DUP104                                -0.056936       -0.000358
+1118 REP_AdvertisementZonNEast_H129         -0.002915       -0.000164
+1119 REP_AdvertisementZonNWest_H129         -0.022517       -0.000286
+1120 REP_AdvertisementZonNEZ1_H129           0.127363       -0.000803
+1121 REP_AdvertisementZonNEZ2_H129           0.222559       -0.000456
+1122 REP_AdvertisementZonNEZ3_H129          -0.202312       -0.000275
+1123 _DUP105                                 0.057549       -0.001099
+1124 REP_AdvertisementZonSEast_H129          0.030905       -0.000875
+1125 REP_AdvertisementZonSWest_H129          0.003571       -0.000328
+1126 REP_AdvertisementZonU_H129             -0.149008       -0.000588
+1127 REP_ClusterGroupA_H129                  0.166994        0.000362
+1128 REP_ClusterGroupB_H129                  0.213766        0.000663
+1129 REP_ClusterGroupC_H129                  0.157293        0.000295
+1130 REP_ClusterGroupD_H129                 -0.060132        0.000351
+1131 REP_ClusterGroupE_H129                  0.082320    -0.000095500
+1132 REP_ClusterGroupF_H129                  0.053436       -0.000269
+1133 REP_GenderF_H129                        0.019322       -0.003431
+1134 REP_RegionCentral_H129                  0.185727       -0.000413
+1135 REP_RegionNorth_H129                    0.152849        0.000695
+1136 REP_RegionNorthEast_H129                0.201444       -0.000245
+1137 REP_RegionSouthEast_H129                0.451505        0.002185
+1138 REP_RegionSouthWest_H129               -0.049385        0.000260
+1139 LoyaltyClassGold_H130                   0.237202       -0.002618
+1140 REP_AdvertisementZonBorder_H130         0.317041       -0.001483
+1141 _DUP106                                 0.006377       -0.003889
+1142 REP_AdvertisementZonECentral_H13       -0.118525        0.008384
+1143 REP_AdvertisementZonNCentral_H13        0.227777       -0.002748
+1144 REP_AdvertisementZonNEast_H130         -0.089436       -0.000624
+1145 REP_AdvertisementZonNWest_H130         -0.235164       -0.002618
+1146 REP_AdvertisementZonNEZ1_H130          -0.111543       -0.001912
+1147 REP_AdvertisementZonNEZ2_H130          -0.077257       -0.002057
+1148 REP_AdvertisementZonNEZ3_H130          -0.054863       -0.002451
+1149 REP_AdvertisementZonSCentral_H13        0.267030       -0.007454
+1150 REP_AdvertisementZonSEast_H130          0.032808       -0.006070
+1151 REP_AdvertisementZonSWest_H130          0.199485       -0.002538
+1152 REP_AdvertisementZonU_H130              0.026288       -0.004171
+1153 REP_ClusterGroupA_H130                  0.030458        0.003290
+1154 REP_ClusterGroupB_H130                 -0.235197        0.004604
+1155 REP_ClusterGroupC_H130                  0.022700        0.002256
+1156 REP_ClusterGroupD_H130                 -0.100397       -0.001296
+1157 REP_ClusterGroupE_H130                  0.115069        0.002932
+1158 REP_ClusterGroupF_H130                 -0.071937        0.001636
+1159 REP_GenderF_H130                        0.161579       -0.023994
+1160 REP_RegionCentral_H130                  0.063868       -0.004100
+1161 REP_RegionNorth_H130                   -0.067041        0.002358
+1162 REP_RegionNorthEast_H130                0.117038        0.002599
+1163 REP_RegionSouthEast_H130               -0.242782        0.008425
+1164 REP_RegionSouthWest_H130                0.161134        0.001633
+1165 LoyaltyClassGold_H131                   0.153723       -0.002414
+1166 REP_AdvertisementZonBorder_H131         0.079683       -0.000619
+1167 _DUP107                                 0.098767       -0.000948
+1168 _DUP108                                 0.041705        0.002550
+1169 _DUP109                                -0.167690       -0.000734
+1170 REP_AdvertisementZonNEast_H131         -0.109939       -0.000412
+1171 REP_AdvertisementZonNWest_H131          0.278760       -0.000521
+1172 REP_AdvertisementZonNEZ1_H131           0.023170       -0.000754
+1173 REP_AdvertisementZonNEZ2_H131          -0.164996       -0.000783
+1174 REP_AdvertisementZonNEZ3_H131           0.005281       -0.000734
+1175 _DUP110                                 0.209643       -0.001613
+1176 REP_AdvertisementZonSEast_H131         -0.040458       -0.000833
+1177 REP_AdvertisementZonSWest_H131          0.021690       -0.000347
+1178 REP_AdvertisementZonU_H131             -0.032952       -0.000992
+1179 REP_ClusterGroupA_H131                 -0.261149        0.000919
+1180 REP_ClusterGroupB_H131                  0.033805        0.001517
+1181 REP_ClusterGroupC_H131                 -0.161436        0.001339
+1182 REP_ClusterGroupD_H131                 -0.212378    -0.000055565
+1183 REP_ClusterGroupE_H131                  0.271784        0.000393
+1184 REP_ClusterGroupF_H131                  0.119544        0.000270
+1185 REP_GenderF_H131                        0.111052       -0.002283
+1186 REP_RegionCentral_H131                 -0.004169       -0.000246
+1187 REP_RegionNorth_H131                    0.246326        0.000695
+1188 REP_RegionNorthEast_H131               -0.082061        0.000208
+1189 REP_RegionSouthEast_H131               -0.023498        0.003394
+1190 REP_RegionSouthWest_H131               -0.162920        0.000645
+1191 LoyaltyClassGold_H132                  -0.264207       -0.000139
+1192 REP_AdvertisementZonBorder_H132        -0.076615    -0.000050979
+1193 _DUP111                                -0.074833    -0.000046818
+1194 _DUP112                                -0.187212     0.000035996
+1195 _DUP113                                -0.041682    -0.000052384
+1196 REP_AdvertisementZonNEast_H132          0.026587    -0.000037536
+1197 REP_AdvertisementZonNWest_H132          0.138033    -0.000037009
+1198 REP_AdvertisementZonNEZ1_H132          -0.455369    -0.000044747
+1199 REP_AdvertisementZonNEZ2_H132           0.011905    -0.000057279
+1200 REP_AdvertisementZonNEZ3_H132          -0.026282    -0.000053481
+1201 _DUP114                                 0.201941    -0.000093674
+1202 REP_AdvertisementZonSEast_H132         -0.009466    -0.000048984
+1203 REP_AdvertisementZonSWest_H132         -0.072860    -0.000024906
+1204 REP_AdvertisementZonU_H132              0.129171    -0.000055801
+1205 REP_ClusterGroupA_H132                  0.044714     0.000034788
+1206 REP_ClusterGroupB_H132                 -0.036855     0.000048517
+1207 REP_ClusterGroupC_H132                 -0.109943     0.000024126
+1208 REP_ClusterGroupD_H132                  0.089219     0.000037396
+1209 REP_ClusterGroupE_H132                  0.097265     0.000007862
+1210 REP_ClusterGroupF_H132                 -0.176210     0.000026316
+1211 REP_GenderF_H132                       -0.214236       -0.000193
+1212 REP_RegionCentral_H132                  0.114804     0.000017810
+1213 REP_RegionNorth_H132                   -0.026864     0.000031031
+1214 REP_RegionNorthEast_H132                0.178204     0.000006052
+1215 REP_RegionSouthEast_H132               -0.098135     0.000094441
+1216 REP_RegionSouthWest_H132                0.098976     0.000030895
+1217 BIAS_H101                              -0.337954    -0.000059527
+1218 BIAS_H102                              -1.314232       -0.000271
+1219 BIAS_H103                              -0.430832        0.000329
+1220 BIAS_H104                               0.533688       -0.001218
+1221 BIAS_H105                               1.235591        0.002213
+1222 BIAS_H106                               1.029541        0.000321
+1223 BIAS_H107                              -0.146077       -0.004900
+1224 BIAS_H108                               0.006753       -0.002372
+1225 BIAS_H109                              -0.750908       -0.000785
+1226 BIAS_H110                              -0.241459        0.000316
+1227 BIAS_H111                               0.146684        0.002593
+1228 BIAS_H112                              -0.239667       -0.000184
+1229 BIAS_H113                              -1.246240     0.000012974
+1230 BIAS_H114                               1.058583        0.000313
+1231 BIAS_H115                              -0.467583       -0.000692
+1232 BIAS_H116                               0.456055       -0.003948
+1233 BIAS_H117                               3.839819    -0.000076329
+1234 BIAS_H118                               0.670446       -0.003330
+1235 BIAS_H119                              -0.449846        0.001618
+1236 BIAS_H120                               1.216139     0.000075396
+1237 BIAS_H121                               0.253986        0.001939
+1238 BIAS_H122                               1.483208    -0.000021004
+1239 BIAS_H123                              -0.252526       -0.000584
+1240 BIAS_H124                               0.188175        0.000548
+1241 BIAS_H125                              -0.656966    -0.000084248
+1242 BIAS_H126                              -0.450674       -0.000345
+1243 BIAS_H127                               0.368752        0.000594
+1244 BIAS_H128                              -1.067582        0.002615
+1245 BIAS_H129                               0.138783        0.001444
+1246 BIAS_H130                              -0.273821       -0.002472
+1247 BIAS_H131                               1.043367        0.002859
+1248 BIAS_H132                              -1.672467        0.000155
+1249 H101_TargetBuy1                        -0.100603       -0.004029
+1250 H102_TargetBuy1                         0.237164       -0.008113
+1251 H103_TargetBuy1                         0.062117       -0.001813
+1252 H104_TargetBuy1                        -0.558970        0.008477
+1253 H105_TargetBuy1                         0.340005        0.001354
+1254 H106_TargetBuy1                         0.129233        0.006436
+1255 H107_TargetBuy1                        -1.508188       -0.013673
+1256 H108_TargetBuy1                        -0.708434       -0.015942
+1257 H109_TargetBuy1                        -0.864859       -0.001613
+1258 H110_TargetBuy1                        -0.839432       -0.000771
+1259 H111_TargetBuy1                         0.641169        0.001781
+1260 H112_TargetBuy1                        -0.038933       -0.000458
+1261 H113_TargetBuy1                        -0.039858       -0.006700
+1262 H114_TargetBuy1                         0.261670        0.006097
+1263 H115_TargetBuy1                        -1.292379       -0.007038
+1264 H116_TargetBuy1                        -0.988961    -0.000037199
+1265 H117_TargetBuy1                        -0.153949        0.006717
+1266 H118_TargetBuy1                        -0.769719        0.006057
+1267 H119_TargetBuy1                         0.339551       -0.013074
+1268 H120_TargetBuy1                         0.211275        0.006657
+1269 H121_TargetBuy1                         0.648776        0.004945
+1270 H122_TargetBuy1                        -1.358302        0.010948
+1271 H123_TargetBuy1                        -0.115133       -0.002412
+1272 H124_TargetBuy1                         0.143350       -0.002190
+1273 H125_TargetBuy1                        -0.879620       -0.008570
+1274 H126_TargetBuy1                        -0.076057       -0.004053
+1275 H127_TargetBuy1                         0.082105       -0.000700
+1276 H128_TargetBuy1                         0.409024        0.001649
+1277 H129_TargetBuy1                         0.245859       -0.004234
+1278 H130_TargetBuy1                         1.378267       -0.011225
+1279 H131_TargetBuy1                         0.360146       -0.001007
+1280 H132_TargetBuy1                         0.052060       -0.005191
+1281 BIAS_TargetBuy1                        -0.739120        0.006971
+
+Value of Objective Function = 0.4512247068
+
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+Conjugate-Gradient Optimization
+
+
+Minimum Iterations                                0
+Maximum Iterations                               50
+Maximum Function Calls                   2147483647
+Maximum CPU Time                              14400
+ABSGCONV Gradient Criterion                 0.00001
+GCONV Gradient Criterion                       1E-8
+ABSFCONV Function Criterion                       0
+FCONV Function Criterion                     0.0001
+FCONV2 Function Criterion                         0
+FSIZE Parameter                                   0
+ABSXCONV Parameter Change Criterion               0
+XCONV Parameter Change Criterion                  0
+XSIZE Parameter                                   0
+ABSCONV Function Criterion             0.0014685064
+Line Search Method                                2
+Starting Alpha for Line Search                    1
+Line Search Precision LSPRECISION               0.1
+DAMPSTEP Parameter for Line Search                .
+Singularity Tolerance (SINGULAR)               1E-8
+
+Conjugate-Gradient Optimization
+
+Automatic Restart Update (Powell, 1977; Beale, 1972)
+
+Parameter Estimates            1281
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                       0.4512247068
+Max Abs Gradient Element                  0.028962199                                                       
+
+
+                                                                 Objective     Max Abs                Slope of
+                     Function         Active        Objective     Function    Gradient       Step       Search
+Iter     Restarts       Calls    Constraints         Function       Change     Element       Size    Direction
+
+   1            0           8              0          0.44091       0.0103      0.0178      2.000      -0.0152
+   2            1          12              0          0.43931      0.00161      0.0258      2.000      -0.0061
+   3            1          16              0          0.43321      0.00610      0.0274      3.150      -0.0038
+   4            2          20              0          0.42872      0.00449      0.0342      2.000      -0.0096
+   5            2          22              0          0.42386      0.00486      0.0177      0.628      -0.0179
+   6            3          26              0          0.42130      0.00256      0.0339      2.000      -0.0090
+   7            3          30              0          0.41599      0.00531      0.0300      1.395      -0.0092
+   8            4          32              0          0.40898      0.00701      0.0149      0.684      -0.0194
+   9            4          34              0          0.40522      0.00376      0.0110      1.000      -0.0070
+  10            5          38              0          0.39487       0.0103     0.00771      3.684      -0.0055
+  11            5          42              0          0.39075      0.00412      0.0155      3.090      -0.0027
+  12            5          44              0          0.38577      0.00498      0.0118      1.597      -0.0064
+  13            5          46              0          0.37958      0.00619     0.00905      4.302      -0.0029
+  14            6          50              0          0.37759      0.00199      0.0149      2.041      -0.0020
+  15            6          54              0          0.37030      0.00729     0.00962      2.673      -0.0054
+  16            6          58              0          0.36379      0.00651      0.0192      8.396      -0.0043
+  17            7          62              0          0.35859      0.00520      0.0133      2.297      -0.0045
+  18            7          66              0          0.35342      0.00516      0.0170      4.406      -0.0024
+  19            8          70              0          0.34700      0.00643      0.0243      2.000      -0.0091
+  20            8          74              0          0.33772      0.00928      0.0131      2.000      -0.0106
+  21            9          78              0          0.32934      0.00837      0.0181      2.548      -0.0066
+  22            9          82              0          0.32559      0.00376      0.0187      2.000      -0.0084
+  23           10          86              0          0.32015      0.00544      0.0108      2.000      -0.0065
+  24           10          90              0          0.30979       0.0104      0.0141      4.148      -0.0050
+  25           10          93              0          0.30394      0.00585     0.00787      2.682      -0.0044
+  26           11          97              0          0.28990       0.0140      0.0118      7.499      -0.0038
+  27           11         101              0          0.27815       0.0117      0.0208      3.237      -0.0073
+  28           11         103              0          0.26807       0.0101      0.0125      2.532      -0.0116
+  29           12         107              0          0.26582      0.00225      0.0123      2.000      -0.0047
+  30           12         111              0          0.25807      0.00775     0.00996      3.460      -0.0045
+  31           13         115              0          0.25067      0.00740      0.0102      4.069      -0.0036
+  32           13         119              0          0.24469      0.00599      0.0138      2.211      -0.0054
+  33           13         123              0          0.23793      0.00675      0.0192      4.433      -0.0068
+  34           14         127              0          0.23456      0.00337      0.0141      2.000      -0.0042
+  35           14         131              0          0.23023      0.00433      0.0108      2.000      -0.0046
+  36           15         135              0          0.22511      0.00512      0.0121      2.587      -0.0040
+  37           15         139              0          0.21193       0.0132      0.0114      4.410      -0.0061
+  38           15         141              0          0.20869      0.00325      0.0145      6.550      -0.0050
+  39           16         145              0          0.20500      0.00368      0.0104      2.316      -0.0032
+  40           16         149              0          0.20289      0.00211      0.0129      2.000      -0.0025
+  41           17         153              0          0.19448      0.00841     0.00988      2.681      -0.0063
+  42           17         157              0          0.17654       0.0179     0.00801      8.367      -0.0043
+  43           17         160              0          0.17029      0.00625     0.00818      3.911      -0.0032
+  44           17         162              0          0.16193      0.00835     0.00835      6.746      -0.0023
+  45           17         164              0          0.15078       0.0112      0.0112      6.368      -0.0033
+  46           17         166              0          0.14538      0.00540      0.0169      7.989      -0.0035
+  47           17         170              0          0.13590      0.00948      0.0128      4.315      -0.0063
+  48           18         174              0          0.12550       0.0104      0.0100      3.195      -0.0065
+  49           18         178              0          0.12076      0.00474     0.00978      2.706      -0.0035
+  50           18         182              0          0.11115      0.00961      0.0115      4.120      -0.0058
+
+                                            Optimization Results
+
+Iterations                                         50  Function Calls                                    184
+Gradient Calls                                     91  Active Constraints                                  0
+Objective Function                       0.1111468542  Max Abs Gradient Element                 0.0115443782
+Slope of Search Direction                -0.005756763                                                       
+
+CONGRA needs more than 50 iterations or 2147483647 function calls.                                
+
+WARNING: CONGRA Optimization cannot be completed.
+
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+                         Optimization Results
+                         Parameter Estimates
+                                                             Gradient
+                                                            Objective
+   N Parameter                               Estimate        Function
+
+   1 AffluenceGrade_H101                    -0.183203        0.003281
+   2 CleanserProducts_H101                  -0.304069        0.008538
+   3 DayCareProducts_H101                   -0.262321        0.005534
+   4 LotionProducts_H101                     0.599673       -0.002974
+   5 NightRepairProducts_H101                0.287985       -0.003313
+   6 REP_Age_H101                            0.437829        0.011544
+   7 REP_LoyaltyTime_H101                   -0.319690       -0.001576
+   8 TimeSinceLastPurchase_H101              0.705740       -0.001087
+   9 TotalSpend_H101                         0.022240        0.002728
+  10 AffluenceGrade_H102                    -0.394920       -0.001750
+  11 CleanserProducts_H102                  -0.062023       -0.005337
+  12 DayCareProducts_H102                   -1.078292       -0.007617
+  13 LotionProducts_H102                     0.093200        0.000779
+  14 NightRepairProducts_H102               -0.350551        0.005913
+  15 REP_Age_H102                            0.161713       -0.007323
+  16 REP_LoyaltyTime_H102                    0.052482        0.002742
+  17 TimeSinceLastPurchase_H102             -0.549503        0.001585
+  18 TotalSpend_H102                         0.106845       -0.001114
+  19 AffluenceGrade_H103                    -1.675220        0.000321
+  20 CleanserProducts_H103                  -1.073607       -0.004150
+  21 DayCareProducts_H103                    0.635452    -0.000025707
+  22 LotionProducts_H103                     0.912059       -0.000216
+  23 NightRepairProducts_H103               -0.280306        0.000876
+  24 REP_Age_H103                            0.046893       -0.007347
+  25 REP_LoyaltyTime_H103                   -0.305725        0.004018
+  26 TimeSinceLastPurchase_H103             -0.039319        0.002582
+  27 TotalSpend_H103                         0.421058     0.000051197
+  28 AffluenceGrade_H104                     0.283606        0.001887
+  29 CleanserProducts_H104                  -1.142849        0.000516
+  30 DayCareProducts_H104                    0.749108        0.004864
+  31 LotionProducts_H104                     0.640874       -0.000451
+  32 NightRepairProducts_H104                0.223323        0.001540
+  33 REP_Age_H104                            0.421955        0.003871
+  34 REP_LoyaltyTime_H104                   -1.357952       -0.001475
+  35 TimeSinceLastPurchase_H104             -0.920924       -0.001449
+  36 TotalSpend_H104                         0.764429        0.000211
+  37 AffluenceGrade_H105                     0.423029        0.000195
+  38 CleanserProducts_H105                   0.732870     0.000050869
+  39 DayCareProducts_H105                   -0.635373       -0.002780
+  40 LotionProducts_H105                     1.680747        0.000662
+  41 NightRepairProducts_H105               -0.512567        0.002137
+  42 REP_Age_H105                           -0.203212       -0.004303
+  43 REP_LoyaltyTime_H105                   -0.843521        0.003628
+  44 TimeSinceLastPurchase_H105              0.406721        0.000638
+  45 TotalSpend_H105                        -1.374347        0.001393
+  46 AffluenceGrade_H106                    -0.056648    -0.000031135
+  47 CleanserProducts_H106                   0.213130        0.000389
+  48 DayCareProducts_H106                   -0.204357     0.000063279
+  49 LotionProducts_H106                     0.018069    -0.000003085
+  50 NightRepairProducts_H106               -0.249428    -0.000040604
+  51 REP_Age_H106                            0.245625        0.000505
+  52 REP_LoyaltyTime_H106                    0.085354        0.000187
+  53 TimeSinceLastPurchase_H106              0.134659     0.000084917
+  54 TotalSpend_H106                         0.077729        0.000163
+  55 AffluenceGrade_H107                     2.324741     0.000074565
+  56 CleanserProducts_H107                   0.363436        0.001550
+  57 DayCareProducts_H107                   -0.762485       -0.000170
+  58 LotionProducts_H107                     1.288929       -0.001920
+  59 NightRepairProducts_H107               -0.094138        0.001051
+  60 REP_Age_H107                           -0.483228        0.000814
+  61 REP_LoyaltyTime_H107                   -2.552415        0.000858
+  62 TimeSinceLastPurchase_H107             -0.189862        0.000696
+  63 TotalSpend_H107                        -1.244294        0.000209
+  64 AffluenceGrade_H108                    -1.597003        0.000351
+  65 CleanserProducts_H108                  -0.885616        0.002957
+  66 DayCareProducts_H108                    0.683472        0.002571
+  67 LotionProducts_H108                     0.083499       -0.000811
+  68 NightRepairProducts_H108               -0.938660       -0.002909
+  69 REP_Age_H108                           -1.206504        0.004812
+  70 REP_LoyaltyTime_H108                   -1.621303       -0.003444
+  71 TimeSinceLastPurchase_H108             -1.879669       -0.001941
+  72 TotalSpend_H108                         0.624440        0.000233
+  73 AffluenceGrade_H109                     0.263403        0.000643
+  74 CleanserProducts_H109                  -1.355545        0.004715
+  75 DayCareProducts_H109                    0.204953        0.000887
+  76 LotionProducts_H109                     0.750817       -0.004815
+  77 NightRepairProducts_H109                0.077219       -0.001615
+  78 REP_Age_H109                            0.356901        0.006894
+  79 REP_LoyaltyTime_H109                   -0.510789       -0.001004
+  80 TimeSinceLastPurchase_H109              0.523726       -0.003959
+  81 TotalSpend_H109                         0.833996        0.006298
+  82 AffluenceGrade_H110                    -1.639419        0.001214
+  83 CleanserProducts_H110                  -0.461647        0.005441
+  84 DayCareProducts_H110                    0.080482       -0.000390
+  85 LotionProducts_H110                    -0.727672        0.000699
+  86 NightRepairProducts_H110               -0.415533        0.001132
+  87 REP_Age_H110                           -0.181400        0.005643
+  88 REP_LoyaltyTime_H110                    1.392153        0.000534
+  89 TimeSinceLastPurchase_H110             -0.339903       -0.001697
+  90 TotalSpend_H110                        -1.129112        0.004388
+  91 AffluenceGrade_H111                     0.295676       -0.001659
+  92 CleanserProducts_H111                  -0.918069       -0.000849
+  93 DayCareProducts_H111                   -0.706730       -0.002485
+  94 LotionProducts_H111                     0.131673        0.001852
+  95 NightRepairProducts_H111                0.408011        0.001444
+  96 REP_Age_H111                           -0.343061       -0.006234
+  97 REP_LoyaltyTime_H111                   -0.089141        0.003369
+  98 TimeSinceLastPurchase_H111             -0.738147        0.002503
+  99 TotalSpend_H111                         0.955947       -0.001244
+ 100 AffluenceGrade_H112                    -0.079786        0.000487
+ 101 CleanserProducts_H112                  -0.523851        0.000361
+ 102 DayCareProducts_H112                    1.492216        0.004175
+ 103 LotionProducts_H112                     0.119411       -0.001367
+ 104 NightRepairProducts_H112                0.836721       -0.002160
+ 105 REP_Age_H112                           -0.499428        0.003458
+ 106 REP_LoyaltyTime_H112                    0.367860       -0.003882
+ 107 TimeSinceLastPurchase_H112             -0.268347       -0.002958
+ 108 TotalSpend_H112                        -0.315154       -0.000283
+ 109 AffluenceGrade_H113                    -0.182909        0.000611
+ 110 CleanserProducts_H113                  -0.244272        0.003873
+ 111 DayCareProducts_H113                   -0.224609        0.002889
+ 112 LotionProducts_H113                     0.684321       -0.001632
+ 113 NightRepairProducts_H113                0.299745       -0.001699
+ 114 REP_Age_H113                            0.070163        0.004173
+ 115 REP_LoyaltyTime_H113                   -0.329707        0.001754
+ 116 TimeSinceLastPurchase_H113              0.059085        0.000471
+ 117 TotalSpend_H113                        -2.007430        0.000175
+ 118 AffluenceGrade_H114                     0.289074       -0.000321
+ 119 CleanserProducts_H114                  -0.029327       -0.004214
+ 120 DayCareProducts_H114                    0.538009       -0.004742
+ 121 LotionProducts_H114                    -0.256433        0.000979
+ 122 NightRepairProducts_H114               -0.650182        0.003347
+ 123 REP_Age_H114                           -0.204424       -0.005036
+ 124 REP_LoyaltyTime_H114                    0.900677       -0.000195
+ 125 TimeSinceLastPurchase_H114             -0.448922       -0.001044
+ 126 TotalSpend_H114                         0.123200       -0.003260
+ 127 AffluenceGrade_H115                    -0.456362       -0.000762
+ 128 CleanserProducts_H115                   1.370069        0.001135
+ 129 DayCareProducts_H115                    0.833780        0.000392
+ 130 LotionProducts_H115                    -1.112473       -0.004092
+ 131 NightRepairProducts_H115                1.011801       -0.002562
+ 132 REP_Age_H115                           -1.787840        0.002489
+ 133 REP_LoyaltyTime_H115                    1.919884       -0.001811
+ 134 TimeSinceLastPurchase_H115             -0.074522       -0.001752
+ 135 TotalSpend_H115                         0.547354        0.001359
+ 136 AffluenceGrade_H116                    -1.336958        0.001372
+ 137 CleanserProducts_H116                  -1.077600        0.003140
+ 138 DayCareProducts_H116                    0.436301        0.000859
+ 139 LotionProducts_H116                    -0.238566       -0.000718
+ 140 NightRepairProducts_H116                0.234574       -0.000139
+ 141 REP_Age_H116                           -0.565832        0.003641
+ 142 REP_LoyaltyTime_H116                   -0.073658       -0.000288
+ 143 TimeSinceLastPurchase_H116             -0.951248        0.001581
+ 144 TotalSpend_H116                         0.878357       -0.000696
+ 145 AffluenceGrade_H117                    -0.000692        0.000115
+ 146 CleanserProducts_H117                   0.061937        0.000811
+ 147 DayCareProducts_H117                    0.159764        0.000815
+ 148 LotionProducts_H117                    -0.563361       -0.001511
+ 149 NightRepairProducts_H117                0.131568     0.000003925
+ 150 REP_Age_H117                            0.057808       -0.000620
+ 151 REP_LoyaltyTime_H117                   -0.204609       -0.001062
+ 152 TimeSinceLastPurchase_H117              0.020928       -0.001075
+ 153 TotalSpend_H117                        -0.601376       -0.002315
+ 154 AffluenceGrade_H118                    -1.389323       -0.001536
+ 155 CleanserProducts_H118                  -1.536544        0.002523
+ 156 DayCareProducts_H118                    0.217414        0.007292
+ 157 LotionProducts_H118                     0.841662       -0.002948
+ 158 NightRepairProducts_H118               -0.993203       -0.002740
+ 159 REP_Age_H118                            0.443609        0.007256
+ 160 REP_LoyaltyTime_H118                    0.933313       -0.002424
+ 161 TimeSinceLastPurchase_H118             -0.759269       -0.003861
+ 162 TotalSpend_H118                        -0.715864        0.001279
+ 163 AffluenceGrade_H119                     0.232268       -0.001758
+ 164 CleanserProducts_H119                  -0.291605       -0.001796
+ 165 DayCareProducts_H119                   -1.105527       -0.000705
+ 166 LotionProducts_H119                    -0.530561        0.005471
+ 167 NightRepairProducts_H119               -0.374306        0.004223
+ 168 REP_Age_H119                           -1.184365       -0.004506
+ 169 REP_LoyaltyTime_H119                    1.531994        0.001527
+ 170 TimeSinceLastPurchase_H119              0.396278       -0.000346
+ 171 TotalSpend_H119                        -0.415993       -0.000819
+ 172 AffluenceGrade_H120                    -0.221497       -0.001068
+ 173 CleanserProducts_H120                  -0.517418       -0.002526
+ 174 DayCareProducts_H120                    1.534635       -0.005428
+ 175 LotionProducts_H120                     0.547398        0.000353
+ 176 NightRepairProducts_H120                0.722801        0.002282
+ 177 REP_Age_H120                            0.014968       -0.005885
+ 178 REP_LoyaltyTime_H120                   -0.137708       -0.000529
+ 179 TimeSinceLastPurchase_H120              0.627576       -0.000197
+ 180 TotalSpend_H120                         0.562820       -0.004649
+ 181 AffluenceGrade_H121                     1.173628       -0.001919
+ 182 CleanserProducts_H121                   1.141386       -0.000939
+ 183 DayCareProducts_H121                    1.167689       -0.001964
+ 184 LotionProducts_H121                    -0.555953        0.003095
+ 185 NightRepairProducts_H121                0.853997        0.001774
+ 186 REP_Age_H121                            0.577597       -0.006380
+ 187 REP_LoyaltyTime_H121                    0.427762        0.002084
+ 188 TimeSinceLastPurchase_H121             -0.070922        0.005310
+ 189 TotalSpend_H121                        -0.015833       -0.000555
+ 190 AffluenceGrade_H122                    -0.819035       -0.002608
+ 191 CleanserProducts_H122                   0.245940        0.003385
+ 192 DayCareProducts_H122                    0.641480        0.006748
+ 193 LotionProducts_H122                    -1.275061       -0.001713
+ 194 NightRepairProducts_H122               -0.003771        0.000123
+ 195 REP_Age_H122                            4.458534        0.007471
+ 196 REP_LoyaltyTime_H122                   -0.516739       -0.002125
+ 197 TimeSinceLastPurchase_H122              0.836360        0.001151
+ 198 TotalSpend_H122                         0.919091       -0.001960
+ 199 AffluenceGrade_H123                    -0.646058        0.000752
+ 200 CleanserProducts_H123                   0.079553        0.001670
+ 201 DayCareProducts_H123                   -0.436130        0.002708
+ 202 LotionProducts_H123                    -0.540407        0.000377
+ 203 NightRepairProducts_H123                0.585180       -0.000133
+ 204 REP_Age_H123                            0.549681        0.005919
+ 205 REP_LoyaltyTime_H123                    1.380057       -0.001728
+ 206 TimeSinceLastPurchase_H123              0.873198    -0.000061662
+ 207 TotalSpend_H123                         0.648046       -0.000126
+ 208 AffluenceGrade_H124                     0.034317       -0.000177
+ 209 CleanserProducts_H124                  -1.125487       -0.004441
+ 210 DayCareProducts_H124                    0.777940       -0.000878
+ 211 LotionProducts_H124                    -0.726042       -0.000337
+ 212 NightRepairProducts_H124                0.477548        0.000902
+ 213 REP_Age_H124                            0.381523       -0.001243
+ 214 REP_LoyaltyTime_H124                    0.024412       -0.001138
+ 215 TimeSinceLastPurchase_H124              0.557580       -0.001419
+ 216 TotalSpend_H124                         0.306397        0.000127
+ 217 AffluenceGrade_H125                    -0.283383       -0.001414
+ 218 CleanserProducts_H125                  -0.188479        0.002694
+ 219 DayCareProducts_H125                   -1.094267        0.007253
+ 220 LotionProducts_H125                    -0.920899        0.000520
+ 221 NightRepairProducts_H125               -0.424533        0.000748
+ 222 REP_Age_H125                            0.367057        0.001528
+ 223 REP_LoyaltyTime_H125                    0.340180       -0.000105
+ 224 TimeSinceLastPurchase_H125              0.548174       -0.002689
+ 225 TotalSpend_H125                        -0.896267        0.000360
+ 226 AffluenceGrade_H126                    -0.933081       -0.000642
+ 227 CleanserProducts_H126                   0.062701       -0.002022
+ 228 DayCareProducts_H126                   -0.265738       -0.002651
+ 229 LotionProducts_H126                     0.162704        0.001729
+ 230 NightRepairProducts_H126               -0.294850        0.001021
+ 231 REP_Age_H126                           -0.553770       -0.004963
+ 232 REP_LoyaltyTime_H126                    0.053834     0.000060837
+ 233 TimeSinceLastPurchase_H126             -0.018625       -0.000284
+ 234 TotalSpend_H126                        -0.160780    -0.000067583
+ 235 AffluenceGrade_H127                     0.236696        0.000161
+ 236 CleanserProducts_H127                   0.842496        0.006330
+ 237 DayCareProducts_H127                   -0.780589        0.005739
+ 238 LotionProducts_H127                    -1.029381       -0.002788
+ 239 NightRepairProducts_H127                0.263438        0.001292
+ 240 REP_Age_H127                            0.507542        0.007328
+ 241 REP_LoyaltyTime_H127                    1.650495     0.000023747
+ 242 TimeSinceLastPurchase_H127             -0.641321        0.000148
+ 243 TotalSpend_H127                        -0.609881        0.001681
+ 244 AffluenceGrade_H128                     0.634506        0.003420
+ 245 CleanserProducts_H128                  -1.603132       -0.005713
+ 246 DayCareProducts_H128                   -1.162535       -0.002111
+ 247 LotionProducts_H128                     0.574031        0.005059
+ 248 NightRepairProducts_H128               -0.827200       -0.001165
+ 249 REP_Age_H128                            0.649734       -0.003377
+ 250 REP_LoyaltyTime_H128                    0.509137        0.002180
+ 251 TimeSinceLastPurchase_H128              0.567560        0.002372
+ 252 TotalSpend_H128                         0.675251       -0.000817
+ 253 AffluenceGrade_H129                    -0.173797     0.000059643
+ 254 CleanserProducts_H129                   0.653964       -0.004134
+ 255 DayCareProducts_H129                   -0.322944       -0.005310
+ 256 LotionProducts_H129                    -0.762824        0.000696
+ 257 NightRepairProducts_H129                1.623356        0.004073
+ 258 REP_Age_H129                           -0.445739       -0.008553
+ 259 REP_LoyaltyTime_H129                   -0.185201       -0.000654
+ 260 TimeSinceLastPurchase_H129             -0.550303       -0.000183
+ 261 TotalSpend_H129                        -1.750045       -0.004342
+ 262 AffluenceGrade_H130                    -0.250599     0.000096740
+ 263 CleanserProducts_H130                  -1.238444       -0.002373
+ 264 DayCareProducts_H130                    1.859888       -0.002101
+ 265 LotionProducts_H130                    -1.618064        0.003379
+ 266 NightRepairProducts_H130                1.025451        0.000534
+ 267 REP_Age_H130                            0.072034       -0.002853
+ 268 REP_LoyaltyTime_H130                   -1.379605       -0.000195
+ 269 TimeSinceLastPurchase_H130             -1.226343        0.001612
+ 270 TotalSpend_H130                        -1.907671       -0.000940
+ 271 AffluenceGrade_H131                     0.632026        0.000159
+ 272 CleanserProducts_H131                  -0.510527       -0.001077
+ 273 DayCareProducts_H131                    1.309603       -0.002073
+ 274 LotionProducts_H131                     0.261102        0.002042
+ 275 NightRepairProducts_H131               -0.530583       -0.001557
+ 276 REP_Age_H131                            0.183506       -0.004091
+ 277 REP_LoyaltyTime_H131                    0.353921        0.000814
+ 278 TimeSinceLastPurchase_H131             -0.173010        0.002076
+ 279 TotalSpend_H131                        -0.216670        0.000278
+ 280 AffluenceGrade_H132                    -0.368203       -0.002093
+ 281 CleanserProducts_H132                   0.141699       -0.003927
+ 282 DayCareProducts_H132                    0.184551       -0.002018
+ 283 LotionProducts_H132                     0.273302        0.002126
+ 284 NightRepairProducts_H132                0.219024        0.000627
+ 285 REP_Age_H132                            0.136223       -0.003190
+ 286 REP_LoyaltyTime_H132                   -0.414691       -0.002144
+ 287 TimeSinceLastPurchase_H132             -0.123002       -0.000448
+ 288 TotalSpend_H132                        -0.331785       -0.003433
+ 289 CampaignViewedEmail0_H101               0.527321       -0.001897
+ 290 MobileApplications0_H101                0.464362       -0.007089
+ 291 PreviousCampaign0_H101                 -0.218142        0.006459
+ 292 CampaignViewedEmail0_H102              -0.354558        0.002179
+ 293 MobileApplications0_H102                1.224419        0.007916
+ 294 PreviousCampaign0_H102                  0.084962       -0.000500
+ 295 CampaignViewedEmail0_H103              -0.874324       -0.000515
+ 296 MobileApplications0_H103               -0.012237        0.007809
+ 297 PreviousCampaign0_H103                 -0.262411       -0.001555
+ 298 CampaignViewedEmail0_H104               0.472534        0.001675
+ 299 MobileApplications0_H104                1.404901       -0.003063
+ 300 PreviousCampaign0_H104                 -0.964356     0.000038437
+ 301 CampaignViewedEmail0_H105              -0.278238        0.002806
+ 302 MobileApplications0_H105                0.148233        0.003526
+ 303 PreviousCampaign0_H105                 -0.722101       -0.002571
+ 304 CampaignViewedEmail0_H106              -0.081366    -0.000022407
+ 305 MobileApplications0_H106                0.170514       -0.000488
+ 306 PreviousCampaign0_H106                 -0.073711        0.000158
+ 307 CampaignViewedEmail0_H107               2.110134       -0.000619
+ 308 MobileApplications0_H107               -0.168564       -0.004168
+ 309 PreviousCampaign0_H107                  1.214886        0.004548
+ 310 CampaignViewedEmail0_H108              -0.430392       -0.001198
+ 311 MobileApplications0_H108                1.022615       -0.005554
+ 312 PreviousCampaign0_H108                 -0.281592        0.000164
+ 313 CampaignViewedEmail0_H109              -0.281245        0.003141
+ 314 MobileApplications0_H109               -2.139184       -0.004333
+ 315 PreviousCampaign0_H109                  2.161135        0.002402
+ 316 CampaignViewedEmail0_H110              -0.792318       -0.001328
+ 317 MobileApplications0_H110                0.751458       -0.004389
+ 318 PreviousCampaign0_H110                 -1.236061        0.001760
+ 319 CampaignViewedEmail0_H111              -1.082961        0.003486
+ 320 MobileApplications0_H111                0.164479        0.004224
+ 321 PreviousCampaign0_H111                 -0.768377       -0.002134
+ 322 CampaignViewedEmail0_H112              -0.485699       -0.000187
+ 323 MobileApplications0_H112               -0.025547       -0.004452
+ 324 PreviousCampaign0_H112                  0.491021        0.002141
+ 325 CampaignViewedEmail0_H113               0.142989       -0.000327
+ 326 MobileApplications0_H113                0.799917       -0.006827
+ 327 PreviousCampaign0_H113                  0.880438        0.001821
+ 328 CampaignViewedEmail0_H114               0.298200        0.003037
+ 329 MobileApplications0_H114                1.086148        0.007759
+ 330 PreviousCampaign0_H114                 -0.231414        0.001790
+ 331 CampaignViewedEmail0_H115               0.271974     0.000091358
+ 332 MobileApplications0_H115                0.526690       -0.002996
+ 333 PreviousCampaign0_H115                 -0.162835        0.001230
+ 334 CampaignViewedEmail0_H116               1.345690        0.000107
+ 335 MobileApplications0_H116                0.161068       -0.002867
+ 336 PreviousCampaign0_H116                 -0.658656        0.002995
+ 337 CampaignViewedEmail0_H117              -0.281238       -0.000668
+ 338 MobileApplications0_H117               -0.483820       -0.001212
+ 339 PreviousCampaign0_H117                  0.039323       -0.000122
+ 340 CampaignViewedEmail0_H118              -0.709103        0.000298
+ 341 MobileApplications0_H118               -0.834057       -0.004731
+ 342 PreviousCampaign0_H118                  0.568784        0.005557
+ 343 CampaignViewedEmail0_H119              -0.232676        0.001441
+ 344 MobileApplications0_H119               -1.024652        0.010500
+ 345 PreviousCampaign0_H119                 -1.925708       -0.002436
+ 346 CampaignViewedEmail0_H120               0.614559        0.002863
+ 347 MobileApplications0_H120               -0.579347        0.003760
+ 348 PreviousCampaign0_H120                  1.082542       -0.002153
+ 349 CampaignViewedEmail0_H121               1.397719        0.001314
+ 350 MobileApplications0_H121                0.302451        0.003717
+ 351 PreviousCampaign0_H121                 -0.899876       -0.005023
+ 352 CampaignViewedEmail0_H122               0.763362       -0.000521
+ 353 MobileApplications0_H122                0.315255       -0.001818
+ 354 PreviousCampaign0_H122                 -0.294576        0.000427
+ 355 CampaignViewedEmail0_H123               0.113913    -0.000067053
+ 356 MobileApplications0_H123               -1.037540       -0.003957
+ 357 PreviousCampaign0_H123                  0.039965        0.001351
+ 358 CampaignViewedEmail0_H124               1.053341        0.003158
+ 359 MobileApplications0_H124               -1.234232        0.003504
+ 360 PreviousCampaign0_H124                  0.770630       -0.004202
+ 361 CampaignViewedEmail0_H125               0.869492        0.000236
+ 362 MobileApplications0_H125               -1.249550       -0.003537
+ 363 PreviousCampaign0_H125                  1.467029        0.002112
+ 364 CampaignViewedEmail0_H126               1.193989        0.002240
+ 365 MobileApplications0_H126                0.582034        0.004590
+ 366 PreviousCampaign0_H126                  0.012274       -0.003115
+ 367 CampaignViewedEmail0_H127              -0.386691       -0.004571
+ 368 MobileApplications0_H127                1.194487       -0.007079
+ 369 PreviousCampaign0_H127                 -0.577103        0.000852
+ 370 CampaignViewedEmail0_H128              -0.537257       -0.001975
+ 371 MobileApplications0_H128               -0.655181        0.005068
+ 372 PreviousCampaign0_H128                  1.425723       -0.005372
+ 373 CampaignViewedEmail0_H129              -0.733788        0.000678
+ 374 MobileApplications0_H129               -0.715154        0.006762
+ 375 PreviousCampaign0_H129                  1.498560       -0.007608
+ 376 CampaignViewedEmail0_H130               1.656986        0.002802
+ 377 MobileApplications0_H130               -0.329137        0.003325
+ 378 PreviousCampaign0_H130                 -1.395012       -0.003404
+ 379 CampaignViewedEmail0_H131              -0.233796        0.001205
+ 380 MobileApplications0_H131               -0.802294        0.005597
+ 381 PreviousCampaign0_H131                  1.316612       -0.002098
+ 382 CampaignViewedEmail0_H132               0.152757        0.000905
+ 383 MobileApplications0_H132                0.078069        0.005121
+ 384 PreviousCampaign0_H132                 -0.786966       -0.003702
+ 385 LoyaltyClassGold_H101                   0.146864       -0.004340
+ 386 REP_AdvertisementZonBorder_H101        -0.030632       -0.001239
+ 387 REP_AdvertisementZonCentralZ1_H1        0.199506       -0.001323
+ 388 REP_AdvertisementZonECentral_H10       -0.524773       -0.003595
+ 389 REP_AdvertisementZonNCentral_H10       -0.361268       -0.001057
+ 390 REP_AdvertisementZonNEast_H101         -0.150478       -0.000747
+ 391 REP_AdvertisementZonNWest_H101         -0.120696       -0.000290
+ 392 REP_AdvertisementZonNEZ1_H101          -0.369108       -0.001178
+ 393 REP_AdvertisementZonNEZ2_H101          -0.301050       -0.001183
+ 394 REP_AdvertisementZonNEZ3_H101           0.290213        0.000132
+ 395 REP_AdvertisementZonSCentral_H10       -0.193131       -0.002361
+ 396 REP_AdvertisementZonSEast_H101         -0.177429       -0.003081
+ 397 REP_AdvertisementZonSWest_H101          0.006697       -0.001517
+ 398 REP_AdvertisementZonU_H101              0.120158       -0.000886
+ 399 REP_ClusterGroupA_H101                  0.062520     0.000083159
+ 400 REP_ClusterGroupB_H101                  0.426088        0.002188
+ 401 REP_ClusterGroupC_H101                  1.088991       -0.002709
+ 402 REP_ClusterGroupD_H101                 -0.730366       -0.000723
+ 403 REP_ClusterGroupE_H101                  0.954554       -0.000880
+ 404 REP_ClusterGroupF_H101                  0.262180        0.002071
+ 405 REP_GenderF_H101                        0.670042       -0.002416
+ 406 REP_RegionCentral_H101                  0.024765       -0.000508
+ 407 REP_RegionNorth_H101                   -0.108474        0.002212
+ 408 REP_RegionNorthEast_H101               -0.145184       -0.000483
+ 409 REP_RegionSouthEast_H101               -1.009872       -0.004675
+ 410 REP_RegionSouthWest_H101                0.053935       -0.000631
+ 411 LoyaltyClassGold_H102                   0.726177        0.000986
+ 412 REP_AdvertisementZonBorder_H102         0.051342       -0.001278
+ 413 _DUP                                    0.120085       -0.001262
+ 414 _DUP1                                  -0.154704        0.001067
+ 415 _DUP2                                  -0.192378       -0.001279
+ 416 REP_AdvertisementZonNEast_H102         -0.186065       -0.001401
+ 417 REP_AdvertisementZonNWest_H102         -0.301927       -0.001344
+ 418 REP_AdvertisementZonNEZ1_H102           0.374221       -0.000398
+ 419 REP_AdvertisementZonNEZ2_H102          -0.057280       -0.001053
+ 420 REP_AdvertisementZonNEZ3_H102          -0.535906       -0.001084
+ 421 _DUP3                                   0.628302       -0.000618
+ 422 REP_AdvertisementZonSEast_H102         -0.288127       -0.001313
+ 423 REP_AdvertisementZonSWest_H102         -0.282251       -0.001293
+ 424 REP_AdvertisementZonU_H102              0.527484       -0.001122
+ 425 REP_ClusterGroupA_H102                  0.536502        0.002011
+ 426 REP_ClusterGroupB_H102                  0.519650       -0.000661
+ 427 REP_ClusterGroupC_H102                 -2.059984        0.001004
+ 428 REP_ClusterGroupD_H102                 -0.291126        0.002163
+ 429 REP_ClusterGroupE_H102                  0.150138        0.001129
+ 430 REP_ClusterGroupF_H102                 -1.215546    -0.000071529
+ 431 REP_GenderF_H102                       -0.067042        0.003489
+ 432 REP_RegionCentral_H102                 -0.568574        0.002107
+ 433 REP_RegionNorth_H102                   -1.115994     0.000054672
+ 434 REP_RegionNorthEast_H102               -0.076797        0.001154
+ 435 REP_RegionSouthEast_H102               -0.095808        0.002257
+ 436 REP_RegionSouthWest_H102               -0.417175       -0.000171
+ 437 LoyaltyClassGold_H103                   1.072046        0.003143
+ 438 REP_AdvertisementZonBorder_H103        -0.011065       -0.000344
+ 439 _DUP4                                   0.092908     0.000035748
+ 440 _DUP5                                   0.897464     0.000052041
+ 441 _DUP6                                  -0.208252       -0.000382
+ 442 REP_AdvertisementZonNEast_H103         -0.142058       -0.000815
+ 443 REP_AdvertisementZonNWest_H103          0.629773       -0.001271
+ 444 REP_AdvertisementZonNEZ1_H103          -0.232349        0.000633
+ 445 REP_AdvertisementZonNEZ2_H103           0.309436       -0.000241
+ 446 REP_AdvertisementZonNEZ3_H103          -0.572817        0.000432
+ 447 _DUP7                                  -1.086054        0.000922
+ 448 REP_AdvertisementZonSEast_H103         -0.482977        0.000368
+ 449 REP_AdvertisementZonSWest_H103          0.100057     0.000026939
+ 450 REP_AdvertisementZonU_H103              0.247223       -0.000339
+ 451 REP_ClusterGroupA_H103                  0.043669        0.001255
+ 452 REP_ClusterGroupB_H103                  1.400659        0.000514
+ 453 REP_ClusterGroupC_H103                  0.466710        0.000317
+ 454 REP_ClusterGroupD_H103                  0.142632        0.000542
+ 455 REP_ClusterGroupE_H103                 -0.132682       -0.000130
+ 456 REP_ClusterGroupF_H103                  1.225264       -0.000460
+ 457 REP_GenderF_H103                       -0.537671        0.004579
+ 458 REP_RegionCentral_H103                 -1.301965        0.002068
+ 459 REP_RegionNorth_H103                   -0.320403       -0.000546
+ 460 REP_RegionNorthEast_H103                0.074203        0.001156
+ 461 REP_RegionSouthEast_H103                0.280570        0.001144
+ 462 REP_RegionSouthWest_H103               -0.182619        0.000366
+ 463 LoyaltyClassGold_H104                   1.056708       -0.000484
+ 464 REP_AdvertisementZonBorder_H104        -0.313580        0.000162
+ 465 _DUP8                                   0.289154        0.000692
+ 466 _DUP9                                   0.569978       -0.001452
+ 467 _DUP10                                  0.138712        0.000123
+ 468 REP_AdvertisementZonNEast_H104         -0.222963        0.000163
+ 469 REP_AdvertisementZonNWest_H104          0.554662    -0.000018920
+ 470 REP_AdvertisementZonNEZ1_H104           0.323123       -0.000495
+ 471 REP_AdvertisementZonNEZ2_H104          -0.170944     0.000000296
+ 472 REP_AdvertisementZonNEZ3_H104           0.356691     0.000004918
+ 473 _DUP11                                 -0.456167       -0.000850
+ 474 REP_AdvertisementZonSEast_H104         -0.273786        0.000674
+ 475 REP_AdvertisementZonSWest_H104         -0.393008     0.000057231
+ 476 REP_AdvertisementZonU_H104              0.055363        0.000255
+ 477 REP_ClusterGroupA_H104                 -0.452161       -0.000420
+ 478 REP_ClusterGroupB_H104                 -0.089471        0.000156
+ 479 REP_ClusterGroupC_H104                 -0.461130       -0.000819
+ 480 REP_ClusterGroupD_H104                 -0.110549       -0.001005
+ 481 REP_ClusterGroupE_H104                  0.381103        0.000327
+ 482 REP_ClusterGroupF_H104                  0.526684       -0.000845
+ 483 REP_GenderF_H104                       -0.153644       -0.001835
+ 484 REP_RegionCentral_H104                 -0.654255       -0.000665
+ 485 REP_RegionNorth_H104                    0.769610       -0.000355
+ 486 REP_RegionNorthEast_H104                0.278659       -0.000838
+ 487 REP_RegionSouthEast_H104                0.499913       -0.001157
+ 488 REP_RegionSouthWest_H104               -0.244638       -0.000198
+ 489 LoyaltyClassGold_H105                   0.111996       -0.001522
+ 490 REP_AdvertisementZonBorder_H105        -0.168362        0.000646
+ 491 _DUP12                                 -0.281987        0.000542
+ 492 _DUP13                                  0.419232        0.000959
+ 493 _DUP14                                 -0.859679        0.000730
+ 494 REP_AdvertisementZonNEast_H105          0.622175        0.000763
+ 495 REP_AdvertisementZonNWest_H105         -0.623772     0.000045775
+ 496 REP_AdvertisementZonNEZ1_H105          -0.234666        0.000531
+ 497 REP_AdvertisementZonNEZ2_H105          -0.504649        0.000734
+ 498 REP_AdvertisementZonNEZ3_H105           0.180590        0.000600
+ 499 _DUP15                                 -0.155896        0.000549
+ 500 REP_AdvertisementZonSEast_H105         -0.085611        0.000473
+ 501 REP_AdvertisementZonSWest_H105         -0.684296        0.000620
+ 502 REP_AdvertisementZonU_H105             -0.665596        0.000615
+ 503 REP_ClusterGroupA_H105                  0.332723        0.000103
+ 504 REP_ClusterGroupB_H105                 -0.276180       -0.000685
+ 505 REP_ClusterGroupC_H105                  0.434198        0.000226
+ 506 REP_ClusterGroupD_H105                  0.027728        0.001739
+ 507 REP_ClusterGroupE_H105                  1.266996       -0.000378
+ 508 REP_ClusterGroupF_H105                  0.576822       -0.000189
+ 509 REP_GenderF_H105                        0.701543        0.000765
+ 510 REP_RegionCentral_H105                 -0.092383       -0.000556
+ 511 REP_RegionNorth_H105                    0.696239       -0.000381
+ 512 REP_RegionNorthEast_H105               -0.123577        0.000120
+ 513 REP_RegionSouthEast_H105                0.685697        0.000230
+ 514 REP_RegionSouthWest_H105               -0.082340     0.000005386
+ 515 LoyaltyClassGold_H106                  -0.169413       -0.000233
+ 516 REP_AdvertisementZonBorder_H106        -0.199361     0.000011983
+ 517 _DUP16                                  0.098821     0.000008474
+ 518 _DUP17                                 -0.044661    -0.000092611
+ 519 _DUP18                                 -0.222713     0.000011694
+ 520 REP_AdvertisementZonNEast_H106          0.087542     0.000025652
+ 521 REP_AdvertisementZonNWest_H106          0.384450     0.000012209
+ 522 REP_AdvertisementZonNEZ1_H106          -0.118478    -0.000059296
+ 523 REP_AdvertisementZonNEZ2_H106          -0.399382     0.000020357
+ 524 REP_AdvertisementZonNEZ3_H106          -0.111172     0.000033674
+ 525 _DUP19                                 -0.099206       -0.000115
+ 526 REP_AdvertisementZonSEast_H106          0.037208    -0.000080297
+ 527 REP_AdvertisementZonSWest_H106         -0.002779     0.000073360
+ 528 REP_AdvertisementZonU_H106             -0.097379     0.000016789
+ 529 REP_ClusterGroupA_H106                  0.119763    -0.000041824
+ 530 REP_ClusterGroupB_H106                  0.261963    -0.000042163
+ 531 REP_ClusterGroupC_H106                  0.028539       -0.000192
+ 532 REP_ClusterGroupD_H106                 -0.010663    -0.000092716
+ 533 REP_ClusterGroupE_H106                 -0.078256    -0.000014504
+ 534 REP_ClusterGroupF_H106                 -0.213241        0.000112
+ 535 REP_GenderF_H106                        0.258789       -0.000145
+ 536 REP_RegionCentral_H106                 -0.045202       -0.000163
+ 537 REP_RegionNorth_H106                    0.290572     0.000020002
+ 538 REP_RegionNorthEast_H106               -0.060311    -0.000078488
+ 539 REP_RegionSouthEast_H106               -0.050548       -0.000207
+ 540 REP_RegionSouthWest_H106                0.330524     0.000056571
+ 541 LoyaltyClassGold_H107                   1.307686       -0.000706
+ 542 REP_AdvertisementZonBorder_H107        -0.107145        0.000394
+ 543 _DUP20                                  1.010171       -0.000154
+ 544 _DUP21                                 -0.377630       -0.000725
+ 545 _DUP22                                  0.318107        0.000397
+ 546 REP_AdvertisementZonNEast_H107         -0.997881        0.000548
+ 547 REP_AdvertisementZonNWest_H107          0.747689    -0.000062941
+ 548 REP_AdvertisementZonNEZ1_H107          -0.949591     0.000017169
+ 549 REP_AdvertisementZonNEZ2_H107           0.523862        0.000313
+ 550 REP_AdvertisementZonNEZ3_H107           0.656389        0.000574
+ 551 _DUP23                                  1.153378        0.000183
+ 552 REP_AdvertisementZonSEast_H107          0.246053        0.001072
+ 553 REP_AdvertisementZonSWest_H107          0.420035        0.000327
+ 554 REP_AdvertisementZonU_H107              0.240989        0.000467
+ 555 REP_ClusterGroupA_H107                 -0.184674       -0.001496
+ 556 REP_ClusterGroupB_H107                  1.017115        0.000857
+ 557 REP_ClusterGroupC_H107                  2.096207       -0.001373
+ 558 REP_ClusterGroupD_H107                 -0.748175       -0.000562
+ 559 REP_ClusterGroupE_H107                 -1.418366        0.001284
+ 560 REP_ClusterGroupF_H107                 -2.319100       -0.000461
+ 561 REP_GenderF_H107                        0.590734       -0.000335
+ 562 REP_RegionCentral_H107                  1.774115       -0.001180
+ 563 REP_RegionNorth_H107                   -0.308408       -0.000168
+ 564 REP_RegionNorthEast_H107               -1.121191       -0.000503
+ 565 REP_RegionSouthEast_H107               -0.557108       -0.000500
+ 566 REP_RegionSouthWest_H107                0.400255       -0.000140
+ 567 LoyaltyClassGold_H108                   0.373399        0.000912
+ 568 REP_AdvertisementZonBorder_H108        -0.105802        0.000161
+ 569 _DUP24                                  1.317280       -0.000577
+ 570 _DUP25                                  0.203220       -0.000621
+ 571 _DUP26                                 -0.460917        0.000142
+ 572 REP_AdvertisementZonNEast_H108          0.382071        0.000234
+ 573 REP_AdvertisementZonNWest_H108         -0.668589        0.000578
+ 574 REP_AdvertisementZonNEZ1_H108          -0.909435        0.000235
+ 575 REP_AdvertisementZonNEZ2_H108           0.239205        0.000159
+ 576 REP_AdvertisementZonNEZ3_H108          -0.810477        0.000759
+ 577 _DUP27                                 -0.737601        0.000533
+ 578 REP_AdvertisementZonSEast_H108          0.588010        0.000434
+ 579 REP_AdvertisementZonSWest_H108         -0.456305        0.000461
+ 580 REP_AdvertisementZonU_H108              0.088291        0.000142
+ 581 REP_ClusterGroupA_H108                 -0.683309       -0.000157
+ 582 REP_ClusterGroupB_H108                  0.938979        0.002170
+ 583 REP_ClusterGroupC_H108                  0.094081        0.000172
+ 584 REP_ClusterGroupD_H108                  0.341936     0.000058225
+ 585 REP_ClusterGroupE_H108                  0.489666        0.000768
+ 586 REP_ClusterGroupF_H108                  1.103501       -0.000310
+ 587 REP_GenderF_H108                        1.365555       -0.001286
+ 588 REP_RegionCentral_H108                 -0.523111       -0.000466
+ 589 REP_RegionNorth_H108                   -0.817093        0.001147
+ 590 REP_RegionNorthEast_H108               -0.885068        0.000131
+ 591 REP_RegionSouthEast_H108                0.448483       -0.000470
+ 592 REP_RegionSouthWest_H108               -0.466263        0.000319
+ 593 LoyaltyClassGold_H109                   1.522883       -0.005946
+ 594 REP_AdvertisementZonBorder_H109         0.306876     0.000085642
+ 595 _DUP28                                 -0.182315    -0.000076942
+ 596 _DUP29                                  0.431738       -0.001735
+ 597 _DUP30                                  0.549574        0.000100
+ 598 REP_AdvertisementZonNEast_H109          0.554766        0.000938
+ 599 REP_AdvertisementZonNWest_H109          0.562032        0.001223
+ 600 REP_AdvertisementZonNEZ1_H109           0.228305    -0.000004642
+ 601 REP_AdvertisementZonNEZ2_H109           0.264362       -0.000170
+ 602 REP_AdvertisementZonNEZ3_H109           0.167561        0.000817
+ 603 _DUP31                                  1.274974        0.000380
+ 604 REP_AdvertisementZonSEast_H109         -0.436966        0.000590
+ 605 REP_AdvertisementZonSWest_H109         -0.591508        0.000315
+ 606 REP_AdvertisementZonU_H109             -0.106667        0.000182
+ 607 REP_ClusterGroupA_H109                 -1.376108        0.000838
+ 608 REP_ClusterGroupB_H109                  0.297019        0.001670
+ 609 REP_ClusterGroupC_H109                 -0.789136        0.001226
+ 610 REP_ClusterGroupD_H109                 -0.594049        0.001810
+ 611 REP_ClusterGroupE_H109                 -0.588259        0.000185
+ 612 REP_ClusterGroupF_H109                  0.558340        0.002542
+ 613 REP_GenderF_H109                       -0.271238       -0.000250
+ 614 REP_RegionCentral_H109                  0.171658    -0.000057102
+ 615 REP_RegionNorth_H109                    0.794859        0.002611
+ 616 REP_RegionNorthEast_H109               -0.010120       -0.000456
+ 617 REP_RegionSouthEast_H109               -0.311750       -0.001420
+ 618 REP_RegionSouthWest_H109               -0.766139        0.000132
+ 619 LoyaltyClassGold_H110                   1.072800       -0.003956
+ 620 REP_AdvertisementZonBorder_H110         0.773262       -0.000382
+ 621 _DUP32                                  0.282339    -0.000051043
+ 622 REP_AdvertisementZonECentral_H11       -1.652235       -0.001769
+ 623 REP_AdvertisementZonNCentral_H11        0.269560       -0.000194
+ 624 REP_AdvertisementZonNEast_H110          0.956607    -0.000009592
+ 625 REP_AdvertisementZonNWest_H110          0.563999       -0.000921
+ 626 REP_AdvertisementZonNEZ1_H110          -1.328840       -0.000259
+ 627 REP_AdvertisementZonNEZ2_H110           0.265417       -0.000416
+ 628 REP_AdvertisementZonNEZ3_H110          -0.926575       -0.000280
+ 629 REP_AdvertisementZonSCentral_H11       -0.538998       -0.001339
+ 630 REP_AdvertisementZonSEast_H110          1.467247       -0.000361
+ 631 REP_AdvertisementZonSWest_H110         -0.712608       -0.000773
+ 632 REP_AdvertisementZonU_H110              0.367548       -0.000179
+ 633 REP_ClusterGroupA_H110                 -0.480823        0.001034
+ 634 REP_ClusterGroupB_H110                  0.866110       -0.000496
+ 635 REP_ClusterGroupC_H110                  0.390331       -0.000881
+ 636 REP_ClusterGroupD_H110                 -0.095730     0.000015998
+ 637 REP_ClusterGroupE_H110                  1.869041       -0.000604
+ 638 REP_ClusterGroupF_H110                 -0.393398       -0.001686
+ 639 REP_GenderF_H110                       -1.304747       -0.004391
+ 640 REP_RegionCentral_H110                 -0.031665       -0.000839
+ 641 REP_RegionNorth_H110                   -0.088901       -0.000654
+ 642 REP_RegionNorthEast_H110               -1.087280       -0.000501
+ 643 REP_RegionSouthEast_H110               -0.714276       -0.001762
+ 644 REP_RegionSouthWest_H110               -0.811128       -0.000595
+ 645 LoyaltyClassGold_H111                  -0.156834        0.001460
+ 646 REP_AdvertisementZonBorder_H111         0.158527       -0.000646
+ 647 _DUP33                                  0.648073       -0.000317
+ 648 _DUP34                                  0.606042        0.000430
+ 649 _DUP35                                 -0.018451       -0.000630
+ 650 REP_AdvertisementZonNEast_H111          0.123926       -0.001140
+ 651 REP_AdvertisementZonNWest_H111          0.379630       -0.000251
+ 652 REP_AdvertisementZonNEZ1_H111          -0.002939        0.000189
+ 653 REP_AdvertisementZonNEZ2_H111          -0.170420       -0.000578
+ 654 REP_AdvertisementZonNEZ3_H111          -0.042107       -0.001631
+ 655 _DUP36                                 -0.488225        0.000319
+ 656 REP_AdvertisementZonSEast_H111         -1.184754    -0.000031354
+ 657 REP_AdvertisementZonSWest_H111          0.794560       -0.000897
+ 658 REP_AdvertisementZonU_H111              1.068551       -0.000629
+ 659 REP_ClusterGroupA_H111                 -0.741042        0.000265
+ 660 REP_ClusterGroupB_H111                  0.592994       -0.000190
+ 661 REP_ClusterGroupC_H111                  2.237910        0.000663
+ 662 REP_ClusterGroupD_H111                 -0.402427        0.001121
+ 663 REP_ClusterGroupE_H111                 -1.028039    -0.000067782
+ 664 REP_ClusterGroupF_H111                 -1.712995        0.000415
+ 665 REP_GenderF_H111                        1.111463        0.000256
+ 666 REP_RegionCentral_H111                 -0.503046        0.001863
+ 667 REP_RegionNorth_H111                    0.303376       -0.001152
+ 668 REP_RegionNorthEast_H111               -1.127576        0.000837
+ 669 REP_RegionSouthEast_H111               -1.431348        0.001649
+ 670 REP_RegionSouthWest_H111                0.040289       -0.000268
+ 671 LoyaltyClassGold_H112                   0.258267       -0.000223
+ 672 REP_AdvertisementZonBorder_H112        -0.518521        0.000173
+ 673 _DUP37                                 -0.550759        0.000165
+ 674 _DUP38                                  0.555983        0.000107
+ 675 _DUP39                                 -0.186856        0.000156
+ 676 REP_AdvertisementZonNEast_H112         -1.320600        0.001061
+ 677 REP_AdvertisementZonNWest_H112         -0.509945        0.000143
+ 678 REP_AdvertisementZonNEZ1_H112          -0.000110       -0.000433
+ 679 REP_AdvertisementZonNEZ2_H112          -0.698374        0.000198
+ 680 REP_AdvertisementZonNEZ3_H112          -0.055158        0.000481
+ 681 _DUP40                                  0.060189       -0.000968
+ 682 REP_AdvertisementZonSEast_H112         -0.598180        0.000782
+ 683 REP_AdvertisementZonSWest_H112         -0.480456        0.000307
+ 684 REP_AdvertisementZonU_H112             -0.516932    -0.000025120
+ 685 REP_ClusterGroupA_H112                  0.216052       -0.000693
+ 686 REP_ClusterGroupB_H112                  0.461100        0.001585
+ 687 REP_ClusterGroupC_H112                  1.277282       -0.000329
+ 688 REP_ClusterGroupD_H112                 -0.178275       -0.001427
+ 689 REP_ClusterGroupE_H112                  0.398011       -0.001852
+ 690 REP_ClusterGroupF_H112                 -0.091142        0.000243
+ 691 REP_GenderF_H112                       -0.502420       -0.001941
+ 692 REP_RegionCentral_H112                  0.323329       -0.001104
+ 693 REP_RegionNorth_H112                   -0.871146        0.001389
+ 694 REP_RegionNorthEast_H112               -0.071223       -0.000357
+ 695 REP_RegionSouthEast_H112                1.096079        0.000755
+ 696 REP_RegionSouthWest_H112               -0.047391        0.000332
+ 697 LoyaltyClassGold_H113                  -1.809460       -0.000358
+ 698 REP_AdvertisementZonBorder_H113        -0.131710        0.000794
+ 699 _DUP41                                 -0.078071        0.000932
+ 700 _DUP42                                 -0.176934       -0.000696
+ 701 _DUP43                                 -0.014993        0.000823
+ 702 REP_AdvertisementZonNEast_H113         -0.162960        0.000880
+ 703 REP_AdvertisementZonNWest_H113         -0.026053        0.000634
+ 704 REP_AdvertisementZonNEZ1_H113           0.669566        0.000671
+ 705 REP_AdvertisementZonNEZ2_H113           0.148747        0.000827
+ 706 REP_AdvertisementZonNEZ3_H113           0.563267        0.001448
+ 707 _DUP44                                  0.272758       -0.000138
+ 708 REP_AdvertisementZonSEast_H113          0.532282       -0.000201
+ 709 REP_AdvertisementZonSWest_H113         -0.138402        0.000834
+ 710 REP_AdvertisementZonU_H113              0.015107        0.000833
+ 711 REP_ClusterGroupA_H113                  0.121289       -0.000202
+ 712 REP_ClusterGroupB_H113                  0.157350       -0.000192
+ 713 REP_ClusterGroupC_H113                 -0.138918    -0.000022736
+ 714 REP_ClusterGroupD_H113                  1.418356       -0.001519
+ 715 REP_ClusterGroupE_H113                 -0.876281        0.000334
+ 716 REP_ClusterGroupF_H113                  0.143269       -0.000211
+ 717 REP_GenderF_H113                        0.085025       -0.001257
+ 718 REP_RegionCentral_H113                 -0.170438       -0.001692
+ 719 REP_RegionNorth_H113                   -0.073161        0.000478
+ 720 REP_RegionNorthEast_H113                0.075365       -0.000192
+ 721 REP_RegionSouthEast_H113                0.004075       -0.002555
+ 722 REP_RegionSouthWest_H113                0.056340     0.000000387
+ 723 LoyaltyClassGold_H114                   0.432739        0.000877
+ 724 REP_AdvertisementZonBorder_H114        -0.267120       -0.000313
+ 725 _DUP45                                 -0.075325       -0.000146
+ 726 _DUP46                                 -0.133181        0.000872
+ 727 _DUP47                                  0.034653       -0.000384
+ 728 REP_AdvertisementZonNEast_H114         -0.049229       -0.000314
+ 729 REP_AdvertisementZonNWest_H114          0.467080       -0.000943
+ 730 REP_AdvertisementZonNEZ1_H114          -0.364190        0.000265
+ 731 REP_AdvertisementZonNEZ2_H114          -0.064006       -0.000548
+ 732 REP_AdvertisementZonNEZ3_H114           0.228510       -0.001133
+ 733 _DUP48                                 -0.384371       -0.002693
+ 734 REP_AdvertisementZonSEast_H114          0.441130       -0.001028
+ 735 REP_AdvertisementZonSWest_H114          0.205976       -0.000699
+ 736 REP_AdvertisementZonU_H114             -0.099157       -0.000388
+ 737 REP_ClusterGroupA_H114                 -0.291875        0.000551
+ 738 REP_ClusterGroupB_H114                  0.351105       -0.000722
+ 739 REP_ClusterGroupC_H114                 -1.000527        0.001392
+ 740 REP_ClusterGroupD_H114                 -0.180980     0.000030032
+ 741 REP_ClusterGroupE_H114                  0.303085       -0.000800
+ 742 REP_ClusterGroupF_H114                 -0.376824       -0.001463
+ 743 REP_GenderF_H114                        0.942482       -0.000749
+ 744 REP_RegionCentral_H114                 -0.301483       -0.001708
+ 745 REP_RegionNorth_H114                    0.994061       -0.001250
+ 746 REP_RegionNorthEast_H114               -0.403084        0.000544
+ 747 REP_RegionSouthEast_H114                0.420110        0.000607
+ 748 REP_RegionSouthWest_H114                0.372433       -0.000310
+ 749 LoyaltyClassGold_H115                  -1.434811       -0.003262
+ 750 REP_AdvertisementZonBorder_H115        -0.976986        0.000192
+ 751 _DUP49                                  0.069236       -0.000169
+ 752 _DUP50                                  0.039438       -0.000923
+ 753 _DUP51                                  0.051907        0.000190
+ 754 REP_AdvertisementZonNEast_H115         -1.171350        0.000399
+ 755 REP_AdvertisementZonNWest_H115          0.222635        0.000298
+ 756 REP_AdvertisementZonNEZ1_H115           0.312427     0.000060658
+ 757 REP_AdvertisementZonNEZ2_H115          -0.729903        0.000463
+ 758 REP_AdvertisementZonNEZ3_H115          -0.886379        0.000592
+ 759 _DUP52                                  1.359076       -0.000112
+ 760 REP_AdvertisementZonSEast_H115         -1.087991       -0.000248
+ 761 REP_AdvertisementZonSWest_H115          0.350502        0.000134
+ 762 REP_AdvertisementZonU_H115             -0.226954        0.000261
+ 763 REP_ClusterGroupA_H115                 -2.174500       -0.000406
+ 764 REP_ClusterGroupB_H115                 -0.393255        0.000333
+ 765 REP_ClusterGroupC_H115                 -0.840026       -0.000288
+ 766 REP_ClusterGroupD_H115                  0.036411       -0.000585
+ 767 REP_ClusterGroupE_H115                 -0.271113    -0.000081502
+ 768 REP_ClusterGroupF_H115                 -1.432009       -0.000149
+ 769 REP_GenderF_H115                        0.860007       -0.002359
+ 770 REP_RegionCentral_H115                  1.327596       -0.000913
+ 771 REP_RegionNorth_H115                   -1.705733        0.000654
+ 772 REP_RegionNorthEast_H115               -1.118584     0.000080570
+ 773 REP_RegionSouthEast_H115               -0.800409       -0.001620
+ 774 REP_RegionSouthWest_H115                0.311968       -0.000127
+ 775 LoyaltyClassGold_H116                   0.735717        0.000704
+ 776 REP_AdvertisementZonBorder_H116         0.735604        0.000286
+ 777 _DUP53                                  0.327107        0.001771
+ 778 _DUP54                                 -0.596250       -0.001009
+ 779 _DUP55                                  0.305807        0.000411
+ 780 REP_AdvertisementZonNEast_H116         -0.327222        0.000439
+ 781 REP_AdvertisementZonNWest_H116          0.555596        0.000628
+ 782 REP_AdvertisementZonNEZ1_H116          -0.000724        0.000650
+ 783 REP_AdvertisementZonNEZ2_H116           0.497662        0.000202
+ 784 REP_AdvertisementZonNEZ3_H116           1.065156        0.000785
+ 785 _DUP56                                  1.298319        0.000485
+ 786 REP_AdvertisementZonSEast_H116          2.081452        0.000681
+ 787 REP_AdvertisementZonSWest_H116          0.532048        0.000617
+ 788 REP_AdvertisementZonU_H116              0.293941        0.000423
+ 789 REP_ClusterGroupA_H116                 -0.392745       -0.000260
+ 790 REP_ClusterGroupB_H116                  1.268181        0.001445
+ 791 REP_ClusterGroupC_H116                 -0.932368        0.000574
+ 792 REP_ClusterGroupD_H116                 -0.518985        0.000392
+ 793 REP_ClusterGroupE_H116                  1.805787        0.001132
+ 794 REP_ClusterGroupF_H116                  0.704816        0.000880
+ 795 REP_GenderF_H116                       -0.081686       -0.003213
+ 796 REP_RegionCentral_H116                  0.572928        0.000943
+ 797 REP_RegionNorth_H116                    0.417351        0.000562
+ 798 REP_RegionNorthEast_H116               -0.435461       -0.000152
+ 799 REP_RegionSouthEast_H116                1.103056       -0.001185
+ 800 REP_RegionSouthWest_H116               -0.321810        0.000194
+ 801 LoyaltyClassGold_H117                   0.215730        0.001216
+ 802 REP_AdvertisementZonBorder_H117         0.293737        0.000724
+ 803 _DUP57                                  0.069568        0.000764
+ 804 _DUP58                                 -0.236398        0.000210
+ 805 _DUP59                                  0.191831        0.000725
+ 806 REP_AdvertisementZonNEast_H117          0.304681        0.000545
+ 807 REP_AdvertisementZonNWest_H117          0.254633        0.000712
+ 808 REP_AdvertisementZonNEZ1_H117          -0.225337        0.000625
+ 809 REP_AdvertisementZonNEZ2_H117           0.217633        0.000726
+ 810 REP_AdvertisementZonNEZ3_H117           0.006510        0.000681
+ 811 _DUP60                                  0.605278        0.000636
+ 812 REP_AdvertisementZonSEast_H117          0.166341        0.000751
+ 813 REP_AdvertisementZonSWest_H117          0.027597        0.000663
+ 814 REP_AdvertisementZonU_H117              0.088367        0.000725
+ 815 REP_ClusterGroupA_H117                 -0.088626       -0.000444
+ 816 REP_ClusterGroupB_H117                  0.129912       -0.000114
+ 817 REP_ClusterGroupC_H117                 -0.222067       -0.000161
+ 818 REP_ClusterGroupD_H117                 -0.001668       -0.000523
+ 819 REP_ClusterGroupE_H117                 -0.145033    -0.000086901
+ 820 REP_ClusterGroupF_H117                 -0.219739       -0.000227
+ 821 REP_GenderF_H117                       -0.028609       -0.001243
+ 822 REP_RegionCentral_H117                 -0.078480       -0.000775
+ 823 REP_RegionNorth_H117                   -0.256429       -0.000237
+ 824 REP_RegionNorthEast_H117                0.099915       -0.000101
+ 825 REP_RegionSouthEast_H117               -0.152204       -0.000488
+ 826 REP_RegionSouthWest_H117               -0.211127    -0.000061211
+ 827 LoyaltyClassGold_H118                  -1.227604       -0.002022
+ 828 REP_AdvertisementZonBorder_H118        -0.085042       -0.000337
+ 829 _DUP61                                 -0.047151       -0.000484
+ 830 _DUP62                                 -0.584103       -0.002262
+ 831 _DUP63                                 -0.199490       -0.000339
+ 832 REP_AdvertisementZonNEast_H118          0.587920    -0.000003123
+ 833 REP_AdvertisementZonNWest_H118         -0.631036       -0.001649
+ 834 REP_AdvertisementZonNEZ1_H118           0.950911       -0.000766
+ 835 REP_AdvertisementZonNEZ2_H118          -0.454549       -0.000494
+ 836 REP_AdvertisementZonNEZ3_H118          -0.466198       -0.000948
+ 837 _DUP64                                 -0.157859       -0.002544
+ 838 REP_AdvertisementZonSEast_H118          0.902859       -0.002534
+ 839 REP_AdvertisementZonSWest_H118         -0.020335       -0.001006
+ 840 REP_AdvertisementZonU_H118              0.510076       -0.000593
+ 841 REP_ClusterGroupA_H118                  1.470824        0.000757
+ 842 REP_ClusterGroupB_H118                  1.000334        0.000539
+ 843 REP_ClusterGroupC_H118                 -0.661234       -0.002405
+ 844 REP_ClusterGroupD_H118                  0.466060       -0.002065
+ 845 REP_ClusterGroupE_H118                 -0.314730       -0.001346
+ 846 REP_ClusterGroupF_H118                  0.872386       -0.001364
+ 847 REP_GenderF_H118                       -0.621388       -0.007006
+ 848 REP_RegionCentral_H118                 -0.738812       -0.001743
+ 849 REP_RegionNorth_H118                   -0.347795       -0.001320
+ 850 REP_RegionNorthEast_H118               -0.091333       -0.000316
+ 851 REP_RegionSouthEast_H118                0.096178       -0.003859
+ 852 REP_RegionSouthWest_H118               -0.413550       -0.000413
+ 853 LoyaltyClassGold_H119                  -1.056244        0.001936
+ 854 REP_AdvertisementZonBorder_H119         0.267190       -0.000293
+ 855 _DUP65                                 -0.457707        0.000216
+ 856 _DUP66                                 -0.292072        0.001683
+ 857 _DUP67                                  0.235153       -0.000330
+ 858 REP_AdvertisementZonNEast_H119         -0.875814       -0.000564
+ 859 REP_AdvertisementZonNWest_H119          0.061840    -0.000005366
+ 860 REP_AdvertisementZonNEZ1_H119           0.639809       -0.000115
+ 861 REP_AdvertisementZonNEZ2_H119           0.339550       -0.000323
+ 862 REP_AdvertisementZonNEZ3_H119           0.333806       -0.001622
+ 863 _DUP68                                 -0.216321        0.000581
+ 864 REP_AdvertisementZonSEast_H119          1.122322     0.000057888
+ 865 REP_AdvertisementZonSWest_H119          0.454765        0.000747
+ 866 REP_AdvertisementZonU_H119             -0.089326       -0.000289
+ 867 REP_ClusterGroupA_H119                 -0.251486        0.000685
+ 868 REP_ClusterGroupB_H119                 -0.332109        0.000287
+ 869 REP_ClusterGroupC_H119                  0.714590        0.001085
+ 870 REP_ClusterGroupD_H119                  1.458983        0.000264
+ 871 REP_ClusterGroupE_H119                 -0.441939       -0.000748
+ 872 REP_ClusterGroupF_H119                 -0.228923       -0.000266
+ 873 REP_GenderF_H119                        0.593075        0.001103
+ 874 REP_RegionCentral_H119                 -0.771264        0.001688
+ 875 REP_RegionNorth_H119                   -0.163089       -0.001281
+ 876 REP_RegionNorthEast_H119                0.987303        0.000179
+ 877 REP_RegionSouthEast_H119                0.591544        0.002341
+ 878 REP_RegionSouthWest_H119                0.481146        0.001036
+ 879 LoyaltyClassGold_H120                  -0.182936        0.004234
+ 880 REP_AdvertisementZonBorder_H120         0.033194       -0.000107
+ 881 _DUP69                                 -0.608228        0.000549
+ 882 REP_AdvertisementZonECentral_H12        0.411629        0.000626
+ 883 REP_AdvertisementZonNCentral_H12       -0.212216       -0.000144
+ 884 REP_AdvertisementZonNEast_H120          0.342102       -0.000387
+ 885 REP_AdvertisementZonNWest_H120          0.411460       -0.000311
+ 886 REP_AdvertisementZonNEZ1_H120           0.037290     0.000079320
+ 887 REP_AdvertisementZonNEZ2_H120          -0.393126       -0.000325
+ 888 REP_AdvertisementZonNEZ3_H120          -0.434122     0.000091493
+ 889 REP_AdvertisementZonSCentral_H12        0.601635       -0.000216
+ 890 REP_AdvertisementZonSEast_H120         -0.149207        0.000537
+ 891 REP_AdvertisementZonSWest_H120          0.373856       -0.000788
+ 892 REP_AdvertisementZonU_H120             -0.061972       -0.000191
+ 893 REP_ClusterGroupA_H120                  0.048813       -0.000223
+ 894 REP_ClusterGroupB_H120                  0.302730        0.000995
+ 895 REP_ClusterGroupC_H120                  0.079964        0.001193
+ 896 REP_ClusterGroupD_H120                  0.690440        0.000556
+ 897 REP_ClusterGroupE_H120                 -0.033011       -0.000157
+ 898 REP_ClusterGroupF_H120                 -0.697322       -0.001379
+ 899 REP_GenderF_H120                        1.143035        0.003898
+ 900 REP_RegionCentral_H120                 -0.012165        0.000973
+ 901 REP_RegionNorth_H120                    0.017070    -0.000021036
+ 902 REP_RegionNorthEast_H120               -0.437429        0.000232
+ 903 REP_RegionSouthEast_H120                0.455484        0.001552
+ 904 REP_RegionSouthWest_H120                0.423609       -0.000597
+ 905 LoyaltyClassGold_H121                   0.292932        0.003795
+ 906 REP_AdvertisementZonBorder_H121         0.116860       -0.000497
+ 907 _DUP70                                  0.591311       -0.000680
+ 908 _DUP71                                 -1.087950        0.001094
+ 909 _DUP72                                 -0.472426       -0.000431
+ 910 REP_AdvertisementZonNEast_H121         -0.326698       -0.000842
+ 911 REP_AdvertisementZonNWest_H121         -1.228315       -0.000247
+ 912 REP_AdvertisementZonNEZ1_H121          -1.042555        0.000230
+ 913 REP_AdvertisementZonNEZ2_H121          -0.432620       -0.000383
+ 914 REP_AdvertisementZonNEZ3_H121           1.074812       -0.000720
+ 915 _DUP73                                  0.618915        0.001769
+ 916 REP_AdvertisementZonSEast_H121          0.167317       -0.000641
+ 917 REP_AdvertisementZonSWest_H121          0.018415       -0.000915
+ 918 REP_AdvertisementZonU_H121             -0.247408       -0.000225
+ 919 REP_ClusterGroupA_H121                  0.821945        0.000634
+ 920 REP_ClusterGroupB_H121                  0.593227       -0.000417
+ 921 REP_ClusterGroupC_H121                 -0.871235        0.001732
+ 922 REP_ClusterGroupD_H121                 -0.236824        0.001684
+ 923 REP_ClusterGroupE_H121                  1.145781       -0.000446
+ 924 REP_ClusterGroupF_H121                  0.962575       -0.000166
+ 925 REP_GenderF_H121                        1.002912        0.001242
+ 926 REP_RegionCentral_H121                  1.201044        0.002366
+ 927 REP_RegionNorth_H121                   -0.007141       -0.000595
+ 928 REP_RegionNorthEast_H121               -1.118343        0.000564
+ 929 REP_RegionSouthEast_H121               -0.486845        0.001173
+ 930 REP_RegionSouthWest_H121                0.335149       -0.000690
+ 931 LoyaltyClassGold_H122                   0.908006        0.000103
+ 932 REP_AdvertisementZonBorder_H122         0.309373        0.002059
+ 933 _DUP74                                 -0.666437        0.001854
+ 934 _DUP75                                  0.049112       -0.000872
+ 935 _DUP76                                  0.378492        0.002000
+ 936 REP_AdvertisementZonNEast_H122          0.475838        0.001973
+ 937 REP_AdvertisementZonNWest_H122         -0.484114        0.001777
+ 938 REP_AdvertisementZonNEZ1_H122           0.311393        0.001182
+ 939 REP_AdvertisementZonNEZ2_H122          -0.788102        0.002256
+ 940 REP_AdvertisementZonNEZ3_H122           1.056586        0.001726
+ 941 _DUP77                                 -1.080163        0.000632
+ 942 REP_AdvertisementZonSEast_H122         -0.546719        0.002096
+ 943 REP_AdvertisementZonSWest_H122          0.966198        0.001982
+ 944 REP_AdvertisementZonU_H122              0.561166        0.002282
+ 945 REP_ClusterGroupA_H122                 -0.448235       -0.000638
+ 946 REP_ClusterGroupB_H122                 -0.791462       -0.001087
+ 947 REP_ClusterGroupC_H122                  0.006449       -0.001434
+ 948 REP_ClusterGroupD_H122                 -0.629151       -0.004125
+ 949 REP_ClusterGroupE_H122                  0.103211    -0.000086451
+ 950 REP_ClusterGroupF_H122                  0.717172       -0.000934
+ 951 REP_GenderF_H122                        0.338070       -0.003787
+ 952 REP_RegionCentral_H122                 -1.266183       -0.004607
+ 953 REP_RegionNorth_H122                    0.683535       -0.001346
+ 954 REP_RegionNorthEast_H122               -0.228572       -0.001325
+ 955 REP_RegionSouthEast_H122               -0.628304       -0.003329
+ 956 REP_RegionSouthWest_H122                0.810459       -0.000300
+ 957 LoyaltyClassGold_H123                   1.237922       -0.001235
+ 958 REP_AdvertisementZonBorder_H123         0.231452        0.000442
+ 959 _DUP78                                 -0.101006        0.000294
+ 960 _DUP79                                  0.030529       -0.000791
+ 961 _DUP80                                  0.318099        0.000419
+ 962 REP_AdvertisementZonNEast_H123         -0.506895        0.000791
+ 963 REP_AdvertisementZonNWest_H123          0.163310        0.000576
+ 964 REP_AdvertisementZonNEZ1_H123           0.143498        0.000256
+ 965 REP_AdvertisementZonNEZ2_H123          -0.476957        0.000708
+ 966 REP_AdvertisementZonNEZ3_H123          -0.415654        0.000805
+ 967 _DUP81                                  0.595674        0.000292
+ 968 REP_AdvertisementZonSEast_H123         -0.311988        0.000709
+ 969 REP_AdvertisementZonSWest_H123         -0.337899        0.000594
+ 970 REP_AdvertisementZonU_H123             -0.644921        0.000491
+ 971 REP_ClusterGroupA_H123                 -0.469824       -0.000207
+ 972 REP_ClusterGroupB_H123                 -0.593739        0.001000
+ 973 REP_ClusterGroupC_H123                  0.284597        0.000105
+ 974 REP_ClusterGroupD_H123                  0.849022       -0.001308
+ 975 REP_ClusterGroupE_H123                  0.526779       -0.000177
+ 976 REP_ClusterGroupF_H123                 -0.559464       -0.000714
+ 977 REP_GenderF_H123                       -0.153415       -0.000516
+ 978 REP_RegionCentral_H123                  0.750578       -0.000860
+ 979 REP_RegionNorth_H123                    0.060457        0.000765
+ 980 REP_RegionNorthEast_H123                0.171812    -0.000001462
+ 981 REP_RegionSouthEast_H123                0.138040       -0.001031
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The NEURAL Procedure
+
+                         Optimization Results
+                         Parameter Estimates
+                                                             Gradient
+                                                            Objective
+   N Parameter                               Estimate        Function
+
+ 982 REP_RegionSouthWest_H123                0.102075        0.000102
+ 983 LoyaltyClassGold_H124                   0.344576       -0.000713
+ 984 REP_AdvertisementZonBorder_H124        -0.140265    -0.000095360
+ 985 _DUP82                                  0.339252       -0.000952
+ 986 _DUP83                                 -1.383557        0.000193
+ 987 _DUP84                                 -0.179533       -0.000104
+ 988 REP_AdvertisementZonNEast_H124         -0.363680        0.000108
+ 989 REP_AdvertisementZonNWest_H124         -0.225297       -0.000186
+ 990 REP_AdvertisementZonNEZ1_H124           0.051497       -0.000255
+ 991 REP_AdvertisementZonNEZ2_H124           0.090902       -0.000195
+ 992 REP_AdvertisementZonNEZ3_H124          -0.064301       -0.000346
+ 993 _DUP85                                 -0.381944        0.001281
+ 994 REP_AdvertisementZonSEast_H124          0.430098        0.001564
+ 995 REP_AdvertisementZonSWest_H124         -0.002613       -0.000275
+ 996 REP_AdvertisementZonU_H124             -0.207674       -0.000244
+ 997 REP_ClusterGroupA_H124                 -0.531877        0.000328
+ 998 REP_ClusterGroupB_H124                 -0.085452       -0.001127
+ 999 REP_ClusterGroupC_H124                  0.180089        0.001615
+1000 REP_ClusterGroupD_H124                  0.254599        0.000358
+1001 REP_ClusterGroupE_H124                 -0.700831        0.001133
+1002 REP_ClusterGroupF_H124                 -0.510499     0.000091971
+1003 REP_GenderF_H124                       -0.008796        0.002796
+1004 REP_RegionCentral_H124                  0.069995        0.000902
+1005 REP_RegionNorth_H124                   -0.275931        0.000109
+1006 REP_RegionNorthEast_H124                0.320786    -0.000012147
+1007 REP_RegionSouthEast_H124               -0.769792        0.002146
+1008 REP_RegionSouthWest_H124                0.064197    -0.000030987
+1009 LoyaltyClassGold_H125                  -0.197239       -0.000568
+1010 REP_AdvertisementZonBorder_H125         0.269983       -0.000309
+1011 _DUP86                                  0.636925       -0.000814
+1012 _DUP87                                 -0.649928       -0.001158
+1013 _DUP88                                 -0.241948       -0.000289
+1014 REP_AdvertisementZonNEast_H125         -0.138561    -0.000047110
+1015 REP_AdvertisementZonNWest_H125         -0.145783        0.001051
+1016 REP_AdvertisementZonNEZ1_H125          -0.433194       -0.000638
+1017 REP_AdvertisementZonNEZ2_H125          -0.439827       -0.000313
+1018 REP_AdvertisementZonNEZ3_H125           0.483330        0.000669
+1019 _DUP89                                 -0.917795        0.000191
+1020 REP_AdvertisementZonSEast_H125          0.460070       -0.000644
+1021 REP_AdvertisementZonSWest_H125         -0.870804       -0.000212
+1022 REP_AdvertisementZonU_H125              0.043187       -0.000117
+1023 REP_ClusterGroupA_H125                  0.123282     0.000057231
+1024 REP_ClusterGroupB_H125                 -0.351583        0.002096
+1025 REP_ClusterGroupC_H125                 -1.638228       -0.000328
+1026 REP_ClusterGroupD_H125                  1.608273       -0.000154
+1027 REP_ClusterGroupE_H125                 -1.515335        0.001098
+1028 REP_ClusterGroupF_H125                 -0.163992        0.000390
+1029 REP_GenderF_H125                       -1.056189       -0.000686
+1030 REP_RegionCentral_H125                 -0.616354     0.000092565
+1031 REP_RegionNorth_H125                    0.521316        0.002381
+1032 REP_RegionNorthEast_H125               -0.438475       -0.000551
+1033 REP_RegionSouthEast_H125               -0.586757       -0.001390
+1034 REP_RegionSouthWest_H125               -0.863387    -0.000094299
+1035 LoyaltyClassGold_H126                  -0.797800        0.002681
+1036 REP_AdvertisementZonBorder_H126        -0.141541       -0.001114
+1037 _DUP90                                  0.110239       -0.000910
+1038 _DUP91                                 -0.147244        0.000971
+1039 _DUP92                                 -0.013323       -0.001169
+1040 REP_AdvertisementZonNEast_H126          0.444588       -0.001157
+1041 REP_AdvertisementZonNWest_H126          0.287811       -0.001554
+1042 REP_AdvertisementZonNEZ1_H126          -0.466653       -0.000659
+1043 REP_AdvertisementZonNEZ2_H126           0.061492       -0.001003
+1044 REP_AdvertisementZonNEZ3_H126          -0.224926       -0.001416
+1045 _DUP93                                  0.012816        0.000712
+1046 REP_AdvertisementZonSEast_H126          0.264286       -0.000277
+1047 REP_AdvertisementZonSWest_H126          0.088370       -0.001269
+1048 REP_AdvertisementZonU_H126              0.014192       -0.000925
+1049 REP_ClusterGroupA_H126                 -0.289296        0.000552
+1050 REP_ClusterGroupB_H126                 -0.887298        0.000645
+1051 REP_ClusterGroupC_H126                  0.363691        0.002703
+1052 REP_ClusterGroupD_H126                 -0.375899        0.001695
+1053 REP_ClusterGroupE_H126                 -0.059445        0.000548
+1054 REP_ClusterGroupF_H126                  0.788216       -0.001525
+1055 REP_GenderF_H126                        0.263779        0.003844
+1056 REP_RegionCentral_H126                  0.146383        0.003008
+1057 REP_RegionNorth_H126                    0.463247       -0.000902
+1058 REP_RegionNorthEast_H126               -0.065558        0.000449
+1059 REP_RegionSouthEast_H126                0.106748        0.002769
+1060 REP_RegionSouthWest_H126               -0.013023       -0.000344
+1061 LoyaltyClassGold_H127                  -0.132852       -0.001572
+1062 REP_AdvertisementZonBorder_H127        -0.091348       -0.000282
+1063 _DUP94                                 -0.149904       -0.000196
+1064 _DUP95                                 -0.040646       -0.000793
+1065 _DUP96                                  0.217630       -0.000302
+1066 REP_AdvertisementZonNEast_H127         -0.583842        0.000176
+1067 REP_AdvertisementZonNWest_H127          0.122252    -0.000021958
+1068 REP_AdvertisementZonNEZ1_H127           0.439552       -0.000339
+1069 REP_AdvertisementZonNEZ2_H127          -0.329837       -0.000173
+1070 REP_AdvertisementZonNEZ3_H127           0.519942       -0.000756
+1071 _DUP97                                 -0.768073       -0.001168
+1072 REP_AdvertisementZonSEast_H127         -0.114447       -0.001001
+1073 REP_AdvertisementZonSWest_H127         -0.521318       -0.000777
+1074 REP_AdvertisementZonU_H127             -0.229121       -0.000169
+1075 REP_ClusterGroupA_H127                  0.106461     0.000075127
+1076 REP_ClusterGroupB_H127                 -0.142045        0.001782
+1077 REP_ClusterGroupC_H127                  0.056376       -0.000789
+1078 REP_ClusterGroupD_H127                  0.651355       -0.000316
+1079 REP_ClusterGroupE_H127                 -0.609247       -0.000492
+1080 REP_ClusterGroupF_H127                 -0.289002        0.000589
+1081 REP_GenderF_H127                        0.568736       -0.002558
+1082 REP_RegionCentral_H127                 -0.315794       -0.000698
+1083 REP_RegionNorth_H127                    0.490690        0.000100
+1084 REP_RegionNorthEast_H127                0.525397    -0.000091558
+1085 REP_RegionSouthEast_H127                0.155973       -0.001358
+1086 REP_RegionSouthWest_H127               -0.804077       -0.000609
+1087 LoyaltyClassGold_H128                   0.030068        0.001760
+1088 REP_AdvertisementZonBorder_H128        -0.024089       -0.001150
+1089 _DUP98                                  0.237309       -0.000816
+1090 _DUP99                                  0.960968        0.001353
+1091 _DUP100                                 0.337250       -0.001242
+1092 REP_AdvertisementZonNEast_H128          1.513711       -0.001949
+1093 REP_AdvertisementZonNWest_H128         -0.946467       -0.002229
+1094 REP_AdvertisementZonNEZ1_H128           0.205356       -0.000352
+1095 REP_AdvertisementZonNEZ2_H128           0.268998       -0.001500
+1096 REP_AdvertisementZonNEZ3_H128           0.712371       -0.001172
+1097 _DUP101                                -0.526175       -0.000226
+1098 REP_AdvertisementZonSEast_H128         -0.594737       -0.001127
+1099 REP_AdvertisementZonSWest_H128         -0.255460       -0.001400
+1100 REP_AdvertisementZonU_H128             -0.028676       -0.001204
+1101 REP_ClusterGroupA_H128                 -0.745210        0.001063
+1102 REP_ClusterGroupB_H128                  0.085493       -0.000665
+1103 REP_ClusterGroupC_H128                 -0.017707       -0.000102
+1104 REP_ClusterGroupD_H128                 -0.337137        0.000887
+1105 REP_ClusterGroupE_H128                  0.343766        0.000929
+1106 REP_ClusterGroupF_H128                 -0.012932        0.001439
+1107 REP_GenderF_H128                       -0.319642       -0.001026
+1108 REP_RegionCentral_H128                 -0.394748        0.002632
+1109 REP_RegionNorth_H128                    0.791031       -0.001670
+1110 REP_RegionNorthEast_H128                0.258745        0.000677
+1111 REP_RegionSouthEast_H128                0.266122        0.002667
+1112 REP_RegionSouthWest_H128               -0.508718       -0.000196
+1113 LoyaltyClassGold_H129                  -1.034470        0.004217
+1114 REP_AdvertisementZonBorder_H129         0.152689       -0.000345
+1115 _DUP102                                 0.472458       -0.000691
+1116 _DUP103                                -0.247049        0.003253
+1117 _DUP104                                -0.283510       -0.000369
+1118 REP_AdvertisementZonNEast_H129         -0.492789       -0.000468
+1119 REP_AdvertisementZonNWest_H129          0.091342       -0.001052
+1120 REP_AdvertisementZonNEZ1_H129           0.429334       -0.000530
+1121 REP_AdvertisementZonNEZ2_H129          -0.164431       -0.000596
+1122 REP_AdvertisementZonNEZ3_H129          -0.123214       -0.000835
+1123 _DUP105                                 0.476825       -0.000113
+1124 REP_AdvertisementZonSEast_H129          0.139038     0.000094446
+1125 REP_AdvertisementZonSWest_H129         -1.045824       -0.000629
+1126 REP_AdvertisementZonU_H129             -0.197721       -0.000626
+1127 REP_ClusterGroupA_H129                  0.646259        0.000881
+1128 REP_ClusterGroupB_H129                 -0.061963       -0.001154
+1129 REP_ClusterGroupC_H129                  0.018007     0.000030879
+1130 REP_ClusterGroupD_H129                  0.030480        0.001021
+1131 REP_ClusterGroupE_H129                  0.821233       -0.000972
+1132 REP_ClusterGroupF_H129                  1.136295       -0.000973
+1133 REP_GenderF_H129                       -0.233674        0.003396
+1134 REP_RegionCentral_H129                  0.910578        0.000545
+1135 REP_RegionNorth_H129                    0.025826       -0.001001
+1136 REP_RegionNorthEast_H129                0.129102       -0.000117
+1137 REP_RegionSouthEast_H129                0.741099        0.004338
+1138 REP_RegionSouthWest_H129               -1.050067    -0.000003323
+1139 LoyaltyClassGold_H130                   0.411968       -0.000779
+1140 REP_AdvertisementZonBorder_H130         0.135493       -0.000594
+1141 _DUP106                                 0.639010       -0.001222
+1142 REP_AdvertisementZonECentral_H13       -1.576242        0.000130
+1143 REP_AdvertisementZonNCentral_H13        0.548137       -0.000862
+1144 REP_AdvertisementZonNEast_H130          0.496357       -0.001277
+1145 REP_AdvertisementZonNWest_H130         -1.257486       -0.001008
+1146 REP_AdvertisementZonNEZ1_H130          -0.169508       -0.000530
+1147 REP_AdvertisementZonNEZ2_H130           0.078365       -0.000524
+1148 REP_AdvertisementZonNEZ3_H130           0.051651       -0.001733
+1149 REP_AdvertisementZonSCentral_H13       -0.050105        0.000192
+1150 REP_AdvertisementZonSEast_H130          1.752490       -0.000468
+1151 REP_AdvertisementZonSWest_H130          1.047243       -0.000805
+1152 REP_AdvertisementZonU_H130              0.590597       -0.000902
+1153 REP_ClusterGroupA_H130                 -0.367406        0.001164
+1154 REP_ClusterGroupB_H130                 -1.609295        0.000712
+1155 REP_ClusterGroupC_H130                 -1.497984        0.001102
+1156 REP_ClusterGroupD_H130                  0.845030        0.001357
+1157 REP_ClusterGroupE_H130                 -0.473497       -0.000365
+1158 REP_ClusterGroupF_H130                 -1.305066        0.000281
+1159 REP_GenderF_H130                        1.389097        0.000458
+1160 REP_RegionCentral_H130                  0.080017        0.001227
+1161 REP_RegionNorth_H130                   -0.998298       -0.001637
+1162 REP_RegionNorthEast_H130               -0.568096        0.000733
+1163 REP_RegionSouthEast_H130               -0.563594        0.001303
+1164 REP_RegionSouthWest_H130                0.444584     0.000097535
+1165 LoyaltyClassGold_H131                   0.084454       -0.000349
+1166 REP_AdvertisementZonBorder_H131         0.349900       -0.000211
+1167 _DUP107                                 0.318781     0.000098117
+1168 _DUP108                                -0.089175        0.001243
+1169 _DUP109                                 0.003221       -0.000321
+1170 REP_AdvertisementZonNEast_H131         -0.292311       -0.000330
+1171 REP_AdvertisementZonNWest_H131          0.732841    -0.000050898
+1172 REP_AdvertisementZonNEZ1_H131          -0.150116        0.000313
+1173 REP_AdvertisementZonNEZ2_H131           0.159828       -0.000356
+1174 REP_AdvertisementZonNEZ3_H131          -0.526122       -0.001437
+1175 _DUP110                                 1.670815        0.000396
+1176 REP_AdvertisementZonSEast_H131          0.868593        0.000945
+1177 REP_AdvertisementZonSWest_H131         -0.526914       -0.000787
+1178 REP_AdvertisementZonU_H131              0.226827       -0.000176
+1179 REP_ClusterGroupA_H131                 -0.963101        0.000205
+1180 REP_ClusterGroupB_H131                 -0.100367       -0.000112
+1181 REP_ClusterGroupC_H131                 -1.012950        0.001110
+1182 REP_ClusterGroupD_H131                  0.644696        0.000590
+1183 REP_ClusterGroupE_H131                  0.582450     0.000035076
+1184 REP_ClusterGroupF_H131                  1.059664       -0.000572
+1185 REP_GenderF_H131                       -0.860885        0.001239
+1186 REP_RegionCentral_H131                  1.087643        0.001296
+1187 REP_RegionNorth_H131                   -0.606816       -0.001011
+1188 REP_RegionNorthEast_H131               -0.253755        0.000554
+1189 REP_RegionSouthEast_H131                0.328059        0.002680
+1190 REP_RegionSouthWest_H131               -0.971303       -0.000610
+1191 LoyaltyClassGold_H132                   0.362430        0.004317
+1192 REP_AdvertisementZonBorder_H132        -0.086230    -0.000072979
+1193 _DUP111                                -0.236988        0.000152
+1194 _DUP112                                -0.207008        0.001409
+1195 _DUP113                                -0.123833       -0.000155
+1196 REP_AdvertisementZonNEast_H132          0.015944    -0.000088685
+1197 REP_AdvertisementZonNWest_H132          0.088659        0.000204
+1198 REP_AdvertisementZonNEZ1_H132          -0.590544        0.000145
+1199 REP_AdvertisementZonNEZ2_H132          -0.002017       -0.000102
+1200 REP_AdvertisementZonNEZ3_H132          -0.048027       -0.000439
+1201 _DUP114                                 0.535588        0.001178
+1202 REP_AdvertisementZonSEast_H132         -0.139196        0.000645
+1203 REP_AdvertisementZonSWest_H132         -0.114502       -0.000203
+1204 REP_AdvertisementZonU_H132              0.072459     0.000010479
+1205 REP_ClusterGroupA_H132                  0.095981     0.000031740
+1206 REP_ClusterGroupB_H132                  0.177821        0.000823
+1207 REP_ClusterGroupC_H132                  0.163718        0.000720
+1208 REP_ClusterGroupD_H132                  0.048537        0.001049
+1209 REP_ClusterGroupE_H132                  0.148344        0.001329
+1210 REP_ClusterGroupF_H132                 -0.186282       -0.000493
+1211 REP_GenderF_H132                       -0.326057        0.004041
+1212 REP_RegionCentral_H132                  0.378259        0.001686
+1213 REP_RegionNorth_H132                    0.026354     0.000014256
+1214 REP_RegionNorthEast_H132                0.154473        0.000307
+1215 REP_RegionSouthEast_H132               -0.151815        0.002217
+1216 REP_RegionSouthWest_H132                0.114046       -0.000214
+1217 BIAS_H101                              -0.580679       -0.002708
+1218 BIAS_H102                              -2.025223        0.006960
+1219 BIAS_H103                              -0.456607        0.004463
+1220 BIAS_H104                               1.235338       -0.002431
+1221 BIAS_H105                               1.796069       -0.000421
+1222 BIAS_H106                               1.053907       -0.000376
+1223 BIAS_H107                               0.167605       -0.001969
+1224 BIAS_H108                              -0.930187        0.000670
+1225 BIAS_H109                              -3.218655        0.001347
+1226 BIAS_H110                              -1.230813       -0.004289
+1227 BIAS_H111                               0.600073        0.002880
+1228 BIAS_H112                              -0.737686    -0.000098633
+1229 BIAS_H113                              -1.917508       -0.003913
+1230 BIAS_H114                               1.297604       -0.002197
+1231 BIAS_H115                              -1.590052       -0.001480
+1232 BIAS_H116                               1.705659        0.000301
+1233 BIAS_H117                               3.775541       -0.001668
+1234 BIAS_H118                               2.784406       -0.009145
+1235 BIAS_H119                              -0.475516        0.004091
+1236 BIAS_H120                               1.804404        0.002178
+1237 BIAS_H121                               0.218932        0.004431
+1238 BIAS_H122                               5.172923       -0.010836
+1239 BIAS_H123                              -0.474221       -0.000823
+1240 BIAS_H124                               0.057192        0.002513
+1241 BIAS_H125                              -1.174236        0.001509
+1242 BIAS_H126                              -0.661942        0.006330
+1243 BIAS_H127                               0.577260       -0.002068
+1244 BIAS_H128                              -1.786018        0.004308
+1245 BIAS_H129                               0.024450        0.002192
+1246 BIAS_H130                               1.363629        0.000744
+1247 BIAS_H131                               1.211179        0.003743
+1248 BIAS_H132                              -1.523608        0.005117
+1249 H101_TargetBuy1                        -1.810736        0.003147
+1250 H102_TargetBuy1                         2.555462       -0.001031
+1251 H103_TargetBuy1                         2.572175       -0.000879
+1252 H104_TargetBuy1                        -1.811470        0.004333
+1253 H105_TargetBuy1                         2.055703        0.006138
+1254 H106_TargetBuy1                        -0.117616        0.004059
+1255 H107_TargetBuy1                        -1.879359        0.003908
+1256 H108_TargetBuy1                        -2.400677        0.004630
+1257 H109_TargetBuy1                        -3.200562       -0.008358
+1258 H110_TargetBuy1                        -2.199245        0.003512
+1259 H111_TargetBuy1                         1.646728        0.001608
+1260 H112_TargetBuy1                        -1.642070        0.002186
+1261 H113_TargetBuy1                        -1.395853        0.000368
+1262 H114_TargetBuy1                         1.975336        0.006686
+1263 H115_TargetBuy1                        -1.614067        0.003038
+1264 H116_TargetBuy1                        -2.547410        0.004632
+1265 H117_TargetBuy1                        -0.836782        0.004692
+1266 H118_TargetBuy1                        -2.514636        0.001262
+1267 H119_TargetBuy1                         2.157893        0.001927
+1268 H120_TargetBuy1                         2.117928        0.000872
+1269 H121_TargetBuy1                         2.416544       -0.001075
+1270 H122_TargetBuy1                        -3.488401       -0.000357
+1271 H123_TargetBuy1                        -1.402914       -0.000105
+1272 H124_TargetBuy1                         2.049350       -0.007390
+1273 H125_TargetBuy1                        -2.187287       -0.005685
+1274 H126_TargetBuy1                         1.296370        0.004203
+1275 H127_TargetBuy1                        -1.955279        0.004671
+1276 H128_TargetBuy1                         2.239778       -0.004525
+1277 H129_TargetBuy1                         2.301736       -0.003959
+1278 H130_TargetBuy1                         2.787773        0.001226
+1279 H131_TargetBuy1                         1.594719       -0.005733
+1280 H132_TargetBuy1                         1.123438       -0.002732
+1281 BIAS_TargetBuy1                        -1.264670        0.006135
+
+Value of Objective Function = 0.1111468542
+

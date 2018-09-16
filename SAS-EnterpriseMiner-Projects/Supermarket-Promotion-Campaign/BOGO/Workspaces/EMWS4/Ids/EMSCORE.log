@@ -1,0 +1,53 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                May 09, 2018
+Time:                15:00:55
+*------------------------------------------------------------*
+12104  *------------------------------------------------------------*;
+12105  * Ids: Computing metadata for DATA data;
+12106  *------------------------------------------------------------*;
+
+NOTE: View EMWS4.IDS_DATA.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+12107  data EMWS4.Ids_EMINFO;
+12108  length TARGET KEY $32 DATA $43;
+12109  TARGET="";
+12110  KEY="IDSTABLE";
+12111  DATA="SUPERMKT.SUPERMARKETCAMPAIGN";
+12112  output;
+12113  TARGET="TargetBuy";
+12114  KEY="DECDATA";
+12115  DATA="EMWS4.Ids_TargetBuy_DD";
+12116  output;
+12117  TARGET="TargetBuy";
+12118  KEY="DECMETA";
+12119  DATA="EMWS4.Ids_TargetBuy_DM";
+12120  output;
+12121  run;
+
+NOTE: The data set EMWS4.IDS_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: View EMWS4.IDS_DATA.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+      
+12122  data EMWS4.Ids_CMeta_DATA;
+12123  set EMWS4.Ids_VariableSet;
+12124  drop DROP;
+12125  where DROP='N';
+12126  run;
+
+NOTE: There were 21 observations read from the data set EMWS4.IDS_VARIABLESET.
+      WHERE DROP='N';
+NOTE: The data set EMWS4.IDS_CMETA_DATA has 21 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+

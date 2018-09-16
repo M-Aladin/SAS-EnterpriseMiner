@@ -1,0 +1,216 @@
+*------------------------------------------------------------*
+* Training Log
+Date:                May 09, 2018
+Time:                14:47:52
+*------------------------------------------------------------*
+11405  proc freq data=EMWS1.Part3_VariableSet noprint;
+11406  table ROLE*LEVEL/out=WORK.Part3META;
+11407  run;
+
+NOTE: There were 30 observations read from the data set EMWS1.PART3_VARIABLESET.
+NOTE: The data set WORK.PART3META has 8 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+
+11408  proc print data=WORK.Part3META label noobs;
+11409  var ROLE LEVEL COUNT;
+11410  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+11411  title9 ' ';
+11412  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+11413  run;
+
+NOTE: There were 8 observations read from the data set WORK.PART3META.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+11414  title10;
+
+11422  *------------------------------------------------------------*;
+11423  * Part3: Determine number of observations;
+11424  *------------------------------------------------------------*;
+11425  proc sql;
+11426  reset noprint;
+11427  select count(*) into :_tmpa from EMWS1.Filter2_TRAIN
+11428  ;
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: There were 4224 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: View EMWS1.FILTER2_TRAIN.VIEW used (Total process time):
+      real time           0.42 seconds
+      cpu time            0.40 seconds
+      
+NOTE: There were 4224 observations read from the data set EMWS1.CLUS_TRAIN.
+11429  quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.46 seconds
+      cpu time            0.45 seconds
+      
+
+trainPct=50 validatePct=50 testPct=0 
+NOTE: View EMWS1.FILTER2_TRAIN.VIEW used (Total process time):
+      real time           0.26 seconds
+      cpu time            0.26 seconds
+      
+11430  *------------------------------------------------------------*;
+11431  * Part3: Retrieving stratification variable(s) levels;
+11432  *------------------------------------------------------------*;
+11433  proc freq data=EMWS1.Filter2_TRAIN noprint;
+11434  format
+11435  TargetBuy BEST12.0
+11436  ;
+11437  table
+11438  TargetBuy
+11439  /out=WORK.Part3_FREQ(drop=percent);
+11440  run;
+
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: There were 4224 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: View EMWS1.FILTER2_TRAIN.VIEW used (Total process time):
+      real time           0.46 seconds
+      cpu time            0.45 seconds
+      
+NOTE: There were 4224 observations read from the data set EMWS1.CLUS_TRAIN.
+NOTE: There were 1787 observations read from the data set EMWS1.FILTER2_TRAIN.
+NOTE: The data set WORK.PART3_FREQ has 2 observations and 2 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.48 seconds
+      cpu time            0.48 seconds
+      
+
+11441  proc sort data=WORK.Part3_FREQ;
+11442  by descending count;
+11443  run;
+
+NOTE: There were 2 observations read from the data set WORK.PART3_FREQ.
+NOTE: The data set WORK.PART3_FREQ has 2 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11444  * Part3: Retrieving levels that meet minimum requirement;
+11445  data WORK.Part3_FREQ2(keep = count);
+11446  set WORK.Part3_FREQ;
+11447  where (.01 * 50 * count) >= 3;
+11448  run;
+
+NOTE: There were 2 observations read from the data set WORK.PART3_FREQ.
+      WHERE (0.5*count)>=3;
+NOTE: The data set WORK.PART3_FREQ2 has 2 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11449  *------------------------------------------------------------*;
+11450  * Part3: Create stratified partitioning;
+11451  *------------------------------------------------------------*;
+11452  data
+11453  EMWS1.Part3_TRAIN(label="")
+11454  EMWS1.Part3_VALIDATE(label="")
+11455  ;
+11456  retain _seed_ 12345;
+11457  drop _seed_ _genvalue_;
+11458  call ranuni(_seed_, _genvalue_);
+11459  label _dataobs_ = "%sysfunc(sasmsg(sashelp.dmine, sample_dataobs_vlabel, NOQUOTE))";
+11460  _dataobs_ = _N_;
+11461  drop _c00:;
+11462  set EMWS1.Filter2_TRAIN;
+11463  length _Pformat1 $58;
+11464  drop _Pformat1;
+11465  _Pformat1 = strip(put(TargetBuy, BEST12.0));
+11466  if
+11467  _Pformat1 = '0'
+11468  then do;
+11469  if (1365+1-_C000003)*_genvalue_ <= (683 - _C000001) then do;
+11470  _C000001 + 1;
+11471  output EMWS1.Part3_TRAIN;
+11472  end;
+11473  else do;
+11474  _C000002 + 1;
+11475  output EMWS1.Part3_VALIDATE;
+11476  end;
+11477  _C000003+1;
+11478  end;
+11479  else if
+11480  _Pformat1 = '1'
+11481  then do;
+11482  if (422+1-_C000006)*_genvalue_ <= (211 - _C000004) then do;
+11483  _C000004 + 1;
+11484  output EMWS1.Part3_TRAIN;
+11485  end;
+11486  else do;
+11487  _C000005 + 1;
+11488  output EMWS1.Part3_VALIDATE;
+11489  end;
+11490  _C000006+1;
+11491  end;
+11492  run;
+
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: There were 4224 observations read from the data set EMWS1.FILTER_TRAIN.
+NOTE: View EMWS1.FILTER2_TRAIN.VIEW used (Total process time):
+      real time           0.43 seconds
+      cpu time            0.43 seconds
+      
+NOTE: There were 4224 observations read from the data set EMWS1.CLUS_TRAIN.
+NOTE: There were 1787 observations read from the data set EMWS1.FILTER2_TRAIN.
+NOTE: The data set EMWS1.PART3_TRAIN has 893 observations and 31 variables.
+NOTE: The data set EMWS1.PART3_VALIDATE has 894 observations and 31 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.45 seconds
+      cpu time            0.45 seconds
+      
+
+11493  data _tempNobs;
+11494  length Type $8 Table $32 Nobs 8;
+11495  label type= "%sysfunc(sasmsg(sashelp.dmine, meta_type_vlabel,    NOQUOTE))" table = "%sysfunc(sasmsg(sashelp.dmine, meta_dataset_vlabel, NOQUOTE))" nobs = "%sysfunc(sasmsg(sashelp.dmine,  rpt_numObs_vlabel,   NOQUOTE))";
+11496  type='DATA';
+11497  table="EMWS1.Filter2_TRAIN";
+11498  Nobs=1787;
+11499  output;
+11500  type='TRAIN';
+11501  table="EMWS1.Part3_TRAIN";
+11502  Nobs=893;
+11503  output;
+11504  type='VALIDATE';
+11505  table="EMWS1.Part3_VALIDATE";
+11506  Nobs=894;
+11507  output;
+11508  run;
+
+NOTE: The data set WORK._TEMPNOBS has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11509  %let _cn = %sysfunc(getoption(CENTER));
+11510  %let _nb = %sysfunc(getoption(NUMBER));
+11511  options nonumber nocenter;
+11512  proc print data=_tempNobs noobs label;
+11513  title9 ' ';
+11514  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_partitionSummary_title, NOQUOTE))";
+11515  run;
+
+NOTE: There were 3 observations read from the data set WORK._TEMPNOBS.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11516  title10;
+11517  options &_cn &_nb;
+11518  run;
+

@@ -1,0 +1,190 @@
+*------------------------------------------------------------*
+* Training Log
+Date:                May 09, 2018
+Time:                15:58:31
+*------------------------------------------------------------*
+11405  proc freq data=EMWS4.Clus4_VariableSet noprint;
+11406  table ROLE*LEVEL/out=WORK.Clus4META;
+11407  run;
+
+NOTE: There were 26 observations read from the data set EMWS4.CLUS4_VARIABLESET.
+NOTE: The data set WORK.CLUS4META has 6 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+
+11408  proc print data=WORK.Clus4META label noobs;
+11409  var ROLE LEVEL COUNT;
+11410  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+11411  title9 ' ';
+11412  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+11413  run;
+
+NOTE: There were 6 observations read from the data set WORK.CLUS4META.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+11414  title10;
+
+11415  data WORK.M07DGR3T;
+11416  set WORK.M07DGR3T;
+11417  if role eq 'REJECTED' then role = 'INPUT';
+11418  run;
+
+NOTE: There were 6 observations read from the data set WORK.M07DGR3T.
+NOTE: The data set WORK.M07DGR3T has 6 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11427  *------------------------------------------------------------*;
+11428  * Clus4: Training;
+11429  *------------------------------------------------------------*;
+11430  *------------------------------------------------------------* ;
+11431  * Clus4: DMDBClass Macro ;
+11432  *------------------------------------------------------------* ;
+11433  %macro DMDBClass;
+11434      LoyaltyClass(ASC) REP_Gender(ASC)
+11435  %mend DMDBClass;
+11436  *------------------------------------------------------------* ;
+11437  * Clus4: DMDBVar Macro ;
+11438  *------------------------------------------------------------* ;
+11439  %macro DMDBVar;
+11440      AffluenceGrade DayCareProducts NightRepairProducts TimeSinceLastPurchase
+11441  %mend DMDBVar;
+11442  *------------------------------------------------------------*;
+11443  * Clus4: Create DMDB;
+11444  *------------------------------------------------------------*;
+11445  proc dmdb batch data=EMWS4.Filter_TRAIN
+11446  dmdbcat=WORK.Clus4_DMDB
+11447  maxlevel = 513
+11448  out=WORK.Clus4_DMDB
+11449  ;
+11450  class %DMDBClass;
+11451  var %DMDBVar;
+11452  run;
+
+NOTE: Records processed = 20035   Memory used = 511K.
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: There were 23000 observations read from the data set EMWS4.IDS_DATA.
+NOTE: View EMWS4.FILTER_TRAIN.VIEW used (Total process time):
+      real time           0.28 seconds
+      cpu time            0.26 seconds
+      
+NOTE: There were 23000 observations read from the data set EMWS4.REPL_TRAIN.
+NOTE: There were 20035 observations read from the data set EMWS4.FILTER_TRAIN.
+NOTE: The data set WORK.CLUS4_DMDB has 20035 observations and 6 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.32 seconds
+      cpu time            0.31 seconds
+      
+
+11453  quit;
+11454  *--- end code ---*;
+
+11455  *------------------------------------------------------------* ;
+11456  * Clus4: Interval Inputs Macro ;
+11457  *------------------------------------------------------------* ;
+11458  %macro DMVQINTERVAL;
+11459      AffluenceGrade DayCareProducts NightRepairProducts TimeSinceLastPurchase
+11460  %mend DMVQINTERVAL;
+11461  *------------------------------------------------------------* ;
+11462  * Clus4: Nominal Inputs Macro ;
+11463  *------------------------------------------------------------* ;
+11464  %macro DMVQNOMINAL;
+11465      LoyaltyClass REP_Gender
+11466  %mend DMVQNOMINAL;
+11467  *------------------------------------------------------------*;
+11468  * Clus4: Run DMVQ procedure;
+11469  *------------------------------------------------------------*;
+11470  title;
+11471  options nodate;
+11472  proc dmvq data=WORK.Clus4_DMDB dmdbcat=WORK.Clus4_DMDB std=STD nominal=GLM ordinal=RANK
+11473  ;
+NOTE: The training set WORK.CLUS4_DMDB.DATA has 6 variable(s).
+NOTE: The DMVQ statement has finished with return code=0 and status=begin.
+11474  input %DMVQINTERVAL / level=interval;
+NOTE: 4 input variable(s) defined for ID=I1.
+NOTE: The INPUT statement has finished with return code=0 and status=variables.
+11475  input %DMVQNOMINAL / level=nominal;
+NOTE: 2 input variable(s) defined for ID=I2.
+NOTE: The INPUT statement has finished with return code=0 and status=variables.
+11476  VQ maxc = 4 clusname=_SEGMENT_ CLUSLABEL="Segment Id" DISTLABEL="Distance";
+NOTE: A maximum of 4 clusters have been requested.
+NOTE: The VQ statement has finished with return code=0 and status=architecture.
+11477  MAKE outvar=EMWS4.Clus4_OUTVAR;
+
+NOTE: 6 input variable(s).
+NOTE: Number of cases=20035
+NOTE: Sum of frequencies=20035
+NOTE: Sum of weights=20035
+NOTE: VARDEF=DF      
+NOTE: Maximum number of categories=4
+NOTE: The total number of variables is 6 with dimensionality 11.
+NOTE: 6 variables will be used for clustering.
+NOTE: Open output data set EMWS4.CLUS4_OUTVAR.DATA with 12 variables.
+NOTE: The data set EMWS4.CLUS4_OUTVAR has 4 observations and 12 variables.
+NOTE: The MAKE statement has finished with return code=0 and status=made.
+11478  INITIAL radius=0
+11479  ;
+NOTE: 4 seeds were selected from data set WORK.CLUS4_DMDB.DATA using the SEPARATE algorithm.
+NOTE: The INITIAL statement has finished with return code=0 and status=initialized.
+11480  TRAIN tech=FORGY
+11481  ;
+NOTE: F-Convergence criterion is satisfied.
+NOTE: The TRAIN statement has finished with return code=0 and status=trained.
+11482  SAVE outstat=EMWS4.Clus4_OUTSTAT outmean=EMWS4.Clus4_OUTMEAN;
+NOTE: The data set EMWS4.CLUS4_OUTSTAT has 40 observations and 14 variables.
+NOTE: The data set EMWS4.CLUS4_OUTMEAN has 4 observations and 20 variables.
+NOTE: The SAVE statement has finished with return code=0 and status=statistics.
+11483  code file="D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS4\Clus4\DMVQSCORECODE.sas"
+11484  group=Clus4
+11485  ;
+NOTE: External file D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS4\Clus4\DMVQSCORECODE.sas opened.
+NOTE: The CODE statement has finished with return code=0 and status=statistics.
+11486  run;
+
+11487  quit;
+
+NOTE: There were 20035 observations read from the data set WORK.CLUS4_DMDB.
+NOTE: PROCEDURE DMVQ used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.11 seconds
+      
+
+11488  libname _spdslib;
+WARNING: Libref _SPDSLIB is not assigned.
+
+11489  *------------------------------------------------------------*;
+11490  * Clus4: Cluster Label;
+11491  *------------------------------------------------------------*;
+11492  data EMWS4.Clus4_LABEL;
+11493  length _SEGMENT_ 8 Label $80;
+11494  format _SEGMENT_ 4.;
+11495  label _SEGMENT_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_segmentName_vlabel,  NOQUOTE))";
+11496  label Label = "%sysfunc(sasmsg(sashelp.dmine, rpt_segmentLabel_vlabel,  NOQUOTE))";
+11497  _SEGMENT_= 1;
+11498  Label='Cluster1';
+11499  output;
+11500  _SEGMENT_= 2;
+11501  Label='Cluster2';
+11502  output;
+11503  _SEGMENT_= 3;
+11504  Label='Cluster3';
+11505  output;
+11506  _SEGMENT_= 4;
+11507  Label='Cluster4';
+11508  output;
+11509  run;
+
+NOTE: The data set EMWS4.CLUS4_LABEL has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+

@@ -1,0 +1,176 @@
+*------------------------------------------------------------*
+ Node = 9
+*------------------------------------------------------------*
+if PreviousCampaign IS ONE OF: 1
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND FacebookLike IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 9
+ Number of Observations = 3054
+ Predicted: _SEGMENT_=1  = 0.00
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=4  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 11
+*------------------------------------------------------------*
+if PreviousCampaign IS ONE OF: 0 or MISSING
+AND MobileApplications IS ONE OF: 1 or MISSING
+AND FacebookLike IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 11
+ Number of Observations = 3562
+ Predicted: _SEGMENT_=1  = 1.00
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 13
+*------------------------------------------------------------*
+if MobileApplications IS ONE OF: 0 or MISSING
+AND FacebookLike IS ONE OF: 1
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 13
+ Number of Observations = 2148
+ Predicted: _SEGMENT_=1  = 0.00
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 14
+*------------------------------------------------------------*
+if PreviousCampaign IS ONE OF: 1
+AND FacebookLike IS ONE OF: 1
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 14
+ Number of Observations = 1845
+ Predicted: _SEGMENT_=1  = 0.00
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=4  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 16
+*------------------------------------------------------------*
+if PreviousCampaign IS ONE OF: 1
+AND MobileApplications IS ONE OF: 1
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 16
+ Number of Observations = 1373
+ Predicted: _SEGMENT_=1  = 0.00
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=4  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 17
+*------------------------------------------------------------*
+if PreviousCampaign IS ONE OF: 1
+AND MobileApplications IS ONE OF: 1
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 17
+ Number of Observations = 1159
+ Predicted: _SEGMENT_=1  = 1.00
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 18
+*------------------------------------------------------------*
+if PreviousCampaign IS ONE OF: 0 or MISSING
+AND MobileApplications IS ONE OF: 0
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 18
+ Number of Observations = 1506
+ Predicted: _SEGMENT_=1  = 0.00
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=4  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 19
+*------------------------------------------------------------*
+if PreviousCampaign IS ONE OF: 0 or MISSING
+AND MobileApplications IS ONE OF: 0
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 19
+ Number of Observations = 1503
+ Predicted: _SEGMENT_=1  = 1.00
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 20
+*------------------------------------------------------------*
+if PreviousCampaign IS ONE OF: 1
+AND MobileApplications IS ONE OF: 1
+AND FacebookLike IS ONE OF: 1
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 20
+ Number of Observations = 900
+ Predicted: _SEGMENT_=1  = 0.00
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=4  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 21
+*------------------------------------------------------------*
+if PreviousCampaign IS ONE OF: 0 or MISSING
+AND MobileApplications IS ONE OF: 1
+AND FacebookLike IS ONE OF: 1
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 21
+ Number of Observations = 1054
+ Predicted: _SEGMENT_=1  = 0.00
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 22
+*------------------------------------------------------------*
+if PreviousCampaign IS ONE OF: 0 or MISSING
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND FacebookLike IS ONE OF: 1
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 22
+ Number of Observations = 966
+ Predicted: _SEGMENT_=1  = 0.00
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 23
+*------------------------------------------------------------*
+if PreviousCampaign IS ONE OF: 0 or MISSING
+AND MobileApplications IS ONE OF: 1
+AND FacebookLike IS ONE OF: 1
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 23
+ Number of Observations = 965
+ Predicted: _SEGMENT_=1  = 0.00
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=4  = 0.00
+ 

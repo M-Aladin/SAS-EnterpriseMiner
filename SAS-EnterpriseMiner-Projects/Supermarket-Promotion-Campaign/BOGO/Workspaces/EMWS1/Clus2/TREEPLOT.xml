@@ -1,0 +1,1163 @@
+﻿<SASReport version="1.0">
+      <Data>
+            <IQData type="2DEmbedded" name="TreeData">
+                  <EmbeddedData>
+                        <Variables>
+                              <Variable name="Var1" varName="Var1" type="String" />
+                              <Variable name="Var2" varName="Var2" type="String" />
+                              <Variable name="Var3" varName="Var3" type="Numeric" />
+                              <Variable name="Var4" varName="Var4" type="Numeric" />
+                              <Variable name="Var5" varName="Var5" type="Numeric" />
+                              <Variable name="Var6" varName="Var6" type="Numeric" />
+                              <Variable name="Var7" varName="Var7" type="String"  />
+                              <Variable name="Var8" varName="Var8" type="String" />
+                              <Variable name="Var9" varName="Var9" type="Numeric" />
+                        </Variables>
+                        <ValuesList>
+    <Values>
+      <Value>Non-Missing Values</Value>
+      <Value>MobileApplications</Value>
+      <Value>10</Value>
+      <Value>36.08</Value>
+      <Value>1</Value>
+      <Value>0</Value>
+      <Value>          1:        36.1%
+ Count:         4224</Value>
+      <Value>Node Id:            1&#10;&#10;3:        34.2%&#10;2:        29.7%&#10;1:        36.1%&#10; Count:         4224</Value>
+      <Value>4224</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value>Replacement: Gender</Value>
+      <Value>4.6803977273</Value>
+      <Value>57.26</Value>
+      <Value>2</Value>
+      <Value>1</Value>
+      <Value>          3:        57.3%
+ Count:         1977</Value>
+      <Value>Node Id:            2&#10;&#10;3:        57.3%&#10;2:         8.1%&#10;1:        34.6%&#10; Count:         1977</Value>
+      <Value>1977</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value>Replacement: Region</Value>
+      <Value>5.3196022727</Value>
+      <Value>48.78</Value>
+      <Value>3</Value>
+      <Value>1</Value>
+      <Value>          2:        48.8%
+ Count:         2247</Value>
+      <Value>Node Id:            3&#10;&#10;3:        13.9%&#10;2:        48.8%&#10;1:        37.3%&#10; Count:         2247</Value>
+      <Value>2247</Value>
+    </Values>
+    <Values>
+      <Value>F Or Missing</Value>
+      <Value>LoyaltyClass</Value>
+      <Value>3.4067234848</Value>
+      <Value>71.09</Value>
+      <Value>4</Value>
+      <Value>2</Value>
+      <Value>          3:        71.1%
+ Count:         1439</Value>
+      <Value>Node Id:            4&#10;&#10;3:        71.1%&#10;2:         0.0%&#10;1:        28.9%&#10; Count:         1439</Value>
+      <Value>1439</Value>
+    </Values>
+    <Values>
+      <Value>M</Value>
+      <Value>Replacement: Region</Value>
+      <Value>1.2736742424</Value>
+      <Value>50</Value>
+      <Value>5</Value>
+      <Value>2</Value>
+      <Value>          1:        50.0%
+ Count:          538</Value>
+      <Value>Node Id:            5&#10;&#10;3:        20.3%&#10;2:        29.7%&#10;1:        50.0%&#10; Count:          538</Value>
+      <Value>538</Value>
+    </Values>
+    <Values>
+      <Value>CENTRAL, U, NORTH, SOUTH WEST, ... Or Missing</Value>
+      <Value>PreviousCampaign</Value>
+      <Value>3.2362689394</Value>
+      <Value>68.84</Value>
+      <Value>6</Value>
+      <Value>3</Value>
+      <Value>          2:        68.8%
+ Count:         1367</Value>
+      <Value>Node Id:            6&#10;&#10;3:         0.0%&#10;2:        68.8%&#10;1:        31.2%&#10; Count:         1367</Value>
+      <Value>1367</Value>
+    </Values>
+    <Values>
+      <Value>SOUTH EAST</Value>
+      <Value>Replacement: Gender</Value>
+      <Value>2.0833333333</Value>
+      <Value>46.93</Value>
+      <Value>7</Value>
+      <Value>3</Value>
+      <Value>          1:        46.9%
+ Count:          880</Value>
+      <Value>Node Id:            7&#10;&#10;3:        35.5%&#10;2:        17.6%&#10;1:        46.9%&#10; Count:          880</Value>
+      <Value>880</Value>
+    </Values>
+    <Values>
+      <Value>PLATINUM</Value>
+      <Value>CampaignViewedEmail</Value>
+      <Value>1.0677083333</Value>
+      <Value>57.65</Value>
+      <Value>8</Value>
+      <Value>4</Value>
+      <Value>          1:        57.6%
+ Count:          451</Value>
+      <Value>Node Id:            8&#10;&#10;3:        42.4%&#10;2:         0.0%&#10;1:        57.6%&#10; Count:          451</Value>
+      <Value>451</Value>
+    </Values>
+    <Values>
+      <Value>GOLD Or Missing</Value>
+      <Value>PreviousCampaign</Value>
+      <Value>2.3390151515</Value>
+      <Value>84.21</Value>
+      <Value>9</Value>
+      <Value>4</Value>
+      <Value>          3:        84.2%
+ Count:          988</Value>
+      <Value>Node Id:            9&#10;&#10;3:        84.2%&#10;2:         0.0%&#10;1:        15.8%&#10; Count:          988</Value>
+      <Value>988</Value>
+    </Values>
+    <Values>
+      <Value>CENTRAL, U, NORTH, SOUTH WEST, ... Or Missing</Value>
+      <Value>CampaignViewedEmail</Value>
+      <Value>0.78125</Value>
+      <Value>51.52</Value>
+      <Value>10</Value>
+      <Value>5</Value>
+      <Value>          1:        51.5%
+ Count:          330</Value>
+      <Value>Node Id:           10&#10;&#10;3:         0.0%&#10;2:        48.5%&#10;1:        51.5%&#10; Count:          330</Value>
+      <Value>330</Value>
+    </Values>
+    <Values>
+      <Value>SOUTH EAST</Value>
+      <Value>LoyaltyClass</Value>
+      <Value>0.4924242424</Value>
+      <Value>52.4</Value>
+      <Value>11</Value>
+      <Value>5</Value>
+      <Value>          3:        52.4%
+ Count:          208</Value>
+      <Value>Node Id:           11&#10;&#10;3:        52.4%&#10;2:         0.0%&#10;1:        47.6%&#10; Count:          208</Value>
+      <Value>208</Value>
+    </Values>
+    <Values>
+      <Value>1 Or Missing</Value>
+      <Value>LoyaltyClass</Value>
+      <Value>1.6335227273</Value>
+      <Value>87.68</Value>
+      <Value>12</Value>
+      <Value>6</Value>
+      <Value>          2:        87.7%
+ Count:          690</Value>
+      <Value>Node Id:           12&#10;&#10;3:         0.0%&#10;2:        87.7%&#10;1:        12.3%&#10; Count:          690</Value>
+      <Value>690</Value>
+    </Values>
+    <Values>
+      <Value>0</Value>
+      <Value>CampaignViewedEmail</Value>
+      <Value>1.6027462121</Value>
+      <Value>50.37</Value>
+      <Value>13</Value>
+      <Value>6</Value>
+      <Value>          1:        50.4%
+ Count:          677</Value>
+      <Value>Node Id:           13&#10;&#10;3:         0.0%&#10;2:        49.6%&#10;1:        50.4%&#10; Count:          677</Value>
+      <Value>677</Value>
+    </Values>
+    <Values>
+      <Value>F Or Missing</Value>
+      <Value>PreviousCampaign</Value>
+      <Value>1.3802083333</Value>
+      <Value>53.52</Value>
+      <Value>14</Value>
+      <Value>7</Value>
+      <Value>          3:        53.5%
+ Count:          583</Value>
+      <Value>Node Id:           14&#10;&#10;3:        53.5%&#10;2:         0.0%&#10;1:        46.5%&#10; Count:          583</Value>
+      <Value>583</Value>
+    </Values>
+    <Values>
+      <Value>M</Value>
+      <Value>PreviousCampaign</Value>
+      <Value>0.703125</Value>
+      <Value>52.19</Value>
+      <Value>15</Value>
+      <Value>7</Value>
+      <Value>          2:        52.2%
+ Count:          297</Value>
+      <Value>Node Id:           15&#10;&#10;3:         0.0%&#10;2:        52.2%&#10;1:        47.8%&#10; Count:          297</Value>
+      <Value>297</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value>PreviousCampaign</Value>
+      <Value>0.5279356061</Value>
+      <Value>69.51</Value>
+      <Value>16</Value>
+      <Value>8</Value>
+      <Value>          3:        69.5%
+ Count:          223</Value>
+      <Value>Node Id:           16&#10;&#10;3:        69.5%&#10;2:         0.0%&#10;1:        30.5%&#10; Count:          223</Value>
+      <Value>223</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value>Replacement: Region</Value>
+      <Value>0.5397727273</Value>
+      <Value>84.21</Value>
+      <Value>17</Value>
+      <Value>8</Value>
+      <Value>          1:        84.2%
+ Count:          228</Value>
+      <Value>Node Id:           17&#10;&#10;3:        15.8%&#10;2:         0.0%&#10;1:        84.2%&#10; Count:          228</Value>
+      <Value>228</Value>
+    </Values>
+    <Values>
+      <Value>1 Or Missing</Value>
+      <Value></Value>
+      <Value>1.1860795455</Value>
+      <Value>100</Value>
+      <Value>18</Value>
+      <Value>9</Value>
+      <Value>          3:       100.0%
+ Count:          501</Value>
+      <Value>Node Id:           18&#10;&#10;3:       100.0%&#10;2:         0.0%&#10;1:         0.0%&#10; Count:          501</Value>
+      <Value>501</Value>
+    </Values>
+    <Values>
+      <Value>0</Value>
+      <Value>CampaignViewedEmail</Value>
+      <Value>1.1529356061</Value>
+      <Value>67.97</Value>
+      <Value>19</Value>
+      <Value>9</Value>
+      <Value>          3:        68.0%
+ Count:          487</Value>
+      <Value>Node Id:           19&#10;&#10;3:        68.0%&#10;2:         0.0%&#10;1:        32.0%&#10; Count:          487</Value>
+      <Value>487</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value>PreviousCampaign</Value>
+      <Value>0.4332386364</Value>
+      <Value>76.5</Value>
+      <Value>20</Value>
+      <Value>10</Value>
+      <Value>          1:        76.5%
+ Count:          183</Value>
+      <Value>Node Id:           20&#10;&#10;3:         0.0%&#10;2:        23.5%&#10;1:        76.5%&#10; Count:          183</Value>
+      <Value>183</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value>TotalSpend</Value>
+      <Value>0.3480113636</Value>
+      <Value>79.59</Value>
+      <Value>21</Value>
+      <Value>10</Value>
+      <Value>          2:        79.6%
+ Count:          147</Value>
+      <Value>Node Id:           21&#10;&#10;3:         0.0%&#10;2:        79.6%&#10;1:        20.4%&#10; Count:          147</Value>
+      <Value>147</Value>
+    </Values>
+    <Values>
+      <Value>PLATINUM</Value>
+      <Value>PreviousCampaign</Value>
+      <Value>0.1941287879</Value>
+      <Value>78.05</Value>
+      <Value>22</Value>
+      <Value>11</Value>
+      <Value>          1:        78.0%
+ Count:           82</Value>
+      <Value>Node Id:           22&#10;&#10;3:        22.0%&#10;2:         0.0%&#10;1:        78.0%&#10; Count:           82</Value>
+      <Value>82</Value>
+    </Values>
+    <Values>
+      <Value>GOLD Or Missing</Value>
+      <Value>CampaignViewedEmail</Value>
+      <Value>0.2982954545</Value>
+      <Value>72.22</Value>
+      <Value>23</Value>
+      <Value>11</Value>
+      <Value>          3:        72.2%
+ Count:          126</Value>
+      <Value>Node Id:           23&#10;&#10;3:        72.2%&#10;2:         0.0%&#10;1:        27.8%&#10; Count:          126</Value>
+      <Value>126</Value>
+    </Values>
+    <Values>
+      <Value>PLATINUM</Value>
+      <Value>CampaignViewedEmail</Value>
+      <Value>0.6770833333</Value>
+      <Value>70.28</Value>
+      <Value>24</Value>
+      <Value>12</Value>
+      <Value>          2:        70.3%
+ Count:          286</Value>
+      <Value>Node Id:           24&#10;&#10;3:         0.0%&#10;2:        70.3%&#10;1:        29.7%&#10; Count:          286</Value>
+      <Value>286</Value>
+    </Values>
+    <Values>
+      <Value>GOLD Or Missing</Value>
+      <Value></Value>
+      <Value>0.9564393939</Value>
+      <Value>100</Value>
+      <Value>25</Value>
+      <Value>12</Value>
+      <Value>          2:       100.0%
+ Count:          404</Value>
+      <Value>Node Id:           25&#10;&#10;3:         0.0%&#10;2:       100.0%&#10;1:         0.0%&#10; Count:          404</Value>
+      <Value>404</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value>LoyaltyClass</Value>
+      <Value>0.790719697</Value>
+      <Value>76.35</Value>
+      <Value>26</Value>
+      <Value>13</Value>
+      <Value>          2:        76.3%
+ Count:          334</Value>
+      <Value>Node Id:           26&#10;&#10;3:         0.0%&#10;2:        76.3%&#10;1:        23.7%&#10; Count:          334</Value>
+      <Value>334</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value>Replacement: Gender</Value>
+      <Value>0.8120265152</Value>
+      <Value>76.38</Value>
+      <Value>27</Value>
+      <Value>13</Value>
+      <Value>          1:        76.4%
+ Count:          343</Value>
+      <Value>Node Id:           27&#10;&#10;3:         0.0%&#10;2:        23.6%&#10;1:        76.4%&#10; Count:          343</Value>
+      <Value>343</Value>
+    </Values>
+    <Values>
+      <Value>1 Or Missing</Value>
+      <Value>LoyaltyClass</Value>
+      <Value>0.6983901515</Value>
+      <Value>79.32</Value>
+      <Value>28</Value>
+      <Value>14</Value>
+      <Value>          3:        79.3%
+ Count:          295</Value>
+      <Value>Node Id:           28&#10;&#10;3:        79.3%&#10;2:         0.0%&#10;1:        20.7%&#10; Count:          295</Value>
+      <Value>295</Value>
+    </Values>
+    <Values>
+      <Value>0</Value>
+      <Value>CampaignViewedEmail</Value>
+      <Value>0.6818181818</Value>
+      <Value>72.92</Value>
+      <Value>29</Value>
+      <Value>14</Value>
+      <Value>          1:        72.9%
+ Count:          288</Value>
+      <Value>Node Id:           29&#10;&#10;3:        27.1%&#10;2:         0.0%&#10;1:        72.9%&#10; Count:          288</Value>
+      <Value>288</Value>
+    </Values>
+    <Values>
+      <Value>1 Or Missing</Value>
+      <Value>LoyaltyClass</Value>
+      <Value>0.3622159091</Value>
+      <Value>83.01</Value>
+      <Value>30</Value>
+      <Value>15</Value>
+      <Value>          2:        83.0%
+ Count:          153</Value>
+      <Value>Node Id:           30&#10;&#10;3:         0.0%&#10;2:        83.0%&#10;1:        17.0%&#10; Count:          153</Value>
+      <Value>153</Value>
+    </Values>
+    <Values>
+      <Value>0</Value>
+      <Value>CampaignViewedEmail</Value>
+      <Value>0.3409090909</Value>
+      <Value>80.56</Value>
+      <Value>31</Value>
+      <Value>15</Value>
+      <Value>          1:        80.6%
+ Count:          144</Value>
+      <Value>Node Id:           31&#10;&#10;3:         0.0%&#10;2:        19.4%&#10;1:        80.6%&#10; Count:          144</Value>
+      <Value>144</Value>
+    </Values>
+    <Values>
+      <Value>1 Or Missing</Value>
+      <Value></Value>
+      <Value>0.2722537879</Value>
+      <Value>100</Value>
+      <Value>32</Value>
+      <Value>16</Value>
+      <Value>          3:       100.0%
+ Count:          115</Value>
+      <Value>Node Id:           32&#10;&#10;3:       100.0%&#10;2:         0.0%&#10;1:         0.0%&#10; Count:          115</Value>
+      <Value>115</Value>
+    </Values>
+    <Values>
+      <Value>0</Value>
+      <Value>Replacement: Region</Value>
+      <Value>0.2556818182</Value>
+      <Value>62.96</Value>
+      <Value>33</Value>
+      <Value>16</Value>
+      <Value>          1:        63.0%
+ Count:          108</Value>
+      <Value>Node Id:           33&#10;&#10;3:        37.0%&#10;2:         0.0%&#10;1:        63.0%&#10; Count:          108</Value>
+      <Value>108</Value>
+    </Values>
+    <Values>
+      <Value>SOUTH EAST</Value>
+      <Value>PreviousCampaign</Value>
+      <Value>0.1964962121</Value>
+      <Value>56.63</Value>
+      <Value>34</Value>
+      <Value>17</Value>
+      <Value>          1:        56.6%
+ Count:           83</Value>
+      <Value>Node Id:           34&#10;&#10;3:        43.4%&#10;2:         0.0%&#10;1:        56.6%&#10; Count:           83</Value>
+      <Value>83</Value>
+    </Values>
+    <Values>
+      <Value>CENTRAL, U, NORTH, SOUTH WEST, ... Or Missing</Value>
+      <Value></Value>
+      <Value>0.3432765152</Value>
+      <Value>100</Value>
+      <Value>35</Value>
+      <Value>17</Value>
+      <Value>          1:       100.0%
+ Count:          145</Value>
+      <Value>Node Id:           35&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:          145</Value>
+      <Value>145</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value>Replacement: Region</Value>
+      <Value>0.615530303</Value>
+      <Value>60</Value>
+      <Value>36</Value>
+      <Value>19</Value>
+      <Value>          1:        60.0%
+ Count:          260</Value>
+      <Value>Node Id:           36&#10;&#10;3:        40.0%&#10;2:         0.0%&#10;1:        60.0%&#10; Count:          260</Value>
+      <Value>260</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value></Value>
+      <Value>0.537405303</Value>
+      <Value>100</Value>
+      <Value>37</Value>
+      <Value>19</Value>
+      <Value>          3:       100.0%
+ Count:          227</Value>
+      <Value>Node Id:           37&#10;&#10;3:       100.0%&#10;2:         0.0%&#10;1:         0.0%&#10; Count:          227</Value>
+      <Value>227</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value>LoyaltyClass</Value>
+      <Value>0.1491477273</Value>
+      <Value>68.25</Value>
+      <Value>38</Value>
+      <Value>20</Value>
+      <Value>          2:        68.3%
+ Count:           63</Value>
+      <Value>Node Id:           38&#10;&#10;3:         0.0%&#10;2:        68.3%&#10;1:        31.7%&#10; Count:           63</Value>
+      <Value>63</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value></Value>
+      <Value>0.2840909091</Value>
+      <Value>100</Value>
+      <Value>39</Value>
+      <Value>20</Value>
+      <Value>          1:       100.0%
+ Count:          120</Value>
+      <Value>Node Id:           39&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:          120</Value>
+      <Value>120</Value>
+    </Values>
+    <Values>
+      <Value>&lt; 5951 Or Missing</Value>
+      <Value></Value>
+      <Value>0.2367424242</Value>
+      <Value>100</Value>
+      <Value>40</Value>
+      <Value>21</Value>
+      <Value>          2:       100.0%
+ Count:          100</Value>
+      <Value>Node Id:           40&#10;&#10;3:         0.0%&#10;2:       100.0%&#10;1:         0.0%&#10; Count:          100</Value>
+      <Value>100</Value>
+    </Values>
+    <Values>
+      <Value>&gt;= 5951</Value>
+      <Value>PreviousCampaign</Value>
+      <Value>0.1112689394</Value>
+      <Value>63.83</Value>
+      <Value>41</Value>
+      <Value>21</Value>
+      <Value>          1:        63.8%
+ Count:           47</Value>
+      <Value>Node Id:           41&#10;&#10;3:         0.0%&#10;2:        36.2%&#10;1:        63.8%&#10; Count:           47</Value>
+      <Value>47</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value>CampaignViewedEmail</Value>
+      <Value>0.0733901515</Value>
+      <Value>58.06</Value>
+      <Value>42</Value>
+      <Value>22</Value>
+      <Value>          3:        58.1%
+ Count:           31</Value>
+      <Value>Node Id:           42&#10;&#10;3:        58.1%&#10;2:         0.0%&#10;1:        41.9%&#10; Count:           31</Value>
+      <Value>31</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value></Value>
+      <Value>0.1207386364</Value>
+      <Value>100</Value>
+      <Value>43</Value>
+      <Value>22</Value>
+      <Value>          1:       100.0%
+ Count:           51</Value>
+      <Value>Node Id:           43&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           51</Value>
+      <Value>51</Value>
+    </Values>
+    <Values>
+      <Value>0</Value>
+      <Value>PreviousCampaign</Value>
+      <Value>0.1444128788</Value>
+      <Value>57.38</Value>
+      <Value>44</Value>
+      <Value>23</Value>
+      <Value>          1:        57.4%
+ Count:           61</Value>
+      <Value>Node Id:           44&#10;&#10;3:        42.6%&#10;2:         0.0%&#10;1:        57.4%&#10; Count:           61</Value>
+      <Value>61</Value>
+    </Values>
+    <Values>
+      <Value>1 Or Missing</Value>
+      <Value></Value>
+      <Value>0.1538825758</Value>
+      <Value>100</Value>
+      <Value>45</Value>
+      <Value>23</Value>
+      <Value>          3:       100.0%
+ Count:           65</Value>
+      <Value>Node Id:           45&#10;&#10;3:       100.0%&#10;2:         0.0%&#10;1:         0.0%&#10; Count:           65</Value>
+      <Value>65</Value>
+    </Values>
+    <Values>
+      <Value>0</Value>
+      <Value>Replacement: Gender</Value>
+      <Value>0.3196022727</Value>
+      <Value>62.96</Value>
+      <Value>46</Value>
+      <Value>24</Value>
+      <Value>          1:        63.0%
+ Count:          135</Value>
+      <Value>Node Id:           46&#10;&#10;3:         0.0%&#10;2:        37.0%&#10;1:        63.0%&#10; Count:          135</Value>
+      <Value>135</Value>
+    </Values>
+    <Values>
+      <Value>1 Or Missing</Value>
+      <Value></Value>
+      <Value>0.3574810606</Value>
+      <Value>100</Value>
+      <Value>47</Value>
+      <Value>24</Value>
+      <Value>          2:       100.0%
+ Count:          151</Value>
+      <Value>Node Id:           47&#10;&#10;3:         0.0%&#10;2:       100.0%&#10;1:         0.0%&#10; Count:          151</Value>
+      <Value>151</Value>
+    </Values>
+    <Values>
+      <Value>PLATINUM</Value>
+      <Value>Replacement: Gender</Value>
+      <Value>0.321969697</Value>
+      <Value>58.09</Value>
+      <Value>48</Value>
+      <Value>26</Value>
+      <Value>          1:        58.1%
+ Count:          136</Value>
+      <Value>Node Id:           48&#10;&#10;3:         0.0%&#10;2:        41.9%&#10;1:        58.1%&#10; Count:          136</Value>
+      <Value>136</Value>
+    </Values>
+    <Values>
+      <Value>GOLD Or Missing</Value>
+      <Value></Value>
+      <Value>0.46875</Value>
+      <Value>100</Value>
+      <Value>49</Value>
+      <Value>26</Value>
+      <Value>          2:       100.0%
+ Count:          198</Value>
+      <Value>Node Id:           49&#10;&#10;3:         0.0%&#10;2:       100.0%&#10;1:         0.0%&#10; Count:          198</Value>
+      <Value>198</Value>
+    </Values>
+    <Values>
+      <Value>M</Value>
+      <Value>LoyaltyClass</Value>
+      <Value>0.2959280303</Value>
+      <Value>64.8</Value>
+      <Value>50</Value>
+      <Value>27</Value>
+      <Value>          2:        64.8%
+ Count:          125</Value>
+      <Value>Node Id:           50&#10;&#10;3:         0.0%&#10;2:        64.8%&#10;1:        35.2%&#10; Count:          125</Value>
+      <Value>125</Value>
+    </Values>
+    <Values>
+      <Value>F Or Missing</Value>
+      <Value></Value>
+      <Value>0.5160984848</Value>
+      <Value>100</Value>
+      <Value>51</Value>
+      <Value>27</Value>
+      <Value>          1:       100.0%
+ Count:          218</Value>
+      <Value>Node Id:           51&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:          218</Value>
+      <Value>218</Value>
+    </Values>
+    <Values>
+      <Value>PLATINUM</Value>
+      <Value>CampaignViewedEmail</Value>
+      <Value>0.2793560606</Value>
+      <Value>51.69</Value>
+      <Value>52</Value>
+      <Value>28</Value>
+      <Value>          1:        51.7%
+ Count:          118</Value>
+      <Value>Node Id:           52&#10;&#10;3:        48.3%&#10;2:         0.0%&#10;1:        51.7%&#10; Count:          118</Value>
+      <Value>118</Value>
+    </Values>
+    <Values>
+      <Value>GOLD Or Missing</Value>
+      <Value></Value>
+      <Value>0.4190340909</Value>
+      <Value>100</Value>
+      <Value>53</Value>
+      <Value>28</Value>
+      <Value>          3:       100.0%
+ Count:          177</Value>
+      <Value>Node Id:           53&#10;&#10;3:       100.0%&#10;2:         0.0%&#10;1:         0.0%&#10; Count:          177</Value>
+      <Value>177</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value>LoyaltyClass</Value>
+      <Value>0.3053977273</Value>
+      <Value>60.47</Value>
+      <Value>54</Value>
+      <Value>29</Value>
+      <Value>          3:        60.5%
+ Count:          129</Value>
+      <Value>Node Id:           54&#10;&#10;3:        60.5%&#10;2:         0.0%&#10;1:        39.5%&#10; Count:          129</Value>
+      <Value>129</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value></Value>
+      <Value>0.3764204545</Value>
+      <Value>100</Value>
+      <Value>55</Value>
+      <Value>29</Value>
+      <Value>          1:       100.0%
+ Count:          159</Value>
+      <Value>Node Id:           55&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:          159</Value>
+      <Value>159</Value>
+    </Values>
+    <Values>
+      <Value>PLATINUM</Value>
+      <Value>CampaignViewedEmail</Value>
+      <Value>0.1231060606</Value>
+      <Value>50</Value>
+      <Value>56</Value>
+      <Value>30</Value>
+      <Value>          2:        50.0%
+ Count:           52</Value>
+      <Value>Node Id:           56&#10;&#10;3:         0.0%&#10;2:        50.0%&#10;1:        50.0%&#10; Count:           52</Value>
+      <Value>52</Value>
+    </Values>
+    <Values>
+      <Value>GOLD Or Missing</Value>
+      <Value></Value>
+      <Value>0.2391098485</Value>
+      <Value>100</Value>
+      <Value>57</Value>
+      <Value>30</Value>
+      <Value>          2:       100.0%
+ Count:          101</Value>
+      <Value>Node Id:           57&#10;&#10;3:         0.0%&#10;2:       100.0%&#10;1:         0.0%&#10; Count:          101</Value>
+      <Value>101</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value></Value>
+      <Value>0.1822916667</Value>
+      <Value>100</Value>
+      <Value>58</Value>
+      <Value>31</Value>
+      <Value>          1:       100.0%
+ Count:           77</Value>
+      <Value>Node Id:           58&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           77</Value>
+      <Value>77</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value>LoyaltyClass</Value>
+      <Value>0.1586174242</Value>
+      <Value>58.21</Value>
+      <Value>59</Value>
+      <Value>31</Value>
+      <Value>          1:        58.2%
+ Count:           67</Value>
+      <Value>Node Id:           59&#10;&#10;3:         0.0%&#10;2:        41.8%&#10;1:        58.2%&#10; Count:           67</Value>
+      <Value>67</Value>
+    </Values>
+    <Values>
+      <Value>SOUTH EAST</Value>
+      <Value></Value>
+      <Value>0.1017992424</Value>
+      <Value>93.02</Value>
+      <Value>60</Value>
+      <Value>33</Value>
+      <Value>          3:        93.0%
+ Count:           43</Value>
+      <Value>Node Id:           60&#10;&#10;3:        93.0%&#10;2:         0.0%&#10;1:         7.0%&#10; Count:           43</Value>
+      <Value>43</Value>
+    </Values>
+    <Values>
+      <Value>CENTRAL, NORTH, NORTHEAST Or Missing</Value>
+      <Value></Value>
+      <Value>0.1538825758</Value>
+      <Value>100</Value>
+      <Value>61</Value>
+      <Value>33</Value>
+      <Value>          1:       100.0%
+ Count:           65</Value>
+      <Value>Node Id:           61&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           65</Value>
+      <Value>65</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value></Value>
+      <Value>0.087594697</Value>
+      <Value>97.3</Value>
+      <Value>62</Value>
+      <Value>34</Value>
+      <Value>          3:        97.3%
+ Count:           37</Value>
+      <Value>Node Id:           62&#10;&#10;3:        97.3%&#10;2:         0.0%&#10;1:         2.7%&#10; Count:           37</Value>
+      <Value>37</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value></Value>
+      <Value>0.1089015152</Value>
+      <Value>100</Value>
+      <Value>63</Value>
+      <Value>34</Value>
+      <Value>          1:       100.0%
+ Count:           46</Value>
+      <Value>Node Id:           63&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           46</Value>
+      <Value>46</Value>
+    </Values>
+    <Values>
+      <Value>SOUTH EAST</Value>
+      <Value></Value>
+      <Value>0.2462121212</Value>
+      <Value>100</Value>
+      <Value>64</Value>
+      <Value>36</Value>
+      <Value>          3:       100.0%
+ Count:          104</Value>
+      <Value>Node Id:           64&#10;&#10;3:       100.0%&#10;2:         0.0%&#10;1:         0.0%&#10; Count:          104</Value>
+      <Value>104</Value>
+    </Values>
+    <Values>
+      <Value>CENTRAL, U, NORTH, SOUTH WEST, ... Or Missing</Value>
+      <Value></Value>
+      <Value>0.3693181818</Value>
+      <Value>100</Value>
+      <Value>65</Value>
+      <Value>36</Value>
+      <Value>          1:       100.0%
+ Count:          156</Value>
+      <Value>Node Id:           65&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:          156</Value>
+      <Value>156</Value>
+    </Values>
+    <Values>
+      <Value>PLATINUM</Value>
+      <Value></Value>
+      <Value>0.0473484848</Value>
+      <Value>100</Value>
+      <Value>66</Value>
+      <Value>38</Value>
+      <Value>          1:       100.0%
+ Count:           20</Value>
+      <Value>Node Id:           66&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           20</Value>
+      <Value>20</Value>
+    </Values>
+    <Values>
+      <Value>GOLD Or Missing</Value>
+      <Value></Value>
+      <Value>0.1017992424</Value>
+      <Value>100</Value>
+      <Value>67</Value>
+      <Value>38</Value>
+      <Value>          2:       100.0%
+ Count:           43</Value>
+      <Value>Node Id:           67&#10;&#10;3:         0.0%&#10;2:       100.0%&#10;1:         0.0%&#10; Count:           43</Value>
+      <Value>43</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value></Value>
+      <Value>0.0402462121</Value>
+      <Value>100</Value>
+      <Value>68</Value>
+      <Value>41</Value>
+      <Value>          2:       100.0%
+ Count:           17</Value>
+      <Value>Node Id:           68&#10;&#10;3:         0.0%&#10;2:       100.0%&#10;1:         0.0%&#10; Count:           17</Value>
+      <Value>17</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value></Value>
+      <Value>0.0710227273</Value>
+      <Value>100</Value>
+      <Value>69</Value>
+      <Value>41</Value>
+      <Value>          1:       100.0%
+ Count:           30</Value>
+      <Value>Node Id:           69&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           30</Value>
+      <Value>30</Value>
+    </Values>
+    <Values>
+      <Value>0</Value>
+      <Value></Value>
+      <Value>0.0307765152</Value>
+      <Value>100</Value>
+      <Value>70</Value>
+      <Value>42</Value>
+      <Value>          1:       100.0%
+ Count:           13</Value>
+      <Value>Node Id:           70&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           13</Value>
+      <Value>13</Value>
+    </Values>
+    <Values>
+      <Value>1 Or Missing</Value>
+      <Value></Value>
+      <Value>0.0426136364</Value>
+      <Value>100</Value>
+      <Value>71</Value>
+      <Value>42</Value>
+      <Value>          3:       100.0%
+ Count:           18</Value>
+      <Value>Node Id:           71&#10;&#10;3:       100.0%&#10;2:         0.0%&#10;1:         0.0%&#10; Count:           18</Value>
+      <Value>18</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value></Value>
+      <Value>0.0615530303</Value>
+      <Value>100</Value>
+      <Value>72</Value>
+      <Value>44</Value>
+      <Value>          3:       100.0%
+ Count:           26</Value>
+      <Value>Node Id:           72&#10;&#10;3:       100.0%&#10;2:         0.0%&#10;1:         0.0%&#10; Count:           26</Value>
+      <Value>26</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value></Value>
+      <Value>0.0828598485</Value>
+      <Value>100</Value>
+      <Value>73</Value>
+      <Value>44</Value>
+      <Value>          1:       100.0%
+ Count:           35</Value>
+      <Value>Node Id:           73&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           35</Value>
+      <Value>35</Value>
+    </Values>
+    <Values>
+      <Value>M</Value>
+      <Value></Value>
+      <Value>0.1183712121</Value>
+      <Value>100</Value>
+      <Value>74</Value>
+      <Value>46</Value>
+      <Value>          2:       100.0%
+ Count:           50</Value>
+      <Value>Node Id:           74&#10;&#10;3:         0.0%&#10;2:       100.0%&#10;1:         0.0%&#10; Count:           50</Value>
+      <Value>50</Value>
+    </Values>
+    <Values>
+      <Value>F Or Missing</Value>
+      <Value></Value>
+      <Value>0.2012310606</Value>
+      <Value>100</Value>
+      <Value>75</Value>
+      <Value>46</Value>
+      <Value>          1:       100.0%
+ Count:           85</Value>
+      <Value>Node Id:           75&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           85</Value>
+      <Value>85</Value>
+    </Values>
+    <Values>
+      <Value>M</Value>
+      <Value></Value>
+      <Value>0.1349431818</Value>
+      <Value>100</Value>
+      <Value>76</Value>
+      <Value>48</Value>
+      <Value>          2:       100.0%
+ Count:           57</Value>
+      <Value>Node Id:           76&#10;&#10;3:         0.0%&#10;2:       100.0%&#10;1:         0.0%&#10; Count:           57</Value>
+      <Value>57</Value>
+    </Values>
+    <Values>
+      <Value>F Or Missing</Value>
+      <Value></Value>
+      <Value>0.1870265152</Value>
+      <Value>100</Value>
+      <Value>77</Value>
+      <Value>48</Value>
+      <Value>          1:       100.0%
+ Count:           79</Value>
+      <Value>Node Id:           77&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           79</Value>
+      <Value>79</Value>
+    </Values>
+    <Values>
+      <Value>PLATINUM</Value>
+      <Value></Value>
+      <Value>0.1041666667</Value>
+      <Value>100</Value>
+      <Value>78</Value>
+      <Value>50</Value>
+      <Value>          1:       100.0%
+ Count:           44</Value>
+      <Value>Node Id:           78&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           44</Value>
+      <Value>44</Value>
+    </Values>
+    <Values>
+      <Value>GOLD Or Missing</Value>
+      <Value></Value>
+      <Value>0.1917613636</Value>
+      <Value>100</Value>
+      <Value>79</Value>
+      <Value>50</Value>
+      <Value>          2:       100.0%
+ Count:           81</Value>
+      <Value>Node Id:           79&#10;&#10;3:         0.0%&#10;2:       100.0%&#10;1:         0.0%&#10; Count:           81</Value>
+      <Value>81</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value></Value>
+      <Value>0.1444128788</Value>
+      <Value>100</Value>
+      <Value>80</Value>
+      <Value>52</Value>
+      <Value>          1:       100.0%
+ Count:           61</Value>
+      <Value>Node Id:           80&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           61</Value>
+      <Value>61</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value></Value>
+      <Value>0.1349431818</Value>
+      <Value>100</Value>
+      <Value>81</Value>
+      <Value>52</Value>
+      <Value>          3:       100.0%
+ Count:           57</Value>
+      <Value>Node Id:           81&#10;&#10;3:       100.0%&#10;2:         0.0%&#10;1:         0.0%&#10; Count:           57</Value>
+      <Value>57</Value>
+    </Values>
+    <Values>
+      <Value>PLATINUM</Value>
+      <Value></Value>
+      <Value>0.1207386364</Value>
+      <Value>100</Value>
+      <Value>82</Value>
+      <Value>54</Value>
+      <Value>          1:       100.0%
+ Count:           51</Value>
+      <Value>Node Id:           82&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           51</Value>
+      <Value>51</Value>
+    </Values>
+    <Values>
+      <Value>GOLD Or Missing</Value>
+      <Value></Value>
+      <Value>0.1846590909</Value>
+      <Value>100</Value>
+      <Value>83</Value>
+      <Value>54</Value>
+      <Value>          3:       100.0%
+ Count:           78</Value>
+      <Value>Node Id:           83&#10;&#10;3:       100.0%&#10;2:         0.0%&#10;1:         0.0%&#10; Count:           78</Value>
+      <Value>78</Value>
+    </Values>
+    <Values>
+      <Value>0 Or Missing</Value>
+      <Value></Value>
+      <Value>0.0615530303</Value>
+      <Value>100</Value>
+      <Value>84</Value>
+      <Value>56</Value>
+      <Value>          1:       100.0%
+ Count:           26</Value>
+      <Value>Node Id:           84&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           26</Value>
+      <Value>26</Value>
+    </Values>
+    <Values>
+      <Value>1</Value>
+      <Value></Value>
+      <Value>0.0615530303</Value>
+      <Value>100</Value>
+      <Value>85</Value>
+      <Value>56</Value>
+      <Value>          2:       100.0%
+ Count:           26</Value>
+      <Value>Node Id:           85&#10;&#10;3:         0.0%&#10;2:       100.0%&#10;1:         0.0%&#10; Count:           26</Value>
+      <Value>26</Value>
+    </Values>
+    <Values>
+      <Value>PLATINUM Or Missing</Value>
+      <Value></Value>
+      <Value>0.0923295455</Value>
+      <Value>100</Value>
+      <Value>86</Value>
+      <Value>59</Value>
+      <Value>          1:       100.0%
+ Count:           39</Value>
+      <Value>Node Id:           86&#10;&#10;3:         0.0%&#10;2:         0.0%&#10;1:       100.0%&#10; Count:           39</Value>
+      <Value>39</Value>
+    </Values>
+    <Values>
+      <Value>GOLD</Value>
+      <Value></Value>
+      <Value>0.0662878788</Value>
+      <Value>100</Value>
+      <Value>87</Value>
+      <Value>59</Value>
+      <Value>          2:       100.0%
+ Count:           28</Value>
+      <Value>Node Id:           87&#10;&#10;3:         0.0%&#10;2:       100.0%&#10;1:         0.0%&#10; Count:           28</Value>
+      <Value>28</Value>
+    </Values>
+                        </ValuesList>
+                  </EmbeddedData>
+            </IQData>
+      </Data>
+
+      <View>
+            <Section>
+                  <Body>
+                        <Graph name="DecisionTree" >
+                              <ChartDataList>
+                                    <ChartData name="DTreeData" data="TreeData" >
+                                          <Roles>
+                                                <Role type="AboveText"   variable="Var1" > </Role>
+                                                <Role type="BelowText"   variable="Var2" > </Role>
+                                                <Role type="LinkWidth"   variable="Var3" > </Role>
+                                                <Role type="NodeColor"   variable="Var4" > </Role>
+                                                <Role type="ID"      variable="Var5" > </Role>
+                                                <Role type="Parent"    variable="Var6" > </Role>
+                                                <Role type="NodeText"    variable="Var7" > </Role>
+                                                <Role type="ToolTipText" variable="Var8" > </Role>
+                                                <Role type="NodeSize"    variable="Var9" > </Role>
+                                          </Roles>
+                                    </ChartData>
+                              </ChartDataList>
+                              <ColorMappers>
+                                    <ColorRamp  name="NodeColorRamp"
+                                                      underFlowColor="Red"
+                                                      overflowColor="Green"
+                                                      low="0"
+                                                      high="1000"
+                                                      beginColor="CX0000FF"
+                                                      endColor="CXFFFFFF" >
+                                    </ColorRamp>
+                                    <ColorRamp  name="LinkColorRamp"
+                                                      low="1"
+                                                      high="10"
+                                                      beginColor="CX000000"
+                                                      endColor="CX000000" >
+                                    </ColorRamp>
+                              </ColorMappers>
+                              <ChartAreas>
+                                    <ChartArea>
+                                          <Charts>
+                                          <DecisionTree name="DTree"
+                                                  chartData="DTreeData"
+                                                  selectionColor="CX00FF00"
+                                                  orientation="Vertical"
+                                                  emptyNodes="False"
+                                                  legendVisible="False"
+                                                  titleAnchor="Root"
+                                                  footnoteAnchor="Chart"
+                                                  displayDepth="4" >
+
+                                    <SplitVarList>
+                                          <SplitVar name="SPLIT VAR A" type="DISCRETE" missingBranch="3" values="1,A:1,B:2,C:3,D"/>
+                                          <SplitVar name="SPLIT VAR B" type="CONTINUOUS" breaks="10:50:100" />
+                                    </SplitVarList>
+
+                                    <IciclePlot isVisible="True"></IciclePlot>
+
+                                    <NodeStyle colorMapper="NodeColorRamp"
+                                                   outlineColor="Black"
+                                                   outlineWidth="1">
+                                          <NodeText textColor="Black"
+                                                        textFont="SansSerif"
+                                                        textSize="12 pt"
+                                                        textFlags="Bold" />
+                                    </NodeStyle>
+                                    <FlaggedNodeStyle color="CXFF8844"
+                                                              outlineColor="Black"
+                                                              outlineWidth="3" >
+                                          <FlaggedNodeText textColor="Black"
+                                                        textFont="SansSerif"
+                                                        textSize="12 pt"
+                                                        textFlags="Italic" />
+                                    </FlaggedNodeStyle>
+                                    <LinkStyle textVisible="True"
+                                                   colorMapper="LinkColorRamp"
+                                                   linkStyle="Manhattan"
+                                                   staticWidth="3" >
+                                          <LinkText textColor="Black"
+                                                        textFont="SansSerif"
+                                                        textSize="10 pt"
+                                                        textFlags="Bold" />
+                                    </LinkStyle>
+                                    <GraphStyle numBars="3"
+                                                      numStacks="3"
+                                                      axisMin="0"
+                                                      axisMax="20"
+                                                      orientation="Vertical"
+                                                      visible="True" >
+                                    </GraphStyle>
+                              </DecisionTree>
+                              </Charts>
+                        </ChartArea>
+                  </ChartAreas>
+            </Graph>
+      </Body>
+      </Section>
+      </View>
+
+  </SASReport>
+

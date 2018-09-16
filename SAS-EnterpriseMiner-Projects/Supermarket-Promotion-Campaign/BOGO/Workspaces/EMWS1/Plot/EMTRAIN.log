@@ -1,0 +1,799 @@
+*------------------------------------------------------------*
+* Training Log
+Date:                May 07, 2018
+Time:                13:57:35
+*------------------------------------------------------------*
+11406  proc freq data=EMWS1.Plot_VariableSet noprint;
+11407  table ROLE*LEVEL/out=WORK.PlotMETA;
+11408  run;
+
+NOTE: There were 26 observations read from the data set EMWS1.PLOT_VARIABLESET.
+NOTE: The data set WORK.PLOTMETA has 6 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.23 seconds
+      cpu time            0.10 seconds
+      
+
+11409  proc print data=WORK.PlotMETA label noobs;
+11410  var ROLE LEVEL COUNT;
+11411  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+11412  title9 ' ';
+11413  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+11414  run;
+
+NOTE: There were 6 observations read from the data set WORK.PLOTMETA.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+
+11415  title10;
+
+11436  *------------------------------------------------------------* ;
+11437  * Plot: DMDBClass Macro ;
+11438  *------------------------------------------------------------* ;
+11439  %macro DMDBClass;
+11440      AffluenceGrade(ASC) CampaignViewedEmail(ASC) CleanserProducts(ASC)
+11441     DayCareProducts(ASC) FacebookLike(ASC) LotionProducts(ASC) LoyaltyClass(ASC)
+11442     MobileApplications(ASC) NightRepairProducts(ASC) PreviousCampaign(ASC)
+11443     REP_AdvertisementZone(ASC) REP_Age(ASC) REP_ClusterGroup(ASC) REP_Gender(ASC)
+11444     REP_LoyaltyTime(ASC) REP_Region(ASC) TargetBuy(DESC) TimeSinceLastPurchase(ASC)
+11445     TotalSpend(ASC)
+11446  %mend DMDBClass;
+11447  *------------------------------------------------------------*;
+11448  * Plot: Create DMDB;
+11449  *------------------------------------------------------------*;
+11450  proc dmdb batch data=EMWS1.Repl_TRAIN
+11451  dmdbcat=WORK.Plot_DMDB
+11452  maxlevel = 23
+11453  nonorm
+11454  ;
+11455  class %DMDBClass;
+11456  target
+11457  TargetBuy
+11458  ;
+11459  run;
+
+NOTE: Records processed = 23000   Memory used = 511K.
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: View EMWS1.REPL_TRAIN.VIEW used (Total process time):
+      real time           0.26 seconds
+      cpu time            0.23 seconds
+      
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.28 seconds
+      cpu time            0.25 seconds
+      
+
+11460  quit;
+
+11461  *------------------------------------------------------------*;
+11462  * Plot: Creating variable by class target charts;
+11463  *------------------------------------------------------------*;
+11464  goptions ftext="SWISS";
+11465  goptions nodisplay device=PNG;
+11466  axis1 width=2 offset=(1,1) label=(rotate=90 angle=270) minor=none;
+11467  axis2 width=2 minor=none;
+11468  pattern1 value=solid;
+11469  proc gchart
+11470  data=EMWS1.Repl_TRAIN gout=WORK.PlotGRAPH;
+11471  *;
+11472  title "AffluenceGrade by TargetBuy";
+11473  vbar AffluenceGrade /
+11474  name = "AffluenceGrade x TargetBuy      " description = "AffluenceGrade by TargetBuy"
+11475  FREQ
+11476  type=FREQ
+11477  subgroup=TargetBuy
+11478  noframe
+11479  missing
+11480  raxis=axis1 maxis=axis2;
+11481  run;
+
+WARNING: The VBAR/VBAR3D chart for AffluenceGrade could not be labeled because the labels are wider than the bars.
+NOTE: Graph's name, AFFLUENC, changed to AFFLUENC. AFFLUENC is already used or not a valid SAS name.
+11482  title "CampaignViewedEmail by TargetBuy";
+11483  vbar CampaignViewedEmail /
+11484  name = "CampaignViewedEx TargetBuy      " description = "CampaignViewedEmail by TargetBuy"
+11485  FREQ
+11486  type=FREQ
+11487  subgroup=TargetBuy
+11488  noframe
+11489  missing
+11490  discrete
+11491  raxis=axis1 maxis=axis2;
+11492  run;
+
+NOTE: Graph's name, CAMPAIGN, changed to CAMPAIGN. CAMPAIGN is already used or not a valid SAS name.
+11493  title "CleanserProducts by TargetBuy";
+11494  vbar CleanserProducts /
+11495  name = "CleanserProductx TargetBuy      " description = "CleanserProducts by TargetBuy"
+11496  FREQ
+11497  type=FREQ
+11498  subgroup=TargetBuy
+11499  noframe
+11500  missing
+11501  discrete
+11502  raxis=axis1 maxis=axis2;
+11503  run;
+
+NOTE: Graph's name, CLEANSER, changed to CLEANSER. CLEANSER is already used or not a valid SAS name.
+11504  title "DayCareProducts by TargetBuy";
+11505  vbar DayCareProducts /
+11506  name = "DayCareProductsx TargetBuy      " description = "DayCareProducts by TargetBuy"
+11507  FREQ
+11508  type=FREQ
+11509  subgroup=TargetBuy
+11510  noframe
+11511  missing
+11512  discrete
+11513  raxis=axis1 maxis=axis2;
+11514  run;
+
+NOTE: Graph's name, DAYCAREP, changed to DAYCAREP. DAYCAREP is already used or not a valid SAS name.
+11515  title "FacebookLike by TargetBuy";
+11516  vbar FacebookLike /
+11517  name = "FacebookLike   x TargetBuy      " description = "FacebookLike by TargetBuy"
+11518  FREQ
+11519  type=FREQ
+11520  subgroup=TargetBuy
+11521  noframe
+11522  missing
+11523  discrete
+11524  raxis=axis1 maxis=axis2;
+11525  run;
+
+NOTE: Graph's name, FACEBOOK, changed to FACEBOOK. FACEBOOK is already used or not a valid SAS name.
+11526  title "LotionProducts by TargetBuy";
+11527  vbar LotionProducts /
+11528  name = "LotionProducts x TargetBuy      " description = "LotionProducts by TargetBuy"
+11529  FREQ
+11530  type=FREQ
+11531  subgroup=TargetBuy
+11532  noframe
+11533  missing
+11534  discrete
+11535  raxis=axis1 maxis=axis2;
+11536  run;
+
+NOTE: Graph's name, LOTIONPR, changed to LOTIONPR. LOTIONPR is already used or not a valid SAS name.
+11537  title "LoyaltyClass by TargetBuy";
+11538  vbar LoyaltyClass /
+11539  name = "LoyaltyClass   x TargetBuy      " description = "LoyaltyClass by TargetBuy"
+11540  FREQ
+11541  type=FREQ
+11542  subgroup=TargetBuy
+11543  noframe
+11544  missing
+11545  raxis=axis1 maxis=axis2;
+11546  run;
+
+NOTE: Graph's name, LOYALTYC, changed to LOYALTYC. LOYALTYC is already used or not a valid SAS name.
+11547  title "MobileApplications by TargetBuy";
+11548  vbar MobileApplications /
+11549  name = "MobileApplicatix TargetBuy      " description = "MobileApplications by TargetBuy"
+11550  FREQ
+11551  type=FREQ
+11552  subgroup=TargetBuy
+11553  noframe
+11554  missing
+11555  discrete
+11556  raxis=axis1 maxis=axis2;
+11557  run;
+
+NOTE: Graph's name, MOBILEAP, changed to MOBILEAP. MOBILEAP is already used or not a valid SAS name.
+11558  title "NightRepairProducts by TargetBuy";
+11559  vbar NightRepairProducts /
+11560  name = "NightRepairProdx TargetBuy      " description = "NightRepairProducts by TargetBuy"
+11561  FREQ
+11562  type=FREQ
+11563  subgroup=TargetBuy
+11564  noframe
+11565  missing
+11566  discrete
+11567  raxis=axis1 maxis=axis2;
+11568  run;
+
+NOTE: Graph's name, NIGHTREP, changed to NIGHTREP. NIGHTREP is already used or not a valid SAS name.
+11569  title "PreviousCampaign by TargetBuy";
+11570  vbar PreviousCampaign /
+11571  name = "PreviousCampaigx TargetBuy      " description = "PreviousCampaign by TargetBuy"
+11572  FREQ
+11573  type=FREQ
+11574  subgroup=TargetBuy
+11575  noframe
+11576  missing
+11577  discrete
+11578  raxis=axis1 maxis=axis2;
+11579  run;
+
+NOTE: Graph's name, PREVIOUS, changed to PREVIOUS. PREVIOUS is already used or not a valid SAS name.
+11580  title "REP_AdvertisementZone by TargetBuy";
+11581  vbar REP_AdvertisementZone /
+11582  name = "REP_Advertisemex TargetBuy      " description = "REP_AdvertisementZone by TargetBuy"
+11583  FREQ
+11584  type=FREQ
+11585  subgroup=TargetBuy
+11586  noframe
+11587  missing
+11588  raxis=axis1 maxis=axis2;
+11589  run;
+
+NOTE: Graph's name, REP_ADVE, changed to REP_ADVE. REP_ADVE is already used or not a valid SAS name.
+11590  title "REP_Age by TargetBuy";
+11591  vbar REP_Age /
+11592  name = "REP_Age        x TargetBuy      " description = "REP_Age by TargetBuy"
+11593  FREQ
+11594  type=FREQ
+11595  subgroup=TargetBuy
+11596  noframe
+11597  missing
+11598  raxis=axis1 maxis=axis2;
+11599  run;
+
+WARNING: The VBAR/VBAR3D chart for REP_Age could not be labeled because the labels are wider than the bars.
+NOTE: Graph's name, REP_AGE, changed to REP_AGE. REP_AGE is already used or not a valid SAS name.
+11600  title "REP_ClusterGroup by TargetBuy";
+11601  vbar REP_ClusterGroup /
+11602  name = "REP_ClusterGroux TargetBuy      " description = "REP_ClusterGroup by TargetBuy"
+11603  FREQ
+11604  type=FREQ
+11605  subgroup=TargetBuy
+11606  noframe
+11607  missing
+11608  raxis=axis1 maxis=axis2;
+11609  run;
+
+NOTE: Graph's name, REP_CLUS, changed to REP_CLUS. REP_CLUS is already used or not a valid SAS name.
+11610  title "REP_Gender by TargetBuy";
+11611  vbar REP_Gender /
+11612  name = "REP_Gender     x TargetBuy      " description = "REP_Gender by TargetBuy"
+11613  FREQ
+11614  type=FREQ
+11615  subgroup=TargetBuy
+11616  noframe
+11617  missing
+11618  raxis=axis1 maxis=axis2;
+11619  run;
+
+NOTE: Graph's name, REP_GEND, changed to REP_GEND. REP_GEND is already used or not a valid SAS name.
+11620  title "REP_LoyaltyTime by TargetBuy";
+11621  vbar REP_LoyaltyTime /
+11622  name = "REP_LoyaltyTimex TargetBuy      " description = "REP_LoyaltyTime by TargetBuy"
+11623  FREQ
+11624  type=FREQ
+11625  subgroup=TargetBuy
+11626  noframe
+11627  missing
+11628  raxis=axis1 maxis=axis2;
+11629  run;
+
+WARNING: The VBAR/VBAR3D chart for REP_LoyaltyTime could not be labeled because the labels are wider than the bars.
+NOTE: Graph's name, REP_LOYA, changed to REP_LOYA. REP_LOYA is already used or not a valid SAS name.
+11630  title "REP_Region by TargetBuy";
+11631  vbar REP_Region /
+11632  name = "REP_Region     x TargetBuy      " description = "REP_Region by TargetBuy"
+11633  FREQ
+11634  type=FREQ
+11635  subgroup=TargetBuy
+11636  noframe
+11637  missing
+11638  raxis=axis1 maxis=axis2;
+11639  run;
+
+NOTE: Graph's name, REP_REGI, changed to REP_REGI. REP_REGI is already used or not a valid SAS name.
+11640  title "TimeSinceLastPurchase by TargetBuy";
+11641  vbar TimeSinceLastPurchase /
+11642  name = "TimeSinceLastPux TargetBuy      " description = "TimeSinceLastPurchase by TargetBuy"
+11643  FREQ
+11644  type=FREQ
+11645  subgroup=TargetBuy
+11646  noframe
+11647  missing
+11648  raxis=axis1 maxis=axis2;
+11649  run;
+
+WARNING: The VBAR/VBAR3D chart for TimeSinceLastPurchase could not be labeled because the labels are wider than the bars.
+NOTE: Graph's name, TIMESINC, changed to TIMESINC. TIMESINC is already used or not a valid SAS name.
+11650  title "TotalSpend by TargetBuy";
+11651  vbar TotalSpend /
+11652  name = "TotalSpend     x TargetBuy      " description = "TotalSpend by TargetBuy"
+11653  FREQ
+11654  type=FREQ
+11655  subgroup=TargetBuy
+11656  noframe
+11657  missing
+11658  raxis=axis1 maxis=axis2;
+11659  run;
+
+WARNING: The VBAR/VBAR3D chart for TotalSpend could not be labeled because the labels are wider than the bars.
+NOTE: Graph's name, TOTALSPE, changed to TOTALSPE. TOTALSPE is already used or not a valid SAS name.
+11660  quit;
+
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: View EMWS1.REPL_TRAIN.VIEW used (Total process time):
+      real time           2.79 seconds
+      cpu time            2.54 seconds
+      
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: PROCEDURE GCHART used (Total process time):
+      real time           2.81 seconds
+      cpu time            2.56 seconds
+      
+
+11661  title;
+11662  goptions display;
+
+11663  *------------------------------------------------------------*;
+11664  * Plot: Creating variable by interval target charts;
+11665  *------------------------------------------------------------*;
+11666  *------------------------------------------------------------* ;
+11667  * Plot: DMDBClass Macro ;
+11668  *------------------------------------------------------------* ;
+11669  %macro DMDBClass;
+11670      CampaignViewedEmail(ASC) FacebookLike(ASC) LoyaltyClass(ASC)
+11671     MobileApplications(ASC) PreviousCampaign(ASC) REP_AdvertisementZone(ASC)
+11672     REP_ClusterGroup(ASC) REP_Gender(ASC) REP_Region(ASC) TargetBuy(DESC)
+11673  %mend DMDBClass;
+11674  *------------------------------------------------------------* ;
+11675  * Plot: DMDBVar Macro ;
+11676  *------------------------------------------------------------* ;
+11677  %macro DMDBVar;
+11678      AffluenceGrade CleanserProducts DayCareProducts LotionProducts
+11679     NightRepairProducts REP_Age REP_LoyaltyTime TimeSinceLastPurchase TotalSpend
+11680  %mend DMDBVar;
+11681  *------------------------------------------------------------*;
+11682  * Plot: Create DMDB;
+11683  *------------------------------------------------------------*;
+11684  proc dmdb batch data=EMWS1.Repl_TRAIN
+11685  dmdbcat=WORK.Plot_DMDB
+11686  classout=work.classoutDs
+11687  varout=work.varoutDs
+11688  maxlevel = 513
+11689  ;
+11690  class %DMDBClass;
+11691  var %DMDBVar;
+11692  target
+11693  TargetBuy
+11694  ;
+11695  run;
+
+NOTE: Records processed = 23000   Memory used = 511K.
+NOTE: There were 23000 observations read from the data set SUPERMKT.SUPERMARKETCAMPAIGN.
+NOTE: View EMWS1.REPL_TRAIN.VIEW used (Total process time):
+      real time           0.26 seconds
+      cpu time            0.25 seconds
+      
+NOTE: There were 23000 observations read from the data set EMWS1.IDS2_DATA.
+NOTE: There were 23000 observations read from the data set EMWS1.REPL_TRAIN.
+NOTE: The data set WORK.CLASSOUTDS has 44 observations and 9 variables.
+NOTE: The data set WORK.VAROUTDS has 9 observations and 9 variables.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.29 seconds
+      cpu time            0.26 seconds
+      
+
+11696  quit;
+11697  *--- end code ---*;
+
+11698  title8;
+11699  title8 "%sysfunc(sasmsg(sashelp.dmine, rpt_classvars_title, NOQUOTE))";
+11700  proc print data=work.classoutDs;
+11701  run;
+
+NOTE: There were 44 observations read from the data set WORK.CLASSOUTDS.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11702  proc datasets lib=work nolist;
+11703  delete classoutDs;
+11704  run;
+
+NOTE: Deleting WORK.CLASSOUTDS (memtype=DATA).
+11705  title8;
+11706  title8;
+11707  title8 "%sysfunc(sasmsg(sashelp.dmine, rpt_intvars_title, NOQUOTE))";
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+      
+
+11708  proc print data=work.varoutDs;
+11709  run;
+
+NOTE: There were 9 observations read from the data set WORK.VAROUTDS.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11710  proc datasets lib=work nolist;
+11711  delete varoutDs;
+11712  run;
+
+NOTE: Deleting WORK.VAROUTDS (memtype=DATA).
+11713  title8;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+
+11714  proc datasets lib=WORK nolist;
+11715  delete Plot_DMDB;
+11716  run;
+
+NOTE: The file WORK.PLOT_DMDB (memtype=DATA) was not found, but appears on a DELETE statement.
+11717  quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+11718  proc datasets lib=WORK nolist;
+11719  delete Plot_DMDB / memtype=catalog;
+11720  run;
+
+NOTE: Deleting WORK.PLOT_DMDB (memtype=CATALOG).
+11721  quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+11722  *------------------------------------------------------------*;
+11723  * Plot: Copying graphs to node folder;
+11724  *------------------------------------------------------------*;
+11725  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\AffluenceGrade by TargetBuy.png";
+11726  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11727  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11728  replay AFFLUENC;
+NOTE: This SAS session is using a registry in WORK.  All changes will be lost at the end of this session.
+NOTE: 8315 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\AffluenceGrade by TargetBuy.png.
+11729  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.32 seconds
+      cpu time            0.29 seconds
+      
+
+11730  goptions device=win;
+11731  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11732  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\CampaignViewedEmail by TargetBuy.png";
+11733  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11734  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11735  replay CAMPAIGN;
+NOTE: 7077 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\CampaignViewedEmail by TargetBuy.png.
+11736  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.28 seconds
+      cpu time            0.29 seconds
+      
+
+11737  goptions device=win;
+11738  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11739  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\CleanserProducts by TargetBuy.png";
+11740  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11741  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11742  replay CLEANSER;
+NOTE: 6918 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\CleanserProducts by TargetBuy.png.
+11743  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.28 seconds
+      cpu time            0.26 seconds
+      
+
+11744  goptions device=win;
+11745  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11746  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\DayCareProducts by TargetBuy.png";
+11747  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11748  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11749  replay DAYCAREP;
+NOTE: 6718 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\DayCareProducts by TargetBuy.png.
+11750  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.28 seconds
+      cpu time            0.26 seconds
+      
+
+11751  goptions device=win;
+11752  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11753  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\FacebookLike by TargetBuy.png";
+11754  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11755  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11756  replay FACEBOOK;
+NOTE: 6941 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\FacebookLike by TargetBuy.png.
+11757  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.29 seconds
+      cpu time            0.26 seconds
+      
+
+11758  goptions device=win;
+11759  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11760  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\LotionProducts by TargetBuy.png";
+11761  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11762  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11763  replay LOTIONPR;
+NOTE: 6737 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\LotionProducts by TargetBuy.png.
+11764  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.29 seconds
+      cpu time            0.29 seconds
+      
+
+11765  goptions device=win;
+11766  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11767  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\LoyaltyClass by TargetBuy.png";
+11768  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11769  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11770  replay LOYALTYC;
+NOTE: 7098 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\LoyaltyClass by TargetBuy.png.
+11771  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.32 seconds
+      cpu time            0.31 seconds
+      
+
+11772  goptions device=win;
+11773  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11774  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\MobileApplications by TargetBuy.png";
+11775  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11776  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11777  replay MOBILEAP;
+NOTE: 7049 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\MobileApplications by TargetBuy.png.
+11778  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.31 seconds
+      cpu time            0.28 seconds
+      
+
+11779  goptions device=win;
+11780  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11781  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\NightRepairProducts by TargetBuy.png";
+11782  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11783  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11784  replay NIGHTREP;
+NOTE: 6743 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\NightRepairProducts by TargetBuy.png.
+11785  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.29 seconds
+      cpu time            0.28 seconds
+      
+
+11786  goptions device=win;
+11787  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11788  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\PreviousCampaign by TargetBuy.png";
+11789  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11790  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11791  replay PREVIOUS;
+NOTE: 7134 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\PreviousCampaign by TargetBuy.png.
+11792  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.32 seconds
+      cpu time            0.31 seconds
+      
+
+11793  goptions device=win;
+11794  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11795  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\REP_AdvertisementZone by TargetBuy.png";
+11796  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11797  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11798  replay REP_ADVE;
+NOTE: 9938 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\REP_AdvertisementZone by TargetBuy.png.
+11799  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.31 seconds
+      cpu time            0.29 seconds
+      
+
+11800  goptions device=win;
+11801  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11802  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\REP_Age by TargetBuy.png";
+11803  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11804  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11805  replay REP_AGE;
+NOTE: 10401 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\REP_Age by TargetBuy.png.
+11806  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.29 seconds
+      cpu time            0.26 seconds
+      
+
+11807  goptions device=win;
+11808  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11809  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\REP_ClusterGroup by TargetBuy.png";
+11810  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11811  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11812  replay REP_CLUS;
+NOTE: 7342 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\REP_ClusterGroup by TargetBuy.png.
+11813  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.31 seconds
+      cpu time            0.31 seconds
+      
+
+11814  goptions device=win;
+11815  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11816  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\REP_Gender by TargetBuy.png";
+11817  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11818  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11819  replay REP_GEND;
+NOTE: 7139 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\REP_Gender by TargetBuy.png.
+11820  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.31 seconds
+      cpu time            0.28 seconds
+      
+
+11821  goptions device=win;
+11822  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11823  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\REP_LoyaltyTime by TargetBuy.png";
+11824  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11825  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11826  replay REP_LOYA;
+NOTE: 7735 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\REP_LoyaltyTime by TargetBuy.png.
+11827  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.31 seconds
+      cpu time            0.29 seconds
+      
+
+11828  goptions device=win;
+11829  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11830  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\REP_Region by TargetBuy.png";
+11831  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11832  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11833  replay REP_REGI;
+NOTE: 7640 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\REP_Region by TargetBuy.png.
+11834  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.29 seconds
+      cpu time            0.29 seconds
+      
+
+11835  goptions device=win;
+11836  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11837  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\TimeSinceLastPurchase by TargetBuy.png";
+11838  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11839  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11840  replay TIMESINC;
+NOTE: 9103 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\TimeSinceLastPurchase by TargetBuy.png.
+11841  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.32 seconds
+      cpu time            0.28 seconds
+      
+
+11842  goptions device=win;
+11843  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+
+11844  filename gsasfile "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\TotalSpend by TargetBuy.png";
+11845  goptions device= PNG display gaccess= gsasfile gsfmode= replace cback= white;
+11846  proc greplay igout=WORK.PLOTGRAPH nofs;
+NOTE: Building list of graphs from the catalog.
+
+NOTE: Enter greplay commands or statements.
+11847  replay TOTALSPE;
+NOTE: 9335 bytes written to D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Plot\GRAPH\TotalSpend by TargetBuy.png.
+11848  quit;
+
+NOTE: PROCEDURE GREPLAY used (Total process time):
+      real time           0.29 seconds
+      cpu time            0.26 seconds
+      
+
+11849  goptions device=win;
+11850  filename gsasfile;
+NOTE: Fileref GSASFILE has been deassigned.
+

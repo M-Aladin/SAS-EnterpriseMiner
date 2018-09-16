@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  DataSource="hwbasupermarketdatasetwithde" Scope="LOCAL" Role="SCORE" Library="HW2"
+ Table="HW2_BA8880_SUPERMARKETDATASET" NCols="13" NObs="22223" NBytes="2163712" Segment=""
+ DataSourceRole="RAW" OutputType="VIEW" ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE"
+ NewTable="" MetaAdvisor="BASIC" ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20"
+ ApplyMaxPercentMissing="Y" MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20"
+ IdentifyEmptyColumns="Y" VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y"
+ DsId="hwbasupermarketdatasetwithde" DsSampleName="" DsSampleSizeType="" DsSampleSize=""
+ DsCreatedBy="Mohamed" DsCreateDate="1841504816.5" DsModifiedBy="Mohamed" DsModifyDate="1841504816.6"
+ DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT" SampleSizePercent="20" SampleSizeObs="10000"
+ DBPassThrough="Y" RunAction="Train" Component="DataSource" RawCreateTime="1841866046"
+ CreateTime="13MAY2018:21:27:26" Description="" Data="HW2.HW2_BA8880_SUPERMARKETDATASET"
+ CMeta="WORK.M2GL1GYN" RunId="becb24a7-d079-4795-b9a0-1cf13ab6279c">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

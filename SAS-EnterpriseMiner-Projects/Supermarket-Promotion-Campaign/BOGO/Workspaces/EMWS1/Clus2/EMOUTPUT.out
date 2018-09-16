@@ -1,0 +1,59 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                14:55:59
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           NOMINAL           1
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          3
+REJECTED     NOMINAL           4
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Importance
+ 
+                                                           Number of    Number of
+                                                           Splitting    Surrogate
+Variable Name            Label                               Rules        Rules      Importance
+ 
+TotalSpend                                                      1           30         1.00000
+AffluenceGrade                                                  0           30         0.98098
+REP_Age                  Replacement: Age                       0           31         0.88798
+REP_AdvertisementZone    Replacement: AdvertisementZone         0           14         0.77840
+REP_ClusterGroup         Replacement: ClusterGroup              0           18         0.74385
+LoyaltyClass                                                   10            3         0.73073
+REP_LoyaltyTime          Replacement: LoyaltyTime               0           19         0.67610
+REP_Region               Replacement: Region                    5            2         0.64082
+CampaignViewedEmail                                            11            0         0.63629
+REP_Gender               Replacement: Gender                    5            1         0.61944
+PreviousCampaign                                               10            0         0.59708
+LotionProducts                                                  0           10         0.55936
+TimeSinceLastPurchase                                           0           12         0.54072
+MobileApplications                                              1            0         0.52880
+NightRepairProducts                                             0            8         0.44674
+DayCareProducts                                                 0           10         0.43852
+CleanserProducts                                                0            7         0.36618

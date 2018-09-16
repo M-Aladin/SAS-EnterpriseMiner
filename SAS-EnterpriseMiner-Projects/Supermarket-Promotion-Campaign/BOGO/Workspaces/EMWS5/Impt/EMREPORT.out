@@ -1,0 +1,33 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+Imputation Summary
+Number Of Observations
+
+                                                                                                                               Number of
+                   Impute                                                      Measurement                                       Missing
+Variable Name      Method      Imputed Variable       Impute Value    Role        Level       Label                            for TRAIN
+
+DemAffl            MEAN        IMP_DemAffl            8.7030320204    INPUT     INTERVAL      Affluence Grade                        525
+DemAge             MEAN        IMP_DemAge             53.892095358    INPUT     INTERVAL      Age                                    751
+DemClusterGroup    CONSTANT    IMP_DemClusterGroup    U               INPUT     NOMINAL       Neighborhood Cluster-7 Level           328
+DemGender          CONSTANT    IMP_DemGender          U               INPUT     NOMINAL       Gender                                1215
+DemReg             CONSTANT    IMP_DemReg             U               INPUT     NOMINAL       Geographic Region                      236
+DemTVReg           CONSTANT    IMP_DemTVReg           U               INPUT     NOMINAL       Television Region                      236
+PromTime           MEAN        IMP_PromTime           6.5710641399    INPUT     INTERVAL      Loyalty Card Tenure                    136
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Distribution Training Data
+
+        Number of
+          Missing    Number of    Percent of
+Obs     for TRAIN    Variables     Variables
+
+ 1           1215        1          14.2857 
+ 2            751        1          14.2857 
+ 3            525        1          14.2857 
+ 4            328        1          14.2857 
+ 5            236        2          28.5714 
+ 6            136        1          14.2857 

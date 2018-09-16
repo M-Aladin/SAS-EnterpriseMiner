@@ -1,0 +1,22 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+Excluded Class Values
+(maximum 500 observations printed)
+
+                                                Train     Train                            Filter
+   Variable          Role       Level           Count    Percent           Label           Method
+
+_SEGMENT_LABEL_    REJECTED    Cluster1          6224    31.0656    Segment Description    MANUAL
+_SEGMENT_LABEL_    REJECTED    Cluster2          3710    18.5176    Segment Description    MANUAL
+_SEGMENT_LABEL_    REJECTED    Cluster3          4168    20.8036    Segment Description    MANUAL
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Number Of Observations
+
+Data
+Role     Filtered    Excluded     DATA
+
+TRAIN      5933        14102     20035

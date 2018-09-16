@@ -1,0 +1,14 @@
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+297        libname _hpdmDat "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS3\HPDM";
+NOTE: Libref _HPDMDAT was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS3\HPDM
+298        libname _hpdmDat;
+NOTE: Libref _HPDMDAT has been deassigned.
+299        proc printto;
+300        run;
+

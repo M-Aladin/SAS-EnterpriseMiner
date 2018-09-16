@@ -1,0 +1,52 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 13, 2018
+Time:                20:40:51
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+INPUT        INTERVAL          4
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          1
+REJECTED     NOMINAL           1
+TARGET       BINARY            1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+Excluded Class Values
+(maximum 500 observations printed)
+ 
+                                           Train     Train                                     Filter
+Variable           Role     Level          Count    Percent    Label                           Method
+ 
+DemClusterGroup    INPUT    U                 54    0.24299    Neighborhood Cluster-7 Level    MINPCT
+DemTVReg           INPUT    BORDER           203    0.91347    Television Region               MINPCT
+ 
+ 
+ 
+ 
+Number Of Observations
+ 
+Data
+Role     Filtered    Excluded     DATA
+ 
+TRAIN      21966        257      22223
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

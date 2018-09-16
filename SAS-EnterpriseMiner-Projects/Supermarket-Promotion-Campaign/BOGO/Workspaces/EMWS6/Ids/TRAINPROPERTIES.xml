@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  DataSource="hwbasupermarketdatasetwithde" Scope="LOCAL" Role="RAW" Library="HW2"
+ Table="HW2_BA8880_SUPERMARKETDATASET" NCols="13" NObs="22223" NBytes="2163712" Segment=""
+ DataSourceRole="RAW" OutputType="VIEW" ForceRun="N" ComputeStatistics="N" DataSelection="DATASOURCE"
+ NewTable="" MetaAdvisor="BASIC" ApplyIntervalLevelLowerLimit="Y" IntervalLowerLimit="20"
+ ApplyMaxPercentMissing="Y" MaxPercentMissing="50" ApplyMaxClassLevels="Y" MaxClassLevels="20"
+ IdentifyEmptyColumns="Y" VariableValidation="STRICT" NewVariableRole="REJECT" DropMapVariables="Y"
+ DsId="hwbasupermarketdatasetwithde" DsSampleName="" DsSampleSizeType="" DsSampleSize=""
+ DsCreatedBy="Mohamed" DsCreateDate="1841504816.5" DsModifiedBy="Mohamed" DsModifyDate="1841504816.6"
+ DsScope="LOCAL" Sample="D" SampleSizeType="PERCENT" SampleSizePercent="20" SampleSizeObs="10000"
+ DBPassThrough="Y" RunAction="Train" Component="DataSource" RawCreateTime="1841861712.1"
+ CreateTime="13MAY2018:20:15:12" Description="" Data="HW2.HW2_BA8880_SUPERMARKETDATASET"
+ CMeta="WORK.M1GX_9OJ" RunId="fb1e0551-85c5-4566-b498-07b12214b22c" RawLastTimeRun="1841861874"
+ RawRunTime="7.0699999332" LastTimeRun="13MAY2018:20:17:54" RunTime="0 Hr. 0 Min. 7.07 Sec."
+>
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES/>
+</_ROOT_>

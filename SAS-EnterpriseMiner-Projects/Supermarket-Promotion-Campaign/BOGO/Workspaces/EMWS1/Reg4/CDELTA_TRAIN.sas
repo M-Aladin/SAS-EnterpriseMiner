@@ -1,0 +1,15 @@
+if ROLE in('INPUT', 'REJECTED') then do;
+if upcase(NAME) in(
+'AFFLUENCEGRADE'
+'DAYCAREPRODUCTS'
+'MOBILEAPPLICATIONS'
+'NIGHTREPAIRPRODUCTS'
+'PREVIOUSCAMPAIGN'
+'REP_AGE'
+'REP_GENDER'
+) then ROLE='INPUT';
+else do;
+ROLE='REJECTED';
+COMMENT = "Reg4: Rejected using stepwise selection";
+end;
+end;

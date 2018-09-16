@@ -1,0 +1,71 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                15:01:06
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          1
+TARGET       BINARY            1
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Limits and Replacement Values for Interval Variables
+ 
+                                              Lower                   Upper
+               Replace            Lower    Replacement    Upper    Replacement
+Variable       Variable           limit       Value       Limit       Value
+ 
+Age            REP_Age              1           .            .          .
+LoyaltyTime    REP_LoyaltyTime      .           .           50          .
+ 
+ 
+ 
+ 
+Replacement Values for Class Variables
+ 
+                                           Character
+                     Formatted            Unformatted    Numeric    Replacement
+Variable               Value      Type       Value        Value        Value       Label
+ 
+AdvertisementZone                  C                        .            U
+ClusterGroup                       C                        .            U
+Gender                             C                        .            U
+Region                             C                        .            U
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Replacement Counts
+ 
+Obs    Variable             Label          Role     Train
+ 
+ 1     AdvertisementZone                   INPUT      481
+ 2     Age                  Age            INPUT     1610
+ 3     ClusterGroup                        INPUT      693
+ 4     Gender                              INPUT     2609
+ 5     LoyaltyTime          LoyaltyTime    INPUT      293
+ 6     Region                              INPUT      481

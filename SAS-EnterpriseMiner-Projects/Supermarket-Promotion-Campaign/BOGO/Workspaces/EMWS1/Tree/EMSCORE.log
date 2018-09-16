@@ -1,0 +1,1064 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                May 01, 2018
+Time:                17:20:33
+*------------------------------------------------------------*
+17170  %let EMEXCEPTIONSTRING=;
+17171  *------------------------------------------------------------*;
+17172  * SCORE: Tree;
+17173  *------------------------------------------------------------*;
+17174  %let EM_ACTION = SCORE;
+17175  %let syscc = 0;
+17176  %macro main;
+17177  
+17178    %if %upcase(&EM_ACTION) = CREATE %then %do;
+17179      filename temp catalog 'sashelp.emmodl.tree_create.source';
+17180      %include temp;
+17181      filename temp;
+17182  
+17183      %em_tree_create;
+17184    %end;
+17185  
+17186     %else
+17187     %if %upcase(&EM_ACTION) = TRAIN %then %do;
+17188  
+17189         filename temp catalog 'sashelp.emmodl.tree_train.source';
+17190         %include temp;
+17191         filename temp;
+17192         %em_tree_train;
+17193     %end;
+17194  
+17195    %else
+17196    %if %upcase(&EM_ACTION) = SCORE %then %do;
+17197      filename temp catalog 'sashelp.emmodl.tree_score.source';
+17198      %include temp;
+17199      filename temp;
+17200  
+17201      %em_tree_score;
+17202  
+17203    %end;
+17204  
+17205    %else
+17206    %if %upcase(&EM_ACTION) = REPORT %then %do;
+17207  
+17208         filename temp catalog 'sashelp.emmodl.tree_report.source';
+17209         %include temp;
+17210         filename temp;
+17211  
+17212         %em_tree_report;
+17213     %end;
+17214  
+17215    %else
+17216    %if %upcase(&EM_ACTION) = OPENINT %then %do;
+17217  
+17218         filename temp catalog 'sashelp.emmodl.tree_actions.source';
+17219         %include temp;
+17220         filename temp;
+17221         %EM_TREE_OPENTREEVIEWER;
+17222  
+17223     %end;
+17224  
+17225    %else
+17226    %if %upcase(&EM_ACTION) = CLOSEINT %then %do;
+17227  
+17228         filename temp catalog 'sashelp.emmodl.tree_actions.source';
+17229         %include temp;
+17230         filename temp;
+17231         %EM_TREE_CLOSETREEVIEWER;
+17232  
+17233     %end;
+17234  
+17235  
+17236     %doendm:
+17237  %mend main;
+17238  
+17239  %main;
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMMODL.TREE_SCORE.SOURCE.
+17241 +%macro em_tree_score;
+17243 +   /* determine if multiple targets will be processed */
+17244 +   %let em_tree_multipleTargets=N;
+17245 +   %let em_tree_numTarget=1;
+17246 +   %if "&EM_PROPERTY_USEMULTIPLETARGET" eq "Y" %then %do;
+17247 +      /* determine if there are any ordinal target variables - if so, multiple targets are not supported */
+17248 +      %if &EM_NUM_ORDINAL_TARGET gt 0 %then %do;
+17249 +         %let em_tree_multipleTargets=N;
+17250 +      %end;
+17251 +      %else %do;
+17252 +         /* create macro array of targets  */
+17253 +         data _null_;
+17254 +           set &EM_DATA_VARIABLESET(where=(ROLE='TARGET' AND LEVEL^='ORDINAL')) end=eof;
+17255 +           call symput('em_tree_targetVars'!!strip(put(_N_, BEST.)), strip(Name));
+17256 +           if eof then
+17257 +             call symput('em_tree_numTarget', strip(put(_N_, BEST.)));
+17258 +        run;
+17260 +        %if &em_tree_numTarget gt 1 %then %do;
+17261 +           %let em_tree_multipleTargets=Y;
+17262 +        %end;
+17263 +      %end;
+17264 +   %end;
+17266 +   /* build flow and publish scoring code */
+17267 +   %EM_GETNAME(key=TREEFLOW, type=FILE, extension=sas);
+17268 +   %EM_GETNAME(key=TREEPUBLISH, type=FILE, extension=sas);
+17270 +   filename treeflow "&EM_USER_TREEFLOW";
+17271 +   filename treepub "&EM_USER_TREEPUBLISH";
+17273 +   filename flowref  "&EM_FILE_EMFLOWSCORECODE";
+17274 +   filename pubref   "&EM_FILE_EMPUBLISHSCORECODE";
+17276 +   %em_copyfile(infref=treeflow, outfref=flowref);
+17277 +   %em_copyfile(infref=treepub, outfref=pubref);
+17279 +   filename treeflow;
+17280 +   filename treepub;
+17282 +   /* if priors are used, add code to generate unadjusted residuals in export */
+17283 +   %let useAdjPriors = N;
+17284 +   data _null_;
+17285 +     set &EM_DEC_DECMETA(where=(_TYPE_="DECPRIOR"));
+17286 +     if USE="Y" then call symput('useAdjPriors', 'Y');
+17287 +   run;
+17288 +   %if (("&em_tree_multipleTargets" eq "N") AND ("&useAdjPriors" eq "Y")) %then %do;
+17289 +      filename temp catalog 'sashelp.emutil.em_makeunadjustedresidualvars.source';
+17290 +      %include temp;
+17291 +      filename temp;
+17293 +      %EM_GETNAME(key=adjResidualCode, type=FILE, extension=sas);
+17294 +      filename adjref "&EM_USER_adjResidualCode";
+17295 +      %makeUnadjustedResidualVars(target=%EM_TARGET, decmeta=&EM_DEC_DECMETA, fref=adjref);
+17297 +      %em_copyfile(infref=adjref, outfref=flowref, append=Y);
+17299 +      filename adjref;
+17300 +   %end;
+17302 +   /* LEAF */
+17303 +   %if "&EM_PROPERTY_LEAFID" eq "Y" %then %do;
+17304 +      data _null_;
+17305 +        file flowref mod;
+17306 +        put 'drop _LEAF_;';
+17307 +      run;
+17309 +      data _null_;
+17310 +        file pubref mod;
+17311 +        put 'drop _LEAF_;';
+17312 +      run;
+17314 +   %end;
+17316 +   filename flowref;
+17317 +   filename pubref;
+17319 +   /* em_metachange code */
+17320 +   %if "&EM_PROPERTY_LEAFID" eq "Y" %then %do;
+17321 +     %EM_METACHANGE(name=_NODE_, role=&EM_PROPERTY_NODEROLE, LEVEL=NOMINAL);
+17322 +   %end;
+17324 +   /* variable selection based on importance stat    */
+17325 +   %if "&EM_PROPERTY_VARSELECTION" eq "Y" %then %do;
+17326 +     %EM_GETNAME(key=OUTIMPORT, type=DATA);
+17327 +     %let dsid = %sysfunc(open(&EM_USER_OUTIMPORT(where=(IMPORTANCE<0.05))));
+17328 +     %let varnum = %sysfunc(varnum(&dsid, NAME));
+17329 +     %let obs = %sysfunc(fetch(&dsid));
+17330 +     %do %while(&obs=0);
+17331 +       %let temp = %nrbquote(%sysfunc(getvarc(&dsid, &varnum)));
+17332 +       %let varname = %nrbquote(%sysfunc(tranwrd(&temp,  %str(%"),"")));
+17333 +       %EM_METACHANGE(name=&varname, role=REJECTED);
+17334 +       %let obs = %sysfunc(fetch(&dsid));
+17335 +     %end;
+17336 +     %if &dsid %then %let dsid=%sysfunc(close(&dsid));
+17337 +   %end;
+17339 +   /* set Q_ varaibles to role of ASSESS when in the presense of prior probabilities */
+17340 +   %if %sysfunc(exist(&EM_DEC_DECMETA)) %then %do;
+17341 +    %let tree_pred_vars = ;
+17342 +    %let tree_pred_lvl =;
+17343 +    %let numpred= 0;
+17345 +    data _null_;
+17346 +     set &EM_DEC_DECMETA(where=(_TYPE_="PREDICTED")) end=eof;
+17347 +     call symput('tree_pred_vars'!!strip(put(_N_, BEST.)), strip(VARIABLE));
+17348 +     call symput('tree_pred_lvl'!!strip(put(_N_, BEST.)), strip(LEVEL));
+17349 +     if eof then
+17350 +       call symput('numpred', strip(put(_N_, BEST.)));
+17351 +    run;
+17352 +   %end;
+17354 +   %if &numpred ne 0 %then %do;
+17355 +    %do i=1 %to &numpred;
+17356 +      %let qpred = Q%substr(&&tree_pred_vars&i,2);
+17357 +      %EM_METACHANGE(name=&qpred, role=ASSESS);
+17358 +    %end;
+17359 +   %end;
+17361 +   /* determine if multiple targets will be processed */
+17362 +   %let em_tree_multipleTargets=N;
+17363 +   %let em_tree_numTarget=1;
+17364 +   %if "&EM_PROPERTY_USEMULTIPLETARGET" eq "Y" %then %do;
+17365 +      /* determine if there are any ordinal target variables - if so, multiple targets are not supported */
+17366 +      %if &EM_NUM_ORDINAL_TARGET gt 0 %then %do;
+17367 +         %let em_tree_multipleTargets=N;
+17368 +      %end;
+17369 +      %else %do;
+17370 +        data _null_;
+17371 +          set &EM_DATA_VARIABLESET(where=(ROLE='TARGET' AND LEVEL^='ORDINAL')) end=eof;
+17372 +          if eof then
+17373 +            call symput('em_tree_numTarget', strip(put(_N_, BEST.)));
+17374 +        run;
+17376 +        %if &em_tree_numTarget gt 1 %then %do;
+17377 +           %let em_tree_multipleTargets=Y;
+17378 +        %end;
+17379 +     %end;
+17380 +   %end;
+17382 +   /* need to include this code to do the %em_report for OUTIMPORT here instead of in Report code so _loop data set is created when group processing */
+17383 +   %if "&em_tree_multipleTargets" eq "N" %then %do;
+17385 +      /* variable importance */
+17386 +      %EM_GETNAME(key=OUTIMPORT, type=DATA);
+17387 +      %if %sysfunc(exist(&EM_USER_OUTIMPORT)) eq 1 %then %do;
+17389 +         %let validexist=0;
+17390 +         %if (("&EM_IMPORT_VALIDATE" ne "") AND (%sysfunc(exist(&EM_IMPORT_VALIDATE)) or %sysfunc(exist(&EM_IMPORT_VALIDATE,VIEW)))) %then %do;
+17391 +           %let validexist=1;
+17392 +         %end;
+17394 +         /* determine if vars exists - properties could indicate they are they but freeze=Y would mean the node wasn't retrained */
+17395 +         /* and the columns may not be generated                                                                                 */
+17396 +         %let em_tree_cvexists=;
+17397 +         %let em_tree_surrexists=.;
+17398 +         data _null_;
+17399 +            set &EM_USER_OUTIMPORT (obs=2) end=eof;
+17400 +            if eof then do ;
+17401 +               call symput("em_tree_cvexists" , strip(put(cvimportance,best.))) ;
+17402 +               call symput("em_tree_surrexists", strip(put(nsurrogates, best.)));
+17403 +            end;
+17404 +         run;
+17406 +         data &EM_USER_OUTIMPORT;
+17407 +            set &EM_USER_OUTIMPORT;
+17409 +            /* format columns based on Precison value specified */
+17410 +            format importance 15.&EM_PROPERTY_PRECISION
+17411 +                 %if &validexist %then %do;
+17412 +                   vimportance ratio 15.&EM_PROPERTY_PRECISION
+17413 +                 %end;
+17414 +                 %if "&EM_TREE_CVEXISTS" ne "." %then %do;
+17415 +                   cvimportance vimportance ratio 15.&EM_PROPERTY_PRECISION
+17416 +                 %end;
+17417 +            ;
+17418 +            label  NAME       = "%sysfunc(sasmsg(sashelp.dmine, meta_name_vlabel, noquote))"
+17419 +                 LABEL        = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel, noquote))"
+17420 +                 NRULES       = "%sysfunc(sasmsg(sashelp.dmine, rpt_nrules_vlabel, noquote))"
+17421 +                 IMPORTANCE   = "%sysfunc(sasmsg(sashelp.dmine, rpt_importance_vlabel, noquote))"
+17422 +                 %if "&em_tree_surrexists" ne "" %then %do;
+17423 +                   NSURROGATES  = "%sysfunc(sasmsg(sashelp.dmine, rpt_nsurrogates_vlabel, noquote))"
+17424 +                 %end;
+17425 +                 %if &validexist %then %do;
+17426 +                   VIMPORTANCE = "%sysfunc(sasmsg(sashelp.dmine, rpt_vimportance_vlabel, noquote))"
+17427 +                   RATIO       = "%sysfunc(sasmsg(sashelp.dmine, rpt_ratio_vlabel, noquote))"
+17428 +                 %end;
+17429 +                 %if "&EM_TREE_CVEXISTS" ne "" %then %do;
+17430 +                   VIMPORTANCE = "%sysfunc(sasmsg(sashelp.dmine, rpt_vimportance_vlabel, noquote))"
+17431 +                   CVIMPORTANCE =  "%sysfunc(sasmsg(sashelp.dmine, rpt_cvimport_vlabel, noquote))"
+17432 +                   CVRULES= "%sysfunc(sasmsg(sashelp.dmine, rpt_cvrules_vlabel, noquote))"
+17433 +                   RATIO = "%sysfunc(sasmsg(sashelp.dmine, rpt_ratio_vlabel, noquote))"
+17434 +                 %end;
+17435 +            ;
+17436 +         run;
+17438 +         %EM_REPORT(key=OUTIMPORT, viewtype=DATA, block=MODEL, description=IMPORTANCE, autodisplay=N);
+17439 +      %end;
+17440 +   %end;
+17442 +   %doendm:
+17443 +%mend em_tree_score;
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+
+NOTE: The file FLOWREF is:
+      Filename=D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Tree\EMFLOWSCORE.sas,
+      RECFM=V,LRECL=20000,File Size (bytes)=0,
+      Last Modified=01May2018:17:20:32,
+      Create Time=01May2018:17:20:32
+
+NOTE: 370 records were written to the file FLOWREF.
+      The minimum record length was 1.
+      The maximum record length was 65.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: The file PUBREF is:
+      Filename=D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Tree\EMPUBLISHSCORE.sas,
+      RECFM=V,LRECL=20000,File Size (bytes)=0,
+      Last Modified=01May2018:17:20:32,
+      Create Time=01May2018:17:20:32
+
+NOTE: 348 records were written to the file PUBREF.
+      The minimum record length was 1.
+      The maximum record length was 65.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+NOTE: Fileref TREEFLOW has been deassigned.
+NOTE: Fileref TREEPUB has been deassigned.
+
+NOTE: There were 1 observations read from the data set EMWS1.IDS2_TARGETBUY_DM.
+      WHERE _TYPE_='DECPRIOR';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: The file FLOWREF is:
+      Filename=D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Tree\EMFLOWSCORE.sas,
+      RECFM=V,LRECL=32767,File Size (bytes)=14137,
+      Last Modified=01May2018:17:20:32,
+      Create Time=01May2018:17:20:32
+
+NOTE: 1 record was written to the file FLOWREF.
+      The minimum record length was 12.
+      The maximum record length was 12.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: The file PUBREF is:
+      Filename=D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Tree\EMPUBLISHSCORE.sas,
+      RECFM=V,LRECL=32767,File Size (bytes)=13464,
+      Last Modified=01May2018:17:20:32,
+      Create Time=01May2018:17:20:32
+
+NOTE: 1 record was written to the file PUBREF.
+      The minimum record length was 12.
+      The maximum record length was 12.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: Fileref FLOWREF has been deassigned.
+NOTE: Fileref PUBREF has been deassigned.
+
+NOTE: The data set WORK.EM_METACHANGE has 1 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 1 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 2 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 3 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 3 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 4 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 4 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 5 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 5 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 6 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 6 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 7 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 7 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 8 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 8 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 9 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 9 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 10 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 10 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 11 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 11 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 12 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 2 observations read from the data set EMWS1.IDS2_TARGETBUY_DM.
+      WHERE _TYPE_='PREDICTED';
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: There were 12 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 13 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: There were 13 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 14 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+
+NOTE: Variable cvimportance is uninitialized.
+NOTE: Variable nsurrogates is uninitialized.
+NOTE: There were 2 observations read from the data set EMWS1.TREE_OUTIMPORT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+
+NOTE: Variable NSURROGATES is uninitialized.
+NOTE: Variable VIMPORTANCE is uninitialized.
+NOTE: Variable CVIMPORTANCE is uninitialized.
+NOTE: Variable CVRULES is uninitialized.
+NOTE: Variable RATIO is uninitialized.
+NOTE: There were 18 observations read from the data set EMWS1.TREE_OUTIMPORT.
+NOTE: The data set EMWS1.TREE_OUTIMPORT has 18 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+
+
+NOTE: The data set WORK.EM_USER_REPORT has 132 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+      
+
+17444  
+17445  *------------------------------------------------------------*;
+17446  * End SCORE: Tree;
+17447  *------------------------------------------------------------*;
+
+17448  proc sort data=WORK.EM_METACHANGE;
+17449  by key uname;
+17450  run;
+
+NOTE: There were 14 observations read from the data set WORK.EM_METACHANGE.
+NOTE: The data set WORK.EM_METACHANGE has 14 observations and 9 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+17451  filename x "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Tree\CDELTA_TRAIN.sas";
+17452  data _null_;
+17453  file x;
+17454  put 'if upcase(NAME) = "ADVERTISEMENTZONE" then do;';
+17455  put 'ROLE = "REJECTED";';
+17456  put 'end;';
+17457  put 'else ';
+17458  put 'if upcase(NAME) = "CAMPAIGNVIEWEDEMAIL" then do;';
+17459  put 'ROLE = "REJECTED";';
+17460  put 'end;';
+17461  put 'else ';
+17462  put 'if upcase(NAME) = "CLEANSERPRODUCTS" then do;';
+17463  put 'ROLE = "REJECTED";';
+17464  put 'end;';
+17465  put 'else ';
+17466  put 'if upcase(NAME) = "CLUSTERGROUP" then do;';
+17467  put 'ROLE = "REJECTED";';
+17468  put 'end;';
+17469  put 'else ';
+17470  put 'if upcase(NAME) = "LOTIONPRODUCTS" then do;';
+17471  put 'ROLE = "REJECTED";';
+17472  put 'end;';
+17473  put 'else ';
+17474  put 'if upcase(NAME) = "LOYALTYCLASS" then do;';
+17475  put 'ROLE = "REJECTED";';
+17476  put 'end;';
+17477  put 'else ';
+17478  put 'if upcase(NAME) = "LOYALTYTIME" then do;';
+17479  put 'ROLE = "REJECTED";';
+17480  put 'end;';
+17481  put 'else ';
+17482  put 'if upcase(NAME) = "NIGHTREPAIRPRODUCTS" then do;';
+17483  put 'ROLE = "REJECTED";';
+17484  put 'end;';
+17485  put 'else ';
+17486  put 'if upcase(NAME) = "PREVIOUSCAMPAIGN" then do;';
+17487  put 'ROLE = "REJECTED";';
+17488  put 'end;';
+17489  put 'else ';
+17490  put 'if upcase(NAME) = "Q_TARGETBUY0" then do;';
+17491  put 'ROLE = "ASSESS";';
+17492  put 'end;';
+17493  put 'else ';
+17494  put 'if upcase(NAME) = "Q_TARGETBUY1" then do;';
+17495  put 'ROLE = "ASSESS";';
+17496  put 'end;';
+17497  put 'else ';
+17498  put 'if upcase(NAME) = "REGION" then do;';
+17499  put 'ROLE = "REJECTED";';
+17500  put 'end;';
+17501  put 'else ';
+17502  put 'if upcase(NAME) = "TIMESINCELASTPURCHASE" then do;';
+17503  put 'ROLE = "REJECTED";';
+17504  put 'end;';
+17505  put 'else ';
+17506  put 'if upcase(NAME) = "_NODE_" then do;';
+17507  put 'ROLE = "SEGMENT";';
+17508  put 'LEVEL = "NOMINAL";';
+17509  put 'end;';
+17510  run;
+
+NOTE: The file X is:
+      Filename=D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Tree\CDELTA_TRAIN.sas,
+      RECFM=V,LRECL=32767,File Size (bytes)=0,
+      Last Modified=01May2018:17:20:33,
+      Create Time=01May2018:17:03:02
+
+NOTE: 56 records were written to the file X.
+      The minimum record length was 4.
+      The maximum record length was 50.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+17511  filename x;
+NOTE: Fileref X has been deassigned.
+
+17512  filename emflow "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Tree\EMFLOWSCORE.sas";
+17513  *------------------------------------------------------------*;
+17514  * Tree: Scoring DATA data;
+17515  *------------------------------------------------------------*;
+17516  data EMWS1.Tree_TRAIN
+17517  / view=EMWS1.Tree_TRAIN
+17518  ;
+17519  set EMWS1.Ids2_DATA
+17520  ;
+17521  %inc emflow;
+NOTE: %INCLUDE (level 1) file EMFLOW is file D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Tree\EMFLOWSCORE.sas.
+17522 +****************************************************************;
+17523 +******             DECISION TREE SCORING CODE             ******;
+17524 +****************************************************************;
+17525 +
+17526 +******         LENGTHS OF NEW CHARACTER VARIABLES         ******;
+17527 +LENGTH F_TargetBuy  $   12;
+17528 +LENGTH I_TargetBuy  $   12;
+17529 +LENGTH _WARN_  $    4;
+17530 +
+17531 +******              LABELS FOR NEW VARIABLES              ******;
+17532 +label _NODE_ = 'Node' ;
+17533 +label _LEAF_ = 'Leaf' ;
+17534 +label P_TargetBuy0 = 'Predicted: TargetBuy=0' ;
+17535 +label P_TargetBuy1 = 'Predicted: TargetBuy=1' ;
+17536 +label Q_TargetBuy0 = 'Unadjusted P: TargetBuy=0' ;
+17537 +label Q_TargetBuy1 = 'Unadjusted P: TargetBuy=1' ;
+17538 +label R_TargetBuy0 = 'Residual: TargetBuy=0' ;
+17539 +label R_TargetBuy1 = 'Residual: TargetBuy=1' ;
+17540 +label F_TargetBuy = 'From: TargetBuy' ;
+17541 +label I_TargetBuy = 'Into: TargetBuy' ;
+17542 +label U_TargetBuy = 'Unnormalized Into: TargetBuy' ;
+17543 +label _WARN_ = 'Warnings' ;
+17544 +
+17545 +
+17546 +******      TEMPORARY VARIABLES FOR FORMATTED VALUES      ******;
+17547 +LENGTH _ARBFMT_12 $     12; DROP _ARBFMT_12;
+17548 +_ARBFMT_12 = ' '; /* Initialize to avoid warning. */
+17549 +LENGTH _ARBFMT_1 $      1; DROP _ARBFMT_1;
+17550 +_ARBFMT_1 = ' '; /* Initialize to avoid warning. */
+17551 +
+17552 +
+17553 +_ARBFMT_12 = PUT( TargetBuy , BEST12.);
+17554 + %DMNORMCP( _ARBFMT_12, F_TargetBuy );
+17555 +
+17556 +******             ASSIGN OBSERVATION TO NODE             ******;
+17557 +IF  NOT MISSING(Age ) AND
+17558 +  Age  <                 44.5 THEN DO;
+17559 +  _ARBFMT_1 = PUT( Gender , $CHAR1.);
+17560 +   %DMNORMIP( _ARBFMT_1);
+17561 +  IF _ARBFMT_1 IN ('F' ) THEN DO;
+17562 +    _ARBFMT_12 = PUT( MobileApplications , BEST12.);
+17563 +     %DMNORMIP( _ARBFMT_12);
+17564 +    IF _ARBFMT_12 IN ('0' ) THEN DO;
+17565 +      IF  NOT MISSING(Age ) AND
+17566 +        Age  <                 20.5 THEN DO;
+17567 +        _NODE_  =                   16;
+17568 +        _LEAF_  =                    1;
+17569 +        P_TargetBuy0  =     0.81063122923588;
+17570 +        P_TargetBuy1  =     0.18936877076411;
+17571 +        Q_TargetBuy0  =     0.81063122923588;
+17572 +        Q_TargetBuy1  =     0.18936877076411;
+17573 +        I_TargetBuy  = '0' ;
+17574 +        U_TargetBuy  =                    0;
+17575 +        END;
+17576 +      ELSE DO;
+17577 +        IF  NOT MISSING(AffluenceGrade ) AND
+17578 +          AffluenceGrade  <                  9.5 THEN DO;
+17579 +          IF  NOT MISSING(Age ) AND
+17580 +                            39.5 <= Age  THEN DO;
+17581 +            _NODE_  =                   65;
+17582 +            _LEAF_  =                    3;
+17583 +            P_TargetBuy0  =      0.6913946587537;
+17584 +            P_TargetBuy1  =     0.30860534124629;
+17585 +            Q_TargetBuy0  =      0.6913946587537;
+17586 +            Q_TargetBuy1  =     0.30860534124629;
+17587 +            I_TargetBuy  = '0' ;
+17588 +            U_TargetBuy  =                    0;
+17589 +            END;
+17590 +          ELSE DO;
+17591 +            _NODE_  =                   64;
+17592 +            _LEAF_  =                    2;
+17593 +            P_TargetBuy0  =     0.47519083969465;
+17594 +            P_TargetBuy1  =     0.52480916030534;
+17595 +            Q_TargetBuy0  =     0.47519083969465;
+17596 +            Q_TargetBuy1  =     0.52480916030534;
+17597 +            I_TargetBuy  = '1' ;
+17598 +            U_TargetBuy  =                    1;
+17599 +            END;
+17600 +          END;
+17601 +        ELSE DO;
+17602 +          _NODE_  =                   35;
+17603 +          _LEAF_  =                    4;
+17604 +          P_TargetBuy0  =     0.28530670470756;
+17605 +          P_TargetBuy1  =     0.71469329529243;
+17606 +          Q_TargetBuy0  =     0.28530670470756;
+17607 +          Q_TargetBuy1  =     0.71469329529243;
+17608 +          I_TargetBuy  = '1' ;
+17609 +          U_TargetBuy  =                    1;
+17610 +          END;
+17611 +        END;
+17612 +      END;
+17613 +    ELSE DO;
+17614 +      IF  NOT MISSING(AffluenceGrade ) AND
+17615 +        AffluenceGrade  <                  7.5 THEN DO;
+17616 +        IF  NOT MISSING(Age ) AND
+17617 +          Age  <                 32.5 THEN DO;
+17618 +          _NODE_  =                   36;
+17619 +          _LEAF_  =                    5;
+17620 +          P_TargetBuy0  =     0.22085889570552;
+17621 +          P_TargetBuy1  =     0.77914110429447;
+17622 +          Q_TargetBuy0  =     0.22085889570552;
+17623 +          Q_TargetBuy1  =     0.77914110429447;
+17624 +          I_TargetBuy  = '1' ;
+17625 +          U_TargetBuy  =                    1;
+17626 +          END;
+17627 +        ELSE DO;
+17628 +          _ARBFMT_12 = PUT( FacebookLike , BEST12.);
+17629 +           %DMNORMIP( _ARBFMT_12);
+17630 +          IF _ARBFMT_12 IN ('1' ) THEN DO;
+17631 +            _NODE_  =                   71;
+17632 +            _LEAF_  =                    7;
+17633 +            P_TargetBuy0  =     0.44324324324324;
+17634 +            P_TargetBuy1  =     0.55675675675675;
+17635 +            Q_TargetBuy0  =     0.44324324324324;
+17636 +            Q_TargetBuy1  =     0.55675675675675;
+17637 +            I_TargetBuy  = '1' ;
+17638 +            U_TargetBuy  =                    1;
+17639 +            END;
+17640 +          ELSE DO;
+17641 +            _NODE_  =                   70;
+17642 +            _LEAF_  =                    6;
+17643 +            P_TargetBuy0  =     0.66806722689075;
+17644 +            P_TargetBuy1  =     0.33193277310924;
+17645 +            Q_TargetBuy0  =     0.66806722689075;
+17646 +            Q_TargetBuy1  =     0.33193277310924;
+17647 +            I_TargetBuy  = '0' ;
+17648 +            U_TargetBuy  =                    0;
+17649 +            END;
+17650 +          END;
+17651 +        END;
+17652 +      ELSE DO;
+17653 +        _NODE_  =                   19;
+17654 +        _LEAF_  =                    8;
+17655 +        P_TargetBuy0  =      0.1860465116279;
+17656 +        P_TargetBuy1  =     0.81395348837209;
+17657 +        Q_TargetBuy0  =      0.1860465116279;
+17658 +        Q_TargetBuy1  =     0.81395348837209;
+17659 +        I_TargetBuy  = '1' ;
+17660 +        U_TargetBuy  =                    1;
+17661 +        END;
+17662 +      END;
+17663 +    END;
+17664 +  ELSE DO;
+17665 +    IF  NOT MISSING(AffluenceGrade ) AND
+17666 +                      12.5 <= AffluenceGrade  THEN DO;
+17667 +      _ARBFMT_12 = PUT( MobileApplications , BEST12.);
+17668 +       %DMNORMIP( _ARBFMT_12);
+17669 +      IF _ARBFMT_12 IN ('0' ) THEN DO;
+17670 +        IF  NOT MISSING(TotalSpend ) AND
+17671 +                          1400 <= TotalSpend  THEN DO;
+17672 +          _NODE_  =                   47;
+17673 +          _LEAF_  =                   17;
+17674 +          P_TargetBuy0  =     0.77586206896551;
+17675 +          P_TargetBuy1  =     0.22413793103448;
+17676 +          Q_TargetBuy0  =     0.77586206896551;
+17677 +          Q_TargetBuy1  =     0.22413793103448;
+17678 +          I_TargetBuy  = '0' ;
+17679 +          U_TargetBuy  =                    0;
+17680 +          END;
+17681 +        ELSE DO;
+17682 +          _NODE_  =                   46;
+17683 +          _LEAF_  =                   16;
+17684 +          P_TargetBuy0  =     0.38636363636363;
+17685 +          P_TargetBuy1  =     0.61363636363636;
+17686 +          Q_TargetBuy0  =     0.38636363636363;
+17687 +          Q_TargetBuy1  =     0.61363636363636;
+17688 +          I_TargetBuy  = '1' ;
+17689 +          U_TargetBuy  =                    1;
+17690 +          END;
+17691 +        END;
+17692 +      ELSE DO;
+17693 +        _NODE_  =                   22;
+17694 +        _LEAF_  =                   15;
+17695 +        P_TargetBuy0  =     0.26347305389221;
+17696 +        P_TargetBuy1  =     0.73652694610778;
+17697 +        Q_TargetBuy0  =     0.26347305389221;
+17698 +        Q_TargetBuy1  =     0.73652694610778;
+17699 +        I_TargetBuy  = '1' ;
+17700 +        U_TargetBuy  =                    1;
+17701 +        END;
+17702 +      END;
+17703 +    ELSE DO;
+17704 +      IF  NOT MISSING(Age ) AND
+17705 +        Age  <                    9 THEN DO;
+17706 +        _ARBFMT_12 = PUT( MobileApplications , BEST12.);
+17707 +         %DMNORMIP( _ARBFMT_12);
+17708 +        IF _ARBFMT_12 IN ('1' ) THEN DO;
+17709 +          IF  NOT MISSING(TotalSpend ) AND
+17710 +                             515 <= TotalSpend  THEN DO;
+17711 +            _NODE_  =                   77;
+17712 +            _LEAF_  =                   10;
+17713 +            P_TargetBuy0  =                 0.35;
+17714 +            P_TargetBuy1  =                 0.65;
+17715 +            Q_TargetBuy0  =                 0.35;
+17716 +            Q_TargetBuy1  =                 0.65;
+17717 +            I_TargetBuy  = '1' ;
+17718 +            U_TargetBuy  =                    1;
+17719 +            END;
+17720 +          ELSE DO;
+17721 +            _NODE_  =                   76;
+17722 +            _LEAF_  =                    9;
+17723 +            P_TargetBuy0  =     0.85526315789473;
+17724 +            P_TargetBuy1  =     0.14473684210526;
+17725 +            Q_TargetBuy0  =     0.85526315789473;
+17726 +            Q_TargetBuy1  =     0.14473684210526;
+17727 +            I_TargetBuy  = '0' ;
+17728 +            U_TargetBuy  =                    0;
+17729 +            END;
+17730 +          END;
+17731 +        ELSE DO;
+17732 +          _NODE_  =                   41;
+17733 +          _LEAF_  =                   11;
+17734 +          P_TargetBuy0  =     0.94010889292196;
+17735 +          P_TargetBuy1  =     0.05989110707803;
+17736 +          Q_TargetBuy0  =     0.94010889292196;
+17737 +          Q_TargetBuy1  =     0.05989110707803;
+17738 +          I_TargetBuy  = '0' ;
+17739 +          U_TargetBuy  =                    0;
+17740 +          END;
+17741 +        END;
+17742 +      ELSE DO;
+17743 +        IF  NOT MISSING(Age ) AND
+17744 +          Age  <                 29.5 THEN DO;
+17745 +          _ARBFMT_12 = PUT( MobileApplications , BEST12.);
+17746 +           %DMNORMIP( _ARBFMT_12);
+17747 +          IF _ARBFMT_12 IN ('1' ) THEN DO;
+17748 +            _NODE_  =                   81;
+17749 +            _LEAF_  =                   13;
+17750 +            P_TargetBuy0  =             0.078125;
+17751 +            P_TargetBuy1  =             0.921875;
+17752 +            Q_TargetBuy0  =             0.078125;
+17753 +            Q_TargetBuy1  =             0.921875;
+17754 +            I_TargetBuy  = '1' ;
+17755 +            U_TargetBuy  =                    1;
+17756 +            END;
+17757 +          ELSE DO;
+17758 +            _NODE_  =                   80;
+17759 +            _LEAF_  =                   12;
+17760 +            P_TargetBuy0  =     0.63725490196078;
+17761 +            P_TargetBuy1  =     0.36274509803921;
+17762 +            Q_TargetBuy0  =     0.63725490196078;
+17763 +            Q_TargetBuy1  =     0.36274509803921;
+17764 +            I_TargetBuy  = '0' ;
+17765 +            U_TargetBuy  =                    0;
+17766 +            END;
+17767 +          END;
+17768 +        ELSE DO;
+17769 +          _NODE_  =                   43;
+17770 +          _LEAF_  =                   14;
+17771 +          P_TargetBuy0  =     0.76848484848484;
+17772 +          P_TargetBuy1  =     0.23151515151515;
+17773 +          Q_TargetBuy0  =     0.76848484848484;
+17774 +          Q_TargetBuy1  =     0.23151515151515;
+17775 +          I_TargetBuy  = '0' ;
+17776 +          U_TargetBuy  =                    0;
+17777 +          END;
+17778 +        END;
+17779 +      END;
+17780 +    END;
+17781 +  END;
+17782 +ELSE DO;
+17783 +  IF  NOT MISSING(AffluenceGrade ) AND
+17784 +                    12.5 <= AffluenceGrade  THEN DO;
+17785 +    _ARBFMT_1 = PUT( Gender , $CHAR1.);
+17786 +     %DMNORMIP( _ARBFMT_1);
+17787 +    IF _ARBFMT_1 IN ('F' ) THEN DO;
+17788 +      IF  NOT MISSING(AffluenceGrade ) AND
+17789 +                        16.5 <= AffluenceGrade  THEN DO;
+17790 +        _NODE_  =                   31;
+17791 +        _LEAF_  =                   24;
+17792 +        P_TargetBuy0  =     0.13868613138686;
+17793 +        P_TargetBuy1  =     0.86131386861313;
+17794 +        Q_TargetBuy0  =     0.13868613138686;
+17795 +        Q_TargetBuy1  =     0.86131386861313;
+17796 +        I_TargetBuy  = '1' ;
+17797 +        U_TargetBuy  =                    1;
+17798 +        END;
+17799 +      ELSE DO;
+17800 +        _ARBFMT_12 = PUT( MobileApplications , BEST12.);
+17801 +         %DMNORMIP( _ARBFMT_12);
+17802 +        IF _ARBFMT_12 IN ('0' ) THEN DO;
+17803 +          _NODE_  =                   59;
+17804 +          _LEAF_  =                   23;
+17805 +          P_TargetBuy0  =     0.62574850299401;
+17806 +          P_TargetBuy1  =     0.37425149700598;
+17807 +          Q_TargetBuy0  =     0.62574850299401;
+17808 +          Q_TargetBuy1  =     0.37425149700598;
+17809 +          I_TargetBuy  = '0' ;
+17810 +          U_TargetBuy  =                    0;
+17811 +          END;
+17812 +        ELSE DO;
+17813 +          IF  NOT MISSING(DayCareProducts ) AND
+17814 +            DayCareProducts  <                  0.5 THEN DO;
+17815 +            _NODE_  =                  100;
+17816 +            _LEAF_  =                   21;
+17817 +            P_TargetBuy0  =     0.69411764705882;
+17818 +            P_TargetBuy1  =     0.30588235294117;
+17819 +            Q_TargetBuy0  =     0.69411764705882;
+17820 +            Q_TargetBuy1  =     0.30588235294117;
+17821 +            I_TargetBuy  = '0' ;
+17822 +            U_TargetBuy  =                    0;
+17823 +            END;
+17824 +          ELSE DO;
+17825 +            _NODE_  =                  101;
+17826 +            _LEAF_  =                   22;
+17827 +            P_TargetBuy0  =     0.32440476190476;
+17828 +            P_TargetBuy1  =     0.67559523809523;
+17829 +            Q_TargetBuy0  =     0.32440476190476;
+17830 +            Q_TargetBuy1  =     0.67559523809523;
+17831 +            I_TargetBuy  = '1' ;
+17832 +            U_TargetBuy  =                    1;
+17833 +            END;
+17834 +          END;
+17835 +        END;
+17836 +      END;
+17837 +    ELSE DO;
+17838 +      IF  NOT MISSING(AffluenceGrade ) AND
+17839 +                        17.5 <= AffluenceGrade  THEN DO;
+17840 +        _NODE_  =                   29;
+17841 +        _LEAF_  =                   20;
+17842 +        P_TargetBuy0  =     0.34285714285714;
+17843 +        P_TargetBuy1  =     0.65714285714285;
+17844 +        Q_TargetBuy0  =     0.34285714285714;
+17845 +        Q_TargetBuy1  =     0.65714285714285;
+17846 +        I_TargetBuy  = '1' ;
+17847 +        U_TargetBuy  =                    1;
+17848 +        END;
+17849 +      ELSE DO;
+17850 +        _NODE_  =                   28;
+17851 +        _LEAF_  =                   19;
+17852 +        P_TargetBuy0  =     0.81767955801104;
+17853 +        P_TargetBuy1  =     0.18232044198895;
+17854 +        Q_TargetBuy0  =     0.81767955801104;
+17855 +        Q_TargetBuy1  =     0.18232044198895;
+17856 +        I_TargetBuy  = '0' ;
+17857 +        U_TargetBuy  =                    0;
+17858 +        END;
+17859 +      END;
+17860 +    END;
+17861 +  ELSE DO;
+17862 +    _NODE_  =                    6;
+17863 +    _LEAF_  =                   18;
+17864 +    P_TargetBuy0  =     0.87801458216489;
+17865 +    P_TargetBuy1  =      0.1219854178351;
+17866 +    Q_TargetBuy0  =     0.87801458216489;
+17867 +    Q_TargetBuy1  =      0.1219854178351;
+17868 +    I_TargetBuy  = '0' ;
+17869 +    U_TargetBuy  =                    0;
+17870 +    END;
+17871 +  END;
+17872 +
+17873 +*****  RESIDUALS R_ *************;
+17874 +IF  F_TargetBuy  NE '0'
+17875 +AND F_TargetBuy  NE '1'  THEN DO;
+17876 +        R_TargetBuy0  = .;
+17877 +        R_TargetBuy1  = .;
+17878 + END;
+17879 + ELSE DO;
+17880 +       R_TargetBuy0  =  -P_TargetBuy0 ;
+17881 +       R_TargetBuy1  =  -P_TargetBuy1 ;
+17882 +       SELECT( F_TargetBuy  );
+17883 +          WHEN( '0'  ) R_TargetBuy0  = R_TargetBuy0  +1;
+17884 +          WHEN( '1'  ) R_TargetBuy1  = R_TargetBuy1  +1;
+17885 +       END;
+17886 + END;
+17887 +
+17888 +****************************************************************;
+17889 +******          END OF DECISION TREE SCORING CODE         ******;
+17890 +****************************************************************;
+17891 +
+17892 +drop _LEAF_;
+NOTE: %INCLUDE (level 1) ending.
+17893  run;
+
+NOTE: DATA STEP view saved on file EMWS1.TREE_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.IDS2_DATA.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.07 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.07 seconds
+      
+
+17894  quit;
+17895  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+NOTE: View EMWS1.TREE_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+      
+17897  proc sort data=WORK.EM_USER_REPORT;
+17898  by ID VIEW;
+17899  run;
+
+NOTE: There were 132 observations read from the data set WORK.EM_USER_REPORT.
+NOTE: The data set WORK.EM_USER_REPORT has 132 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+17900  *------------------------------------------------------------*;
+17901  * Tree: Computing metadata for TRAIN data;
+17902  *------------------------------------------------------------*;
+
+NOTE: View EMWS1.TREE_TRAIN.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+      
+18303  data EMWS1.Tree_EMINFO;
+18304  length TARGET KEY $32 DATA $43;
+18305  input TARGET KEY DATA $;
+18306  cards;
+
+NOTE: The data set EMWS1.TREE_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+18310  run;
+18311  proc sort data = EMWS1.Tree_EMINFO NOTHREADS;
+18312  by TARGET KEY;
+18313  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.TREE_EMINFO.
+NOTE: The data set EMWS1.TREE_EMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+18314  proc sort data = EMWS1.Ids2_EMINFO OUT=WORK.SORTEDEMINFO NOTHREADS;
+18315  by TARGET KEY;
+18316  run;
+
+NOTE: There were 3 observations read from the data set EMWS1.IDS2_EMINFO.
+NOTE: The data set WORK.SORTEDEMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+18317  proc sort data = EMWS1.Tree_EMINFO OUT=WORK.TEMP_INFO NOTHREADS;
+18318  by TARGET KEY;
+18319  run;
+
+NOTE: Input data set is already sorted; it has been copied to the output data set.
+NOTE: There were 3 observations read from the data set EMWS1.TREE_EMINFO.
+NOTE: The data set WORK.TEMP_INFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+18320  data EMWS1.Tree_EMINFO;
+18321  merge WORK.SORTEDEMINFO WORK.TEMP_INFO;
+18322  by TARGET KEY;
+18323  run;
+
+NOTE: There were 3 observations read from the data set WORK.SORTEDEMINFO.
+NOTE: There were 3 observations read from the data set WORK.TEMP_INFO.
+NOTE: The data set EMWS1.TREE_EMINFO has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+18324  proc datasets lib=work nolist;
+18325  delete TEMP_INFO SORTEDEMINFO;
+18326  run;
+
+NOTE: Deleting WORK.TEMP_INFO (memtype=DATA).
+NOTE: Deleting WORK.SORTEDEMINFO (memtype=DATA).
+18327  quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: View EMWS1.TREE_TRAIN.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.10 seconds
+      

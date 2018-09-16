@@ -1,0 +1,264 @@
+*------------------------------------------------------------*
+ Node = 7
+*------------------------------------------------------------*
+if TimeSinceLastPurchase >= 10.5 or MISSING
+AND Replacement: LoyaltyTime >= 15.5
+then 
+ Tree Node Identifier   = 7
+ Number of Observations = 197
+ Predicted: _SEGMENT_=3  = 0.01
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.99
+ 
+*------------------------------------------------------------*
+ Node = 9
+*------------------------------------------------------------*
+if TimeSinceLastPurchase >= 11.5
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+then 
+ Tree Node Identifier   = 9
+ Number of Observations = 9
+ Predicted: _SEGMENT_=3  = 0.33
+ Predicted: _SEGMENT_=4  = 0.11
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.56
+ 
+*------------------------------------------------------------*
+ Node = 12
+*------------------------------------------------------------*
+if TotalSpend < 3100
+AND TimeSinceLastPurchase < 10.5
+AND Replacement: LoyaltyTime >= 15.5
+then 
+ Tree Node Identifier   = 12
+ Number of Observations = 9
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 19
+*------------------------------------------------------------*
+if TimeSinceLastPurchase >= 10.5
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND AffluenceGrade < 18.5 or MISSING
+then 
+ Tree Node Identifier   = 19
+ Number of Observations = 16
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 0.81
+ Predicted: _SEGMENT_=1  = 0.19
+ 
+*------------------------------------------------------------*
+ Node = 20
+*------------------------------------------------------------*
+if TotalSpend < 7700 or MISSING
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND AffluenceGrade >= 18.5
+then 
+ Tree Node Identifier   = 20
+ Number of Observations = 23
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.91
+ Predicted: _SEGMENT_=2  = 0.09
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 21
+*------------------------------------------------------------*
+if TotalSpend >= 7700
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND AffluenceGrade >= 18.5
+then 
+ Tree Node Identifier   = 21
+ Number of Observations = 13
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.23
+ Predicted: _SEGMENT_=2  = 0.77
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 22
+*------------------------------------------------------------*
+if TotalSpend >= 3100 or MISSING
+AND TimeSinceLastPurchase < 10.5
+AND Replacement: LoyaltyTime >= 15.5
+AND LotionProducts < 2.5 or MISSING
+then 
+ Tree Node Identifier   = 22
+ Number of Observations = 11
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 23
+*------------------------------------------------------------*
+if TotalSpend >= 3100 or MISSING
+AND TimeSinceLastPurchase < 10.5
+AND Replacement: LoyaltyTime >= 15.5
+AND LotionProducts >= 2.5
+then 
+ Tree Node Identifier   = 23
+ Number of Observations = 7
+ Predicted: _SEGMENT_=3  = 0.14
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 0.71
+ Predicted: _SEGMENT_=1  = 0.14
+ 
+*------------------------------------------------------------*
+ Node = 25
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 11.5 or MISSING
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND Replacement: Age < 45.5
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+then 
+ Tree Node Identifier   = 25
+ Number of Observations = 699
+ Predicted: _SEGMENT_=3  = 0.13
+ Predicted: _SEGMENT_=4  = 0.87
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 26
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 11.5 or MISSING
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND Replacement: Age >= 45.5 or MISSING
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND AffluenceGrade < 10.5 or MISSING
+then 
+ Tree Node Identifier   = 26
+ Number of Observations = 1198
+ Predicted: _SEGMENT_=3  = 0.88
+ Predicted: _SEGMENT_=4  = 0.12
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 29
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 10.5 or MISSING
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND Replacement: Age >= 38.5 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND AffluenceGrade < 18.5 or MISSING
+then 
+ Tree Node Identifier   = 29
+ Number of Observations = 1279
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.01
+ Predicted: _SEGMENT_=2  = 0.99
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 30
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 11.5 or MISSING
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND Replacement: Age < 45.5
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND AffluenceGrade < 10.5 or MISSING
+then 
+ Tree Node Identifier   = 30
+ Number of Observations = 154
+ Predicted: _SEGMENT_=3  = 0.86
+ Predicted: _SEGMENT_=4  = 0.14
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 31
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 11.5 or MISSING
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND Replacement: Age < 45.5
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND AffluenceGrade >= 10.5
+then 
+ Tree Node Identifier   = 31
+ Number of Observations = 49
+ Predicted: _SEGMENT_=3  = 0.35
+ Predicted: _SEGMENT_=4  = 0.65
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 36
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 11.5 or MISSING
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND Replacement: Age >= 45.5 or MISSING
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND AffluenceGrade >= 10.5
+then 
+ Tree Node Identifier   = 36
+ Number of Observations = 312
+ Predicted: _SEGMENT_=3  = 0.29
+ Predicted: _SEGMENT_=4  = 0.71
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 37
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 11.5 or MISSING
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND Replacement: Age >= 45.5 or MISSING
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND AffluenceGrade >= 10.5
+then 
+ Tree Node Identifier   = 37
+ Number of Observations = 126
+ Predicted: _SEGMENT_=3  = 0.85
+ Predicted: _SEGMENT_=4  = 0.15
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 38
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 10.5 or MISSING
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND Replacement: Age < 38.5
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND AffluenceGrade < 11.5 or MISSING
+then 
+ Tree Node Identifier   = 38
+ Number of Observations = 84
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.11
+ Predicted: _SEGMENT_=2  = 0.89
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 39
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 10.5 or MISSING
+AND Replacement: LoyaltyTime < 15.5 or MISSING
+AND Replacement: Age < 38.5
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND AffluenceGrade < 18.5 AND AffluenceGrade >= 11.5
+then 
+ Tree Node Identifier   = 39
+ Number of Observations = 38
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.55
+ Predicted: _SEGMENT_=2  = 0.45
+ Predicted: _SEGMENT_=1  = 0.00
+ 

@@ -1,0 +1,22 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Importance
+
+                                                      Number of    Number of
+                                                      Splitting    Surrogate
+Variable Name            Label                          Rules        Rules      Importance
+
+TotalSpend                                                2            6          1.00000 
+LoyaltyClass                                              1            1          0.90952 
+REP_Age                  Replacement: Age                 2            4          0.85748 
+REP_LoyaltyTime          Replacement: LoyaltyTime         1            4          0.83144 
+AffluenceGrade                                            4            6          0.55424 
+TimeSinceLastPurchase                                     3            4          0.48527 
+REP_ClusterGroup         Replacement: ClusterGroup        0            1          0.34594 
+REP_Gender               Replacement: Gender              2            0          0.33273 
+LotionProducts                                            1            2          0.10360 
+DayCareProducts                                           0            2          0.07955 
+PreviousCampaign                                          0            1          0.05866 
+CleanserProducts                                          0            1          0.05005 

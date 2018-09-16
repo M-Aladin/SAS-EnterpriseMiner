@@ -1,0 +1,101 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 07, 2018
+Time:                12:30:28
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           NOMINAL           1
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          4
+REJECTED     NOMINAL           5
+SEGMENT      NOMINAL           1
+TARGET       BINARY            1
+ 
+ 
+ 
+ 
+Frequencies: _SEGMENT_
+ 
+                                     Percent of
+ Segment     Segment    Frequency       Total
+Variable      Value       Count       Frequency
+ 
+_SEGMENT_       3           7760       38.7322
+_SEGMENT_       2           6440       32.1437
+_SEGMENT_       1           5835       29.1240
+ 
+ 
+ 
+Variable: _SEGMENT_ Segment: 3 Count: 7760
+Decision Tree Importance Profiles
+ 
+Variable                  Worth     Rank
+ 
+REP_AdvertisementZone    0.47461      1
+REP_Region               0.47461      2
+REP_ClusterGroup         0.01270      3
+REP_LoyaltyTime          0.00223      4
+REP_Age                  0.00155      5
+TotalSpend               0.00144      6
+TimeSinceLastPurchase    0.00076      7
+AffluenceGrade           0.00059      8
+LoyaltyClass             0.00030      9
+LotionProducts           0.00027     10
+ 
+ 
+ 
+Variable: _SEGMENT_ Segment: 2 Count: 6440
+Decision Tree Importance Profiles
+ 
+Variable                  Worth     Rank
+ 
+PreviousCampaign         0.18233      1
+REP_AdvertisementZone    0.12957      2
+REP_Region               0.12905      3
+REP_ClusterGroup         0.00306      4
+AffluenceGrade           0.00166      5
+REP_Age                  0.00144      6
+REP_LoyaltyTime          0.00092      7
+TimeSinceLastPurchase    0.00084      8
+MobileApplications       0.00079      9
+TotalSpend               0.00064     10
+ 
+ 
+ 
+Variable: _SEGMENT_ Segment: 1 Count: 5835
+Decision Tree Importance Profiles
+ 
+Variable                  Worth     Rank
+ 
+PreviousCampaign         0.19372      1
+REP_AdvertisementZone    0.10993      2
+REP_Region               0.10968      3
+REP_ClusterGroup         0.00366      4
+AffluenceGrade           0.00125      5
+REP_LoyaltyTime          0.00112      6
+TimeSinceLastPurchase    0.00107      7
+REP_Age                  0.00099      8
+MobileApplications       0.00088      9
+TotalSpend               0.00076     10
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

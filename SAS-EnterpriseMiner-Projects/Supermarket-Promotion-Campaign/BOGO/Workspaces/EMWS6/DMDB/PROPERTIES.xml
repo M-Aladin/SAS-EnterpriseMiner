@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?><_ROOT_  Location="CATALOG" Catalog="SASHELP.EMEXPL.DMDB.SOURCE" Interval="Y" Class="Y" MaxValues="25"
+ ForceRun="N" RunAction="Train" Component="DMDB" DataNeeded="Y" RawCreateTime="1841861847.4"
+ CreateTime="13MAY2018:20:17:27" RunId="153d3e62-f266-4d52-b974-02f0e968890a">
+<VARIABLEPROPERTIES/>
+<FILEPROPERTIES ><![CDATA[
+USERTRAINCODE
+USERSCORECODE
+USERREPORTCODE
+]]>
+</FILEPROPERTIES></_ROOT_>

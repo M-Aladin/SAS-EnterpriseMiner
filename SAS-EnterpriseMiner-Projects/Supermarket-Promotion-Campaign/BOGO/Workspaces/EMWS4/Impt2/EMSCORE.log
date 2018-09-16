@@ -1,0 +1,114 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                May 09, 2018
+Time:                15:09:08
+*------------------------------------------------------------*
+11660  data _null_;
+11661  set EMWS4.Impt2_META end=eof;
+11662  length string $34;
+11663  retain missTotal;
+11664  file #LN00150;
+11665  if _n_=1 then misstotal = percentmiss;
+11666  missTotal = percentmiss+misstotal;
+11667  if IMP ne '' and METHOD ne 'NONE' then do;
+11668  string = '"'!!strip(NAME)!!'"';
+11669  put 'if NAME = ' string 'then delete;';
+11670  put 'else ';
+11671  string = '"'!!strip(IMP)!!'"';
+11672  put 'if NAME    = ' string ' then do;';
+11673  string = '"'!!strip(ROLE)!!'"';
+11674  put '   ROLE    = ' string ';';
+11675  string = '"'!!strip(FAMILY)!!'"';
+11676  put '   FAMILY  = ' string ';';
+11677  string = '"'!!strip(REPORT)!!'"';
+11678  put '   REPORT  = ' string ';';
+11679  string = '"'!!strip(LEVEL)!!'"';
+11680  put '   LEVEL   = ' string ';';
+11681  string = '"'!!strip(ORDER)!!'"';
+11682  put '   ORDER   = ' string ';';
+11683  put 'end;';
+11684  end;
+11685  if percentmiss>50 and ROLE ne 'TARGET' then do;
+11686  string = '"'!!strip(NAME)!!'"';
+11687  put 'if NAME = ' string ' then do;';
+11688  put '   ROLE ="REJECTED";';
+11689  put '   COMMENT = "Percent of missing exceeds 50%";';
+11690  put 'end;';
+11691  end;
+11692  run;
+
+NOTE: The file #LN00150 is:
+      Filename=D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS4\Impt2\CDELTA_TRAIN.sas,
+      RECFM=V,LRECL=32767,File Size (bytes)=0,
+      Last Modified=09May2018:15:09:08,
+      Create Time=09May2018:15:09:08
+
+NOTE: 0 records were written to the file #LN00150.
+NOTE: There were 19 observations read from the data set EMWS4.IMPT2_META.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11693  filename emflow "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS4\Impt2\EMFLOWSCORE.sas";
+11694  *------------------------------------------------------------*;
+11695  * Impt2: Scoring DATA data;
+11696  *------------------------------------------------------------*;
+11697  data EMWS4.Impt2_TRAIN
+11698  / view=EMWS4.Impt2_TRAIN
+11699  ;
+11700  set EMWS4.Part4_TRAIN
+11701  ;
+11702  %inc emflow;
+11706  run;
+
+NOTE: DATA STEP view saved on file EMWS4.IMPT2_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11707  quit;
+11708  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11709  filename emflow "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS4\Impt2\EMFLOWSCORE.sas";
+11710  *------------------------------------------------------------*;
+11711  * Impt2: Scoring VALIDATE data;
+11712  *------------------------------------------------------------*;
+11713  data EMWS4.Impt2_VALIDATE
+11714  / view=EMWS4.Impt2_VALIDATE
+11715  ;
+11716  set EMWS4.Part4_VALIDATE
+11717  ;
+11718  %inc emflow;
+11722  run;
+
+NOTE: DATA STEP view saved on file EMWS4.IMPT2_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11723  quit;
+11724  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+11725  *------------------------------------------------------------*;
+11726  * Impt2: Computing metadata for TRAIN data;
+11727  *------------------------------------------------------------*;
+
+NOTE: View EMWS4.IMPT2_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+NOTE: View EMWS4.IMPT2_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+      
+NOTE: View EMWS4.IMPT2_VALIDATE.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+      

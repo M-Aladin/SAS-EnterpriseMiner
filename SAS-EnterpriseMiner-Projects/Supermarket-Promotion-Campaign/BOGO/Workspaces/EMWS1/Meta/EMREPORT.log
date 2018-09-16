@@ -1,0 +1,24 @@
+*------------------------------------------------------------*
+* Report Log
+Date:                May 01, 2018
+Time:                17:31:19
+*------------------------------------------------------------*
+11637  proc print data = EMWS1.Meta_CMeta_TRAIN(obs=500) noobs label;
+11638  var name role level creator label;
+11639  label NAME = "%sysfunc(sasmsg(sashelp.dmine, meta_name_vlabel,      NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel,     NOQUOTE))" ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel,      NOQUOTE))" CREATOR =
+11640     "%sysfunc(sasmsg(sashelp.dmine, meta_creator_vlabel,   NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel,     NOQUOTE))";
+11641  format label $32.;
+11642  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_exptattributes_title, NOQUOTE, TRAIN))";
+11643  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_maxObsPrinted_title, NOQUOTE))";
+11644  run;
+
+NOTE: There were 27 observations read from the data set EMWS1.META_CMETA_TRAIN.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+11645  title9;
+11646  title10;
+

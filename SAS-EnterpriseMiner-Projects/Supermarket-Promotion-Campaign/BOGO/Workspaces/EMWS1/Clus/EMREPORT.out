@@ -1,0 +1,15 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Importance
+
+                                                Number of    Number of
+                                                Splitting    Surrogate
+Variable Name                   Label             Rules        Rules      Importance
+
+LoyaltyClass                                        1            0          1.00000 
+REP_Age                  Replacement: Age           5            3          0.91021 
+AffluenceGrade                                      6            2          0.73195 
+TimeSinceLastPurchase                               4            2          0.50494 
+REP_Gender               Replacement: Gender        1            2          0.32409 

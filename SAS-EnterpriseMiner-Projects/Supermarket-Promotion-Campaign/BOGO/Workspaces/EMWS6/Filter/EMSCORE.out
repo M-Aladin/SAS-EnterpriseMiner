@@ -1,0 +1,21 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+Excluded Class Values
+(maximum 500 observations printed)
+
+                                           Train     Train                                     Filter
+Variable           Role     Level          Count    Percent    Label                           Method
+
+DemClusterGroup    INPUT    U                 54    0.24299    Neighborhood Cluster-7 Level    MINPCT
+DemTVReg           INPUT    BORDER           203    0.91347    Television Region               MINPCT
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Number Of Observations
+
+Data
+Role     Filtered    Excluded     DATA
+
+TRAIN      21966        257      22223

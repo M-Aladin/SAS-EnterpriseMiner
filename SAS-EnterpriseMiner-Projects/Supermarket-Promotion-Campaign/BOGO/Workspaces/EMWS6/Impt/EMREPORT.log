@@ -1,0 +1,94 @@
+*------------------------------------------------------------*
+* Report Log
+Date:                May 13, 2018
+Time:                21:05:31
+*------------------------------------------------------------*
+12367  %let _nimpute = 0;
+12368  data EMWS6.Impt_RESULT;
+12369  label NAME = "%sysfunc(sasmsg(sashelp.dmine, meta_name_vlabel,        NOQUOTE))" METHOD = "%sysfunc(sasmsg(sashelp.dmine, rpt_imputemethod_vlabel, NOQUOTE))" IMPUTED = "%sysfunc(sasmsg(sashelp.dmine, rpt_imputedvar_vlabel,   NOQUOTE))" INDICATOR =
+12370     "%sysfunc(sasmsg(sashelp.dmine, rpt_indicatorvar_vlabel, NOQUOTE))" VALUE = "%sysfunc(sasmsg(sashelp.dmine, rpt_imputevalue_vlabel,  NOQUOTE))" ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel,        NOQUOTE))" LEVEL =
+12371     "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel,       NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel,       NOQUOTE))" TRAIN = "%sysfunc(sasmsg(sashelp.dmine, rpt_missingcount_vlabel, NOQUOTE, TRAIN))";
+12372  set EMWS6.Impt_META(where=(IMPUTED ne '') keep=NAME METHOD IMP M VALUE ROLE NMISS LEVEL LABEL rename=(IMP=IMPUTED M=INDICATOR NMISS=TRAIN)) end=eof;
+12373  if eof then call symput('_nimpute', '1');
+12374  run;
+
+NOTE: There were 7 observations read from the data set EMWS6.IMPT_META.
+      WHERE IMPUTED not = ' ';
+NOTE: The data set EMWS6.IMPT_RESULT has 7 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+12375  proc print data=EMWS6.Impt_RESULT(obs=500) label noobs;
+12376  title9 "%sysfunc(sasmsg(sashelp.dmine, rpt_imputationsummary_title, NOQUOTE))";
+12377  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_numberobs_title,         NOQUOTE))";
+12378  run;
+
+NOTE: There were 7 observations read from the data set EMWS6.IMPT_RESULT.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12379  proc freq data=EMWS6.Impt_RESULT noprint;
+12380  table train /out=WORK.ImptSUMMARY nocum;
+12381  run;
+
+NOTE: There were 7 observations read from the data set EMWS6.IMPT_RESULT.
+NOTE: The data set WORK.IMPTSUMMARY has 6 observations and 3 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12382  proc sort data=WORK.ImptSUMMARY NOTHREADS;
+12383  by descending TRAIN;
+12384  run;
+
+NOTE: There were 6 observations read from the data set WORK.IMPTSUMMARY.
+NOTE: The data set WORK.IMPTSUMMARY has 6 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12385  proc print data=WORK.ImptSUMMARY(obs=100) label;
+12386  label COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_varcount_vlabel,  NOQUOTE))" PERCENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_varpercent_vlabel,  NOQUOTE))";
+12387  title9 ' ';
+12388  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_missingvardistribution_title, NOQUOTE))";
+12389  run;
+
+NOTE: There were 6 observations read from the data set WORK.IMPTSUMMARY.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12390  data EMWS6.Impt_EMSCOREVAR;
+12391  length Name $32 formula $70 file $200;
+12392  keep NAME Formula file;
+12393  set EMWS6.Impt_META end=eof;
+12394  *set EMWS6.Impt_RESULT end=eof;
+12395  if M ne '' then do;
+12396  NAME= M;
+12397  file="IMPUTECODE\"!!strip(NAME)!!'.sas';
+12398  output;
+12399  end;
+12400  if IMP ne '' then do;
+12401  NAME= IMP;
+12402  file="IMPUTECODE\"!!strip(NAME)!!'.sas';
+12403  output;
+12404  end;
+12405  run;
+
+NOTE: Variable formula is uninitialized.
+NOTE: There were 10 observations read from the data set EMWS6.IMPT_META.
+NOTE: The data set EMWS6.IMPT_EMSCOREVAR has 17 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+

@@ -1,0 +1,83 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+ID           NOMINAL           1    
+INPUT        BINARY            4    
+INPUT        INTERVAL          9    
+INPUT        NOMINAL           5    
+REJECTED     INTERVAL          4    
+REJECTED     NOMINAL           5    
+SEGMENT      NOMINAL           1    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Frequencies: _SEGMENT_
+
+                                     Percent of
+ Segment     Segment    Frequency       Total
+Variable      Value       Count       Frequency
+
+_SEGMENT_       1           6224       31.0656 
+_SEGMENT_       4           5933       29.6132 
+_SEGMENT_       3           4168       20.8036 
+_SEGMENT_       2           3710       18.5176 
+ 
+                                                                                                                                                                                                                                                                
+ 
+Variable: _SEGMENT_ Segment: 1 Count: 6224
+Decision Tree Importance Profiles
+
+Variable                Worth     Rank
+
+FacebookLike           0.12406      1 
+PreviousCampaign       0.06547      2 
+MobileApplications     0.05072      3 
+CampaignViewedEmail    0.03980      4 
+DayCareProducts        0.00011      5 
+ 
+                                                                                                                                                                                                                                                                
+ 
+Variable: _SEGMENT_ Segment: 4 Count: 5933
+Decision Tree Importance Profiles
+
+Variable                Worth     Rank
+
+FacebookLike           0.11404      1 
+PreviousCampaign       0.05436      2 
+MobileApplications     0.04733      3 
+CampaignViewedEmail    0.03521      4 
+DayCareProducts        0.00059      5 
+ 
+                                                                                                                                                                                                                                                                
+ 
+Variable: _SEGMENT_ Segment: 3 Count: 4168
+Decision Tree Importance Profiles
+
+Variable                Worth     Rank
+
+FacebookLike           0.13377      1 
+CampaignViewedEmail    0.02212      2 
+MobileApplications     0.02033      3 
+PreviousCampaign       0.01476      4 
+DayCareProducts        0.00004      5 
+ 
+                                                                                                                                                                                                                                                                
+ 
+Variable: _SEGMENT_ Segment: 2 Count: 3710
+Decision Tree Importance Profiles
+
+Variable                Worth     Rank
+
+FacebookLike           0.10503      1 
+CampaignViewedEmail    0.02096      2 
+PreviousCampaign       0.01998      3 
+MobileApplications     0.01534      4 
+DayCareProducts        0.00048      5 

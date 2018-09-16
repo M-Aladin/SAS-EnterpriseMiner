@@ -1,0 +1,14 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Replacement Counts
+
+Obs    Variable             Label          Role     Train
+
+ 1     AdvertisementZone                   INPUT      481
+ 2     Age                  Age            INPUT     1610
+ 3     ClusterGroup                        INPUT      693
+ 4     Gender                              INPUT     2609
+ 5     LoyaltyTime          LoyaltyTime    INPUT      293
+ 6     Region                              INPUT      481

@@ -1,0 +1,86 @@
+*------------------------------------------------------------*
+ Node = 4
+*------------------------------------------------------------*
+if Replacement: Gender IS ONE OF: M
+AND Replacement: Age < 39.5
+then 
+ Tree Node Identifier   = 4
+ Number of Observations = 40
+ Predicted: TargetBuy=1 = 0.40
+ Predicted: TargetBuy=0 = 0.60
+ 
+*------------------------------------------------------------*
+ Node = 5
+*------------------------------------------------------------*
+if Replacement: Gender IS ONE OF: F or MISSING
+AND Replacement: Age < 39.5
+then 
+ Tree Node Identifier   = 5
+ Number of Observations = 75
+ Predicted: TargetBuy=1 = 0.72
+ Predicted: TargetBuy=0 = 0.28
+ 
+*------------------------------------------------------------*
+ Node = 6
+*------------------------------------------------------------*
+if Replacement: Gender IS ONE OF: M
+AND Replacement: Age >= 39.5 or MISSING
+then 
+ Tree Node Identifier   = 6
+ Number of Observations = 288
+ Predicted: TargetBuy=1 = 0.09
+ Predicted: TargetBuy=0 = 0.91
+ 
+*------------------------------------------------------------*
+ Node = 14
+*------------------------------------------------------------*
+if Replacement: Gender IS ONE OF: F or MISSING
+AND Replacement: Age >= 39.5 or MISSING
+AND DayCareProducts < 0.5
+then 
+ Tree Node Identifier   = 14
+ Number of Observations = 129
+ Predicted: TargetBuy=1 = 0.11
+ Predicted: TargetBuy=0 = 0.89
+ 
+*------------------------------------------------------------*
+ Node = 22
+*------------------------------------------------------------*
+if Replacement: Gender IS ONE OF: F or MISSING
+AND Replacement: Age >= 39.5 or MISSING
+AND DayCareProducts >= 0.5 or MISSING
+AND CleanserProducts < 3.5 or MISSING
+then 
+ Tree Node Identifier   = 22
+ Number of Observations = 304
+ Predicted: TargetBuy=1 = 0.24
+ Predicted: TargetBuy=0 = 0.76
+ 
+*------------------------------------------------------------*
+ Node = 30
+*------------------------------------------------------------*
+if Replacement: Gender IS ONE OF: F or MISSING
+AND Replacement: Age >= 39.5 or MISSING
+AND MobileApplications IS ONE OF: 1 or MISSING
+AND DayCareProducts >= 0.5 or MISSING
+AND CleanserProducts >= 3.5
+then 
+ Tree Node Identifier   = 30
+ Number of Observations = 31
+ Predicted: TargetBuy=1 = 0.65
+ Predicted: TargetBuy=0 = 0.35
+ 
+*------------------------------------------------------------*
+ Node = 31
+*------------------------------------------------------------*
+if Replacement: Gender IS ONE OF: F or MISSING
+AND Replacement: Age >= 39.5 or MISSING
+AND MobileApplications IS ONE OF: 0
+AND DayCareProducts >= 0.5 or MISSING
+AND CleanserProducts >= 3.5
+then 
+ Tree Node Identifier   = 31
+ Number of Observations = 26
+ Predicted: TargetBuy=1 = 0.31
+ Predicted: TargetBuy=0 = 0.69
+ 

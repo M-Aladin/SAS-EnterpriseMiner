@@ -1,0 +1,212 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 01, 2018
+Time:                17:20:39
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           NOMINAL           1
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          1
+TARGET       BINARY            1
+ 
+ 
+ 
+ 
+Model Events
+ 
+                                     Number
+                      Measurement      of
+ Target      Event       Level       Levels      Order       Label
+ 
+TargetBuy      1        BINARY          2      Descending
+ 
+ 
+ 
+ 
+Predicted and decision variables
+ 
+Type           Variable              Label
+ 
+TARGET       TargetBuy
+PREDICTED    P_TargetBuy1    Predicted: TargetBuy=1
+RESIDUAL     R_TargetBuy1    Residual: TargetBuy=1
+PREDICTED    P_TargetBuy0    Predicted: TargetBuy=0
+RESIDUAL     R_TargetBuy0    Residual: TargetBuy=0
+FROM         F_TargetBuy     From: TargetBuy
+INTO         I_TargetBuy     Into: TargetBuy
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+Variable Importance
+ 
+                               Number of
+                               Splitting
+Variable Name         Label      Rules           Importance
+ 
+Age                                6                 1.0000
+AffluenceGrade                     6                 0.6241
+Gender                             2                 0.6162
+MobileApplications                 5                 0.4397
+TotalSpend                         2                 0.1373
+DayCareProducts                    1                 0.1208
+FacebookLike                       1                 0.0910
+ 
+ 
+ 
+Tree Leaf Report
+ 
+                                 Training
+Node               Training       Percent
+ Id     Depth    Observations        1
+ 
+   6      2          14264         0.12
+  19      4           1720         0.81
+  43      5           1650         0.23
+  35      5            701         0.71
+  16      4            602         0.19
+  41      5            551         0.06
+  28      4            543         0.18
+  64      6            524         0.52
+  65      6            337         0.31
+ 101      6            336         0.68
+  59      5            334         0.37
+  70      6            238         0.33
+  71      6            185         0.56
+  22      4            167         0.74
+  36      5            163         0.78
+  31      4            137         0.86
+  80      6            102         0.36
+  46      5             88         0.61
+ 100      6             85         0.31
+  76      6             76         0.14
+  81      6             64         0.92
+  47      5             58         0.22
+  77      6             40         0.65
+  29      4             35         0.66
+ 
+ 
+ 
+ 
+Fit Statistics
+ 
+Target=TargetBuy Target Label=' '
+ 
+   Fit
+Statistics    Statistics Label                 Train
+ 
+  _NOBS_      Sum of Frequencies            23000.00
+  _MISC_      Misclassification Rate            0.17
+  _MAX_       Maximum Absolute Error            0.94
+  _SSE_       Sum of Squared Errors          6124.74
+  _ASE_       Average Squared Error             0.13
+  _RASE_      Root Average Squared Error        0.36
+  _DIV_       Divisor for ASE               46000.00
+  _DFT_       Total Degrees of Freedom      23000.00
+ 
+ 
+ 
+ 
+Classification Table
+ 
+Data Role=TRAIN Target Variable=TargetBuy Target Label=' '
+ 
+                       Target        Outcome     Frequency       Total
+Target    Outcome    Percentage    Percentage      Count      Percentage
+ 
+  0          0         85.3344       93.4655       16077        69.9000
+  1          0         14.6656       47.6461        2763        12.0130
+  0          1         27.0192        6.5345        1124         4.8870
+  1          1         72.9808       52.3539        3036        13.2000
+ 
+ 
+ 
+ 
+Event Classification Table
+ 
+Data Role=TRAIN Target=TargetBuy Target Label=' '
+ 
+  False       True        False       True
+Negative    Negative    Positive    Positive
+ 
+  2763        16077       1124        3036
+ 
+ 
+ 
+ 
+Assessment Score Rankings
+ 
+Data Role=TRAIN Target Variable=TargetBuy Target Label=' '
+ 
+                                                                                    Mean
+                            Cumulative       %      Cumulative     Number of     Posterior
+Depth      Gain     Lift       Lift      Response   % Response   Observations   Probability
+ 
+   5    227.450   3.27450     3.27450     82.5602     82.5602        1150         0.82560
+  10    221.093   3.14736     3.21093     79.3546     80.9574        1150         0.79355
+  15    205.499   2.74312     3.05499     69.1623     77.0257        1150         0.69162
+  20    175.852   1.86909     2.75852     47.1253     69.5506        1150         0.47125
+  25    142.895   1.11068     2.42895     28.0035     61.2412        1150         0.28004
+  30    117.716   0.91824     2.17716     23.1515     54.8929        1150         0.23152
+  35     97.287   0.74714     1.97287     18.8376     49.7422        1150         0.18838
+  40     78.902   0.50206     1.78902     12.6584     45.1067        1150         0.12658
+  45     64.400   0.48382     1.64400     12.1985     41.4502        1150         0.12199
+  50     52.798   0.48382     1.52798     12.1985     38.5251        1150         0.12199
+  55     43.306   0.48382     1.43306     12.1985     36.1317        1150         0.12199
+  60     35.395   0.48382     1.35395     12.1985     34.1373        1150         0.12199
+  65     28.702   0.48382     1.28702     12.1985     32.4497        1150         0.12199
+  70     22.965   0.48382     1.22965     12.1985     31.0032        1150         0.12199
+  75     17.993   0.48382     1.17993     12.1985     29.7496        1150         0.12199
+  80     13.642   0.48382     1.13642     12.1985     28.6526        1150         0.12199
+  85      9.803   0.48382     1.09803     12.1985     27.6847        1150         0.12199
+  90      6.391   0.48382     1.06391     12.1985     26.8244        1150         0.12199
+  95      3.338   0.48382     1.03338     12.1985     26.0546        1150         0.12199
+ 100      0.000   0.36582     1.00000      9.2234     25.2130        1150         0.09223
+ 
+ 
+ 
+ 
+Assessment Score Distribution
+ 
+Data Role=TRAIN Target Variable=TargetBuy Target Label=' '
+ 
+ Posterior     Number                     Mean
+Probability      of      Number of     Posterior
+   Range       Events    Nonevents    Probability    Percentage
+ 
+ 0.90-0.95        59           5        0.92188         0.2783
+ 0.85-0.90       118          19        0.86131         0.5957
+ 0.80-0.85      1400         320        0.81395         7.4783
+ 0.75-0.80       127          36        0.77914         0.7087
+ 0.70-0.75       624         244        0.71889         3.7739
+ 0.65-0.70       250         121        0.67385         1.6130
+ 0.60-0.65        80          48        0.62500         0.5565
+ 0.55-0.60       103          82        0.55676         0.8043
+ 0.50-0.55       275         249        0.52481         2.2783
+ 0.35-0.40       162         274        0.37156         1.8957
+ 0.30-0.35       209         451        0.31667         2.8696
+ 0.20-0.25       395        1313        0.23126         7.4261
+ 0.15-0.20       213         932        0.18603         4.9783
+ 0.10-0.15      1751       12589        0.12211        62.3478
+ 0.05-0.10        33         518        0.05989         2.3957

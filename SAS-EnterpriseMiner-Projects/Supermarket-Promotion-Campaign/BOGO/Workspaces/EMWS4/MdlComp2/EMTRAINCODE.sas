@@ -1,0 +1,315 @@
+data EMWS4.MdlComp2_EMRANK;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGETLABEL =
+   "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg3" MODEL "Reg3" MODELDESCRIPTION "Stepwise Regression" TARGETLABEL "";
+set EMWS4.Reg3_EMRANK;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMSCOREDIST;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGETLABEL =
+   "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg3" MODEL "Reg3" MODELDESCRIPTION "Stepwise Regression" TARGETLABEL "";
+set EMWS4.Reg3_EMSCOREDIST;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMOUTFIT;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGETLABEL =
+   "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg3" MODEL "Reg3" MODELDESCRIPTION "Stepwise Regression" TARGETLABEL "";
+set WORK.Reg3_OUTFIT;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMCLASSIFICATION;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGETLABEL =
+   "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg3" MODEL "Reg3" MODELDESCRIPTION "Stepwise Regression" TARGETLABEL "";
+set EMWS4.Reg3_EMCLASSIFICATION;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMEVENTREPORT;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGETLABEL =
+   "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg3" MODEL "Reg3" MODELDESCRIPTION "Stepwise Regression" TARGETLABEL "";
+set EMWS4.Reg3_EMEVENTREPORT;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg5" MODEL "Reg5" MODELDESCRIPTION "Regression (cluster1)" TARGETLABEL "";
+set EMWS4.Reg5_EMRANK;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMRANK;
+set EMWS4.MdlComp2_EMRANK work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg5" MODEL "Reg5" MODELDESCRIPTION "Regression (cluster1)" TARGETLABEL "";
+set EMWS4.Reg5_EMSCOREDIST;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMSCOREDIST;
+set EMWS4.MdlComp2_EMSCOREDIST work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg5" MODEL "Reg5" MODELDESCRIPTION "Regression (cluster1)" TARGETLABEL "";
+set WORK.Reg5_OUTFIT;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMOUTFIT;
+set EMWS4.MdlComp2_EMOUTFIT work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg5" MODEL "Reg5" MODELDESCRIPTION "Regression (cluster1)" TARGETLABEL "";
+set EMWS4.Reg5_EMCLASSIFICATION;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMCLASSIFICATION;
+set EMWS4.MdlComp2_EMCLASSIFICATION work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg5" MODEL "Reg5" MODELDESCRIPTION "Regression (cluster1)" TARGETLABEL "";
+set EMWS4.Reg5_EMEVENTREPORT;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMEVENTREPORT;
+set EMWS4.MdlComp2_EMEVENTREPORT work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg7" MODEL "Reg7" MODELDESCRIPTION "Regression (Cluster2)" TARGETLABEL "";
+set EMWS4.Reg7_EMRANK;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMRANK;
+set EMWS4.MdlComp2_EMRANK work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg7" MODEL "Reg7" MODELDESCRIPTION "Regression (Cluster2)" TARGETLABEL "";
+set EMWS4.Reg7_EMSCOREDIST;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMSCOREDIST;
+set EMWS4.MdlComp2_EMSCOREDIST work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg7" MODEL "Reg7" MODELDESCRIPTION "Regression (Cluster2)" TARGETLABEL "";
+set WORK.Reg7_OUTFIT;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMOUTFIT;
+set EMWS4.MdlComp2_EMOUTFIT work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg7" MODEL "Reg7" MODELDESCRIPTION "Regression (Cluster2)" TARGETLABEL "";
+set EMWS4.Reg7_EMCLASSIFICATION;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMCLASSIFICATION;
+set EMWS4.MdlComp2_EMCLASSIFICATION work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg7" MODEL "Reg7" MODELDESCRIPTION "Regression (Cluster2)" TARGETLABEL "";
+set EMWS4.Reg7_EMEVENTREPORT;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMEVENTREPORT;
+set EMWS4.MdlComp2_EMEVENTREPORT work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg8" MODEL "Reg8" MODELDESCRIPTION "Regression (Cluster3)" TARGETLABEL "";
+set EMWS4.Reg8_EMRANK;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMRANK;
+set EMWS4.MdlComp2_EMRANK work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg8" MODEL "Reg8" MODELDESCRIPTION "Regression (Cluster3)" TARGETLABEL "";
+set EMWS4.Reg8_EMSCOREDIST;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMSCOREDIST;
+set EMWS4.MdlComp2_EMSCOREDIST work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg8" MODEL "Reg8" MODELDESCRIPTION "Regression (Cluster3)" TARGETLABEL "";
+set WORK.Reg8_OUTFIT;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMOUTFIT;
+set EMWS4.MdlComp2_EMOUTFIT work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg8" MODEL "Reg8" MODELDESCRIPTION "Regression (Cluster3)" TARGETLABEL "";
+set EMWS4.Reg8_EMCLASSIFICATION;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMCLASSIFICATION;
+set EMWS4.MdlComp2_EMCLASSIFICATION work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg8" MODEL "Reg8" MODELDESCRIPTION "Regression (Cluster3)" TARGETLABEL "";
+set EMWS4.Reg8_EMEVENTREPORT;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMEVENTREPORT;
+set EMWS4.MdlComp2_EMEVENTREPORT work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg9" MODEL "Reg9" MODELDESCRIPTION "Regression (Cluster4)" TARGETLABEL "";
+set EMWS4.Reg9_EMRANK;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMRANK;
+set EMWS4.MdlComp2_EMRANK work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg9" MODEL "Reg9" MODELDESCRIPTION "Regression (Cluster4)" TARGETLABEL "";
+set EMWS4.Reg9_EMSCOREDIST;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMSCOREDIST;
+set EMWS4.MdlComp2_EMSCOREDIST work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg9" MODEL "Reg9" MODELDESCRIPTION "Regression (Cluster4)" TARGETLABEL "";
+set WORK.Reg9_OUTFIT;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMOUTFIT;
+set EMWS4.MdlComp2_EMOUTFIT work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg9" MODEL "Reg9" MODELDESCRIPTION "Regression (Cluster4)" TARGETLABEL "";
+set EMWS4.Reg9_EMCLASSIFICATION;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMCLASSIFICATION;
+set EMWS4.MdlComp2_EMCLASSIFICATION work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg9" MODEL "Reg9" MODELDESCRIPTION "Regression (Cluster4)" TARGETLABEL "";
+set EMWS4.Reg9_EMEVENTREPORT;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMEVENTREPORT;
+set EMWS4.MdlComp2_EMEVENTREPORT work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg11" MODEL "Reg11" MODELDESCRIPTION "Regression (11)" TARGETLABEL "";
+set EMWS4.Reg11_EMRANK;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMRANK;
+set EMWS4.MdlComp2_EMRANK work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg11" MODEL "Reg11" MODELDESCRIPTION "Regression (11)" TARGETLABEL "";
+set EMWS4.Reg11_EMSCOREDIST;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMSCOREDIST;
+set EMWS4.MdlComp2_EMSCOREDIST work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg11" MODEL "Reg11" MODELDESCRIPTION "Regression (11)" TARGETLABEL "";
+set WORK.Reg11_OUTFIT;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMOUTFIT;
+set EMWS4.MdlComp2_EMOUTFIT work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg11" MODEL "Reg11" MODELDESCRIPTION "Regression (11)" TARGETLABEL "";
+set EMWS4.Reg11_EMCLASSIFICATION;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMCLASSIFICATION;
+set EMWS4.MdlComp2_EMCLASSIFICATION work.MdlComp2_TEMP;
+run;
+data work.MdlComp2_TEMP;
+length PARENT $16 MODEL $16 MODELDESCRIPTION $81 DATAROLE $20 TARGET $32 TARGETLABEL $200;
+label PARENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_parent_vlabel  ,  NOQUOTE))" MODEL = "%sysfunc(sasmsg(sashelp.dmine, rpt_modelnode_vlabel, NOQUOTE))" MODELDESCRIPTION = "%sysfunc(sasmsg(sashelp.dmine, rpt_modeldesc_vlabel, NOQUOTE))" TARGET =
+   "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel, NOQUOTE))" TARGETLABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+retain parent "Reg11" MODEL "Reg11" MODELDESCRIPTION "Regression (11)" TARGETLABEL "";
+set EMWS4.Reg11_EMEVENTREPORT;
+where upcase(TARGET) = upcase("TargetBuy");
+run;
+data EMWS4.MdlComp2_EMEVENTREPORT;
+set EMWS4.MdlComp2_EMEVENTREPORT work.MdlComp2_TEMP;
+run;

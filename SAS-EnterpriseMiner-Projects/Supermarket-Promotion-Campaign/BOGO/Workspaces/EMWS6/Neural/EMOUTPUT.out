@@ -1,0 +1,697 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 13, 2018
+Time:                21:24:35
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+INPUT        BINARY            7
+INPUT        INTERVAL          4
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          1
+REJECTED     NOMINAL           1
+TARGET       BINARY            1
+ 
+ 
+ 
+ 
+Model Events
+ 
+                                     Number
+                      Measurement      of
+ Target      Event       Level       Levels      Order                  Label
+ 
+TargetBuy      1        BINARY          2      Descending    Organics Purchase Indicator
+ 
+ 
+ 
+ 
+Decision Matrix
+ 
+Target      Training
+ Buy      Proportions        1    0
+ 
+  1         0.24772       15.0    0
+  0         0.75228       -0.5    0
+ 
+ 
+ 
+ 
+Predicted and decision variables
+ 
+Type                Variable      Label
+ 
+TARGET            TargetBuy       Organics Purchase Indicator
+PREDICTED         P_TargetBuy1    Predicted: TargetBuy=1
+RESIDUAL          R_TargetBuy1    Residual: TargetBuy=1
+PREDICTED         P_TargetBuy0    Predicted: TargetBuy=0
+RESIDUAL          R_TargetBuy0    Residual: TargetBuy=0
+FROM              F_TargetBuy     From: TargetBuy
+INTO              I_TargetBuy     Into: TargetBuy
+MODELDECISION     D_TargetBuy     Decision: TargetBuy
+EXPECTEDPROFIT    EP_TARGETBUY    Expected Profit: TargetBuy
+COMPUTEDPROFIT    CP_TARGETBUY    Computed Profit: TargetBuy
+BESTPROFIT        BP_TARGETBUY    Best Profit: TargetBuy
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+Preliminary       Starting         Objective         Number
+ Training          Random           Function           of        Terminating
+    Run             Seed             Value         Iterations     Criteria
+ 
+        1               12345    0.442767848661           10
+        2          1816732956    0.456579693808           10
+        3          1820157317    0.437808339437           10
+        4           553842597    0.454027922057           10
+        5           874432160    0.425891965291           10
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+                      Optimization Start
+                      Parameter Estimates
+                                                      Gradient
+                                                     Objective
+  N Parameter                         Estimate        Function
+ 
+  1 IMP_DemAffl_H11                   0.228263       -0.004276
+  2 IMP_DemAge_H11                   -1.233941       -0.000208
+  3 IMP_PromTime_H11                 -0.171417       -0.002193
+  4 PromSpend_H11                    -0.203811       -0.003134
+  5 IMP_DemAffl_H12                  -0.528622        0.003743
+  6 IMP_DemAge_H12                   -0.167497        0.000295
+  7 IMP_PromTime_H12                 -0.340189       -0.003657
+  8 PromSpend_H12                    -0.003448       -0.003382
+  9 IMP_DemAffl_H13                  -0.311142        0.004986
+ 10 IMP_DemAge_H13                    0.207222        0.002753
+ 11 IMP_PromTime_H13                  0.239963        0.000501
+ 12 PromSpend_H13                    -0.012397       -0.002454
+ 13 M_DemAffl0_H11                   -0.053734        0.005812
+ 14 M_DemAge0_H11                     0.023873        0.008944
+ 15 M_DemClusterGroup0_H11           -0.087556        0.005304
+ 16 M_DemGender0_H11                  0.021136        0.005538
+ 17 M_DemReg0_H11                     0.139437        0.006262
+ 18 M_DemTVReg0_H11                  -0.109763        0.006262
+ 19 M_PromTime0_H11                  -0.131280        0.005210
+ 20 M_DemAffl0_H12                    0.033199       -0.004778
+ 21 M_DemAge0_H12                     0.050355       -0.007163
+ 22 M_DemClusterGroup0_H12            0.206110       -0.002695
+ 23 M_DemGender0_H12                 -0.451133       -0.003983
+ 24 M_DemReg0_H12                    -0.118519       -0.004459
+ 25 M_DemTVReg0_H12                  -0.092216       -0.004459
+ 26 M_PromTime0_H12                  -0.156729       -0.003218
+ 27 M_DemAffl0_H13                    0.087716       -0.005824
+ 28 M_DemAge0_H13                     0.184161       -0.008327
+ 29 M_DemClusterGroup0_H13           -0.087910       -0.004378
+ 30 M_DemGender0_H13                 -0.562003       -0.005254
+ 31 M_DemReg0_H13                     0.223521       -0.005450
+ 32 M_DemTVReg0_H13                  -0.005649       -0.005450
+ 33 M_PromTime0_H13                   0.343882       -0.004637
+ 34 IMP_DemClusterGroupA_H11         -0.215832       -0.000603
+ 35 IMP_DemClusterGroupB_H11         -0.022361        0.001447
+ 36 IMP_DemClusterGroupC_H11         -0.195056        0.000970
+ 37 IMP_DemClusterGroupD_H11          0.115706        0.000750
+ 38 IMP_DemClusterGroupE_H11          0.067389        0.001465
+ 39 IMP_DemClusterGroupF_H11         -0.008914        0.001699
+ 40 IMP_DemGenderF_H11                0.113408        0.002371
+ 41 IMP_DemGenderM_H11                0.164331        0.004082
+ 42 IMP_DemRegMidlands_H11            0.099040        0.001270
+ 43 IMP_DemRegNorth_H11               0.114692        0.001325
+ 44 IMP_DemRegScottish_H11            0.205807       -0.000516
+ 45 IMP_DemRegSouthEast_H11           0.098524        0.002607
+ 46 IMP_DemTVRegBorder_H11           -0.122005       -0.000162
+ 47 IMP_DemTVRegCScotland_H11        -0.097937       -0.000811
+ 48 IMP_DemTVRegEast_H11             -0.045493       -0.000110
+ 49 IMP_DemTVRegLondon_H11            0.099934        0.001956
+ 50 IMP_DemTVRegMidlands_H11          0.135156    -0.000078987
+ 51 IMP_DemTVRegNEast_H11             0.049498       -0.000304
+ 52 IMP_DemTVRegNScot_H11             0.134470       -0.000260
+ 53 IMP_DemTVRegNWest_H11            -0.096910        0.000911
+ 54 IMP_DemTVRegS_SEast_H11           0.094436        0.000289
+ 55 IMP_DemTVRegSWest_H11             0.018521    -0.000007762
+ 56 IMP_DemTVRegUlster_H11           -0.137071       -0.000340
+ 57 IMP_DemTVRegWales_West_H11        0.199523        0.000726
+ 58 PromClassGold_H11                -0.096175       -0.003339
+ 59 PromClassPlatinum_H11             0.069892       -0.004302
+ 60 PromClassSilver_H11              -0.147735       -0.002833
+ 61 IMP_DemClusterGroupA_H12         -0.127934    -0.000091022
+ 62 IMP_DemClusterGroupB_H12         -0.106472       -0.000999
+ 63 IMP_DemClusterGroupC_H12         -0.000285       -0.000337
+ 64 IMP_DemClusterGroupD_H12          0.180666     0.000058009
+ 65 IMP_DemClusterGroupE_H12         -0.045642       -0.001411
+ 66 IMP_DemClusterGroupF_H12          0.065408     0.000042325
+ 67 IMP_DemGenderF_H12               -0.595381       -0.001916
+ 68 IMP_DemGenderM_H12                0.045742       -0.002250
+ 69 IMP_DemRegMidlands_H12           -0.058890       -0.000661
+ 70 IMP_DemRegNorth_H12               0.013076       -0.000802
+ 71 IMP_DemRegScottish_H12           -0.026308        0.000973
+ 72 IMP_DemRegSouthEast_H12          -0.088961       -0.002351
+ 73 IMP_DemTVRegBorder_H12            0.049477       -0.000444
+ 74 IMP_DemTVRegCScotland_H12        -0.072783        0.000709
+ 75 IMP_DemTVRegEast_H12             -0.202299       -0.000480
+ 76 IMP_DemTVRegLondon_H12            0.043045       -0.002118
+ 77 IMP_DemTVRegMidlands_H12          0.151122        0.000537
+ 78 IMP_DemTVRegNEast_H12            -0.149057       -0.000653
+ 79 IMP_DemTVRegNScot_H12             0.016414    -0.000030412
+ 80 IMP_DemTVRegNWest_H12            -0.058167       -0.000888
+ 81 IMP_DemTVRegS_SEast_H12           0.171528       -0.000823
+ 82 IMP_DemTVRegSWest_H12            -0.258772       -0.000440
+ 83 IMP_DemTVRegUlster_H12            0.093640       -0.000190
+ 84 IMP_DemTVRegWales_West_H12       -0.327193       -0.001417
+ 85 PromClassGold_H12                 0.100830        0.000474
+ 86 PromClassPlatinum_H12             0.092928        0.000154
+ 87 PromClassSilver_H12              -0.113307    -0.000003701
+ 88 IMP_DemClusterGroupA_H13          0.224455        0.000195
+ 89 IMP_DemClusterGroupB_H13          0.001661       -0.001581
+ 90 IMP_DemClusterGroupC_H13         -0.070568       -0.001134
+ 91 IMP_DemClusterGroupD_H13         -0.004835       -0.000333
+ 92 IMP_DemClusterGroupE_H13          0.139225       -0.000795
+ 93 IMP_DemClusterGroupF_H13          0.060011       -0.000948
+ 94 IMP_DemGenderF_H13               -0.635756       -0.002219
+ 95 IMP_DemGenderM_H13               -0.229229       -0.003610
+ 96 IMP_DemRegMidlands_H13            0.209366        0.000282
+ 97 IMP_DemRegNorth_H13               0.114511       -0.001332
+ 98 IMP_DemRegScottish_H13            0.223548        0.001013
+ 99 IMP_DemRegSouthEast_H13          -0.010579       -0.002386
+100 IMP_DemTVRegBorder_H13            0.022335        0.000157
+101 IMP_DemTVRegCScotland_H13         0.087492        0.000938
+102 IMP_DemTVRegEast_H13              0.036771        0.000224
+103 IMP_DemTVRegLondon_H13            0.017414       -0.001182
+104 IMP_DemTVRegMidlands_H13          0.010810        0.001365
+105 IMP_DemTVRegNEast_H13            -0.123858       -0.000103
+106 IMP_DemTVRegNScot_H13             0.147785        0.000596
+107 IMP_DemTVRegNWest_H13             0.022883       -0.000553
+108 IMP_DemTVRegS_SEast_H13           0.105034       -0.000981
+109 IMP_DemTVRegSWest_H13            -0.064808       -0.000232
+110 IMP_DemTVRegUlster_H13            0.222747        0.000322
+111 IMP_DemTVRegWales_West_H13       -0.021168       -0.000498
+112 PromClassGold_H13                -0.145173        0.001654
+113 PromClassPlatinum_H13            -0.298224        0.001399
+114 PromClassSilver_H13               0.160228        0.001456
+115 BIAS_H11                         -1.137948        0.006422
+116 BIAS_H12                          1.329404       -0.004293
+117 BIAS_H13                          0.244755       -0.005855
+118 H11_TargetBuy1                    1.163399       -0.007383
+119 H12_TargetBuy1                   -1.020798        0.007671
+120 H13_TargetBuy1                   -0.973835        0.004805
+121 BIAS_TargetBuy1                  -0.254640        0.008294
+ 
+Value of Objective Function = 0.4258919653
+ 
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+Dual Quasi-Newton Optimization
+ 
+ 
+Minimum Iterations                                0
+Maximum Iterations                               50
+Maximum Function Calls                   2147483647
+Maximum CPU Time                              14400
+ABSGCONV Gradient Criterion                 0.00001
+GCONV Gradient Criterion                       1E-8
+ABSFCONV Function Criterion                       0
+FCONV Function Criterion                     0.0001
+FCONV2 Function Criterion                         0
+FSIZE Parameter                                   0
+ABSXCONV Parameter Change Criterion               0
+XCONV Parameter Change Criterion                  0
+XSIZE Parameter                                   0
+ABSCONV Function Criterion             0.0016800212
+Line Search Method                                2
+Starting Alpha for Line Search                    1
+Line Search Precision LSPRECISION               0.4
+DAMPSTEP Parameter for Line Search                .
+Singularity Tolerance (SINGULAR)               1E-8
+ 
+Dual Quasi-Newton Optimization
+ 
+Dual Broyden - Fletcher - Goldfarb - Shanno Update (DBFGS)
+ 
+Parameter Estimates             121
+ 
+                                             Optimization Start
+ 
+Active Constraints                                  0  Objective Function                       0.4258919653
+Max Abs Gradient Element                 0.0089435628
+ 
+ 
+                                                                 Objective     Max Abs                Slope of
+                     Function         Active        Objective     Function    Gradient       Step       Search
+Iter     Restarts       Calls    Constraints         Function       Change     Element       Size    Direction
+ 
+   1            0           5              0          0.42547     0.000426     0.00665     0.0100       -0.123
+   2            0           9              0          0.42461     0.000853     0.00695      3.576      -0.0005
+   3            0          11              0          0.42371     0.000903     0.00669      0.856      -0.0025
+   4            0          15              0          0.42241      0.00130     0.00649      5.626      -0.0005
+   5            0          19              0          0.42115      0.00126     0.00526      2.339      -0.0011
+   6            0          22              0          0.42036     0.000794     0.00484      2.972      -0.0005
+   7            0          24              0          0.42004     0.000319     0.00587      3.198      -0.0006
+   8            0          26              0          0.41959     0.000445     0.00161      1.092      -0.0007
+   9            0          29              0          0.41929     0.000303     0.00293      4.014      -0.0002
+  10            0          31              0          0.41913     0.000157     0.00401      3.891      -0.0002
+  11            0          33              0          0.41890     0.000239     0.00147      1.193      -0.0003
+  12            0          35              0          0.41865     0.000241     0.00236      3.437      -0.0002
+  13            0          37              0          0.41842     0.000234     0.00276      2.824      -0.0002
+  14            0          39              0          0.41808     0.000341     0.00275      2.844      -0.0002
+  15            0          41              0          0.41783     0.000250     0.00299      2.793      -0.0003
+  16            0          43              0          0.41774     0.000089     0.00221      2.045      -0.0003
+  17            0          47              0          0.41755     0.000196     0.00139      1.776      -0.0002
+  18            0          49              0          0.41736     0.000181     0.00220      4.224      -0.0001
+  19            0          51              0          0.41718     0.000182     0.00149      2.067      -0.0002
+  20            0          54              0          0.41708     0.000101     0.00141      1.952      -0.0001
+  21            0          56              0          0.41695     0.000129     0.00211      2.782      -0.0001
+  22            0          59              0          0.41688     0.000076     0.00173      1.383      -0.0001
+  23            0          61              0          0.41676     0.000121     0.00103      2.305      -0.0001
+  24            0          64              0          0.41669     0.000069     0.00131      1.362      -0.0001
+  25            0          66              0          0.41660     0.000085     0.00173      2.868      -597E-7
+  26            0          68              0          0.41649     0.000112     0.00149      2.090      -0.0001
+  27            0          70              0          0.41642     0.000069     0.00176      3.873      -0.0001
+  28            0          72              0          0.41635     0.000074    0.000831      1.635      -0.0001
+  29            0          75              0          0.41630     0.000048     0.00114      2.972      -322E-7
+  30            0          77              0          0.41623     0.000073     0.00102      2.824      -427E-7
+  31            0          80              0          0.41618     0.000044    0.000852      1.738      -507E-7
+  32            0          82              0          0.41613     0.000053     0.00126      3.670      -301E-7
+  33            0          84              0          0.41606     0.000072     0.00160      2.604      -509E-7
+  34            0          86              0          0.41599     0.000064     0.00130      2.865      -0.0001
+  35            0          88              0          0.41596     0.000035     0.00194      2.431      -0.0001
+  36            0          90              0          0.41590     0.000057    0.000836      1.367      -0.0001
+  37            0          92              0          0.41582     0.000084     0.00199      2.479      -573E-7
+  38            0          94              0          0.41569     0.000131     0.00201      1.793      -0.0001
+  39            0          97              0          0.41564     0.000051    0.000915      1.332      -0.0001
+  40            0          99              0          0.41556     0.000071     0.00116      5.064       -25E-6
+  41            0         101              0          0.41550     0.000060     0.00134      2.496      -0.0001
+  42            0         104              0          0.41546     0.000042    0.000821      1.342      -0.0001
+  43            0         107              0          0.41544     0.000024     0.00130      1.271      -386E-7
+  44            0         109              0          0.41540     0.000043    0.000958      1.578      -385E-7
+  45            0         111              0          0.41536     0.000040     0.00186      2.082      -513E-7
+  46            0         113              0          0.41534     0.000017     0.00109      3.046      -325E-7
+  47            0         115              0          0.41531     0.000025    0.000372      1.079      -386E-7
+  48            0         118              0          0.41530     0.000017    0.000682      2.771      -116E-7
+  49            0         120              0          0.41527     0.000025    0.000631      2.553      -162E-7
+  50            0         122              0          0.41526     0.000011    0.000919      4.400      -142E-7
+ 
+                                            Optimization Results
+ 
+Iterations                                         50  Function Calls                                    124
+Gradient Calls                                     56  Active Constraints                                  0
+Objective Function                       0.4152616936  Max Abs Gradient Element                 0.0009191287
+Slope of Search Direction                -0.000014225
+ 
+QUANEW needs more than 50 iterations or 2147483647 function calls.
+ 
+WARNING: QUANEW Optimization cannot be completed.
+ 
+ 
+ 
+ 
+ 
+ 
+The NEURAL Procedure
+ 
+                     Optimization Results
+                      Parameter Estimates
+                                                      Gradient
+                                                     Objective
+  N Parameter                         Estimate        Function
+ 
+  1 IMP_DemAffl_H11                   0.251500    -0.000077438
+  2 IMP_DemAge_H11                   -2.717490    -0.000097791
+  3 IMP_PromTime_H11                 -0.088488     0.000039423
+  4 PromSpend_H11                    -0.125443       -0.000366
+  5 IMP_DemAffl_H12                  -0.545740       -0.000558
+  6 IMP_DemAge_H12                   -0.140616       -0.000131
+  7 IMP_PromTime_H12                  0.033895       -0.000634
+  8 PromSpend_H12                    -0.038587       -0.000725
+  9 IMP_DemAffl_H13                  -0.331685        0.000264
+ 10 IMP_DemAge_H13                   -0.121865        0.000232
+ 11 IMP_PromTime_H13                 -0.060638       -0.000154
+ 12 PromSpend_H13                     0.040104    -0.000024262
+ 13 M_DemAffl0_H11                   -0.077901       -0.000132
+ 14 M_DemAge0_H11                     0.133065        0.000144
+ 15 M_DemClusterGroup0_H11           -0.317209        0.000314
+ 16 M_DemGender0_H11                  0.005674        0.000260
+ 17 M_DemReg0_H11                    -0.021036        0.000258
+ 18 M_DemTVReg0_H11                  -0.270235        0.000258
+ 19 M_PromTime0_H11                  -0.063445        0.000130
+ 20 M_DemAffl0_H12                    0.366317        0.000630
+ 21 M_DemAge0_H12                     0.240464       -0.000407
+ 22 M_DemClusterGroup0_H12            0.063122       -0.000912
+ 23 M_DemGender0_H12                 -0.262963       -0.000919
+ 24 M_DemReg0_H12                    -0.004077       -0.000798
+ 25 M_DemTVReg0_H12                   0.022226       -0.000798
+ 26 M_PromTime0_H12                  -0.163146       -0.000912
+ 27 M_DemAffl0_H13                   -0.167850        0.000792
+ 28 M_DemAge0_H13                     0.313670     0.000083499
+ 29 M_DemClusterGroup0_H13           -0.176050       -0.000390
+ 30 M_DemGender0_H13                 -0.495057       -0.000605
+ 31 M_DemReg0_H13                     0.062431       -0.000255
+ 32 M_DemTVReg0_H13                  -0.166739       -0.000255
+ 33 M_PromTime0_H13                   0.182632       -0.000132
+ 34 IMP_DemClusterGroupA_H11          0.097021    -0.000034375
+ 35 IMP_DemClusterGroupB_H11         -0.387586        0.000186
+ 36 IMP_DemClusterGroupC_H11         -0.394619     0.000042892
+ 37 IMP_DemClusterGroupD_H11         -0.002691        0.000110
+ 38 IMP_DemClusterGroupE_H11          0.052990     0.000040719
+ 39 IMP_DemClusterGroupF_H11         -0.100400       -0.000155
+ 40 IMP_DemGenderF_H11               -0.101569     0.000081181
+ 41 IMP_DemGenderM_H11               -0.032695     0.000094591
+ 42 IMP_DemRegMidlands_H11            0.090654       -0.000110
+ 43 IMP_DemRegNorth_H11               0.102451        0.000116
+ 44 IMP_DemRegScottish_H11            0.244348    -0.000038682
+ 45 IMP_DemRegSouthEast_H11           0.042695        0.000123
+ 46 IMP_DemTVRegBorder_H11           -0.112514    -0.000057586
+ 47 IMP_DemTVRegCScotland_H11         0.205354       -0.000117
+ 48 IMP_DemTVRegEast_H11             -0.153063    -0.000083884
+ 49 IMP_DemTVRegLondon_H11           -0.227640    -0.000016218
+ 50 IMP_DemTVRegMidlands_H11         -0.068623     0.000050615
+ 51 IMP_DemTVRegNEast_H11             0.531214       -0.000125
+ 52 IMP_DemTVRegNScot_H11            -0.073786    -0.000007026
+ 53 IMP_DemTVRegNWest_H11            -0.524883     0.000098894
+ 54 IMP_DemTVRegS_SEast_H11           0.398187     0.000053133
+ 55 IMP_DemTVRegSWest_H11             0.016548    -0.000029847
+ 56 IMP_DemTVRegUlster_H11            0.176902       -0.000138
+ 57 IMP_DemTVRegWales_West_H11        0.288475       -0.000137
+ 58 PromClassGold_H11                -0.255675       -0.000159
+ 59 PromClassPlatinum_H11             0.368811       -0.000224
+ 60 PromClassSilver_H11              -0.171551        0.000126
+ 61 IMP_DemClusterGroupA_H12          0.006224    -0.000037498
+ 62 IMP_DemClusterGroupB_H12         -0.266083       -0.000423
+ 63 IMP_DemClusterGroupC_H12         -0.426667       -0.000290
+ 64 IMP_DemClusterGroupD_H12         -0.108894       -0.000132
+ 65 IMP_DemClusterGroupE_H12         -0.182521       -0.000169
+ 66 IMP_DemClusterGroupF_H12         -0.289359        0.000230
+ 67 IMP_DemGenderF_H12               -0.265042       -0.000463
+ 68 IMP_DemGenderM_H12                0.183879       -0.000105
+ 69 IMP_DemRegMidlands_H12            0.062026        0.000431
+ 70 IMP_DemRegNorth_H12               0.019766       -0.000259
+ 71 IMP_DemRegScottish_H12           -0.204378        0.000178
+ 72 IMP_DemRegSouthEast_H12          -0.075769       -0.000693
+ 73 IMP_DemTVRegBorder_H12            0.260881        0.000111
+ 74 IMP_DemTVRegCScotland_H12        -0.400579        0.000203
+ 75 IMP_DemTVRegEast_H12              0.206798        0.000284
+ 76 IMP_DemTVRegLondon_H12            0.061735       -0.000549
+ 77 IMP_DemTVRegMidlands_H12          0.031116        0.000180
+ 78 IMP_DemTVRegNEast_H12            -0.045200        0.000175
+ 79 IMP_DemTVRegNScot_H12             0.051868        0.000104
+ 80 IMP_DemTVRegNWest_H12            -0.058202       -0.000194
+ 81 IMP_DemTVRegS_SEast_H12           0.219836    -0.000022390
+ 82 IMP_DemTVRegSWest_H12            -0.248291     0.000003589
+ 83 IMP_DemTVRegUlster_H12           -0.080863     0.000071769
+ 84 IMP_DemTVRegWales_West_H12       -0.180406        0.000252
+ 85 PromClassGold_H12                 0.065447     0.000001688
+ 86 PromClassPlatinum_H12             0.180522     0.000013072
+ 87 PromClassSilver_H12              -0.047800       -0.000317
+ 88 IMP_DemClusterGroupA_H13          0.090840    -0.000057082
+ 89 IMP_DemClusterGroupB_H13         -0.034202       -0.000520
+ 90 IMP_DemClusterGroupC_H13          0.208251     0.000064598
+ 91 IMP_DemClusterGroupD_H13          0.086526    -0.000022633
+ 92 IMP_DemClusterGroupE_H13          0.202066    -0.000082023
+ 93 IMP_DemClusterGroupF_H13          0.276449        0.000532
+ 94 IMP_DemGenderF_H13               -0.648184    -0.000074476
+ 95 IMP_DemGenderM_H13               -0.124767       -0.000220
+ 96 IMP_DemRegMidlands_H13           -0.031624        0.000527
+ 97 IMP_DemRegNorth_H13               0.079285    -0.000055851
+ 98 IMP_DemRegScottish_H13            0.274251        0.000323
+ 99 IMP_DemRegSouthEast_H13          -0.084045       -0.000196
+100 IMP_DemTVRegBorder_H13            0.149307     0.000043837
+101 IMP_DemTVRegCScotland_H13         0.251459     0.000077793
+102 IMP_DemTVRegEast_H13             -0.237314     0.000080934
+103 IMP_DemTVRegLondon_H13           -0.118428       -0.000249
+104 IMP_DemTVRegMidlands_H13         -0.032525     0.000054072
+105 IMP_DemTVRegNEast_H13             0.039949     0.000066952
+106 IMP_DemTVRegNScot_H13            -0.068407        0.000179
+107 IMP_DemTVRegNWest_H13            -0.152108       -0.000145
+108 IMP_DemTVRegS_SEast_H13           0.193686    -0.000004961
+109 IMP_DemTVRegSWest_H13            -0.036300    -0.000094206
+110 IMP_DemTVRegUlster_H13            0.259449     0.000095314
+111 IMP_DemTVRegWales_West_H13        0.040369        0.000311
+112 PromClassGold_H13                -0.185523        0.000537
+113 PromClassPlatinum_H13             0.040898     0.000031771
+114 PromClassSilver_H13               0.003244        0.000156
+115 BIAS_H11                         -1.355621        0.000223
+116 BIAS_H12                          1.127906       -0.000915
+117 BIAS_H13                          0.099485    -0.000053886
+118 H11_TargetBuy1                    1.400376       -0.000183
+119 H12_TargetBuy1                   -1.565278     0.000045042
+120 H13_TargetBuy1                   -1.729849       -0.000242
+121 BIAS_TargetBuy1                  -0.501017        0.000349
+ 
+Value of Objective Function = 0.4152616936
+ 
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Fit Statistics
+ 
+Target=TargetBuy Target Label=Organics Purchase Indicator
+ 
+   Fit
+Statistics    Statistics Label                      Train    Validation
+ 
+ _DFT_        Total Degrees of Freedom           11112.00          .
+ _DFE_        Degrees of Freedom for Error       10991.00          .
+ _DFM_        Model Degrees of Freedom             121.00          .
+ _NW_         Number of Estimated Weights          121.00          .
+ _AIC_        Akaike's Information Criterion      9567.07          .
+ _SBC_        Schwarz's Bayesian Criterion       10452.28          .
+ _ASE_        Average Squared Error                  0.13         0.13
+ _MAX_        Maximum Absolute Error                 0.98         0.97
+ _DIV_        Divisor for ASE                    22224.00     22222.00
+ _NOBS_       Sum of Frequencies                 11112.00     11111.00
+ _RASE_       Root Average Squared Error             0.37         0.37
+ _SSE_        Sum of Squared Errors               2966.54      2974.84
+ _SUMW_       Sum of Case Weights Times Freq     22224.00     22222.00
+ _FPE_        Final Prediction Error                 0.14          .
+ _MSE_        Mean Squared Error                     0.13         0.13
+ _RFPE_       Root Final Prediction Error            0.37          .
+ _RMSE_       Root Mean Squared Error                0.37         0.37
+ _AVERR_      Average Error Function                 0.42         0.42
+ _ERR_        Error Function                      9325.07      9346.23
+ _MISC_       Misclassification Rate                 0.18         0.19
+ _WRONG_      Number of Wrong Classifications     2047.00      2077.00
+ _PROF_       Total Profit for TargetBuy         37241.50     37358.00
+ _APROF_      Average Profit for TargetBuy           3.35         3.36
+ 
+ 
+ 
+ 
+Classification Table
+ 
+Data Role=TRAIN Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+                       Target        Outcome     Frequency       Total
+Target    Outcome    Percentage    Percentage      Count      Percentage
+ 
+  0          0         83.5673       93.9945        7857        70.7073
+  1          0         16.4327       56.1206        1545        13.9039
+  0          1         29.3567        6.0055         502         4.5176
+  1          1         70.6433       43.8794        1208        10.8711
+ 
+ 
+Data Role=VALIDATE Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+                       Target        Outcome     Frequency       Total
+Target    Outcome    Percentage    Percentage      Count      Percentage
+ 
+  0          0         83.3865       93.8509        7845        70.6057
+  1          0         16.6135       56.7951        1563        14.0671
+  0          1         30.1820        6.1491         514         4.6260
+  1          1         69.8180       43.2049        1189        10.7011
+ 
+ 
+ 
+ 
+Decision Table
+ 
+Data Role=TRAIN Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+                       Target        Outcome     Frequency       Total
+Target    Outcome    Percentage    Percentage      Count      Percentage
+ 
+  0          0         97.8610        8.7570         732         6.5875
+  1          0          2.1390        0.5812          16         0.1440
+  0          1         73.5913       91.2430        7627        68.6375
+  1          1         26.4087       99.4188        2737        24.6310
+ 
+ 
+Data Role=VALIDATE Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+                       Target        Outcome     Frequency       Total
+Target    Outcome    Percentage    Percentage      Count      Percentage
+ 
+  0          0         98.9515        9.0322         755         6.7951
+  1          0          1.0485        0.2907           8         0.0720
+  0          1         73.4828       90.9678        7604        68.4367
+  1          1         26.5172       99.7093        2744        24.6962
+ 
+ 
+ 
+ 
+Event Classification Table
+ 
+Data Role=TRAIN Target=TargetBuy Target Label=Organics Purchase Indicator
+ 
+  False       True        False       True
+Negative    Negative    Positive    Positive
+ 
+  1545        7857         502        1208
+ 
+ 
+Data Role=VALIDATE Target=TargetBuy Target Label=Organics Purchase Indicator
+ 
+  False       True        False       True
+Negative    Negative    Positive    Positive
+ 
+  1563        7845         514        1189
+ 
+ 
+ 
+ 
+Assessment Score Rankings
+ 
+Data Role=TRAIN Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+                                                                                    Mean
+                            Cumulative       %      Cumulative     Number of     Posterior
+Depth      Gain     Lift       Lift      Response   % Response   Observations   Probability
+ 
+   5    249.912   3.49912     3.49912     86.6906     86.6906         556         0.85505
+  10    217.243   2.84575     3.17243     70.5036     78.5971         556         0.68685
+  15    187.652   2.28361     2.87652     56.5766     71.2657         555         0.56251
+  20    158.557   1.71326     2.58557     42.4460     64.0576         556         0.46334
+  25    138.286   1.57089     2.38286     38.9189     59.0353         555         0.38726
+  30    117.797   1.15427     2.17797     28.5971     53.9592         556         0.32565
+  35    103.684   1.19057     2.03684     29.4964     50.4627         556         0.27842
+  40     89.694   0.91635     1.89694     22.7027     46.9966         555         0.23847
+  45     77.240   0.77677     1.77240     19.2446     43.9112         556         0.20459
+  50     66.655   0.71272     1.66655     17.6577     41.2887         555         0.17419
+  55     58.230   0.74048     1.58230     18.3453     39.2016         556         0.14937
+  60     49.637   0.55173     1.49637     13.6691     37.0726         556         0.12797
+  65     42.498   0.56727     1.42498     14.0541     35.3039         555         0.11028
+  70     34.855   0.35572     1.34855      8.8129     33.4105         556         0.09432
+  75     28.006   0.32000     1.28006      7.9279     31.7135         555         0.07987
+  80     21.317   0.21053     1.21317      5.2158     30.0562         556         0.06555
+  85     15.800   0.27586     1.15800      6.8345     28.6894         556         0.05329
+  90     10.181   0.14545     1.10181      3.6036     27.2973         555         0.04283
+  95      4.990   0.11615     1.04990      2.8777     26.0112         556         0.03362
+ 100      0.000   0.05091     1.00000      1.2613     24.7750         555         0.02493
+ 
+ 
+Data Role=VALIDATE Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+                                                                                    Mean
+                            Cumulative       %      Cumulative     Number of     Posterior
+Depth      Gain     Lift       Lift      Response   % Response   Observations   Probability
+ 
+   5    241.293   3.41293     3.41293     84.5324     84.5324         556         0.85282
+  10    210.069   2.78844     3.10069     69.0647     76.7986         556         0.68067
+  15    183.613   2.30606     2.83613     57.1171     70.2460         555         0.55862
+  20    161.352   1.94610     2.61352     48.2014     64.7323         556         0.46238
+  25    140.531   1.57132     2.40531     38.9189     59.5752         555         0.38583
+  30    120.036   1.17637     2.20036     29.1367     54.4991         556         0.32552
+  35    103.377   1.03300     2.03377     25.5856     50.3728         555         0.27721
+  40     89.927   0.95853     1.89927     23.7410     47.0416         556         0.23790
+  45     76.759   0.71292     1.76759     17.6577     43.7800         555         0.20545
+  50     67.790   0.87139     1.67790     21.5827     41.5587         556         0.17589
+  55     58.406   0.64628     1.58406     16.0072     39.2343         556         0.15000
+  60     49.458   0.50923     1.49458     12.6126     37.0181         555         0.12904
+  65     41.475   0.45748     1.41475     11.3309     35.0408         556         0.11081
+  70     34.546   0.44375     1.34546     10.9910     33.3248         555         0.09508
+  75     27.944   0.35582     1.27944      8.8129     31.6895         556         0.08037
+  80     21.591   0.26189     1.21591      6.4865     30.1159         555         0.06606
+  85     15.587   0.19606     1.15587      4.8561     28.6289         556         0.05335
+  90     10.060   0.16004     1.10060      3.9640     27.2600         555         0.04253
+  95      4.990   0.13797     1.04990      3.4173     26.0042         556         0.03320
+ 100      0.000   0.05092     1.00000      1.2613     24.7682         555         0.02496
+ 
+ 
+ 
+ 
+Assessment Score Distribution
+ 
+Data Role=TRAIN Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+ Posterior     Number                     Mean
+Probability      of      Number of     Posterior
+   Range       Events    Nonevents    Probability    Percentage
+ 
+ 0.95-1.00        53           0        0.95761         0.4770
+ 0.90-0.95       100           5        0.92437         0.9449
+ 0.85-0.90       110          14        0.87423         1.1159
+ 0.80-0.85       113          24        0.82524         1.2329
+ 0.75-0.80       114          32        0.77326         1.3139
+ 0.70-0.75       148          44        0.72442         1.7279
+ 0.65-0.70       170          82        0.67552         2.2678
+ 0.60-0.65       126          78        0.62581         1.8359
+ 0.55-0.60       129          99        0.57365         2.0518
+ 0.50-0.55       145         124        0.52483         2.4208
+ 0.45-0.50       139         175        0.47461         2.8258
+ 0.40-0.45       142         230        0.42503         3.3477
+ 0.35-0.40       163         271        0.37348         3.9057
+ 0.30-0.35       149         363        0.32255         4.6076
+ 0.25-0.30       185         464        0.27424         5.8405
+ 0.20-0.25       179         629        0.22435         7.2714
+ 0.15-0.20       185         831        0.17340         9.1433
+ 0.10-0.15       207        1274        0.12325        13.3279
+ 0.05-0.10       147        1892        0.07358        18.3495
+ 0.00-0.05        49        1728        0.03474        15.9917
+ 
+ 
+Data Role=VALIDATE Target Variable=TargetBuy Target Label=Organics Purchase Indicator
+ 
+ Posterior     Number                     Mean
+Probability      of      Number of     Posterior
+   Range       Events    Nonevents    Probability    Percentage
+ 
+ 0.95-1.00        53           0        0.95912         0.4770
+ 0.90-0.95        98           6        0.92505         0.9360
+ 0.85-0.90       104          13        0.87487         1.0530
+ 0.80-0.85       100          31        0.82420         1.1790
+ 0.75-0.80       112          29        0.77522         1.2690
+ 0.70-0.75       131          58        0.72506         1.7010
+ 0.65-0.70       168          76        0.67437         2.1960
+ 0.60-0.65       134          74        0.62512         1.8720
+ 0.55-0.60       134         100        0.57491         2.1060
+ 0.50-0.55       155         127        0.52471         2.5380
+ 0.45-0.50       159         156        0.47437         2.8350
+ 0.40-0.45       157         211        0.42536         3.3120
+ 0.35-0.40       155         255        0.37427         3.6900
+ 0.30-0.35       157         377        0.32485         4.8060
+ 0.25-0.30       168         476        0.27412         5.7961
+ 0.20-0.25       168         675        0.22427         7.5871
+ 0.15-0.20       201         813        0.17402         9.1261
+ 0.10-0.15       190        1303        0.12321        13.4371
+ 0.05-0.10       155        1832        0.07400        17.8832
+ 0.00-0.05        53        1747        0.03468        16.2002

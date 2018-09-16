@@ -1,0 +1,273 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                14:57:35
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+          Measurement    Frequency
+ Role        Level         Count
+ 
+TARGET      BINARY           1
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fit Statistics
+Model Selection based on Valid: Misclassification Rate (_VMISC_)
+ 
+ 
+                                                                 Valid:
+Selected    Model                                          Misclassification
+ Model      Node       Model Description                          Rate
+ 
+   Y        Reg3       Stepwise Regression (5 Clusters)         0.19016
+            Tree4      Decision Tree (5 Clusters)               0.20246
+            Neural2    Neural Network (5 Clusters)              0.21141
+            Neural3    Neural Network (3 Clusters)              0.22025
+            Reg2       Stepwise Regression                      0.22196
+            Reg5       Stepwise Regression (4 Clusters)         0.22582
+            Neural     Neural Network (4 Clusters)              0.22987
+            Reg4       Stepwise Regression (3 Clusters)         0.23544
+ 
+ Train:                          Valid:
+Average          Train:         Average
+Squared    Misclassification    Squared
+ Error            Rate           Error
+ 
+0.13767         0.20157         0.14288
+0.14407         0.18925         0.15198
+0.11272         0.16125         0.15584
+0.14046         0.19828         0.15943
+0.15643         0.21885         0.15459
+0.15127         0.21450         0.15661
+0.13738         0.18763         0.16195
+0.15659         0.21856         0.16371
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Fit Statistics Table
+Target: TargetBuy
+ 
+Data Role=Train
+ 
+Statistics                                                           Reg3
+ 
+Train: Bin-Based Two-Way Kolmogorov-Smirnov Probability Cutoff       0.30
+Train: Kolmogorov-Smirnov Statistic                                  0.47
+Train: Akaike's Information Criterion                              788.48
+Train: Average Squared Error                                         0.14
+Train: Roc Index                                                     0.80
+Train: Average Error Function                                        0.43
+Train: Cumulative Percent Captured Response                         29.86
+Train: Percent Captured Response                                    13.74
+Selection Criterion: Valid: Misclassification Rate                   0.19
+Train: Degrees of Freedom for Error                                883.00
+Train: Model Degrees of Freedom                                     10.00
+Train: Total Degrees of Freedom                                    893.00
+Train: Divisor for ASE                                            1786.00
+Train: Error Function                                              768.48
+Train: Final Prediction Error                                        0.14
+Train: Gain                                                        196.26
+Train: Gini Coefficient                                              0.60
+Train: Bin-Based Two-Way Kolmogorov-Smirnov Statistic                0.45
+Train: Kolmogorov-Smirnov Probability Cutoff                         0.26
+Train: Cumulative Lift                                               2.96
+Train: Lift                                                          2.73
+Train: Maximum Absolute Error                                        0.97
+Train: Misclassification Rate                                        0.20
+Train: Mean Square Error                                             0.14
+Train: Sum of Frequencies                                          893.00
+Train: Number of Estimate Weights                                   10.00
+Train: Root Average Sum of Squares                                   0.37
+Train: Cumulative Percent Response                                  70.00
+Train: Percent Response                                             64.44
+Train: Root Final Prediction Error                                   0.38
+Train: Root Mean Squared Error                                       0.37
+Train: Schwarz's Bayesian Criterion                                836.43
+Train: Sum of Squared Errors                                       245.88
+Train: Sum of Case Weights Times Freq                             1786.00
+Train: Number of Wrong Classifications                                .
+ 
+  Tree4    Neural2    Neural3       Reg2       Reg5      Neural       Reg4
+ 
+   0.24       0.27       0.42       0.47       0.46        0.34       0.41
+   0.37       0.63       0.56       0.51       0.52        0.57       0.50
+    .      1339.76    2194.44    2053.56    1850.60     4252.86    1916.31
+   0.14       0.11       0.14       0.16       0.15        0.14       0.16
+   0.76       0.88       0.86       0.83       0.84        0.87       0.83
+    .         0.36       0.43       0.48       0.46        0.43       0.48
+  30.18      35.07      26.52      25.62      25.95       26.38      25.81
+  14.82      15.64      12.83      12.29      12.69       12.55      12.69
+   0.20       0.21       0.22       0.22       0.23        0.23       0.24
+    .       541.00    1731.00    2101.00    1963.00      691.00    1964.00
+    .       352.00     241.00      10.00       9.00     1281.00       8.00
+ 893.00     893.00    1972.00    2111.00    1972.00     1972.00    1972.00
+1786.00    1786.00    3944.00    4222.00    3944.00     3944.00    3944.00
+    .       635.76    1712.44    2033.56    1832.60     1690.86    1900.31
+    .         0.26       0.18       0.16       0.15        0.65       0.16
+ 199.44     247.98     164.09     155.12     158.47      162.69     157.07
+   0.51       0.76       0.72       0.65       0.67        0.74       0.65
+   0.37       0.62       0.55       0.50       0.51        0.57       0.50
+   0.11       0.24       0.38       0.45       0.40        0.29       0.39
+   2.99       3.48       2.64       2.55       2.58        2.63       2.57
+   2.94       3.10       2.56       2.45       2.53        2.50       2.53
+   0.91       0.98       0.98       0.99       0.96        0.99       0.99
+   0.19       0.16       0.20       0.22       0.21        0.19       0.22
+    .         0.19       0.16       0.16       0.15        0.39       0.16
+ 893.00     893.00    1972.00    2111.00    1972.00     1972.00    1972.00
+    .       352.00     241.00      10.00       9.00     1281.00       8.00
+   0.38       0.34       0.37       0.40       0.39        0.37       0.40
+  70.75      82.22      94.95      92.45      92.93       94.44      92.42
+  69.51      73.33      91.92      88.68      90.91       89.90      90.91
+    .         0.51       0.42       0.40       0.39        0.80       0.40
+    .         0.43       0.40       0.40       0.39        0.63       0.40
+    .      3027.45    3540.86    2110.11    1900.88    11409.56    1961.00
+ 257.31     201.32     553.98     660.46     596.61      541.82     617.60
+    .      1786.00    3944.00    4222.00    3944.00     3944.00    3944.00
+    .       144.00     391.00        .          .        370.00        .
+ 
+ 
+Data Role=Valid
+ 
+Statistics
+ 
+Valid: Kolmogorov-Smirnov Statistic
+Valid: Average Squared Error
+Valid: Roc Index
+Valid: Average Error Function
+Valid: Bin-Based Two-Way Kolmogorov-Smirnov Probability Cutoff
+Valid: Cumulative Percent Captured Response
+Valid: Percent Captured Response
+Valid: Divisor for VASE
+Valid: Error Function
+Valid: Gain
+Valid: Gini Coefficient
+Valid: Bin-Based Two-Way Kolmogorov-Smirnov Statistic
+Valid: Kolmogorov-Smirnov Probability Cutoff
+Valid: Cumulative Lift
+Valid: Lift
+Valid: Maximum Absolute Error
+Valid: Misclassification Rate
+Valid: Mean Square Error
+Valid: Sum of Frequencies
+Valid: Root Average Squared Error
+Valid: Cumulative Percent Response
+Valid: Percent Response
+Valid: Root Mean Square Error
+Valid: Sum of Square Errors
+Valid: Sum of Case Weights Times Freq
+Valid: Number of Wrong Classifications
+ 
+   Reg3      Tree4    Neural2    Neural3       Reg2       Reg5     Neural       Reg4
+ 
+   0.44       0.35       0.38       0.50       0.52       0.51       0.49       0.47
+   0.14       0.15       0.16       0.16       0.15       0.16       0.16       0.16
+   0.79       0.74       0.75       0.82       0.83       0.83       0.82       0.81
+   0.44        .         0.50       0.49       0.48       0.48       0.50       0.50
+   0.22       0.24       0.21       0.37       0.41       0.41       0.30       0.48
+  30.81      28.17      26.54      25.04      26.14      25.32      25.46      26.02
+  15.17      13.57      10.90      11.81      12.68      11.95      12.24      12.24
+1788.00    1788.00    1788.00    3950.00    4226.00    3950.00    3950.00    3950.00
+ 795.21        .       898.28    1955.01    2021.79    1899.67    1972.66    1963.87
+ 206.00     179.77     163.63     149.72     160.57     152.53     153.93     159.54
+   0.58       0.47       0.50       0.63       0.65       0.65       0.64       0.62
+   0.44       0.34       0.37       0.50       0.51       0.50       0.48       0.47
+   0.22       0.11       0.14       0.35       0.39       0.41       0.26       0.46
+   3.06       2.80       2.64       2.50       2.61       2.53       2.54       2.60
+   3.01       2.70       2.17       2.36       2.53       2.38       2.44       2.44
+   0.97       0.91       1.00       0.99       0.99       0.98       0.99       0.98
+   0.19       0.20       0.21       0.22       0.22       0.23       0.23       0.24
+   0.14        .         0.16       0.16       0.15       0.16       0.16       0.16
+ 894.00     894.00     894.00    1975.00    2113.00    1975.00    1975.00    1975.00
+   0.38       0.39       0.39       0.40       0.39       0.40       0.40       0.40
+  72.22      66.03      62.22      89.90      94.34      90.91      91.41      93.43
+  71.11      63.64      51.11      84.85      91.51      85.86      87.88      87.88
+   0.38        .         0.39       0.40       0.39       0.40       0.40       0.40
+ 255.48     271.75     278.65     629.76     653.29     618.60     639.70     646.66
+1788.00        .      1788.00    3950.00    4226.00    3950.00    3950.00    3950.00
+    .          .       189.00     435.00        .          .       454.00        .
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Event Classification Table
+Model Selection based on Valid: Misclassification Rate (_VMISC_)
+ 
+Model                                          Data
+Node       Model Description                   Role         Target
+ 
+Reg2       Stepwise Regression                 TRAIN       TargetBuy
+Reg2       Stepwise Regression                 VALIDATE    TargetBuy
+Reg3       Stepwise Regression (5 Clusters)    TRAIN       TargetBuy
+Reg3       Stepwise Regression (5 Clusters)    VALIDATE    TargetBuy
+Reg4       Stepwise Regression (3 Clusters)    TRAIN       TargetBuy
+Reg4       Stepwise Regression (3 Clusters)    VALIDATE    TargetBuy
+Reg5       Stepwise Regression (4 Clusters)    TRAIN       TargetBuy
+Reg5       Stepwise Regression (4 Clusters)    VALIDATE    TargetBuy
+Neural     Neural Network (4 Clusters)         TRAIN       TargetBuy
+Neural     Neural Network (4 Clusters)         VALIDATE    TargetBuy
+Neural2    Neural Network (5 Clusters)         TRAIN       TargetBuy
+Neural2    Neural Network (5 Clusters)         VALIDATE    TargetBuy
+Neural3    Neural Network (3 Clusters)         TRAIN       TargetBuy
+Neural3    Neural Network (3 Clusters)         VALIDATE    TargetBuy
+Tree4      Decision Tree (5 Clusters)          TRAIN       TargetBuy
+Tree4      Decision Tree (5 Clusters)          VALIDATE    TargetBuy
+ 
+Target      False       True        False       True
+Label     Negative    Negative    Positive    Positive
+ 
+             298        1182         164         467
+             304        1183         165         461
+             143         645          37          68
+             143         656          27          68
+             278        1110         153         431
+             285        1084         180         426
+             280        1120         143         429
+             284        1102         162         427
+             277        1170          93         432
+             314        1124         140         397
+             110         648          34         101
+             140         634          49          71
+             286        1158         105         423
+             306        1135         129         405
+             137         650          32          74
+             155         657          26          56
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

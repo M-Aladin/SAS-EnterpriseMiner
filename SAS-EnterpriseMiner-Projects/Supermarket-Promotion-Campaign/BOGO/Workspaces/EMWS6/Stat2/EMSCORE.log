@@ -1,0 +1,59 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                May 13, 2018
+Time:                20:33:14
+*------------------------------------------------------------*
+12347  *------------------------------------------------------------*;
+12348  * Stat2: Scoring DATA data;
+12349  *------------------------------------------------------------*;
+12350  data EMWS6.Stat2_TRAIN
+12351  / view=EMWS6.Stat2_TRAIN
+12352  ;
+12353  set EMWS6.Part_TRAIN
+12354  ;
+12355  run;
+
+NOTE: DATA STEP view saved on file EMWS6.STAT2_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12356  quit;
+
+12357  *------------------------------------------------------------*;
+12358  * Stat2: Scoring VALIDATE data;
+12359  *------------------------------------------------------------*;
+12360  data EMWS6.Stat2_VALIDATE
+12361  / view=EMWS6.Stat2_VALIDATE
+12362  ;
+12363  set EMWS6.Part_VALIDATE
+12364  ;
+12365  run;
+
+NOTE: DATA STEP view saved on file EMWS6.STAT2_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+12366  quit;
+
+12367  *------------------------------------------------------------*;
+12368  * Stat2: Computing metadata for TRAIN data;
+12369  *------------------------------------------------------------*;
+
+NOTE: View EMWS6.STAT2_TRAIN.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+NOTE: View EMWS6.STAT2_TRAIN.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      
+NOTE: View EMWS6.STAT2_VALIDATE.VIEW used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+      

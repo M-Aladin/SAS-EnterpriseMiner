@@ -1,0 +1,26 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Limits and Replacement Values for Interval Variables
+
+                                              Lower                   Upper
+               Replace            Lower    Replacement    Upper    Replacement
+Variable       Variable           limit       Value       Limit       Value
+
+Age            REP_Age              1           .            .          .     
+LoyaltyTime    REP_LoyaltyTime      .           .           50          .     
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Replacement Values for Class Variables
+
+                                           Character
+                     Formatted            Unformatted    Numeric    Replacement
+Variable               Value      Type       Value        Value        Value       Label
+
+AdvertisementZone                  C                        .            U              
+ClusterGroup                       C                        .            U              
+Gender                             C                        .            U              
+Region                             C                        .            U              

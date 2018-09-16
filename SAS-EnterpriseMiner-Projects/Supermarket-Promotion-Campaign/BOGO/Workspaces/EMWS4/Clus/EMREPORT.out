@@ -1,0 +1,26 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Importance
+
+                                                           Number of    Number of
+                                                           Splitting    Surrogate
+Variable Name            Label                               Rules        Rules      Importance
+
+LoyaltyClass                                                   1             6         1.00000 
+REP_Age                  Replacement: Age                      9             4         0.98358 
+REP_LoyaltyTime          Replacement: LoyaltyTime              3            15         0.93595 
+TimeSinceLastPurchase                                          6            11         0.91750 
+TotalSpend                                                     7             9         0.89411 
+AffluenceGrade                                                 5            14         0.80862 
+REP_AdvertisementZone    Replacement: AdvertisementZone        0             6         0.20809 
+FacebookLike                                                   4             0         0.19418 
+REP_Region               Replacement: Region                   0             5         0.13639 
+CleanserProducts                                               0             3         0.07180 
+REP_ClusterGroup         Replacement: ClusterGroup             0             2         0.06492 
+LotionProducts                                                 0             1         0.06344 
+REP_Gender               Replacement: Gender                   0             3         0.05560 
+CampaignViewedEmail                                            0             1         0.04936 
+PreviousCampaign                                               0             1         0.04057 
+NightRepairProducts                                            0             1         0.02029 

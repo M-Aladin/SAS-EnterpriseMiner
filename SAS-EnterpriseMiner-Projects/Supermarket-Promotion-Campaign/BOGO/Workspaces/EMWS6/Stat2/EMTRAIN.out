@@ -1,0 +1,192 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+ID           INTERVAL          1    
+ID           NOMINAL           1    
+INPUT        INTERVAL          4    
+INPUT        NOMINAL           5    
+REJECTED     INTERVAL          1    
+REJECTED     NOMINAL           1    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+Variable Levels Summary
+(maximum 500 observations printed)
+
+                       Frequency
+Variable     Role        Count
+
+ID           ID          11112  
+TargetBuy    TARGET          2  
+_dataobs_    ID          11112  
+ 
+                                                                                                                                                                                                                                                                
+ 
+Class Variable Summary Statistics
+(maximum 500 observations printed)
+
+Data Role=TRAIN
+
+                                      Number
+Data                                    of                                  Mode                     Mode2
+Role     Variable Name       Role     Levels    Missing    Mode          Percentage    Mode2       Percentage
+
+TRAIN    DemClusterGroup    INPUT        8         328     C               20.64       D             19.63   
+TRAIN    DemGender          INPUT        4        1215     F               54.99       M             26.35   
+TRAIN    DemReg             INPUT        6         236     South East      39.59       Midlands      29.93   
+TRAIN    DemTVReg           INPUT       14         236     London          28.41       Midlands      13.71   
+TRAIN    PromClass          INPUT        4           0     Silver          38.28       Tin           29.23   
+TRAIN    TargetBuy          TARGET       2           0     0               75.22       1             24.78   
+ 
+                                                                                                                                                                                                                                                                
+ 
+Distribution of Class Target and Segment Variables
+(maximum 500 observations printed)
+
+Data Role=TRAIN
+
+Data     Variable                         Frequency
+Role       Name        Role     Level         Count    Percent
+
+TRAIN    TargetBuy    TARGET      0            8359    75.2250
+TRAIN    TargetBuy    TARGET      1            2753    24.7750
+ 
+                                                                                                                                                                                                                                                                
+ 
+Interval Variable Summary Statistics
+(maximum 500 observations printed)
+
+Data Role=TRAIN
+
+                                  Standard          Non
+Variable     Role         Mean    Deviation     Missing     Missing     Minimum      Median     Maximum    Skewness    Kurtosis
+
+DemAffl      INPUT    8.703032    3.423289        10587         525           0           8          31    0.864793    1.929297
+DemAge       INPUT     53.8921    13.18971        10361         751          18          54          79    -0.08993    -0.83168
+PromSpend    INPUT    4406.134    6928.893        11112           0        0.01        2000    110072.4    3.857084    26.38712
+PromTime     INPUT    6.571064    4.664962        10976         136           0           5          39    2.297842    8.267662
+ 
+                                                                                                                                                                                                                                                                
+ 
+Class Variable Summary Statistics by Class Target
+(maximum 500 observations printed)
+
+Data Role=TRAIN Variable Name=DemClusterGroup
+
+                       Number
+             Target      of                            Mode                  Mode2
+ Target      Level     Levels    Missing    Mode    Percentage    Mode2    Percentage
+
+TargetBuy      0          8        251       C        20.50         B        19.51   
+TargetBuy      1          8         77       C        21.07         D        20.38   
+_OVERALL_                 8        328       C        20.64         D        19.63   
+
+
+Data Role=TRAIN Variable Name=DemGender
+
+                       Number
+             Target      of                            Mode                  Mode2
+ Target      Level     Levels    Missing    Mode    Percentage    Mode2    Percentage
+
+TargetBuy      0          4        1101      F        48.30         M        28.89   
+TargetBuy      1          4         114      F        75.30         M        18.63   
+_OVERALL_                 4        1215      F        54.99         M        26.35   
+
+
+Data Role=TRAIN Variable Name=DemReg
+
+                       Number
+             Target      of                                  Mode                     Mode2
+ Target      Level     Levels    Missing       Mode       Percentage     Mode2      Percentage
+
+TargetBuy      0          6        174      South East      38.98       Midlands      29.79   
+TargetBuy      1          6         62      South East      41.45       Midlands      30.37   
+_OVERALL_                 6        236      South East      39.59       Midlands      29.93   
+
+
+Data Role=TRAIN Variable Name=DemTVReg
+
+                       Number
+             Target      of                              Mode                     Mode2
+ Target      Level     Levels    Missing     Mode     Percentage     Mode2      Percentage
+
+TargetBuy      0         14        174      London      27.29       Midlands      13.73   
+TargetBuy      1         14         62      London      31.82       Midlands      13.62   
+_OVERALL_                14        236      London      28.41       Midlands      13.71   
+
+
+Data Role=TRAIN Variable Name=PromClass
+
+                       Number
+             Target      of                              Mode                  Mode2
+ Target      Level     Levels    Missing     Mode     Percentage    Mode2    Percentage
+
+TargetBuy      0          4         0       Silver      38.33       Gold       30.47   
+TargetBuy      1          4         0       Silver      38.14       Tin        36.98   
+_OVERALL_                 4         0       Silver      38.28       Tin        29.23   
+ 
+                                                                                                                                                                                                                                                                
+ 
+Interval Variable Summary Statistics by Class Target
+(maximum 500 observations printed)
+
+Data Role=TRAIN Variable=DemAffl
+
+             Target                                 Non                                        Standard
+ Target      Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role          Label
+
+TargetBuy      0              8         374        7985           0          19    7.995867    2.883833     0.349926    0.002315    INPUT    Affluence Grade
+TargetBuy      1             10         151        2602           2          31    10.87317    3.990095     0.894596    1.533755    INPUT    Affluence Grade
+_OVERALL_                     8         525       10587           0          31    8.703032    3.423289     0.864793    1.929297    INPUT    Affluence Grade
+
+
+Data Role=TRAIN Variable=DemAge
+
+             Target                                 Non                                        Standard
+ Target      Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role     Label
+
+TargetBuy      0             56         554        7805          18          79    56.22896    12.10916     -0.20311    -0.56012    INPUT     Age 
+TargetBuy      1             43         197        2556          20          79    46.75626    13.78086      0.57931    -0.66863    INPUT     Age 
+_OVERALL_                    54         751       10361          18          79     53.8921    13.18971     -0.08993    -0.83168    INPUT     Age 
+
+
+Data Role=TRAIN Variable=PromSpend
+
+             Target                                 Non                                        Standard
+ Target      Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role        Label
+
+TargetBuy      0           2500           0        8359        0.01    110072.4    4768.608    7265.583       3.8462    26.27569    INPUT    Total Spend
+TargetBuy      1           1000           0        2753        0.01       55000    3305.542    5648.153     3.512431    18.33277    INPUT    Total Spend
+_OVERALL_                  2000           0       11112        0.01    110072.4    4406.134    6928.893     3.857084    26.38712    INPUT    Total Spend
+
+
+Data Role=TRAIN Variable=PromTime
+
+             Target                                 Non                                        Standard
+ Target      Level       Median     Missing     Missing     Minimum     Maximum        Mean    Deviation    Skewness    Kurtosis    Role            Label
+
+TargetBuy      0              5          99        8260           0          39    6.702058    4.795159     2.250046    7.718265    INPUT    Loyalty Card Tenure
+TargetBuy      1              5          37        2716           0          35     6.17268    4.220445     2.425042    10.27503    INPUT    Loyalty Card Tenure
+_OVERALL_                     5         136       10976           0          39    6.571064    4.664962     2.297842    8.267662    INPUT    Loyalty Card Tenure
+ 
+                                                                                                                                                                                                                                                                
+ 
+Chi-Square Statistics
+(maximum 500 observations printed)
+
+Data Role=TRAIN Target=TargetBuy
+
+Input              Chi-Square    Df      Prob
+
+DemGender            671.3388     3    <.0001
+PromClass            145.8064     3    <.0001
+DemTVReg              40.6374    13    0.0001
+DemClusterGroup       26.2933     7    0.0004
+DemReg                12.5878     5    0.0276

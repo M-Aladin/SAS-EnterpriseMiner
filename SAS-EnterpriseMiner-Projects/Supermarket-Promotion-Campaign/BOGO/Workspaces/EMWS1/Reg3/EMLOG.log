@@ -1,0 +1,1798 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                14:54:02
+Site:                12400032
+Platform:            X64_10HOME
+Maintenance Release: 9.04.01M4P110916
+EM Version:          14.2
+* 
+*------------------------------------------------------------*
+* Training Log
+Date:                May 09, 2018
+Time:                14:53:52
+*------------------------------------------------------------*
+11405  proc freq data=EMWS1.Reg3_VariableSet noprint;
+11406  table ROLE*LEVEL/out=WORK.Reg3META;
+11407  run;
+ 
+NOTE: There were 28 observations read from the data set EMWS1.REG3_VARIABLESET.
+NOTE: The data set WORK.REG3META has 6 observations and 4 variables.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+ 
+11408  proc print data=WORK.Reg3META label noobs;
+11409  var ROLE LEVEL COUNT;
+11410  label ROLE = "%sysfunc(sasmsg(sashelp.dmine, meta_role_vlabel, NOQUOTE))" LEVEL = "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel, NOQUOTE))";
+11411  title9 ' ';
+11412  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_varSummary_title  , NOQUOTE))";
+11413  run;
+ 
+NOTE: There were 6 observations read from the data set WORK.REG3META.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11414  title10;
+ 
+11415  %let EMNORLEN = %DMNORLEN;
+EMWS1.Impt2_TRAIN EMWS1.Impt2_TRAIN
+EMWS1.Impt2_TRAIN EMWS1.Impt2_TRAIN EMWS1 Impt2_TRAIN
+EMWS1.Impt2_TRAIN EMWS1.Impt2_TRAIN
+EMWS1.Impt2_TRAIN EMWS1.Impt2_TRAIN EMWS1 Impt2_TRAIN
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _INIT >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL setMetaData >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL setMetaData >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL next >>
+Executing  SASHELP.EMCORE.EMINFOITERATOR.SCL _term >>
+11444  data WORK.Reg3_EVENT(KEEP=VARIABLE LABEL LEVEL EVENT NUMLEVELS ORDER);
+11445  length ORDER $20;
+11446  label VARIABLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_target_vlabel,  NOQUOTE))" EVENT = "%sysfunc(sasmsg(sashelp.dmine, assmt_event_vlabel, NOQUOTE))" NUMLEVELS = "%sysfunc(sasmsg(sashelp.dmine, rpt_numcat_vlabel, NOQUOTE))" LEVEL =
+11447     "%sysfunc(sasmsg(sashelp.dmine, meta_level_vlabel, NOQUOTE))" ORDER = "%sysfunc(sasmsg(sashelp.dmine, meta_order_vlabel, NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel, NOQUOTE))";
+11448  set EMWS1.IDS2_TARGETBUY_DM( where=(_TYPE_="TARGET"));
+11449  NumLevels=2;
+11450  select(upcase(ORDER));
+11451  when('DESC') ORDER = 'Descending';
+11452  when('ASC') ORDER = 'Ascending';
+11453  when('FMTDESC') ORDER = 'Formatted Descending';
+11454  when('FMTASC') ORDER = 'Formatted Ascending';
+11455  otherwise ORDER = 'Descending';
+11456  end;
+11457  output;
+11458  run;
+ 
+NOTE: There were 1 observations read from the data set EMWS1.IDS2_TARGETBUY_DM.
+      WHERE _TYPE_='TARGET';
+NOTE: The data set WORK.REG3_EVENT has 1 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11459  title9 ' ';
+11460  proc print data=WORK.Reg3_EVENT noobs label;
+11461  var VARIABLE EVENT LEVEL NUMLEVELS ORDER LABEL;
+11462  title9 ' ';
+11463  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_modelEvent_title  , NOQUOTE))";
+11464  run;
+ 
+NOTE: There were 1 observations read from the data set WORK.REG3_EVENT.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11465  title10;
+ 
+"No decisions defined for target "TargetBuy"."
+11466  proc print data = EMWS1.Ids2_TargetBuy_DM noobs label;
+11467  var _type_ variable label;
+11468  where _type_ ^in('MATRIX', 'DECISION', 'TRAINPRIOR', 'DATAPRIOR', 'DECPRIOR');
+11469  label _TYPE_ = "%sysfunc(sasmsg(sashelp.dmine, rpt_type_vlabel,     NOQUOTE))" VARIABLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" LABEL = "%sysfunc(sasmsg(sashelp.dmine, meta_label_vlabel, NOQUOTE))";
+11470  title9 ' ';
+11471  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_predDecVars_title  , NOQUOTE))";
+11472  run;
+ 
+NOTE: There were 7 observations read from the data set EMWS1.IDS2_TARGETBUY_DM.
+      WHERE _type_ not in ('DATAPRIOR', 'DECISION', 'DECPRIOR', 'MATRIX', 'TRAINPRIOR');
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11473  title10;
+ 
+11483  data WORK.M0FL29NY;
+11484  set WORK.M0FL29NY end=eof;
+11485  output;
+11486  if eof then do;
+11487  NAME="";
+11488  ROLE="COST";
+11489  LEVEL="INTERVAL";
+11490  TYPE="N";
+11491  output;
+11492  end;
+11493  run;
+ 
+NOTE: There were 19 observations read from the data set WORK.M0FL29NY.
+NOTE: The data set WORK.M0FL29NY has 20 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11494  *------------------------------------------------------------*;
+11495  * Reg3: Create effect data set;
+11496  *------------------------------------------------------------*;
+11497  data WORK.Reg3_EFFECT;
+11498  length ORDER 8 variable $32;
+11499  ORDER=1;
+11500  VARIABLE="AffluenceGrade";
+11501  output;
+11502  ORDER=2;
+11503  VARIABLE="CampaignViewedEmail";
+11504  output;
+11505  ORDER=3;
+11506  VARIABLE="CleanserProducts";
+11507  output;
+11508  ORDER=4;
+11509  VARIABLE="DayCareProducts";
+11510  output;
+11511  ORDER=5;
+11512  VARIABLE="FacebookLike";
+11513  output;
+11514  ORDER=6;
+11515  VARIABLE="LotionProducts";
+11516  output;
+11517  ORDER=7;
+11518  VARIABLE="LoyaltyClass";
+11519  output;
+11520  ORDER=8;
+11521  VARIABLE="MobileApplications";
+11522  output;
+11523  ORDER=9;
+11524  VARIABLE="NightRepairProducts";
+11525  output;
+11526  ORDER=10;
+11527  VARIABLE="PreviousCampaign";
+11528  output;
+11529  ORDER=11;
+11530  VARIABLE="REP_AdvertisementZone";
+11531  output;
+11532  ORDER=12;
+11533  VARIABLE="REP_Age";
+11534  output;
+11535  ORDER=13;
+11536  VARIABLE="REP_ClusterGroup";
+11537  output;
+11538  ORDER=14;
+11539  VARIABLE="REP_Gender";
+11540  output;
+11541  ORDER=15;
+11542  VARIABLE="REP_LoyaltyTime";
+11543  output;
+11544  ORDER=16;
+11545  VARIABLE="REP_Region";
+11546  output;
+11547  ORDER=17;
+11548  VARIABLE="TimeSinceLastPurchase";
+11549  output;
+11550  ORDER=18;
+11551  VARIABLE="TotalSpend";
+11552  output;
+11553  ;
+11554  run;
+ 
+NOTE: The data set WORK.REG3_EFFECT has 18 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+ 
+ 
+11555  data _temp1;
+11556  length VAR1 $32;
+11557  VAR1 = " ";
+11558  output;
+11559  VAR1 = "AffluenceGrade";
+11560  output;
+11561  VAR1 = "CleanserProducts";
+11562  output;
+11563  VAR1 = "DayCareProducts";
+11564  output;
+11565  VAR1 = "LotionProducts";
+11566  output;
+11567  VAR1 = "NightRepairProducts";
+11568  output;
+11569  VAR1 = "REP_Age";
+11570  output;
+11571  VAR1 = "REP_LoyaltyTime";
+11572  output;
+11573  VAR1 = "TimeSinceLastPurchase";
+11574  output;
+11575  VAR1 = "TotalSpend";
+11576  output;
+ 
+NOTE: The data set WORK._TEMP1 has 10 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11577  data _temp2(rename=(var1=var2));
+11578  set _temp1;
+11579  run;
+ 
+NOTE: There were 10 observations read from the data set WORK._TEMP1.
+NOTE: The data set WORK._TEMP2 has 10 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11580  data _temp3(rename=(var1=var3));
+11581  set _temp1;
+11582  run;
+ 
+NOTE: There were 10 observations read from the data set WORK._TEMP1.
+NOTE: The data set WORK._TEMP3 has 10 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+11583  proc sql;
+11584  create table _tempPoly as select
+11585  VAR1,
+11586  VAR2,
+11587  VAR3 from
+11588  _temp1,
+11589  _temp2,
+11590  _temp3;
+NOTE: The execution of this query involves performing one or more Cartesian product joins that can not be optimized.
+NOTE: Table WORK._TEMPPOLY created, with 1000 rows and 3 columns.
+ 
+11591  quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11592  data _tempPoly;
+11593  set _tempPoly;
+11594  keep id Variable;
+11595  array VAR VAR1-VAR3;
+11596  id = _N_;
+11597  do i=1 to 3;
+11598  variable = VAR{i};
+11599  output;
+11600  end;
+11601  run;
+ 
+NOTE: There were 1000 observations read from the data set WORK._TEMPPOLY.
+NOTE: The data set WORK._TEMPPOLY has 3000 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11602  proc sort data=_tempPoly;
+11603  by id variable;
+11604  run;
+ 
+NOTE: There were 3000 observations read from the data set WORK._TEMPPOLY.
+NOTE: The data set WORK._TEMPPOLY has 3000 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11605  data _tempPoly2;
+11606  keep factor id;
+11607  length factor $200;
+11608  retain factor;
+11609  set _tempPoly;
+11610  by id;
+11611  if first.id then factor= variable;
+11612  else factor = strip(factor)!!' '!!variable;
+11613  if last.id then output;
+11614  run;
+ 
+NOTE: There were 3000 observations read from the data set WORK._TEMPPOLY.
+NOTE: The data set WORK._TEMPPOLY2 has 1000 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11615  proc sort data=_tempPoly2 nodupkey;
+11616  by factor;
+11617  run;
+ 
+NOTE: There were 1000 observations read from the data set WORK._TEMPPOLY2.
+NOTE: 780 observations with duplicate key values were deleted.
+NOTE: The data set WORK._TEMPPOLY2 has 220 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11618  proc sort data=_tempPoly2;
+11619  by id;
+11620  run;
+ 
+NOTE: There were 220 observations read from the data set WORK._TEMPPOLY2.
+NOTE: The data set WORK._TEMPPOLY2 has 220 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11621  data _tempPoly;
+11622  merge _tempPoly _tempPoly2(keep=id in=a);
+11623  by id;
+11624  if a then output;
+11625  run;
+ 
+NOTE: There were 3000 observations read from the data set WORK._TEMPPOLY.
+NOTE: There were 220 observations read from the data set WORK._TEMPPOLY2.
+NOTE: The data set WORK._TEMPPOLY has 660 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11626  data _tempPoly;
+11627  retain order 19;
+11628  set _tempPoly;
+11629  if first.id then order = order+1;
+11630  by id;
+11631  run;
+ 
+NOTE: There were 660 observations read from the data set WORK._TEMPPOLY.
+NOTE: The data set WORK._TEMPPOLY has 660 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11632  proc append data=_tempPoly(drop=id) base=WORK.Reg3_EFFECT;
+11633  run;
+ 
+NOTE: Appending WORK._TEMPPOLY to WORK.REG3_EFFECT.
+NOTE: There were 660 observations read from the data set WORK._TEMPPOLY.
+NOTE: 660 observations added.
+NOTE: The data set WORK.REG3_EFFECT has 678 observations and 2 variables.
+NOTE: PROCEDURE APPEND used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11634  proc datasets lib=work nolist;
+11635  delete _tempPoly _tempPoly
+11636  _temp1
+11637  _temp2
+11638  _temp3
+11639  ;
+11640  run;
+ 
+NOTE: The file WORK._TEMPPOLY (memtype=DATA) was not found, but appears on a DELETE statement.
+NOTE: Deleting WORK._TEMPPOLY (memtype=DATA).
+NOTE: Deleting WORK._TEMP1 (memtype=DATA).
+NOTE: Deleting WORK._TEMP2 (memtype=DATA).
+NOTE: Deleting WORK._TEMP3 (memtype=DATA).
+11641  *------------------------------------------------------------*;
+11642  * Reg3: Prepare equation data set;
+11643  *------------------------------------------------------------*;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11644  data WORK.Reg3_EQUATION;
+11645  set
+11646  WORK.Reg3_EFFECT
+11647  ;
+11648  run;
+ 
+NOTE: There were 678 observations read from the data set WORK.REG3_EFFECT.
+NOTE: The data set WORK.REG3_EQUATION has 678 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11649  proc sort data=WORK.Reg3_EQUATION out=WORK.Reg3_CLASS(rename=(VARIABLE=NAME)) nodupkey;
+11650  by VARIABLE;
+11651  run;
+ 
+NOTE: There were 678 observations read from the data set WORK.REG3_EQUATION.
+NOTE: 659 observations with duplicate key values were deleted.
+NOTE: The data set WORK.REG3_CLASS has 19 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11652  proc sort data=WORK.Reg3_EQUATION;
+11653  by ORDER VARIABLE;
+11654  run;
+ 
+NOTE: There were 678 observations read from the data set WORK.REG3_EQUATION.
+NOTE: The data set WORK.REG3_EQUATION has 678 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11655  data WORK.Reg3_EQUATION(keep=order term);
+11656  length term $350;
+11657  retain term '';
+11658  set WORK.Reg3_EQUATION end=eof;
+11659  by order;
+11660  if first.order then do;
+11661  term = variable;
+11662  end;
+11663  else do;
+11664  if variable ne '' then do;
+11665  if term ne '' then term = trim(term)!!'*'!!variable;
+11666  else term = variable;
+11667  end;
+11668  end;
+11669  if last.order then output;
+11670  run;
+ 
+NOTE: There were 678 observations read from the data set WORK.REG3_EQUATION.
+NOTE: The data set WORK.REG3_EQUATION has 238 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11671  proc sort data=WORK.Reg3_EQUATION nodupkey;
+11672  by term;
+11673  run;
+ 
+NOTE: There were 238 observations read from the data set WORK.REG3_EQUATION.
+NOTE: 9 observations with duplicate key values were deleted.
+NOTE: The data set WORK.REG3_EQUATION has 229 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11674  proc sort data=WORK.Reg3_EQUATION;
+11675  by order;
+11676  run;
+ 
+NOTE: There were 229 observations read from the data set WORK.REG3_EQUATION.
+NOTE: The data set WORK.REG3_EQUATION has 229 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+11677  data WORK.Reg3_CLASS;
+11678  merge WORK.Reg3_CLASS(in=_a) WORK.METASET2Y3LPTG(in=_b KEEP=NAME);
+11679  if _a and _b then output;
+11680  run;
+ 
+NOTE: There were 19 observations read from the data set WORK.REG3_CLASS.
+NOTE: There were 9 observations read from the data set WORK.METASET2Y3LPTG.
+NOTE: The data set WORK.REG3_CLASS has 9 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+NOTE: There were 2 observations read from the data set EMWS1.IDS2_TARGETBUY_DD.
+NOTE: The data set WORK.TARGETBUY has 2 observations and 7 variables.
+NOTE: There were 2 observations read from the data set EMWS1.IDS2_TARGETBUY_DD.
+NOTE: The data set WORK.TARGETBUY has 2 observations and 7 variables.
+11681  *------------------------------------------------------------*;
+11682  * Reg3: Create decision matrix;
+11683  *------------------------------------------------------------*;
+11684  data WORK.TargetBuy;
+11685    length   TargetBuy                        $  32
+11686             COUNT                                8
+11687             DATAPRIOR                            8
+11688             TRAINPRIOR                           8
+11689             DECPRIOR                             8
+11690             DECISION1                            8
+11691             DECISION2                            8
+11692             ;
+11693
+11694    label    COUNT="Level Counts"
+11695             DATAPRIOR="Data Proportions"
+11696             TRAINPRIOR="Training Proportions"
+11697             DECPRIOR="Decision Priors"
+11698             DECISION1="1"
+11699             DECISION2="0"
+11700             ;
+11701    format   COUNT 10.
+11702             ;
+11703  TargetBuy="1"; COUNT=5799; DATAPRIOR=0.2521304347826; TRAINPRIOR=0.2521304347826; DECPRIOR=.; DECISION1=1; DECISION2=0;
+11704  output;
+11705  TargetBuy="0"; COUNT=17201; DATAPRIOR=0.74786956521739; TRAINPRIOR=0.74786956521739; DECPRIOR=.; DECISION1=0; DECISION2=1;
+11706  output;
+11707  ;
+11708  run;
+ 
+NOTE: The data set WORK.TARGETBUY has 2 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11709  proc datasets lib=work nolist;
+11710  modify TargetBuy(type=PROFIT label=TargetBuy);
+11711  label DECISION1= '1';
+11712  label DECISION2= '0';
+11713  run;
+ 
+NOTE: MODIFY was successful for WORK.TARGETBUY.DATA.
+11714  quit;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+11715  data EM_DMREG / view=EM_DMREG;
+11716  set EMWS1.Impt2_TRAIN(keep=
+11717  AffluenceGrade CampaignViewedEmail CleanserProducts DayCareProducts
+11718  FacebookLike LotionProducts LoyaltyClass MobileApplications NightRepairProducts
+11719  PreviousCampaign REP_AdvertisementZone REP_Age REP_ClusterGroup REP_Gender
+11720  REP_LoyaltyTime REP_Region TargetBuy TimeSinceLastPurchase TotalSpend );
+11721  run;
+ 
+NOTE: DATA STEP view saved on file WORK.EM_DMREG.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.IMPT2_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+ 
+11722  *------------------------------------------------------------* ;
+11723  * Reg3: DMDBClass Macro ;
+11724  *------------------------------------------------------------* ;
+11725  %macro DMDBClass;
+11726      CampaignViewedEmail(ASC) FacebookLike(ASC) LoyaltyClass(ASC)
+11727     MobileApplications(ASC) PreviousCampaign(ASC) REP_AdvertisementZone(ASC)
+11728     REP_ClusterGroup(ASC) REP_Gender(ASC) REP_Region(ASC) TargetBuy(DESC)
+11729  %mend DMDBClass;
+11730  *------------------------------------------------------------* ;
+11731  * Reg3: DMDBVar Macro ;
+11732  *------------------------------------------------------------* ;
+11733  %macro DMDBVar;
+11734      AffluenceGrade CleanserProducts DayCareProducts LotionProducts
+11735     NightRepairProducts REP_Age REP_LoyaltyTime TimeSinceLastPurchase TotalSpend
+11736  %mend DMDBVar;
+11737  *------------------------------------------------------------*;
+11738  * Reg3: Create DMDB;
+11739  *------------------------------------------------------------*;
+11740  proc dmdb batch data=WORK.EM_DMREG
+11741  dmdbcat=WORK.Reg3_DMDB
+11742  maxlevel = 513
+11743  ;
+11744  class %DMDBClass;
+11745  var %DMDBVar;
+11746  target
+11747  TargetBuy
+11748  ;
+11749  run;
+ 
+NOTE: Records processed = 893   Memory used = 511K.
+NOTE: There were 893 observations read from the data set EMWS1.PART3_TRAIN.
+NOTE: View WORK.EM_DMREG.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.10 seconds
+ 
+NOTE: There were 893 observations read from the data set EMWS1.IMPT2_TRAIN.
+NOTE: There were 893 observations read from the data set WORK.EM_DMREG.
+NOTE: PROCEDURE DMDB used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.14 seconds
+ 
+ 
+11750  quit;
+11751  *--- end code ---*;
+ 
+11752  *------------------------------------------------------------*;
+11753  * Reg3: Run DMREG procedure;
+11754  *------------------------------------------------------------*;
+11755  proc dmreg data=EM_DMREG dmdbcat=WORK.Reg3_DMDB
+11756  validata = EMWS1.Impt2_VALIDATE
+11757  outest = EMWS1.Reg3_EMESTIMATE
+11758  outterms = EMWS1.Reg3_OUTTERMS
+11759  outmap= EMWS1.Reg3_MAPDS namelen=200
+11760  ;
+11761  class
+11762  TargetBuy
+11763  CampaignViewedEmail
+11764  FacebookLike
+11765  LoyaltyClass
+11766  MobileApplications
+11767  PreviousCampaign
+11768  REP_AdvertisementZone
+11769  REP_ClusterGroup
+11770  REP_Gender
+11771  REP_Region
+11772  ;
+11773  model TargetBuy =
+11774  AffluenceGrade
+11775  CampaignViewedEmail
+11776  CleanserProducts
+11777  DayCareProducts
+11778  FacebookLike
+11779  LotionProducts
+11780  LoyaltyClass
+11781  MobileApplications
+11782  NightRepairProducts
+11783  PreviousCampaign
+11784  REP_AdvertisementZone
+11785  REP_Age
+11786  REP_ClusterGroup
+11787  REP_Gender
+11788  REP_LoyaltyTime
+11789  REP_Region
+11790  TimeSinceLastPurchase
+11791  TotalSpend
+11792  AffluenceGrade*AffluenceGrade
+11793  AffluenceGrade*CleanserProducts
+11794  AffluenceGrade*DayCareProducts
+11795  AffluenceGrade*LotionProducts
+11796  AffluenceGrade*NightRepairProducts
+11797  AffluenceGrade*REP_Age
+11798  AffluenceGrade*REP_LoyaltyTime
+11799  AffluenceGrade*TimeSinceLastPurchase
+11800  AffluenceGrade*TotalSpend
+11801  CleanserProducts*CleanserProducts
+11802  CleanserProducts*DayCareProducts
+11803  CleanserProducts*LotionProducts
+11804  CleanserProducts*NightRepairProducts
+11805  CleanserProducts*REP_Age
+11806  CleanserProducts*REP_LoyaltyTime
+11807  CleanserProducts*TimeSinceLastPurchase
+11808  CleanserProducts*TotalSpend
+11809  DayCareProducts*DayCareProducts
+11810  DayCareProducts*LotionProducts
+11811  DayCareProducts*NightRepairProducts
+11812  DayCareProducts*REP_Age
+11813  DayCareProducts*REP_LoyaltyTime
+11814  DayCareProducts*TimeSinceLastPurchase
+11815  DayCareProducts*TotalSpend
+11816  LotionProducts*LotionProducts
+11817  LotionProducts*NightRepairProducts
+11818  LotionProducts*REP_Age
+11819  LotionProducts*REP_LoyaltyTime
+11820  LotionProducts*TimeSinceLastPurchase
+11821  LotionProducts*TotalSpend
+11822  NightRepairProducts*NightRepairProducts
+11823  NightRepairProducts*REP_Age
+11824  NightRepairProducts*REP_LoyaltyTime
+11825  NightRepairProducts*TimeSinceLastPurchase
+11826  NightRepairProducts*TotalSpend
+11827  REP_Age*REP_Age
+11828  REP_Age*REP_LoyaltyTime
+11829  REP_Age*TimeSinceLastPurchase
+11830  REP_Age*TotalSpend
+11831  REP_LoyaltyTime*REP_LoyaltyTime
+11832  REP_LoyaltyTime*TimeSinceLastPurchase
+11833  REP_LoyaltyTime*TotalSpend
+11834  TimeSinceLastPurchase*TimeSinceLastPurchase
+11835  TimeSinceLastPurchase*TotalSpend
+11836  TotalSpend*TotalSpend
+11837  AffluenceGrade*AffluenceGrade*AffluenceGrade
+11838  AffluenceGrade*AffluenceGrade*CleanserProducts
+11839  AffluenceGrade*AffluenceGrade*DayCareProducts
+11840  AffluenceGrade*AffluenceGrade*LotionProducts
+11841  AffluenceGrade*AffluenceGrade*NightRepairProducts
+11842  AffluenceGrade*AffluenceGrade*REP_Age
+11843  AffluenceGrade*AffluenceGrade*REP_LoyaltyTime
+11844  AffluenceGrade*AffluenceGrade*TimeSinceLastPurchase
+11845  AffluenceGrade*AffluenceGrade*TotalSpend
+11846  AffluenceGrade*CleanserProducts*CleanserProducts
+11847  AffluenceGrade*CleanserProducts*DayCareProducts
+11848  AffluenceGrade*CleanserProducts*LotionProducts
+11849  AffluenceGrade*CleanserProducts*NightRepairProducts
+11850  AffluenceGrade*CleanserProducts*REP_Age
+11851  AffluenceGrade*CleanserProducts*REP_LoyaltyTime
+11852  AffluenceGrade*CleanserProducts*TimeSinceLastPurchase
+11853  AffluenceGrade*CleanserProducts*TotalSpend
+11854  AffluenceGrade*DayCareProducts*DayCareProducts
+11855  AffluenceGrade*DayCareProducts*LotionProducts
+11856  AffluenceGrade*DayCareProducts*NightRepairProducts
+11857  AffluenceGrade*DayCareProducts*REP_Age
+11858  AffluenceGrade*DayCareProducts*REP_LoyaltyTime
+11859  AffluenceGrade*DayCareProducts*TimeSinceLastPurchase
+11860  AffluenceGrade*DayCareProducts*TotalSpend
+11861  AffluenceGrade*LotionProducts*LotionProducts
+11862  AffluenceGrade*LotionProducts*NightRepairProducts
+11863  AffluenceGrade*LotionProducts*REP_Age
+11864  AffluenceGrade*LotionProducts*REP_LoyaltyTime
+11865  AffluenceGrade*LotionProducts*TimeSinceLastPurchase
+11866  AffluenceGrade*LotionProducts*TotalSpend
+11867  AffluenceGrade*NightRepairProducts*NightRepairProducts
+11868  AffluenceGrade*NightRepairProducts*REP_Age
+11869  AffluenceGrade*NightRepairProducts*REP_LoyaltyTime
+11870  AffluenceGrade*NightRepairProducts*TimeSinceLastPurchase
+11871  AffluenceGrade*NightRepairProducts*TotalSpend
+11872  AffluenceGrade*REP_Age*REP_Age
+11873  AffluenceGrade*REP_Age*REP_LoyaltyTime
+11874  AffluenceGrade*REP_Age*TimeSinceLastPurchase
+11875  AffluenceGrade*REP_Age*TotalSpend
+11876  AffluenceGrade*REP_LoyaltyTime*REP_LoyaltyTime
+11877  AffluenceGrade*REP_LoyaltyTime*TimeSinceLastPurchase
+11878  AffluenceGrade*REP_LoyaltyTime*TotalSpend
+11879  AffluenceGrade*TimeSinceLastPurchase*TimeSinceLastPurchase
+11880  AffluenceGrade*TimeSinceLastPurchase*TotalSpend
+11881  AffluenceGrade*TotalSpend*TotalSpend
+11882  CleanserProducts*CleanserProducts*CleanserProducts
+11883  CleanserProducts*CleanserProducts*DayCareProducts
+11884  CleanserProducts*CleanserProducts*LotionProducts
+11885  CleanserProducts*CleanserProducts*NightRepairProducts
+11886  CleanserProducts*CleanserProducts*REP_Age
+11887  CleanserProducts*CleanserProducts*REP_LoyaltyTime
+11888  CleanserProducts*CleanserProducts*TimeSinceLastPurchase
+11889  CleanserProducts*CleanserProducts*TotalSpend
+11890  CleanserProducts*DayCareProducts*DayCareProducts
+11891  CleanserProducts*DayCareProducts*LotionProducts
+11892  CleanserProducts*DayCareProducts*NightRepairProducts
+11893  CleanserProducts*DayCareProducts*REP_Age
+11894  CleanserProducts*DayCareProducts*REP_LoyaltyTime
+11895  CleanserProducts*DayCareProducts*TimeSinceLastPurchase
+11896  CleanserProducts*DayCareProducts*TotalSpend
+11897  CleanserProducts*LotionProducts*LotionProducts
+11898  CleanserProducts*LotionProducts*NightRepairProducts
+11899  CleanserProducts*LotionProducts*REP_Age
+11900  CleanserProducts*LotionProducts*REP_LoyaltyTime
+11901  CleanserProducts*LotionProducts*TimeSinceLastPurchase
+11902  CleanserProducts*LotionProducts*TotalSpend
+11903  CleanserProducts*NightRepairProducts*NightRepairProducts
+11904  CleanserProducts*NightRepairProducts*REP_Age
+11905  CleanserProducts*NightRepairProducts*REP_LoyaltyTime
+11906  CleanserProducts*NightRepairProducts*TimeSinceLastPurchase
+11907  CleanserProducts*NightRepairProducts*TotalSpend
+11908  CleanserProducts*REP_Age*REP_Age
+11909  CleanserProducts*REP_Age*REP_LoyaltyTime
+11910  CleanserProducts*REP_Age*TimeSinceLastPurchase
+11911  CleanserProducts*REP_Age*TotalSpend
+11912  CleanserProducts*REP_LoyaltyTime*REP_LoyaltyTime
+11913  CleanserProducts*REP_LoyaltyTime*TimeSinceLastPurchase
+11914  CleanserProducts*REP_LoyaltyTime*TotalSpend
+11915  CleanserProducts*TimeSinceLastPurchase*TimeSinceLastPurchase
+11916  CleanserProducts*TimeSinceLastPurchase*TotalSpend
+11917  CleanserProducts*TotalSpend*TotalSpend
+11918  DayCareProducts*DayCareProducts*DayCareProducts
+11919  DayCareProducts*DayCareProducts*LotionProducts
+11920  DayCareProducts*DayCareProducts*NightRepairProducts
+11921  DayCareProducts*DayCareProducts*REP_Age
+11922  DayCareProducts*DayCareProducts*REP_LoyaltyTime
+11923  DayCareProducts*DayCareProducts*TimeSinceLastPurchase
+11924  DayCareProducts*DayCareProducts*TotalSpend
+11925  DayCareProducts*LotionProducts*LotionProducts
+11926  DayCareProducts*LotionProducts*NightRepairProducts
+11927  DayCareProducts*LotionProducts*REP_Age
+11928  DayCareProducts*LotionProducts*REP_LoyaltyTime
+11929  DayCareProducts*LotionProducts*TimeSinceLastPurchase
+11930  DayCareProducts*LotionProducts*TotalSpend
+11931  DayCareProducts*NightRepairProducts*NightRepairProducts
+11932  DayCareProducts*NightRepairProducts*REP_Age
+11933  DayCareProducts*NightRepairProducts*REP_LoyaltyTime
+11934  DayCareProducts*NightRepairProducts*TimeSinceLastPurchase
+11935  DayCareProducts*NightRepairProducts*TotalSpend
+11936  DayCareProducts*REP_Age*REP_Age
+11937  DayCareProducts*REP_Age*REP_LoyaltyTime
+11938  DayCareProducts*REP_Age*TimeSinceLastPurchase
+11939  DayCareProducts*REP_Age*TotalSpend
+11940  DayCareProducts*REP_LoyaltyTime*REP_LoyaltyTime
+11941  DayCareProducts*REP_LoyaltyTime*TimeSinceLastPurchase
+11942  DayCareProducts*REP_LoyaltyTime*TotalSpend
+11943  DayCareProducts*TimeSinceLastPurchase*TimeSinceLastPurchase
+11944  DayCareProducts*TimeSinceLastPurchase*TotalSpend
+11945  DayCareProducts*TotalSpend*TotalSpend
+11946  LotionProducts*LotionProducts*LotionProducts
+11947  LotionProducts*LotionProducts*NightRepairProducts
+11948  LotionProducts*LotionProducts*REP_Age
+11949  LotionProducts*LotionProducts*REP_LoyaltyTime
+11950  LotionProducts*LotionProducts*TimeSinceLastPurchase
+11951  LotionProducts*LotionProducts*TotalSpend
+11952  LotionProducts*NightRepairProducts*NightRepairProducts
+11953  LotionProducts*NightRepairProducts*REP_Age
+11954  LotionProducts*NightRepairProducts*REP_LoyaltyTime
+11955  LotionProducts*NightRepairProducts*TimeSinceLastPurchase
+11956  LotionProducts*NightRepairProducts*TotalSpend
+11957  LotionProducts*REP_Age*REP_Age
+11958  LotionProducts*REP_Age*REP_LoyaltyTime
+11959  LotionProducts*REP_Age*TimeSinceLastPurchase
+11960  LotionProducts*REP_Age*TotalSpend
+11961  LotionProducts*REP_LoyaltyTime*REP_LoyaltyTime
+11962  LotionProducts*REP_LoyaltyTime*TimeSinceLastPurchase
+11963  LotionProducts*REP_LoyaltyTime*TotalSpend
+11964  LotionProducts*TimeSinceLastPurchase*TimeSinceLastPurchase
+11965  LotionProducts*TimeSinceLastPurchase*TotalSpend
+11966  LotionProducts*TotalSpend*TotalSpend
+11967  NightRepairProducts*NightRepairProducts*NightRepairProducts
+11968  NightRepairProducts*NightRepairProducts*REP_Age
+11969  NightRepairProducts*NightRepairProducts*REP_LoyaltyTime
+11970  NightRepairProducts*NightRepairProducts*TimeSinceLastPurchase
+11971  NightRepairProducts*NightRepairProducts*TotalSpend
+11972  NightRepairProducts*REP_Age*REP_Age
+11973  NightRepairProducts*REP_Age*REP_LoyaltyTime
+11974  NightRepairProducts*REP_Age*TimeSinceLastPurchase
+11975  NightRepairProducts*REP_Age*TotalSpend
+11976  NightRepairProducts*REP_LoyaltyTime*REP_LoyaltyTime
+11977  NightRepairProducts*REP_LoyaltyTime*TimeSinceLastPurchase
+11978  NightRepairProducts*REP_LoyaltyTime*TotalSpend
+11979  NightRepairProducts*TimeSinceLastPurchase*TimeSinceLastPurchase
+11980  NightRepairProducts*TimeSinceLastPurchase*TotalSpend
+11981  NightRepairProducts*TotalSpend*TotalSpend
+11982  REP_Age*REP_Age*REP_Age
+11983  REP_Age*REP_Age*REP_LoyaltyTime
+11984  REP_Age*REP_Age*TimeSinceLastPurchase
+11985  REP_Age*REP_Age*TotalSpend
+11986  REP_Age*REP_LoyaltyTime*REP_LoyaltyTime
+11987  REP_Age*REP_LoyaltyTime*TimeSinceLastPurchase
+11988  REP_Age*REP_LoyaltyTime*TotalSpend
+11989  REP_Age*TimeSinceLastPurchase*TimeSinceLastPurchase
+11990  REP_Age*TimeSinceLastPurchase*TotalSpend
+11991  REP_Age*TotalSpend*TotalSpend
+11992  REP_LoyaltyTime*REP_LoyaltyTime*REP_LoyaltyTime
+11993  REP_LoyaltyTime*REP_LoyaltyTime*TimeSinceLastPurchase
+11994  REP_LoyaltyTime*REP_LoyaltyTime*TotalSpend
+11995  REP_LoyaltyTime*TimeSinceLastPurchase*TimeSinceLastPurchase
+11996  REP_LoyaltyTime*TimeSinceLastPurchase*TotalSpend
+11997  REP_LoyaltyTime*TotalSpend*TotalSpend
+11998  TimeSinceLastPurchase*TimeSinceLastPurchase*TimeSinceLastPurchase
+11999  TimeSinceLastPurchase*TimeSinceLastPurchase*TotalSpend
+12000  TimeSinceLastPurchase*TotalSpend*TotalSpend
+12001  TotalSpend*TotalSpend*TotalSpend
+12002  /error=binomial link=LOGIT
+12003  coding=DEVIATION
+12004  nodesignprint
+12005  selection=STEPWISE choose=NONE
+12006  Hierarchy=CLASS
+12007  Rule=NONE
+12008  ;
+12009  ;
+12010  code file="D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Reg3\EMPUBLISHSCORE.sas"
+12011  group=Reg3
+12012  ;
+12013  code file="D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Reg3\EMFLOWSCORE.sas"
+12014  group=Reg3
+12015  residual
+12016  ;
+12017  run;
+ 
+NOTE: Variable AffluenceGradeAffluenceGradeREP_ already exists on file EMWS1.REG3_MAPDS, using AffluenceGradeAffluenceGradeREP2 instead.
+NOTE: Variable AffluenceGradeCleanserProductsRE already exists on file EMWS1.REG3_MAPDS, using AffluenceGradeCleanserProductsR2 instead.
+NOTE: Variable AffluenceGradeDayCareProductsREP already exists on file EMWS1.REG3_MAPDS, using AffluenceGradeDayCareProductsRE2 instead.
+NOTE: Variable AffluenceGradeLotionProductsREP_ already exists on file EMWS1.REG3_MAPDS, using AffluenceGradeLotionProductsREP2 instead.
+NOTE: Variable AffluenceGradeNightRepairProducR already exists on file EMWS1.REG3_MAPDS, using AffluenceGradeNightRepairProduc2 instead.
+NOTE: Variable AffluenceGradeNightRepairProducT already exists on file EMWS1.REG3_MAPDS, using AffluenceGradeNightRepairProduc3 instead.
+NOTE: Variable AffluenceGradeNightRepairProducT already exists on file EMWS1.REG3_MAPDS, using AffluenceGradeNightRepairProduc4 instead.
+NOTE: Variable AffluenceGradeTimeSinceLastPurcT already exists on file EMWS1.REG3_MAPDS, using AffluenceGradeTimeSinceLastPurc2 instead.
+NOTE: Variable CleanserProductsCleanserProductR already exists on file EMWS1.REG3_MAPDS, using CleanserProductsCleanserProduct2 instead.
+NOTE: Variable CleanserProductsCleanserProductT already exists on file EMWS1.REG3_MAPDS, using CleanserProductsCleanserProduct3 instead.
+NOTE: Variable CleanserProductsDayCareProductsR already exists on file EMWS1.REG3_MAPDS, using CleanserProductsDayCareProducts2 instead.
+NOTE: Variable CleanserProductsDayCareProductsT already exists on file EMWS1.REG3_MAPDS, using CleanserProductsDayCareProducts3 instead.
+NOTE: Variable CleanserProductsLotionProductsRE already exists on file EMWS1.REG3_MAPDS, using CleanserProductsLotionProductsR2 instead.
+NOTE: Variable CleanserProductsNightRepairProdR already exists on file EMWS1.REG3_MAPDS, using CleanserProductsNightRepairProd2 instead.
+NOTE: Variable CleanserProductsNightRepairProdT already exists on file EMWS1.REG3_MAPDS, using CleanserProductsNightRepairProd3 instead.
+NOTE: Variable CleanserProductsREP_LoyaltyTimeT already exists on file EMWS1.REG3_MAPDS, using CleanserProductsREP_LoyaltyTime2 instead.
+NOTE: Variable CleanserProductsTimeSinceLastPuT already exists on file EMWS1.REG3_MAPDS, using CleanserProductsTimeSinceLastPu2 instead.
+NOTE: Variable DayCareProductsDayCareProductsRE already exists on file EMWS1.REG3_MAPDS, using DayCareProductsDayCareProductsR2 instead.
+NOTE: Variable DayCareProductsLotionProductsREP already exists on file EMWS1.REG3_MAPDS, using DayCareProductsLotionProductsRE2 instead.
+NOTE: Variable DayCareProductsNightRepairProduR already exists on file EMWS1.REG3_MAPDS, using DayCareProductsNightRepairProdu2 instead.
+NOTE: Variable DayCareProductsNightRepairProduT already exists on file EMWS1.REG3_MAPDS, using DayCareProductsNightRepairProdu3 instead.
+NOTE: Variable DayCareProductsTimeSinceLastPurT already exists on file EMWS1.REG3_MAPDS, using DayCareProductsTimeSinceLastPur2 instead.
+NOTE: Variable LotionProductsLotionProductsREP_ already exists on file EMWS1.REG3_MAPDS, using LotionProductsLotionProductsREP2 instead.
+NOTE: Variable LotionProductsNightRepairProducR already exists on file EMWS1.REG3_MAPDS, using LotionProductsNightRepairProduc2 instead.
+NOTE: Variable LotionProductsNightRepairProducT already exists on file EMWS1.REG3_MAPDS, using LotionProductsNightRepairProduc3 instead.
+NOTE: Variable LotionProductsNightRepairProducT already exists on file EMWS1.REG3_MAPDS, using LotionProductsNightRepairProduc4 instead.
+NOTE: Variable LotionProductsTimeSinceLastPurcT already exists on file EMWS1.REG3_MAPDS, using LotionProductsTimeSinceLastPurc2 instead.
+NOTE: Variable NightRepairProductsNightRepairPR already exists on file EMWS1.REG3_MAPDS, using NightRepairProductsNightRepairP2 instead.
+NOTE: Variable NightRepairProductsNightRepairPR already exists on file EMWS1.REG3_MAPDS, using NightRepairProductsNightRepairP3 instead.
+NOTE: Variable NightRepairProductsNightRepairPT already exists on file EMWS1.REG3_MAPDS, using NightRepairProductsNightRepairP4 instead.
+NOTE: Variable NightRepairProductsREP_LoyaltyTT already exists on file EMWS1.REG3_MAPDS, using NightRepairProductsREP_LoyaltyT2 instead.
+NOTE: Variable NightRepairProductsTimeSinceLasT already exists on file EMWS1.REG3_MAPDS, using NightRepairProductsTimeSinceLas2 instead.
+NOTE: Variable NightRepairProductsTimeSinceLasT already exists on file EMWS1.REG3_MAPDS, using NightRepairProductsTimeSinceLas3 instead.
+NOTE: Variable REP_LoyaltyTimeTimeSinceLastPurT already exists on file EMWS1.REG3_MAPDS, using REP_LoyaltyTimeTimeSinceLastPur2 instead.
+NOTE: Variable TimeSinceLastPurchaseTimeSinceLT already exists on file EMWS1.REG3_MAPDS, using TimeSinceLastPurchaseTimeSinceL2 instead.
+ 
+NOTE: PROC DMREG is modeling the probability that TargetBuy='1'.
+NOTE: Convergence criterion (ABSGCONV=0.00001) satisfied.
+NOTE: Convergence criterion (GCONV=1E-6) satisfied.
+NOTE: Convergence criterion (GCONV=1E-6) satisfied.
+NOTE: Convergence criterion (GCONV=1E-6) satisfied.
+NOTE: Convergence criterion (GCONV=1E-6) satisfied.
+NOTE: Convergence criterion (GCONV=1E-6) satisfied.
+NOTE: Convergence criterion (GCONV=1E-6) satisfied.
+NOTE: Convergence criterion (GCONV=1E-6) satisfied.
+NOTE: Convergence criterion (GCONV=1E-6) satisfied.
+NOTE: Convergence criterion (GCONV=1E-6) satisfied.
+NOTE: External file D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Reg3\EMPUBLISHSCORE.sas opened.
+NOTE: External file D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Reg3\EMFLOWSCORE.sas opened.
+NOTE: View EMWS1.IMPT2_VALIDATE.VIEW used (Total process time):
+      real time           1.54 seconds
+      cpu time            1.54 seconds
+ 
+NOTE: There were 894 observations read from the data set EMWS1.PART3_VALIDATE.
+NOTE: There were 893 observations read from the data set EMWS1.PART3_TRAIN.
+NOTE: View WORK.EM_DMREG.VIEW used (Total process time):
+      real time           1.64 seconds
+      cpu time            1.64 seconds
+ 
+NOTE: There were 893 observations read from the data set EMWS1.IMPT2_TRAIN.
+NOTE: There were 893 observations read from the data set WORK.EM_DMREG.
+NOTE: There were 894 observations read from the data set EMWS1.IMPT2_VALIDATE.
+NOTE: The data set EMWS1.REG3_EMESTIMATE has 33 observations and 284 variables.
+NOTE: The data set EMWS1.REG3_OUTTERMS has 17 observations and 6 variables.
+NOTE: The data set EMWS1.REG3_MAPDS has 2 observations and 249 variables.
+NOTE: The PROCEDURE DMREG printed pages 4-14.
+NOTE: PROCEDURE DMREG used (Total process time):
+      real time           1.68 seconds
+      cpu time            1.65 seconds
+ 
+ 
+12018  quit;
+ 
+12019  proc datasets lib=WORK nolist;
+12020  delete Reg3_DMDB;
+12021  run;
+ 
+NOTE: The file WORK.REG3_DMDB (memtype=DATA) was not found, but appears on a DELETE statement.
+12022  quit;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12023  proc datasets lib=WORK nolist;
+12024  delete Reg3_DMDB / memtype=catalog;
+12025  run;
+ 
+NOTE: Deleting WORK.REG3_DMDB (memtype=CATALOG).
+12026  quit;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12027  data WORK.ESTIMATE;
+12028  length _NAME_ $32;
+12029  set EMWS1.Reg3_EMESTIMATE;
+12030  drop _AIC_--_VMISC_
+12031  ;
+12032  where _CHOSEN_ ne '' and _TYPE_ in('PARMS', 'T', 'P');
+12033  drop _STEP_ _CHOSEN_;
+12034  select(_TYPE_);
+12035  when('PARMS') _NAME_='Coefficient';
+12036  when('T') _NAME_='tValue';
+12037  when('P') _NAME_='PValue';
+12038  otherwise;
+12039  end;
+12040  run;
+ 
+NOTE: There were 3 observations read from the data set EMWS1.REG3_EMESTIMATE.
+      WHERE (_CHOSEN_ not = ' ') and _TYPE_ in ('P', 'PARMS', 'T');
+NOTE: The data set WORK.ESTIMATE has 3 observations and 250 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12041  proc transpose data=WORK.ESTIMATE out=WORK.ESTIMATE(rename=(_NAME_=Effect));
+12042  run;
+ 
+NOTE: There were 3 observations read from the data set WORK.ESTIMATE.
+NOTE: The data set WORK.ESTIMATE has 248 observations and 5 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12043  proc transpose data=EMWS1.Reg3_MAPDS out=WORK.MAP(rename=(_NAME_=Effect INPUT=Variable
+12044  ));
+12045  var 'AffluenceGrade'n--'TotalSpendTotalSpendTotalSpend'n;
+12046  run;
+ 
+NOTE: There were 2 observations read from the data set EMWS1.REG3_MAPDS.
+NOTE: The data set WORK.MAP has 247 observations and 4 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12047  proc sort data=WORK.MAP;
+12048  by Effect;
+12049  run;
+ 
+NOTE: There were 247 observations read from the data set WORK.MAP.
+NOTE: The data set WORK.MAP has 247 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12050  proc sort data=WORK.ESTIMATE;
+12051  by Effect;
+12052  run;
+ 
+NOTE: There were 248 observations read from the data set WORK.ESTIMATE.
+NOTE: The data set WORK.ESTIMATE has 248 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12053  data EMWS1.Reg3_EFFECTS(rename=(_LABEL_=EffectLabel));
+12054  length Variable ClassLevel $32;
+12055  merge WORK.ESTIMATE WORK.MAP;
+12056  by Effect;
+12057  label Effect = "%sysfunc(sasmsg(sashelp.dmine, rpt_effect_vlabel, NOQUOTE))" Variable = "%sysfunc(sasmsg(sashelp.dmine, rpt_variable_vlabel, NOQUOTE))" Sign = "%sysfunc(sasmsg(sashelp.dmine, rpt_sign_vlabel, NOQUOTE))" ClassLevel =
+12058     "%sysfunc(sasmsg(sashelp.dmine, rpt_level_vlabel, NOQUOTE))" Abscoefficient = "%sysfunc(sasmsg(sashelp.dmine, rpt_abscoefficient_vlabel, NOQUOTE))" Coefficient = "%sysfunc(sasmsg(sashelp.dmine, rpt_coefficient_vlabel, NOQUOTE))" _LABEL_ =
+12059     "%sysfunc(sasmsg(sashelp.dmine, rpt_effectLabel_vlabel, NOQUOTE))" CODE = "%sysfunc(sasmsg(sashelp.dmine, rpt_scorecodevar_vlabel, NOQUOTE))";
+12060  label tvalue = "%sysfunc(sasmsg(sashelp.dmine, rpt_tvalue_vlabel,         NOQUOTE))" abstvalue = "%sysfunc(sasmsg(sashelp.dmine, rpt_absoluteTvalue_vlabel, NOQUOTE))" PValue = "%sysfunc(sasmsg(sashelp.dmine, rpt_pvalue_vlabel,         NOQUOTE))";
+12061  abstvalue = abs(tValue);
+12062  if index(Effect, 'Intercept') then do;
+12063  variable = 'Intercept';
+12064  classLevel = scan(_LABEL_, 2, '=');
+12065  end;
+12066  if ^indexc(variable, '*') then do;
+12067  if length(effect)>length(variable) then classlevel = substr(Effect, length(variable)+1);
+12068  end;
+12069  if Effect eq '' then Effect = Variable;
+12070  if coefficient < 0 then sign = '-';
+12071  else sign = '+';
+12072  abscoefficient = abs(coefficient);
+12073  if _LABEL_ = '' then _LABEL_ = Effect;
+12074  if coefficient ne . then output;
+12075  run;
+ 
+NOTE: Missing values were generated as a result of performing an operation on missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      238 at 12061:13   238 at 12072:18
+NOTE: There were 248 observations read from the data set WORK.ESTIMATE.
+NOTE: There were 247 observations read from the data set WORK.MAP.
+NOTE: The data set EMWS1.REG3_EFFECTS has 10 observations and 11 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+ 
+12076  proc sort data =EMWS1.Reg3_EFFECTS;
+12077  by
+12078  descending abstvalue;
+12079  run;
+ 
+NOTE: There were 10 observations read from the data set EMWS1.REG3_EFFECTS.
+NOTE: The data set EMWS1.REG3_EFFECTS has 10 observations and 11 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12080  data EMWS1.Reg3_EFFECTS;
+12081  set EMWS1.Reg3_EFFECTS;
+12082  format TEffectNum 3.;
+12083  label TEffectNum = "%sysfunc(sasmsg(sashelp.dmine, rpt_teffectnum_vlabel, NOQUOTE))";
+12084  retain TEffectNum;
+12085  TEffectNum = _N_;
+12086  run;
+ 
+NOTE: There were 10 observations read from the data set EMWS1.REG3_EFFECTS.
+NOTE: The data set EMWS1.REG3_EFFECTS has 10 observations and 12 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12087  proc sort data =EMWS1.Reg3_EFFECTS;
+12088  by
+12089  descending absCoefficient;
+12090  run;
+ 
+NOTE: There were 10 observations read from the data set EMWS1.REG3_EFFECTS.
+NOTE: The data set EMWS1.REG3_EFFECTS has 10 observations and 12 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12091  data EMWS1.Reg3_EFFECTS;
+12092  set EMWS1.Reg3_EFFECTS;
+12093  format EffectNum 3.;
+12094  label EffectNum = "%sysfunc(sasmsg(sashelp.dmine, rpt_effectnum_vlabel, NOQUOTE))";
+12095  retain EffectNum;
+12096  EffectNum = _N_;
+12097  run;
+ 
+NOTE: There were 10 observations read from the data set EMWS1.REG3_EFFECTS.
+NOTE: The data set EMWS1.REG3_EFFECTS has 10 observations and 13 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12098  proc transpose data=EMWS1.Reg3_EMESTIMATE out=EMWS1.Reg3_ESTIMATEGRID(rename=(PARMS=Coefficient T=TValue _NAME_=Effect _LABEL_=EffectLabel));
+12099  where _CHOSEN_ eq '' and _TYPE_ in('PARMS', 'T', 'P');
+12100  var 'AffluenceGrade'n--'TotalSpendTotalSpendTotalSpend'n;
+12101  by _STEP_;
+12102  id _TYPE_;
+12103  run;
+ 
+NOTE: There were 30 observations read from the data set EMWS1.REG3_EMESTIMATE.
+      WHERE (_CHOSEN_=' ') and _TYPE_ in ('P', 'PARMS', 'T');
+NOTE: The data set EMWS1.REG3_ESTIMATEGRID has 2470 observations and 6 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+ 
+12104  data EMWS1.Reg3_ESTIMATEGRID;
+12105  set EMWS1.Reg3_ESTIMATEGRID;
+12106  if EffectLabel eq '' then EffectLabel = Effect;
+12107  label EffectLabel = "%sysfunc(sasmsg(sashelp.dmine, rpt_effectLabel_vlabel, NOQUOTE))" Effect = "%sysfunc(sasmsg(sashelp.dmine, rpt_effect_vlabel, NOQUOTE))" Abscoefficient = "%sysfunc(sasmsg(sashelp.dmine, rpt_abscoefficient_vlabel, NOQUOTE))"
+12108     Coefficient = "%sysfunc(sasmsg(sashelp.dmine, rpt_coefficient_vlabel, NOQUOTE))" tvalue = "%sysfunc(sasmsg(sashelp.dmine, rpt_tvalue_vlabel,         NOQUOTE))" abstvalue = "%sysfunc(sasmsg(sashelp.dmine, rpt_absoluteTvalue_vlabel, NOQUOTE))"
+12108! PValue =
+12109     "%sysfunc(sasmsg(sashelp.dmine, rpt_pvalue_vlabel,         NOQUOTE))";
+12110  AbsCoefficient = abs(Coefficient);
+12111  AbsTValue = abs(TValue);
+12112  where coefficient ne .;
+12113  run;
+ 
+NOTE: Variable PValue is uninitialized.
+NOTE: There were 45 observations read from the data set EMWS1.REG3_ESTIMATEGRID.
+      WHERE coefficient not = .;
+NOTE: The data set EMWS1.REG3_ESTIMATEGRID has 45 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+ 
+*------------------------------------------------------------*
+* Score Log
+Date:                May 09, 2018
+Time:                14:53:57
+*------------------------------------------------------------*
+12215  proc transpose data=EMWS1.Reg3_EMESTIMATE out=WORK.TEMPREG;
+12216  where _CHOSEN_ ne '' and _TYPE_='PARMS';
+12217  run;
+ 
+NOTE: There were 1 observations read from the data set EMWS1.REG3_EMESTIMATE.
+      WHERE (_CHOSEN_ not = ' ') and (_TYPE_='PARMS');
+NOTE: The data set WORK.TEMPREG has 281 observations and 3 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+ 
+12218  proc transpose data=EMWS1.Reg3_MAPDS out=WORK.TEMPREG2(rename=(TARGET=_TARGET_));
+12219  var "AffluenceGrade"n--"TotalSpendTotalSpendTotalSpend"n;
+12220  run;
+ 
+WARNING: The variable TARGET in the DROP, KEEP, or RENAME list has never been referenced.
+NOTE: There were 2 observations read from the data set EMWS1.REG3_MAPDS.
+NOTE: The data set WORK.TEMPREG2 has 247 observations and 4 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12221  proc sort data=WORK.TEMPREG NOTHREADS;
+12222  by _NAME_;
+12223  run;
+ 
+NOTE: There were 281 observations read from the data set WORK.TEMPREG.
+NOTE: The data set WORK.TEMPREG has 281 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12224  proc sort data=WORK.TEMPREG2 NOTHREADS;
+12225  by _NAME_;
+12226  run;
+ 
+NOTE: There were 247 observations read from the data set WORK.TEMPREG2.
+NOTE: The data set WORK.TEMPREG2 has 247 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12227  data WORK.TEMPREG3;
+12228  merge WORK.TEMPREG(in=ina) WORK.TEMPREG2(in=inb);
+12229  by _NAME_;
+12230  if (ina and inb) and TargetBuy ne . then output;
+12231  run;
+ 
+NOTE: There were 281 observations read from the data set WORK.TEMPREG.
+NOTE: There were 247 observations read from the data set WORK.TEMPREG2.
+NOTE: The data set WORK.TEMPREG3 has 9 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12232  data WORK.TEMPREG3(KEEP=TERM);
+12233  length term $32;
+12234  set WORK.TEMPREG3;
+12235  i=1;
+12236  do while( scan(input , i, '*') ne '' );
+12237  term= scan(input , i, '*');
+12238  i=i+1;
+12239  output;
+12240  end;
+12241  run;
+ 
+NOTE: There were 9 observations read from the data set WORK.TEMPREG3.
+NOTE: The data set WORK.TEMPREG3 has 16 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+12242  proc sort data=WORK.TEMPREG3 nodupkey NOTHREADS;
+12243  by TERM;
+12244  run;
+ 
+NOTE: There were 16 observations read from the data set WORK.TEMPREG3.
+NOTE: 7 observations with duplicate key values were deleted.
+NOTE: The data set WORK.TEMPREG3 has 9 observations and 1 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+12245  filename emflow "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Reg3\EMFLOWSCORE.sas";
+12246  *------------------------------------------------------------*;
+12247  * Reg3: Scoring DATA data;
+12248  *------------------------------------------------------------*;
+12249  data EMWS1.Reg3_TRAIN
+12250  / view=EMWS1.Reg3_TRAIN
+12251  ;
+12252  set EMWS1.Impt2_TRAIN
+12253  ;
+12254  %inc emflow;
+12496  run;
+ 
+NOTE: DATA STEP view saved on file EMWS1.REG3_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.IMPT2_TRAIN.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+ 
+12497  quit;
+12498  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+ 
+12499  filename emflow "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS1\Reg3\EMFLOWSCORE.sas";
+12500  *------------------------------------------------------------*;
+12501  * Reg3: Scoring VALIDATE data;
+12502  *------------------------------------------------------------*;
+12503  data EMWS1.Reg3_VALIDATE
+12504  / view=EMWS1.Reg3_VALIDATE
+12505  ;
+12506  set EMWS1.Impt2_VALIDATE
+12507  ;
+12508  %inc emflow;
+12750  run;
+ 
+NOTE: DATA STEP view saved on file EMWS1.REG3_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS1.IMPT2_VALIDATE.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+ 
+NOTE: DATA statement used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+ 
+ 
+12751  quit;
+12752  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+ 
+12753  *------------------------------------------------------------*;
+12754  * Reg3: Computing metadata for TRAIN data;
+12755  *------------------------------------------------------------*;
+ 
+NOTE: View EMWS1.REG3_TRAIN.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+13125  data WORK.MODELTEMP_INFO;
+13126  set EMWS1.Reg3_EMINFO;
+13127  where DATA='Reg3' and KEY ^in('DECDATA', 'DECMETA', 'IMPORTANCE', 'MODEL');
+13128  run;
+ 
+NOTE: There were 0 observations read from the data set EMWS1.REG3_EMINFO.
+      WHERE (DATA='Reg3') and KEY not in ('DECDATA', 'DECMETA', 'IMPORTANCE', 'MODEL');
+NOTE: The data set WORK.MODELTEMP_INFO has 0 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13129  data EMWS1.Reg3_EMINFO;
+13130  length TARGET KEY $32 DATA $43;
+13131  input TARGET KEY DATA $;
+13132  cards;
+ 
+NOTE: The data set EMWS1.REG3_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13136  run;
+13137  data EMWS1.Reg3_EMINFO;
+13138  set EMWS1.Reg3_EMINFO WORK.MODELTEMP_INFO;
+13139  run;
+ 
+NOTE: There were 3 observations read from the data set EMWS1.REG3_EMINFO.
+NOTE: There were 0 observations read from the data set WORK.MODELTEMP_INFO.
+NOTE: The data set EMWS1.REG3_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13140  proc sort data = EMWS1.Reg3_EMINFO NOTHREADS;
+13141  by TARGET KEY;
+13142  run;
+ 
+NOTE: There were 3 observations read from the data set EMWS1.REG3_EMINFO.
+NOTE: The data set EMWS1.REG3_EMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13143  proc sort data = EMWS1.Ids2_EMINFO OUT=WORK.SORTEDEMINFO NOTHREADS;
+13144  by TARGET KEY;
+13145  run;
+ 
+NOTE: There were 3 observations read from the data set EMWS1.IDS2_EMINFO.
+NOTE: The data set WORK.SORTEDEMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+ 
+ 
+13146  proc sort data = EMWS1.Reg3_EMINFO OUT=WORK.TEMP_INFO NOTHREADS;
+13147  by TARGET KEY;
+13148  run;
+ 
+NOTE: Input data set is already sorted; it has been copied to the output data set.
+NOTE: There were 3 observations read from the data set EMWS1.REG3_EMINFO.
+NOTE: The data set WORK.TEMP_INFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13149  data EMWS1.Reg3_EMINFO;
+13150  merge WORK.SORTEDEMINFO WORK.TEMP_INFO;
+13151  by TARGET KEY;
+13152  run;
+ 
+NOTE: There were 3 observations read from the data set WORK.SORTEDEMINFO.
+NOTE: There were 3 observations read from the data set WORK.TEMP_INFO.
+NOTE: The data set EMWS1.REG3_EMINFO has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13153  proc datasets lib=work nolist;
+13154  delete TEMP_INFO SORTEDEMINFO;
+13155  run;
+ 
+NOTE: Deleting WORK.TEMP_INFO (memtype=DATA).
+NOTE: Deleting WORK.SORTEDEMINFO (memtype=DATA).
+13156  quit;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+NOTE: View EMWS1.REG3_TRAIN.VIEW used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.12 seconds
+ 
+NOTE: View EMWS1.REG3_VALIDATE.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+ 
+*------------------------------------------------------------*
+* Report Log
+Date:                May 09, 2018
+Time:                14:53:58
+*------------------------------------------------------------*
+13180  data EMWS1.Reg3_EMOUTFIT;
+13181  length TARGET $32;
+13182  set EMWS1.Reg3_EMESTIMATE end=eof;
+13183  where (_TYPE_='PARMS');
+13184  drop _STEP_--TotalSpendTotalSpendTotalSpend;
+13185  if eof then do;
+13186  TARGET = "TargetBuy";
+13187  output;
+13188  end;
+13189  run;
+ 
+NOTE: There were 11 observations read from the data set EMWS1.REG3_EMESTIMATE.
+      WHERE _TYPE_='PARMS';
+NOTE: The data set EMWS1.REG3_EMOUTFIT has 1 observations and 33 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13190  data EMWS1.Reg3_EMOUTFIT;
+13191  set EMWS1.Reg3_EMOUTFIT;
+13192  length TargetLabel $200;
+13193  label targetLabel = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))";
+13194  run;
+ 
+NOTE: Variable TargetLabel is uninitialized.
+NOTE: There were 1 observations read from the data set EMWS1.REG3_EMOUTFIT.
+NOTE: The data set EMWS1.REG3_EMOUTFIT has 1 observations and 34 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13195  proc sort data=EMWS1.Reg3_EMREPORTFIT nothreads;
+13196  by TARGET;
+13197  run;
+ 
+NOTE: There were 20 observations read from the data set EMWS1.REG3_EMREPORTFIT.
+NOTE: The data set EMWS1.REG3_EMREPORTFIT has 20 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13198  %let _EMwarndup = 0;
+13199  %let _EMtargetdup =;
+13200  %let _EMASEtargetdup =;
+13201  data _null_;
+13202  set EMWS1.Reg3_EMOUTFIT;
+13203  if .<_ASE_<0.000001 then do;
+13204  call symput('_EMwarndup', '1');
+13205  call symput('_EMtargetdup', target);
+13206  call symput('_EMASEtargetdup', put(_ASE_, best.));
+13207  end;
+13208  run;
+ 
+NOTE: There were 1 observations read from the data set EMWS1.REG3_EMOUTFIT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13209  proc sort data=EMWS1.Impt2_CMeta_TRAIN out=WORK.SUBSETINMETA;
+13210  by NAME;
+13211  run;
+ 
+NOTE: There were 31 observations read from the data set EMWS1.IMPT2_CMETA_TRAIN.
+NOTE: The data set WORK.SUBSETINMETA has 31 observations and 20 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13212  proc sort data=EMWS1.Reg3_VariableSet out=WORK.SUBSETVARSET(keep=NAME REPORT);
+13213  by NAME;
+13214  run;
+ 
+NOTE: There were 28 observations read from the data set EMWS1.REG3_VARIABLESET.
+NOTE: The data set WORK.SUBSETVARSET has 28 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13215  data WORK.ASSESS_META;
+13216  merge WORK.SUBSETINMETA WORK.SUBSETVARSET;
+13217  by NAME;
+13218  run;
+ 
+NOTE: There were 31 observations read from the data set WORK.SUBSETINMETA.
+NOTE: There were 28 observations read from the data set WORK.SUBSETVARSET.
+NOTE: The data set WORK.ASSESS_META has 31 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+13219  data EM_temp_assessMeta;
+13220  set EMWS1.Reg3_CMeta_TRAIN;
+13221  where role in('DECISION', 'PREDICT', 'RESIDUAL', 'CLASSIFICATION', 'ASSESS', 'COST');
+13222  run;
+ 
+NOTE: There were 8 observations read from the data set EMWS1.REG3_CMETA_TRAIN.
+      WHERE role in ('ASSESS', 'CLASSIFICATION', 'COST', 'DECISION', 'PREDICT', 'RESIDUAL');
+NOTE: The data set WORK.EM_TEMP_ASSESSMETA has 8 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+13223  data EM_temp_assessdata;
+13224  set EMWS1.Reg3_TRAIN(keep=
+13225  F_TargetBuy
+13226  I_TargetBuy
+13227  P_TargetBuy0
+13228  P_TargetBuy1
+13229  R_TargetBuy0
+13230  R_TargetBuy1
+13231  U_TargetBuy
+13232  _WARN_
+13233  TargetBuy
+13234  );
+13235  run;
+ 
+NOTE: There were 893 observations read from the data set EMWS1.PART3_TRAIN.
+NOTE: View EMWS1.REG3_TRAIN.VIEW used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.14 seconds
+ 
+NOTE: There were 893 observations read from the data set EMWS1.IMPT2_TRAIN.
+NOTE: There were 893 observations read from the data set EMWS1.REG3_TRAIN.
+NOTE: The data set WORK.EM_TEMP_ASSESSDATA has 893 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.18 seconds
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+17516  data EM_temp_assessMeta;
+17517  set EMWS1.Reg3_CMeta_TRAIN;
+17518  where role in('DECISION', 'PREDICT', 'RESIDUAL', 'CLASSIFICATION', 'ASSESS', 'COST');
+17519  run;
+ 
+NOTE: There were 8 observations read from the data set EMWS1.REG3_CMETA_TRAIN.
+      WHERE role in ('ASSESS', 'CLASSIFICATION', 'COST', 'DECISION', 'PREDICT', 'RESIDUAL');
+NOTE: The data set WORK.EM_TEMP_ASSESSMETA has 8 observations and 21 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+17520  data EM_temp_assessdata;
+17521  set EMWS1.Reg3_VALIDATE(keep=
+17522  F_TargetBuy
+17523  I_TargetBuy
+17524  P_TargetBuy0
+17525  P_TargetBuy1
+17526  R_TargetBuy0
+17527  R_TargetBuy1
+17528  U_TargetBuy
+17529  _WARN_
+17530  TargetBuy
+17531  );
+17532  run;
+ 
+NOTE: There were 894 observations read from the data set EMWS1.PART3_VALIDATE.
+NOTE: View EMWS1.REG3_VALIDATE.VIEW used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.15 seconds
+ 
+NOTE: There were 894 observations read from the data set EMWS1.IMPT2_VALIDATE.
+NOTE: There were 894 observations read from the data set EMWS1.REG3_VALIDATE.
+NOTE: The data set WORK.EM_TEMP_ASSESSDATA has 894 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.17 seconds
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+21822  %let _cn = %sysfunc(getoption(CENTER));
+21823  options nocenter;
+21824  proc print data=EMWS1.Reg3_EMREPORTFIT noobs label;
+21825  var STAT LABEL TRAIN
+21826  VALIDATE
+21827  ;
+21828  by TARGET TARGETLABEL;
+21829  title9 ' ';
+21830  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_fitstat_title  , NOQUOTE))";
+21831  run;
+ 
+NOTE: There were 20 observations read from the data set EMWS1.REG3_EMREPORTFIT.
+NOTE: The PROCEDURE PRINT printed page 15.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+21832  title10;
+21833  options &_cn;
+ 
+21834  proc sort data=EMWS1.Reg3_EMCLASSIFICATION nothreads;
+21835  by DATAROLE TARGET TARGETLABEL;
+21836  run;
+ 
+NOTE: There were 8 observations read from the data set EMWS1.REG3_EMCLASSIFICATION.
+NOTE: The data set EMWS1.REG3_EMCLASSIFICATION has 8 observations and 12 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+21837  %let _cn = %sysfunc(getoption(CENTER));
+21838  options nocenter;
+21839  proc print data=EMWS1.Reg3_EMCLASSIFICATION noobs label;
+21840  var from into pct_row pct_col count percent
+21841  ;
+21842  by DATAROLE TARGET TARGETLABEL;
+21843  label FROM = "%sysfunc(sasmsg(sashelp.dmine, rpt_target_vlabel ,     NOQUOTE))";
+21844  label INTO = "%sysfunc(sasmsg(sashelp.dmine, rpt_outcome_vlabel ,    NOQUOTE))";
+21845  label PCT_ROW = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetpct_vlabel ,  NOQUOTE))";
+21846  label PCT_COL = "%sysfunc(sasmsg(sashelp.dmine, rpt_outcomepct_vlabel , NOQUOTE))";
+21847  label COUNT = "%sysfunc(sasmsg(sashelp.dmine, rpt_count_vlabel ,      NOQUOTE))";
+21848  label PERCENT = "%sysfunc(sasmsg(sashelp.dmine, rpt_totalpct_vlabel ,   NOQUOTE))";
+21849  where _TYPE_='PREDICTION';
+21850  title9 ' ';
+21851  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_classification_title    , NOQUOTE))";
+21852  run;
+ 
+NOTE: There were 8 observations read from the data set EMWS1.REG3_EMCLASSIFICATION.
+      WHERE _TYPE_='PREDICTION';
+NOTE: The PROCEDURE PRINT printed page 16.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+ 
+ 
+21853  title9;
+21854  title10;
+21855  options &_cn;
+ 
+21856  %let _cn = %sysfunc(getoption(CENTER));
+21857  options nocenter;
+21858  data EMWS1.Reg3_EMEVENTREPORT;
+21859  length DATAROLE TARGET $32 TARGETLABEL $200 FALSENEVENT TRUENEVENT FALSEEVENT TRUEEVENT
+21859! 8;
+21860  label DATAROLE = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel ,    NOQUOTE))"
+21860! TARGET = "%sysfunc(sasmsg(sashelp.dmine, rpt_target_vlabel ,      NOQUOTE))" TARGETLABEL
+21860!  = "%sysfunc(sasmsg(sashelp.dmine, meta_targetlabel_vlabel, NOQUOTE))" FALSEEVENT
+21861  = "%sysfunc(sasmsg(sashelp.dmine, rpt_falseevent_vlabel ,  NOQUOTE))" FALSENEVENT =
+21861! "%sysfunc(sasmsg(sashelp.dmine, rpt_falsenevent_vlabel , NOQUOTE))" TRUEEVENT =
+21861! "%sysfunc(sasmsg(sashelp.dmine, rpt_trueevent_vlabel ,   NOQUOTE))" TRUENEVENT =
+21862     "%sysfunc(sasmsg(sashelp.dmine, rpt_truenevent_vlabel ,  NOQUOTE))";
+21863  FALSEEVENT=0;
+21864  FALSENEVENT=0;
+21865  TRUEEVENT=0;
+21866  TRUENEVENT=0;
+21867  set EMWS1.Reg3_EMEVENTREPORT;
+21868  run;
+ 
+NOTE: There were 2 observations read from the data set EMWS1.REG3_EMEVENTREPORT.
+NOTE: The data set EMWS1.REG3_EMEVENTREPORT has 2 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.04 seconds
+ 
+ 
+21869  proc print data=EMWS1.Reg3_EMEVENTREPORT noobs label;
+21870  title9 ' ';
+21871  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_eventtable_title    , NOQUOTE))";
+21872  by notsorted DATAROLE notsorted TARGET notsorted TARGETLABEL;
+21873  run;
+ 
+NOTE: There were 2 observations read from the data set EMWS1.REG3_EMEVENTREPORT.
+NOTE: The PROCEDURE PRINT printed page 17.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+ 
+ 
+21874  title10;
+21875  options &_cn;
+ 
+21876  proc datasets library=EMWS1 nolist;
+21877  modify Reg3_EMRANK;
+21878  label target = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel ,   NOQUOTE))";
+21879  label datarole = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel ,    NOQUOTE))";
+21880  run;
+ 
+NOTE: MODIFY was successful for EMWS1.REG3_EMRANK.DATA.
+21881  quit;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+ 
+ 
+21882  %let _cn = %sysfunc(getoption(CENTER));
+21883  options nocenter;
+21884  proc print data=EMWS1.Reg3_EMRANK label noobs;
+21885  var
+21886  decile gain lift liftc resp respc N _meanP_;
+21887  by
+21888  notsorted DATAROLE
+21889  notsorted TARGET
+21890  notsorted TARGETLABEL
+21891  ;
+21892  title9 ' ';
+21893  title10 "%sysfunc(sasmsg(sashelp.dmine, rpt_scoreranking_title , NOQUOTE))";
+21894  run;
+ 
+NOTE: There were 40 observations read from the data set EMWS1.REG3_EMRANK.
+NOTE: The PROCEDURE PRINT printed page 18.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+ 
+ 
+21895  title10;
+21896  options &_cn;
+ 
+21897  proc datasets library=EMWS1 nolist;
+21898  modify Reg3_EMSCOREDIST;
+21899  label target = "%sysfunc(sasmsg(sashelp.dmine, rpt_targetvar_vlabel ,      NOQUOTE))";
+21900  label datarole = "%sysfunc(sasmsg(sashelp.dmine, rpt_datarole_vlabel ,    NOQUOTE))";
+21901  run;
+ 
+NOTE: MODIFY was successful for EMWS1.REG3_EMSCOREDIST.DATA.
+21902  quit;
+ 
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+ 
+ 

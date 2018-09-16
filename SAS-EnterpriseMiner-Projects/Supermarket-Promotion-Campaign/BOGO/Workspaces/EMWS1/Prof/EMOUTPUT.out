@@ -1,0 +1,92 @@
+*------------------------------------------------------------*
+User:                Mohamed
+Date:                May 09, 2018
+Time:                14:44:00
+*------------------------------------------------------------*
+* Training Output
+*------------------------------------------------------------*
+ 
+ 
+ 
+ 
+Variable Summary
+ 
+            Measurement    Frequency
+Role           Level         Count
+ 
+ID           NOMINAL           1
+INPUT        BINARY            4
+INPUT        INTERVAL          9
+INPUT        NOMINAL           5
+REJECTED     INTERVAL          4
+REJECTED     NOMINAL           5
+SEGMENT      NOMINAL           1
+TARGET       BINARY            1
+ 
+ 
+ 
+ 
+Frequencies: _SEGMENT_
+ 
+                                     Percent of
+ Segment     Segment    Frequency       Total
+Variable      Value       Count       Frequency
+ 
+_SEGMENT_       2           1811       42.8741
+_SEGMENT_       4           1337       31.6525
+_SEGMENT_       3            862       20.4072
+_SEGMENT_       1            214        5.0663
+ 
+ 
+ 
+Variable: _SEGMENT_ Segment: 2 Count: 1811
+Decision Tree Importance Profiles
+ 
+Variable            Worth     Rank
+ 
+AffluenceGrade    0.069390      1
+REP_Gender        0.011011      2
+REP_Age           0.009930      3
+ 
+ 
+ 
+Variable: _SEGMENT_ Segment: 4 Count: 1337
+Decision Tree Importance Profiles
+ 
+Variable            Worth     Rank
+ 
+REP_Age           0.029019      1
+AffluenceGrade    0.010113      2
+REP_Gender        0.001383      3
+ 
+ 
+ 
+Variable: _SEGMENT_ Segment: 3 Count: 862
+Decision Tree Importance Profiles
+ 
+Variable           Worth     Rank
+ 
+AffluenceGrade    0.13246      1
+REP_Age           0.07297      2
+REP_Gender        0.02113      3
+ 
+ 
+ 
+Variable: _SEGMENT_ Segment: 1 Count: 214
+Decision Tree Importance Profiles
+ 
+Variable               Worth    Rank
+ 
+REP_Age           .005031767      1
+AffluenceGrade    .000435683      2
+REP_Gender        .000010500      3
+
+
+*------------------------------------------------------------*
+* Score Output
+*------------------------------------------------------------*
+
+
+*------------------------------------------------------------*
+* Report Output
+*------------------------------------------------------------*

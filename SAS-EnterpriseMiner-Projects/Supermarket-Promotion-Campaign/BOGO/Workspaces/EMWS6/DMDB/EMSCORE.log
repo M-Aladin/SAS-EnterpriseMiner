@@ -1,0 +1,100 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                May 13, 2018
+Time:                20:18:31
+*------------------------------------------------------------*
+15817  %let EMEXCEPTIONSTRING=;
+15818  *------------------------------------------------------------*;
+15819  * SCORE: DMDB;
+15820  *------------------------------------------------------------*;
+15821  %let EM_ACTION = SCORE;
+15822  %let syscc = 0;
+15823  %macro main;
+15824  
+15825     filename temp catalog 'sashelp.emexpl.dmdb_macros.source';
+15826     %include temp;
+15827     filename temp;
+15828  
+15829     %SetProperties;
+15830  
+15831     %if %upcase(&EM_ACTION) = CREATE %then %do;
+15832  
+15833         filename temp catalog 'sashelp.emexpl.dmdb_create.source';
+15834         %include temp;
+15835         filename temp;
+15836  
+15837         %create;
+15838     %end;
+15839     %else
+15840     %if %upcase(&EM_ACTION) = TRAIN %then %do;
+15841  
+15842         filename temp catalog 'sashelp.emexpl.dmdb_train.source';
+15843         %include temp;
+15844         filename temp;
+15845  
+15846         %train;
+15847     %end;
+15848     %else
+15849     %if %upcase(&EM_ACTION) = REPORT %then %do;
+15850  
+15851         filename temp catalog 'sashelp.emexpl.dmdb_report.source';
+15852         %include temp;
+15853         filename temp;
+15854  
+15855         %report;
+15856  
+15857     %end;
+15858  
+15859     %doendm:
+15860  %mend main;
+15861  
+15862  %main;
+NOTE: %INCLUDE (level 1) file TEMP is file SASHELP.EMEXPL.DMDB_MACROS.SOURCE.
+15863 +%macro SetProperties;
+15864 +   %em_checkmacro(name=EM_PROPERTY_INTERVAL,      global=Y, value=Y);
+15865 +   %em_checkmacro(name=EM_PROPERTY_CLASS,         global=Y, value=Y);
+15866 +   %em_checkmacro(name=EM_PROPERTY_MAXVALUES,     global=Y, value=25);
+15867 +%mend SetProperties;
+15868 +
+NOTE: %INCLUDE (level 1) ending.
+NOTE: Fileref TEMP has been deassigned.
+15869  *------------------------------------------------------------*;
+15870  * End SCORE: DMDB;
+15871  *------------------------------------------------------------*;
+15872  
+
+15873  *------------------------------------------------------------*;
+15874  * DMDB: Scoring DATA data;
+15875  *------------------------------------------------------------*;
+15876  data EMWS6.DMDB_TRAIN
+15877  / view=EMWS6.DMDB_TRAIN
+15878  ;
+15879  set EMWS6.Ids_DATA
+15880  ;
+15881  run;
+
+NOTE: DATA STEP view saved on file EMWS6.DMDB_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS6.IDS_DATA.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+      
+
+15882  quit;
+
+15884  *------------------------------------------------------------*;
+15885  * DMDB: Computing metadata for TRAIN data;
+15886  *------------------------------------------------------------*;
+
+NOTE: View EMWS6.DMDB_TRAIN.VIEW used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.10 seconds
+      
+NOTE: View EMWS6.DMDB_TRAIN.VIEW used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.07 seconds
+      

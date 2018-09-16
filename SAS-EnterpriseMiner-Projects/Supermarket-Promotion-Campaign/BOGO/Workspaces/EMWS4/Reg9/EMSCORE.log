@@ -1,0 +1,237 @@
+*------------------------------------------------------------*
+* Score Log
+Date:                May 09, 2018
+Time:                15:14:02
+*------------------------------------------------------------*
+11819  proc transpose data=EMWS4.Reg9_EMESTIMATE out=WORK.TEMPREG;
+11820  where _CHOSEN_ ne '' and _TYPE_='PARMS';
+11821  run;
+
+NOTE: There were 1 observations read from the data set EMWS4.REG9_EMESTIMATE.
+      WHERE (_CHOSEN_ not = ' ') and (_TYPE_='PARMS');
+NOTE: The data set WORK.TEMPREG has 75 observations and 3 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+
+11822  proc transpose data=EMWS4.Reg9_MAPDS out=WORK.TEMPREG2(rename=(TARGET=_TARGET_));
+11823  var "AffluenceGrade"n--"TotalSpend"n;
+11824  run;
+
+WARNING: The variable TARGET in the DROP, KEEP, or RENAME list has never been referenced.
+NOTE: There were 2 observations read from the data set EMWS4.REG9_MAPDS.
+NOTE: The data set WORK.TEMPREG2 has 41 observations and 4 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+11825  proc sort data=WORK.TEMPREG NOTHREADS;
+11826  by _NAME_;
+11827  run;
+
+NOTE: There were 75 observations read from the data set WORK.TEMPREG.
+NOTE: The data set WORK.TEMPREG has 75 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+11828  proc sort data=WORK.TEMPREG2 NOTHREADS;
+11829  by _NAME_;
+11830  run;
+
+NOTE: There were 41 observations read from the data set WORK.TEMPREG2.
+NOTE: The data set WORK.TEMPREG2 has 41 observations and 4 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11831  data WORK.TEMPREG3;
+11832  merge WORK.TEMPREG(in=ina) WORK.TEMPREG2(in=inb);
+11833  by _NAME_;
+11834  if (ina and inb) and TargetBuy ne . then output;
+11835  run;
+
+NOTE: There were 75 observations read from the data set WORK.TEMPREG.
+NOTE: There were 41 observations read from the data set WORK.TEMPREG2.
+NOTE: The data set WORK.TEMPREG3 has 10 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11836  data WORK.TEMPREG3(KEEP=TERM);
+11837  length term $32;
+11838  set WORK.TEMPREG3;
+11839  i=1;
+11840  do while( scan(input , i, '*') ne '' );
+11841  term= scan(input , i, '*');
+11842  i=i+1;
+11843  output;
+11844  end;
+11845  run;
+
+NOTE: There were 10 observations read from the data set WORK.TEMPREG3.
+NOTE: The data set WORK.TEMPREG3 has 10 observations and 1 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11846  proc sort data=WORK.TEMPREG3 nodupkey NOTHREADS;
+11847  by TERM;
+11848  run;
+
+NOTE: There were 10 observations read from the data set WORK.TEMPREG3.
+NOTE: 1 observations with duplicate key values were deleted.
+NOTE: The data set WORK.TEMPREG3 has 9 observations and 1 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+11849  filename emflow "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS4\Reg9\EMFLOWSCORE.sas";
+11850  *------------------------------------------------------------*;
+11851  * Reg9: Scoring DATA data;
+11852  *------------------------------------------------------------*;
+11853  data EMWS4.Reg9_TRAIN
+11854  / view=EMWS4.Reg9_TRAIN
+11855  ;
+11856  set EMWS4.Impt7_TRAIN
+11857  ;
+11858  %inc emflow;
+12091  run;
+
+NOTE: DATA STEP view saved on file EMWS4.REG9_TRAIN.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS4.IMPT7_TRAIN.VIEW used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.11 seconds
+      
+
+12092  quit;
+12093  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+12094  filename emflow "D:\Nida\Data mining\datamining\BOGO\Workspaces\EMWS4\Reg9\EMFLOWSCORE.sas";
+12095  *------------------------------------------------------------*;
+12096  * Reg9: Scoring VALIDATE data;
+12097  *------------------------------------------------------------*;
+12098  data EMWS4.Reg9_VALIDATE
+12099  / view=EMWS4.Reg9_VALIDATE
+12100  ;
+12101  set EMWS4.Impt7_VALIDATE
+12102  ;
+12103  %inc emflow;
+12336  run;
+
+NOTE: DATA STEP view saved on file EMWS4.REG9_VALIDATE.
+NOTE: A stored DATA STEP view cannot run under a different operating system.
+NOTE: View EMWS4.IMPT7_VALIDATE.VIEW used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+      
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.06 seconds
+      
+
+12337  quit;
+12338  filename emflow;
+NOTE: Fileref EMFLOW has been deassigned.
+
+12339  *------------------------------------------------------------*;
+12340  * Reg9: Computing metadata for TRAIN data;
+12341  *------------------------------------------------------------*;
+
+NOTE: View EMWS4.REG9_TRAIN.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+      
+12703  data EMWS4.Reg9_EMINFO;
+12704  length TARGET KEY $32 DATA $43;
+12705  input TARGET KEY DATA $;
+12706  cards;
+
+NOTE: The data set EMWS4.REG9_EMINFO has 3 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12710  run;
+12711  proc sort data = EMWS4.Reg9_EMINFO NOTHREADS;
+12712  by TARGET KEY;
+12713  run;
+
+NOTE: There were 3 observations read from the data set EMWS4.REG9_EMINFO.
+NOTE: The data set EMWS4.REG9_EMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12714  proc sort data = EMWS4.Ids_EMINFO OUT=WORK.SORTEDEMINFO NOTHREADS;
+12715  by TARGET KEY;
+12716  run;
+
+NOTE: There were 3 observations read from the data set EMWS4.IDS_EMINFO.
+NOTE: The data set WORK.SORTEDEMINFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12717  proc sort data = EMWS4.Reg9_EMINFO OUT=WORK.TEMP_INFO NOTHREADS;
+12718  by TARGET KEY;
+12719  run;
+
+NOTE: Input data set is already sorted; it has been copied to the output data set.
+NOTE: There were 3 observations read from the data set EMWS4.REG9_EMINFO.
+NOTE: The data set WORK.TEMP_INFO has 3 observations and 3 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12720  data EMWS4.Reg9_EMINFO;
+12721  merge WORK.SORTEDEMINFO WORK.TEMP_INFO;
+12722  by TARGET KEY;
+12723  run;
+
+NOTE: There were 3 observations read from the data set WORK.SORTEDEMINFO.
+NOTE: There were 3 observations read from the data set WORK.TEMP_INFO.
+NOTE: The data set EMWS4.REG9_EMINFO has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+12724  proc datasets lib=work nolist;
+12725  delete TEMP_INFO SORTEDEMINFO;
+12726  run;
+
+NOTE: Deleting WORK.TEMP_INFO (memtype=DATA).
+NOTE: Deleting WORK.SORTEDEMINFO (memtype=DATA).
+12727  quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+NOTE: View EMWS4.REG9_TRAIN.VIEW used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.15 seconds
+      
+NOTE: View EMWS4.REG9_VALIDATE.VIEW used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+      

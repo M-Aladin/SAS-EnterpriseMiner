@@ -1,0 +1,686 @@
+*------------------------------------------------------------*
+ Node = 18
+*------------------------------------------------------------*
+if Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 1 or MISSING
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+then 
+ Tree Node Identifier   = 18
+ Number of Observations = 501
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 25
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND PreviousCampaign IS ONE OF: 1 or MISSING
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+then 
+ Tree Node Identifier   = 25
+ Number of Observations = 404
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 32
+*------------------------------------------------------------*
+if Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 1 or MISSING
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 32
+ Number of Observations = 115
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 35
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 35
+ Number of Observations = 145
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 37
+*------------------------------------------------------------*
+if Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 37
+ Number of Observations = 227
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 39
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 0 or MISSING
+AND MobileApplications IS ONE OF: 1
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 39
+ Number of Observations = 120
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 40
+*------------------------------------------------------------*
+if TotalSpend < 5951 or MISSING
+AND Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND MobileApplications IS ONE OF: 1
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 40
+ Number of Observations = 100
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 43
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 0 or MISSING
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: PLATINUM
+then 
+ Tree Node Identifier   = 43
+ Number of Observations = 51
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 45
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: M
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND CampaignViewedEmail IS ONE OF: 1 or MISSING
+then 
+ Tree Node Identifier   = 45
+ Number of Observations = 65
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 47
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND PreviousCampaign IS ONE OF: 1 or MISSING
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 1 or MISSING
+then 
+ Tree Node Identifier   = 47
+ Number of Observations = 151
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 49
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 49
+ Number of Observations = 198
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 51
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 51
+ Number of Observations = 218
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 53
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 1 or MISSING
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+then 
+ Tree Node Identifier   = 53
+ Number of Observations = 177
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 55
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 55
+ Number of Observations = 159
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 57
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 1 or MISSING
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+then 
+ Tree Node Identifier   = 57
+ Number of Observations = 101
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 58
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 58
+ Number of Observations = 77
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 60
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 60
+ Number of Observations = 43
+ Predicted: _SEGMENT_=3  = 0.93
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.07
+ 
+*------------------------------------------------------------*
+ Node = 61
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, NORTH, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 61
+ Number of Observations = 65
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 62
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 1
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 62
+ Number of Observations = 37
+ Predicted: _SEGMENT_=3  = 0.97
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.03
+ 
+*------------------------------------------------------------*
+ Node = 63
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 0 or MISSING
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 63
+ Number of Observations = 46
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 64
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 64
+ Number of Observations = 104
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 65
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 65
+ Number of Observations = 156
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 66
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 1
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 66
+ Number of Observations = 20
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 67
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 1
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 67
+ Number of Observations = 43
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 68
+*------------------------------------------------------------*
+if TotalSpend >= 5951
+AND Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 1
+AND MobileApplications IS ONE OF: 1
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 68
+ Number of Observations = 17
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 69
+*------------------------------------------------------------*
+if TotalSpend >= 5951
+AND Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 0 or MISSING
+AND MobileApplications IS ONE OF: 1
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 69
+ Number of Observations = 30
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 70
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 1
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 0
+then 
+ Tree Node Identifier   = 70
+ Number of Observations = 13
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 71
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 1
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 1 or MISSING
+then 
+ Tree Node Identifier   = 71
+ Number of Observations = 18
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 72
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 1
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND CampaignViewedEmail IS ONE OF: 0
+then 
+ Tree Node Identifier   = 72
+ Number of Observations = 26
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 73
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 0 or MISSING
+AND MobileApplications IS ONE OF: 1
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND CampaignViewedEmail IS ONE OF: 0
+then 
+ Tree Node Identifier   = 73
+ Number of Observations = 35
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 74
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 1 or MISSING
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 0
+then 
+ Tree Node Identifier   = 74
+ Number of Observations = 50
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 75
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 1 or MISSING
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 0
+then 
+ Tree Node Identifier   = 75
+ Number of Observations = 85
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 76
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 76
+ Number of Observations = 57
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 77
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 77
+ Number of Observations = 79
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 78
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 78
+ Number of Observations = 44
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 79
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: CENTRAL, U, NORTH, SOUTH WEST, NORTHEAST or MISSING
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 79
+ Number of Observations = 81
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 80
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 1 or MISSING
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 80
+ Number of Observations = 61
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 81
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 1 or MISSING
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 81
+ Number of Observations = 57
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 82
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 82
+ Number of Observations = 51
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 83
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: F or MISSING
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: GOLD or MISSING
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 83
+ Number of Observations = 78
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 84
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 1 or MISSING
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 84
+ Number of Observations = 26
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 85
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 1 or MISSING
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 85
+ Number of Observations = 26
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 86
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: PLATINUM or MISSING
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 86
+ Number of Observations = 39
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 87
+*------------------------------------------------------------*
+if Replacement: Region IS ONE OF: SOUTH EAST
+AND Replacement: Gender IS ONE OF: M
+AND PreviousCampaign IS ONE OF: 0
+AND MobileApplications IS ONE OF: 0 or MISSING
+AND LoyaltyClass IS ONE OF: GOLD
+AND CampaignViewedEmail IS ONE OF: 1
+then 
+ Tree Node Identifier   = 87
+ Number of Observations = 28
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 

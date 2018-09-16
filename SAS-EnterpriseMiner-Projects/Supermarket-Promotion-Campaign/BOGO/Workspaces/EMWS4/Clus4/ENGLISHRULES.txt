@@ -1,0 +1,347 @@
+*------------------------------------------------------------*
+ Node = 8
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts < 0.5
+AND AffluenceGrade < 10.5 or MISSING
+then 
+ Tree Node Identifier   = 8
+ Number of Observations = 4907
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 12
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 10.5 AND TimeSinceLastPurchase >= 9.5
+AND NightRepairProducts < 0.5
+then 
+ Tree Node Identifier   = 12
+ Number of Observations = 59
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.08
+ Predicted: _SEGMENT_=2  = 0.92
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 14
+*------------------------------------------------------------*
+if TimeSinceLastPurchase >= 10.5 or MISSING
+AND AffluenceGrade < 13.5 or MISSING
+then 
+ Tree Node Identifier   = 14
+ Number of Observations = 863
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 16
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts >= 0.5 or MISSING
+AND DayCareProducts < 1.5
+AND AffluenceGrade < 10.5 or MISSING
+then 
+ Tree Node Identifier   = 16
+ Number of Observations = 4528
+ Predicted: _SEGMENT_=3  = 1.00
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 23
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 10.5 AND TimeSinceLastPurchase >= 9.5
+AND NightRepairProducts >= 0.5 or MISSING
+AND AffluenceGrade >= 10.5
+then 
+ Tree Node Identifier   = 23
+ Number of Observations = 25
+ Predicted: _SEGMENT_=3  = 0.12
+ Predicted: _SEGMENT_=4  = 0.64
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.24
+ 
+*------------------------------------------------------------*
+ Node = 26
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 13.5 AND TimeSinceLastPurchase >= 10.5
+AND AffluenceGrade >= 13.5
+then 
+ Tree Node Identifier   = 26
+ Number of Observations = 22
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.64
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.36
+ 
+*------------------------------------------------------------*
+ Node = 27
+*------------------------------------------------------------*
+if TimeSinceLastPurchase >= 13.5 or MISSING
+AND AffluenceGrade >= 13.5
+then 
+ Tree Node Identifier   = 27
+ Number of Observations = 27
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 1.00
+ 
+*------------------------------------------------------------*
+ Node = 30
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts < 0.5
+AND DayCareProducts < 2.5 or MISSING
+AND AffluenceGrade < 12.5 AND AffluenceGrade >= 10.5 or MISSING
+then 
+ Tree Node Identifier   = 30
+ Number of Observations = 659
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.02
+ Predicted: _SEGMENT_=2  = 0.98
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 33
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts < 0.5
+AND AffluenceGrade >= 13.5 or MISSING
+then 
+ Tree Node Identifier   = 33
+ Number of Observations = 456
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.98
+ Predicted: _SEGMENT_=2  = 0.02
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 34
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts >= 0.5 or MISSING
+AND DayCareProducts < 0.5
+AND AffluenceGrade < 12.5 AND AffluenceGrade >= 10.5 or MISSING
+then 
+ Tree Node Identifier   = 34
+ Number of Observations = 355
+ Predicted: _SEGMENT_=3  = 0.89
+ Predicted: _SEGMENT_=4  = 0.11
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 35
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts >= 0.5 or MISSING
+AND DayCareProducts < 0.5
+AND AffluenceGrade >= 12.5
+then 
+ Tree Node Identifier   = 35
+ Number of Observations = 283
+ Predicted: _SEGMENT_=3  = 0.12
+ Predicted: _SEGMENT_=4  = 0.88
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 37
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts >= 0.5 or MISSING
+AND DayCareProducts >= 1.5 or MISSING
+AND AffluenceGrade >= 10.5
+then 
+ Tree Node Identifier   = 37
+ Number of Observations = 1681
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 1.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 38
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 10.5 AND TimeSinceLastPurchase >= 9.5
+AND NightRepairProducts < 1.5 AND NightRepairProducts >= 0.5 or MISSING
+AND AffluenceGrade < 10.5 or MISSING
+then 
+ Tree Node Identifier   = 38
+ Number of Observations = 57
+ Predicted: _SEGMENT_=3  = 0.05
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.95
+ 
+*------------------------------------------------------------*
+ Node = 39
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 10.5 AND TimeSinceLastPurchase >= 9.5
+AND NightRepairProducts >= 1.5
+AND AffluenceGrade < 10.5 or MISSING
+then 
+ Tree Node Identifier   = 39
+ Number of Observations = 33
+ Predicted: _SEGMENT_=3  = 0.67
+ Predicted: _SEGMENT_=4  = 0.03
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.30
+ 
+*------------------------------------------------------------*
+ Node = 40
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts < 1.5 AND NightRepairProducts >= 0.5 or MISSING
+AND DayCareProducts >= 1.5 or MISSING
+AND AffluenceGrade < 8.5 or MISSING
+then 
+ Tree Node Identifier   = 40
+ Number of Observations = 1645
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 41
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts < 1.5 AND NightRepairProducts >= 0.5 or MISSING
+AND DayCareProducts >= 1.5 or MISSING
+AND AffluenceGrade < 10.5 AND AffluenceGrade >= 8.5
+then 
+ Tree Node Identifier   = 41
+ Number of Observations = 712
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.56
+ Predicted: _SEGMENT_=2  = 0.44
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 42
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts >= 1.5
+AND DayCareProducts >= 1.5 or MISSING
+AND AffluenceGrade < 9.5 or MISSING
+then 
+ Tree Node Identifier   = 42
+ Number of Observations = 1888
+ Predicted: _SEGMENT_=3  = 0.95
+ Predicted: _SEGMENT_=4  = 0.05
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 43
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts >= 1.5
+AND DayCareProducts >= 1.5 or MISSING
+AND AffluenceGrade < 10.5 AND AffluenceGrade >= 9.5
+then 
+ Tree Node Identifier   = 43
+ Number of Observations = 334
+ Predicted: _SEGMENT_=3  = 0.29
+ Predicted: _SEGMENT_=4  = 0.71
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 46
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts < 0.5
+AND DayCareProducts >= 2.5
+AND AffluenceGrade < 11.5 AND AffluenceGrade >= 10.5 or MISSING
+then 
+ Tree Node Identifier   = 46
+ Number of Observations = 116
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 47
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts < 0.5
+AND DayCareProducts >= 2.5
+AND AffluenceGrade < 12.5 AND AffluenceGrade >= 11.5
+then 
+ Tree Node Identifier   = 47
+ Number of Observations = 100
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.62
+ Predicted: _SEGMENT_=2  = 0.38
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 48
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts < 0.5
+AND DayCareProducts < 0.5
+AND AffluenceGrade < 13.5 AND AffluenceGrade >= 12.5
+then 
+ Tree Node Identifier   = 48
+ Number of Observations = 68
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.00
+ Predicted: _SEGMENT_=2  = 1.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 49
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts < 0.5
+AND DayCareProducts >= 0.5 or MISSING
+AND AffluenceGrade < 13.5 AND AffluenceGrade >= 12.5
+then 
+ Tree Node Identifier   = 49
+ Number of Observations = 178
+ Predicted: _SEGMENT_=3  = 0.00
+ Predicted: _SEGMENT_=4  = 0.84
+ Predicted: _SEGMENT_=2  = 0.16
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 56
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts >= 0.5 or MISSING
+AND DayCareProducts < 1.5 AND DayCareProducts >= 0.5
+AND AffluenceGrade < 11.5 AND AffluenceGrade >= 10.5
+then 
+ Tree Node Identifier   = 56
+ Number of Observations = 322
+ Predicted: _SEGMENT_=3  = 0.65
+ Predicted: _SEGMENT_=4  = 0.35
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 
+*------------------------------------------------------------*
+ Node = 57
+*------------------------------------------------------------*
+if TimeSinceLastPurchase < 9.5 or MISSING
+AND NightRepairProducts >= 0.5 or MISSING
+AND DayCareProducts < 1.5 AND DayCareProducts >= 0.5
+AND AffluenceGrade >= 11.5 or MISSING
+then 
+ Tree Node Identifier   = 57
+ Number of Observations = 717
+ Predicted: _SEGMENT_=3  = 0.05
+ Predicted: _SEGMENT_=4  = 0.95
+ Predicted: _SEGMENT_=2  = 0.00
+ Predicted: _SEGMENT_=1  = 0.00
+ 

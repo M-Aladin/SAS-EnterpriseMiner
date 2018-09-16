@@ -1,0 +1,465 @@
+*------------------------------------------------------------*
+ Node = 15
+*------------------------------------------------------------*
+if TotalSpend >= 5000.5
+AND Replacement: Age >= 54.5 or MISSING
+then 
+ Tree Node Identifier   = 15
+ Number of Observations = 4439
+ Predicted: _SEGMENT_=2  = 0.99
+ Predicted: _SEGMENT_=1  = 0.01
+ 
+*------------------------------------------------------------*
+ Node = 16
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND Replacement: LoyaltyTime < 13.5 or MISSING
+AND Replacement: Age < 58.5 or MISSING
+then 
+ Tree Node Identifier   = 16
+ Number of Observations = 9393
+ Predicted: _SEGMENT_=2  = 0.01
+ Predicted: _SEGMENT_=1  = 0.99
+ 
+*------------------------------------------------------------*
+ Node = 21
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND Replacement: LoyaltyTime >= 11.5
+AND Replacement: Age >= 64.5
+AND FacebookLike IS ONE OF: 1
+then 
+ Tree Node Identifier   = 21
+ Number of Observations = 156
+ Predicted: _SEGMENT_=2  = 0.97
+ Predicted: _SEGMENT_=1  = 0.03
+ 
+*------------------------------------------------------------*
+ Node = 27
+*------------------------------------------------------------*
+if TotalSpend >= 9566
+AND Replacement: Age < 50.5 AND Replacement: Age >= 39.5 or MISSING
+then 
+ Tree Node Identifier   = 27
+ Number of Observations = 366
+ Predicted: _SEGMENT_=2  = 0.92
+ Predicted: _SEGMENT_=1  = 0.08
+ 
+*------------------------------------------------------------*
+ Node = 36
+*------------------------------------------------------------*
+if TotalSpend < 1590 or MISSING
+AND Replacement: LoyaltyTime >= 13.5
+AND Replacement: Age < 48.5
+then 
+ Tree Node Identifier   = 36
+ Number of Observations = 21
+ Predicted: _SEGMENT_=2  = 0.19
+ Predicted: _SEGMENT_=1  = 0.81
+ 
+*------------------------------------------------------------*
+ Node = 37
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 AND TotalSpend >= 1590
+AND Replacement: LoyaltyTime >= 13.5
+AND Replacement: Age < 48.5
+then 
+ Tree Node Identifier   = 37
+ Number of Observations = 20
+ Predicted: _SEGMENT_=2  = 0.60
+ Predicted: _SEGMENT_=1  = 0.40
+ 
+*------------------------------------------------------------*
+ Node = 38
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND TimeSinceLastPurchase < 7.5
+AND Replacement: LoyaltyTime >= 13.5
+AND Replacement: Age < 64.5 AND Replacement: Age >= 48.5 or MISSING
+then 
+ Tree Node Identifier   = 38
+ Number of Observations = 24
+ Predicted: _SEGMENT_=2  = 0.46
+ Predicted: _SEGMENT_=1  = 0.54
+ 
+*------------------------------------------------------------*
+ Node = 39
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND TimeSinceLastPurchase >= 7.5 or MISSING
+AND Replacement: LoyaltyTime >= 13.5
+AND Replacement: Age < 64.5 AND Replacement: Age >= 48.5 or MISSING
+then 
+ Tree Node Identifier   = 39
+ Number of Observations = 173
+ Predicted: _SEGMENT_=2  = 0.92
+ Predicted: _SEGMENT_=1  = 0.08
+ 
+*------------------------------------------------------------*
+ Node = 40
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND Replacement: LoyaltyTime < 11.5 or MISSING
+AND Replacement: Age < 72.5 AND Replacement: Age >= 64.5 or MISSING
+AND FacebookLike IS ONE OF: 1
+then 
+ Tree Node Identifier   = 40
+ Number of Observations = 518
+ Predicted: _SEGMENT_=2  = 0.29
+ Predicted: _SEGMENT_=1  = 0.71
+ 
+*------------------------------------------------------------*
+ Node = 46
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND Replacement: Age >= 64.5
+AND LoyaltyClass IS ONE OF: GOLD, PLATINUM, DIAMOND or MISSING
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND AffluenceGrade < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 46
+ Number of Observations = 1102
+ Predicted: _SEGMENT_=2  = 0.93
+ Predicted: _SEGMENT_=1  = 0.07
+ 
+*------------------------------------------------------------*
+ Node = 48
+*------------------------------------------------------------*
+if TotalSpend < 9566 AND TotalSpend >= 5000.5 or MISSING
+AND Replacement: LoyaltyTime < 10.5 or MISSING
+AND Replacement: Age < 44.5 or MISSING
+then 
+ Tree Node Identifier   = 48
+ Number of Observations = 475
+ Predicted: _SEGMENT_=2  = 0.05
+ Predicted: _SEGMENT_=1  = 0.95
+ 
+*------------------------------------------------------------*
+ Node = 49
+*------------------------------------------------------------*
+if TotalSpend < 9566 AND TotalSpend >= 5000.5 or MISSING
+AND Replacement: LoyaltyTime >= 10.5
+AND Replacement: Age < 44.5 or MISSING
+then 
+ Tree Node Identifier   = 49
+ Number of Observations = 38
+ Predicted: _SEGMENT_=2  = 0.53
+ Predicted: _SEGMENT_=1  = 0.47
+ 
+*------------------------------------------------------------*
+ Node = 53
+*------------------------------------------------------------*
+if TotalSpend >= 15550
+AND Replacement: Age < 39.5
+then 
+ Tree Node Identifier   = 53
+ Number of Observations = 44
+ Predicted: _SEGMENT_=2  = 0.91
+ Predicted: _SEGMENT_=1  = 0.09
+ 
+*------------------------------------------------------------*
+ Node = 57
+*------------------------------------------------------------*
+if TotalSpend >= 6013.5 or MISSING
+AND Replacement: Age < 54.5 AND Replacement: Age >= 50.5
+AND AffluenceGrade < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 57
+ Number of Observations = 346
+ Predicted: _SEGMENT_=2  = 0.95
+ Predicted: _SEGMENT_=1  = 0.05
+ 
+*------------------------------------------------------------*
+ Node = 58
+*------------------------------------------------------------*
+if TotalSpend < 10100 AND TotalSpend >= 5000.5 or MISSING
+AND Replacement: Age < 54.5 AND Replacement: Age >= 50.5
+AND AffluenceGrade >= 12.5
+then 
+ Tree Node Identifier   = 58
+ Number of Observations = 50
+ Predicted: _SEGMENT_=2  = 0.14
+ Predicted: _SEGMENT_=1  = 0.86
+ 
+*------------------------------------------------------------*
+ Node = 59
+*------------------------------------------------------------*
+if TotalSpend >= 10100
+AND Replacement: Age < 54.5 AND Replacement: Age >= 50.5
+AND AffluenceGrade >= 12.5
+then 
+ Tree Node Identifier   = 59
+ Number of Observations = 22
+ Predicted: _SEGMENT_=2  = 0.86
+ Predicted: _SEGMENT_=1  = 0.14
+ 
+*------------------------------------------------------------*
+ Node = 68
+*------------------------------------------------------------*
+if TotalSpend < 2000.5 or MISSING
+AND TimeSinceLastPurchase < 7.5 or MISSING
+AND Replacement: LoyaltyTime < 13.5 or MISSING
+AND Replacement: Age < 64.5 AND Replacement: Age >= 58.5
+then 
+ Tree Node Identifier   = 68
+ Number of Observations = 973
+ Predicted: _SEGMENT_=2  = 0.08
+ Predicted: _SEGMENT_=1  = 0.92
+ 
+*------------------------------------------------------------*
+ Node = 69
+*------------------------------------------------------------*
+if TotalSpend < 2000.5 or MISSING
+AND TimeSinceLastPurchase >= 7.5
+AND Replacement: LoyaltyTime < 13.5 or MISSING
+AND Replacement: Age < 64.5 AND Replacement: Age >= 58.5
+then 
+ Tree Node Identifier   = 69
+ Number of Observations = 38
+ Predicted: _SEGMENT_=2  = 0.58
+ Predicted: _SEGMENT_=1  = 0.42
+ 
+*------------------------------------------------------------*
+ Node = 70
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 AND TotalSpend >= 2000.5
+AND Replacement: LoyaltyTime < 13.5 or MISSING
+AND Replacement: Age < 64.5 AND Replacement: Age >= 58.5
+AND FacebookLike IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 70
+ Number of Observations = 313
+ Predicted: _SEGMENT_=2  = 0.54
+ Predicted: _SEGMENT_=1  = 0.46
+ 
+*------------------------------------------------------------*
+ Node = 71
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 AND TotalSpend >= 2000.5
+AND Replacement: LoyaltyTime < 13.5 or MISSING
+AND Replacement: Age < 64.5 AND Replacement: Age >= 58.5
+AND FacebookLike IS ONE OF: 1
+then 
+ Tree Node Identifier   = 71
+ Number of Observations = 204
+ Predicted: _SEGMENT_=2  = 0.14
+ Predicted: _SEGMENT_=1  = 0.86
+ 
+*------------------------------------------------------------*
+ Node = 76
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND Replacement: LoyaltyTime < 11.5 or MISSING
+AND Replacement: Age >= 72.5
+AND FacebookLike IS ONE OF: 1
+AND AffluenceGrade < 9.5 or MISSING
+then 
+ Tree Node Identifier   = 76
+ Number of Observations = 156
+ Predicted: _SEGMENT_=2  = 0.86
+ Predicted: _SEGMENT_=1  = 0.14
+ 
+*------------------------------------------------------------*
+ Node = 77
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND Replacement: LoyaltyTime < 11.5 or MISSING
+AND Replacement: Age >= 72.5
+AND FacebookLike IS ONE OF: 1
+AND AffluenceGrade >= 9.5
+then 
+ Tree Node Identifier   = 77
+ Number of Observations = 64
+ Predicted: _SEGMENT_=2  = 0.42
+ Predicted: _SEGMENT_=1  = 0.58
+ 
+*------------------------------------------------------------*
+ Node = 78
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND TimeSinceLastPurchase < 2.5 or MISSING
+AND Replacement: Age < 69.5 AND Replacement: Age >= 64.5 or MISSING
+AND LoyaltyClass IS ONE OF: SILVER
+AND FacebookLike IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 78
+ Number of Observations = 77
+ Predicted: _SEGMENT_=2  = 0.16
+ Predicted: _SEGMENT_=1  = 0.84
+ 
+*------------------------------------------------------------*
+ Node = 79
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND TimeSinceLastPurchase < 2.5 or MISSING
+AND Replacement: Age >= 69.5
+AND LoyaltyClass IS ONE OF: SILVER
+AND FacebookLike IS ONE OF: 0 or MISSING
+then 
+ Tree Node Identifier   = 79
+ Number of Observations = 70
+ Predicted: _SEGMENT_=2  = 0.67
+ Predicted: _SEGMENT_=1  = 0.33
+ 
+*------------------------------------------------------------*
+ Node = 80
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND TimeSinceLastPurchase >= 2.5
+AND Replacement: Age >= 64.5
+AND LoyaltyClass IS ONE OF: SILVER
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND AffluenceGrade < 10.5 or MISSING
+then 
+ Tree Node Identifier   = 80
+ Number of Observations = 117
+ Predicted: _SEGMENT_=2  = 0.90
+ Predicted: _SEGMENT_=1  = 0.10
+ 
+*------------------------------------------------------------*
+ Node = 81
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND TimeSinceLastPurchase >= 2.5
+AND Replacement: Age >= 64.5
+AND LoyaltyClass IS ONE OF: SILVER
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND AffluenceGrade >= 10.5
+then 
+ Tree Node Identifier   = 81
+ Number of Observations = 27
+ Predicted: _SEGMENT_=2  = 0.48
+ Predicted: _SEGMENT_=1  = 0.52
+ 
+*------------------------------------------------------------*
+ Node = 84
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND TimeSinceLastPurchase < 2.5 or MISSING
+AND Replacement: Age >= 64.5
+AND LoyaltyClass IS ONE OF: GOLD, PLATINUM, DIAMOND or MISSING
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND AffluenceGrade >= 12.5
+then 
+ Tree Node Identifier   = 84
+ Number of Observations = 60
+ Predicted: _SEGMENT_=2  = 0.37
+ Predicted: _SEGMENT_=1  = 0.63
+ 
+*------------------------------------------------------------*
+ Node = 85
+*------------------------------------------------------------*
+if TotalSpend < 5000.5 or MISSING
+AND TimeSinceLastPurchase >= 2.5
+AND Replacement: Age >= 64.5
+AND LoyaltyClass IS ONE OF: GOLD, PLATINUM, DIAMOND or MISSING
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND AffluenceGrade >= 12.5
+then 
+ Tree Node Identifier   = 85
+ Number of Observations = 46
+ Predicted: _SEGMENT_=2  = 0.91
+ Predicted: _SEGMENT_=1  = 0.09
+ 
+*------------------------------------------------------------*
+ Node = 88
+*------------------------------------------------------------*
+if TotalSpend < 9566 AND TotalSpend >= 5000.5 or MISSING
+AND Replacement: Age < 50.5 AND Replacement: Age >= 44.5
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND AffluenceGrade < 9.5 or MISSING
+then 
+ Tree Node Identifier   = 88
+ Number of Observations = 193
+ Predicted: _SEGMENT_=2  = 0.73
+ Predicted: _SEGMENT_=1  = 0.27
+ 
+*------------------------------------------------------------*
+ Node = 89
+*------------------------------------------------------------*
+if TotalSpend < 9566 AND TotalSpend >= 5000.5 or MISSING
+AND Replacement: Age < 50.5 AND Replacement: Age >= 44.5
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND AffluenceGrade >= 9.5
+then 
+ Tree Node Identifier   = 89
+ Number of Observations = 83
+ Predicted: _SEGMENT_=2  = 0.24
+ Predicted: _SEGMENT_=1  = 0.76
+ 
+*------------------------------------------------------------*
+ Node = 90
+*------------------------------------------------------------*
+if TotalSpend < 9566 AND TotalSpend >= 5000.5 or MISSING
+AND TimeSinceLastPurchase < 3.5 or MISSING
+AND Replacement: Age < 50.5 AND Replacement: Age >= 44.5
+AND FacebookLike IS ONE OF: 1
+then 
+ Tree Node Identifier   = 90
+ Number of Observations = 108
+ Predicted: _SEGMENT_=2  = 0.06
+ Predicted: _SEGMENT_=1  = 0.94
+ 
+*------------------------------------------------------------*
+ Node = 91
+*------------------------------------------------------------*
+if TotalSpend < 9566 AND TotalSpend >= 5000.5 or MISSING
+AND TimeSinceLastPurchase >= 3.5
+AND Replacement: Age < 50.5 AND Replacement: Age >= 44.5
+AND FacebookLike IS ONE OF: 1
+then 
+ Tree Node Identifier   = 91
+ Number of Observations = 21
+ Predicted: _SEGMENT_=2  = 0.57
+ Predicted: _SEGMENT_=1  = 0.43
+ 
+*------------------------------------------------------------*
+ Node = 92
+*------------------------------------------------------------*
+if TotalSpend < 15550 AND TotalSpend >= 9566 or MISSING
+AND TimeSinceLastPurchase < 2.5 or MISSING
+AND Replacement: Age < 39.5
+then 
+ Tree Node Identifier   = 92
+ Number of Observations = 63
+ Predicted: _SEGMENT_=2  = 0.13
+ Predicted: _SEGMENT_=1  = 0.87
+ 
+*------------------------------------------------------------*
+ Node = 93
+*------------------------------------------------------------*
+if TotalSpend < 15550 AND TotalSpend >= 9566 or MISSING
+AND TimeSinceLastPurchase >= 2.5
+AND Replacement: Age < 39.5
+then 
+ Tree Node Identifier   = 93
+ Number of Observations = 29
+ Predicted: _SEGMENT_=2  = 0.52
+ Predicted: _SEGMENT_=1  = 0.48
+ 
+*------------------------------------------------------------*
+ Node = 96
+*------------------------------------------------------------*
+if TotalSpend < 6013.5 AND TotalSpend >= 5000.5
+AND Replacement: Age < 54.5 AND Replacement: Age >= 50.5
+AND FacebookLike IS ONE OF: 0 or MISSING
+AND AffluenceGrade < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 96
+ Number of Observations = 154
+ Predicted: _SEGMENT_=2  = 0.84
+ Predicted: _SEGMENT_=1  = 0.16
+ 
+*------------------------------------------------------------*
+ Node = 97
+*------------------------------------------------------------*
+if TotalSpend < 6013.5 AND TotalSpend >= 5000.5
+AND Replacement: Age < 54.5 AND Replacement: Age >= 50.5
+AND FacebookLike IS ONE OF: 1
+AND AffluenceGrade < 12.5 or MISSING
+then 
+ Tree Node Identifier   = 97
+ Number of Observations = 52
+ Predicted: _SEGMENT_=2  = 0.29
+ Predicted: _SEGMENT_=1  = 0.71
+ 

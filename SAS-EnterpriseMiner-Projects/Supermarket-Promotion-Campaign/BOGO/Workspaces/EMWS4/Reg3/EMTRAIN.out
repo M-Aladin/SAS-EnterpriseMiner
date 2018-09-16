@@ -1,0 +1,1138 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Summary
+
+            Measurement    Frequency
+Role           Level         Count
+
+INPUT        BINARY            4    
+INPUT        INTERVAL          9    
+INPUT        NOMINAL           5    
+REJECTED     INTERVAL          3    
+REJECTED     NOMINAL           4    
+TARGET       BINARY            1    
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Model Events
+
+                                     Number
+                      Measurement      of
+ Target      Event       Level       Levels      Order       Label
+
+TargetBuy      1        BINARY          2      Descending         
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Predicted and decision variables
+
+Type           Variable              Label
+
+TARGET       TargetBuy                             
+PREDICTED    P_TargetBuy1    Predicted: TargetBuy=1
+RESIDUAL     R_TargetBuy1    Residual: TargetBuy=1 
+PREDICTED    P_TargetBuy0    Predicted: TargetBuy=0
+RESIDUAL     R_TargetBuy0    Residual: TargetBuy=0 
+FROM         F_TargetBuy     From: TargetBuy       
+INTO         I_TargetBuy     Into: TargetBuy       
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+                Model Information
+
+Training Data Set              WORK.EM_DMREG.VIEW
+DMDB Catalog                   WORK.REG3_DMDB    
+Target Variable                TargetBuy         
+Target Measurement Level       Ordinal           
+Number of Target Categories    2                 
+Error                          MBernoulli        
+Link Function                  Logit             
+Number of Model Parameters     43                
+Number of Observations         10016             
+
+
+          Target Profile
+ 
+ Ordered     Target         Total
+   Value     Buy        Frequency
+
+       1     1               2500
+       2     0               7516
+
+
+
+
+Stepwise Selection Procedure
+
+
+Step 0: Intercept entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               1
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                        5627.950098
+Max Abs Gradient Element                 2.417622E-12                                                       
+
+                                            Optimization Results
+
+Iterations                                          0  Function Calls                                      3
+Hessian Calls                                       1  Active Constraints                                  0
+Objective Function                        5627.950098  Max Abs Gradient Element                 2.417622E-12
+Ridge                                               0  Actual Over Pred Change                             0
+
+Convergence criterion (ABSGCONV=0.00001) satisfied.                                               
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+  11255.900       11255.900         0.0000        0          .    
+
+
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -1.1007      0.0231       2273.03        <.0001                       0.333
+
+
+
+
+Step 1: Effect AffluenceGrade entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               2
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                        5627.950098
+Max Abs Gradient Element                 386.70828896                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             5019        608.6       224.0         0        0.972
+   2            0           3              0             5003      16.1147      8.2975         0        1.028
+   3            0           4              0             5003       0.0370      0.0231         0        1.002
+   4            0           5              0             5003     4.189E-7    2.463E-7         0        1.001
+
+                                            Optimization Results
+
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       5003.1601168  Max Abs Gradient Element                 2.4627091E-7
+Ridge                                               0  Actual Over Pred Change                  1.0006868378
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+  11255.900       10006.320      1249.5800        1         <.0001
+
+
+               Type 3 Analysis of Effects
+ 
+                                       Wald
+Effect                     DF    Chi-Square    Pr > ChiSq
+
+AffluenceGrade              1     1017.7862        <.0001
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -3.4530      0.0807       1828.84        <.0001                       0.032
+AffluenceGrade                       1      0.2536     0.00795       1017.79        <.0001          0.4763       1.289
+
+
+                   Odds Ratio Estimates
+                             
+                                                     Point
+Effect                                            Estimate
+
+AffluenceGrade                                       1.289
+
+
+Step 2: Effect REP_Age entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               3
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                        5627.950098
+Max Abs Gradient Element                 591.11441366                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             4635        993.4       335.7         0        0.999
+   2            0           3              0             4583      51.3088     28.1592         0        1.069
+   3            0           4              0             4583       0.7003      0.4384         0        1.012
+   4            0           5              0             4583     0.000227    0.000138         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          4  Function Calls                                      7
+Hessian Calls                                       5  Active Constraints                                  0
+Objective Function                       4582.5642205  Max Abs Gradient Element                 0.0001381493
+Ridge                                               0  Actual Over Pred Change                  1.0002247443
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+  11255.900        9165.128      2090.7718        2         <.0001
+
+
+               Type 3 Analysis of Effects
+ 
+                                       Wald
+Effect                     DF    Chi-Square    Pr > ChiSq
+
+AffluenceGrade              1      868.8139        <.0001
+REP_Age                     1      745.9348        <.0001
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -0.4481      0.1297         11.94        0.0005                       0.639
+AffluenceGrade                       1      0.2490     0.00845        868.81        <.0001          0.4676       1.283
+REP_Age                              1     -0.0574     0.00210        745.93        <.0001         -0.4176       0.944
+
+
+                   Odds Ratio Estimates
+                             
+                                                     Point
+Effect                                            Estimate
+
+AffluenceGrade                                       1.283
+REP_Age                                              0.944
+
+
+Step 3: Effect REP_Gender entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               5
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                        5627.950098
+Max Abs Gradient Element                 948.40255591                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             4334       1294.0       419.9         0        1.020
+   2            0           3              0             4227        107.0     56.0325         0        1.114
+   3            0           4              0             4223       4.4490      2.7518         0        1.038
+   4            0           5              0             4223       0.0167      0.0114         0        1.003
+   5            0           6              0             4223     4.014E-7    2.842E-7         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       4222.5558932  Max Abs Gradient Element                 2.8416601E-7
+Ridge                                               0  Actual Over Pred Change                  0.9999780132
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+  11255.900        8445.112      2810.7884        4         <.0001
+
+
+               Type 3 Analysis of Effects
+ 
+                                       Wald
+Effect                     DF    Chi-Square    Pr > ChiSq
+
+AffluenceGrade              1      784.1033        <.0001
+REP_Age                     1      691.2526        <.0001
+REP_Gender                  2      609.4136        <.0001
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -0.9277      0.1374         45.62        <.0001                       0.395
+AffluenceGrade                       1      0.2473     0.00883        784.10        <.0001          0.4645       1.281
+REP_Age                              1     -0.0574     0.00218        691.25        <.0001         -0.4181       0.944
+REP_Gender            F              1      1.0391      0.0423        604.43        <.0001                       2.827
+REP_Gender            M              1     -0.2268      0.0518         19.20        <.0001                       0.797
+
+
+                   Odds Ratio Estimates
+                             
+                                                     Point
+Effect                                            Estimate
+
+AffluenceGrade                                       1.281
+REP_Age                                              0.944
+REP_Gender            F vs U                         6.369
+REP_Gender            M vs U                         1.796
+
+
+Step 4: Effect FacebookLike entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               6
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                        5627.950098
+Max Abs Gradient Element                 948.40255591                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             4269       1358.6       432.3         0        1.021
+   2            0           3              0             4152        116.9     60.4154         0        1.119
+   3            0           4              0             4147       5.2728      3.1845         0        1.041
+   4            0           5              0             4147       0.0223      0.0148         0        1.004
+   5            0           6              0             4147     6.618E-7    4.583E-7         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       4147.1114578  Max Abs Gradient Element                  4.582987E-7
+Ridge                                               0  Actual Over Pred Change                  0.9999922493
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+  11255.900        8294.223      2961.6773        5         <.0001
+
+
+               Type 3 Analysis of Effects
+ 
+                                       Wald
+Effect                     DF    Chi-Square    Pr > ChiSq
+
+AffluenceGrade              1      757.9886        <.0001
+FacebookLike                1      150.2679        <.0001
+REP_Age                     1      662.6153        <.0001
+REP_Gender                  2      599.5241        <.0001
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -0.9035      0.1386         42.46        <.0001                       0.405
+AffluenceGrade                       1      0.2457     0.00892        757.99        <.0001          0.4614       1.279
+FacebookLike          0              1     -0.3384      0.0276        150.27        <.0001                       0.713
+REP_Age                              1     -0.0567     0.00220        662.62        <.0001         -0.4126       0.945
+REP_Gender            F              1      1.0379      0.0426        594.04        <.0001                       2.823
+REP_Gender            M              1     -0.2377      0.0521         20.83        <.0001                       0.788
+
+
+                   Odds Ratio Estimates
+                             
+                                                     Point
+Effect                                            Estimate
+
+AffluenceGrade                                       1.279
+FacebookLike          0 vs 1                         0.508
+REP_Age                                              0.945
+REP_Gender            F vs U                         6.285
+REP_Gender            M vs U                         1.755
+
+
+Step 5: Effect MobileApplications entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               7
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                        5627.950098
+Max Abs Gradient Element                 948.40255591                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             4218       1409.8       438.8         0        1.021
+   2            0           3              0             4094        124.6     63.6853         0        1.123
+   3            0           4              0             4088       6.0559      3.5976         0        1.044
+   4            0           5              0             4087       0.0293      0.0191         0        1.004
+   5            0           6              0             4087     1.114E-6    7.597E-7         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       4087.4804295  Max Abs Gradient Element                 7.5966942E-7
+Ridge                                               0  Actual Over Pred Change                  1.0000199903
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+  11255.900        8174.961      3080.9393        6         <.0001
+
+
+               Type 3 Analysis of Effects
+ 
+                                       Wald
+Effect                     DF    Chi-Square    Pr > ChiSq
+
+AffluenceGrade              1      725.7025        <.0001
+FacebookLike                1      154.0710        <.0001
+MobileApplications          1      117.4815        <.0001
+REP_Age                     1      653.2289        <.0001
+REP_Gender                  2      584.5472        <.0001
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -0.8969      0.1397         41.21        <.0001                       0.408
+AffluenceGrade                       1      0.2430     0.00902        725.70        <.0001          0.4564       1.275
+FacebookLike          0              1     -0.3459      0.0279        154.07        <.0001                       0.708
+MobileApplications    0              1     -0.3026      0.0279        117.48        <.0001                       0.739
+REP_Age                              1     -0.0566     0.00222        653.23        <.0001         -0.4122       0.945
+REP_Gender            F              1      1.0332      0.0429        579.50        <.0001                       2.810
+REP_Gender            M              1     -0.2298      0.0524         19.24        <.0001                       0.795
+
+
+                   Odds Ratio Estimates
+                             
+                                                     Point
+Effect                                            Estimate
+
+AffluenceGrade                                       1.275
+FacebookLike          0 vs 1                         0.501
+MobileApplications    0 vs 1                         0.546
+REP_Age                                              0.945
+REP_Gender            F vs U                         6.275
+REP_Gender            M vs U                         1.775
+
+
+Step 6: Effect PreviousCampaign entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               8
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                        5627.950098
+Max Abs Gradient Element                 948.40255591                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             4181       1447.0       441.1         0        1.021
+   2            0           3              0             4052        129.1     65.5159         0        1.126
+   3            0           4              0             4045       6.5370      3.8366         0        1.045
+   4            0           5              0             4045       0.0339      0.0218         0        1.004
+   5            0           6              0             4045     1.468E-6    9.913E-7         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       4045.2610092  Max Abs Gradient Element                 9.9127383E-7
+Ridge                                               0  Actual Over Pred Change                  1.0000254053
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+  11255.900        8090.522      3165.3782        7         <.0001
+
+
+               Type 3 Analysis of Effects
+ 
+                                       Wald
+Effect                     DF    Chi-Square    Pr > ChiSq
+
+AffluenceGrade              1      705.7841        <.0001
+FacebookLike                1      152.3961        <.0001
+MobileApplications          1      128.1896        <.0001
+PreviousCampaign            1       83.7949        <.0001
+REP_Age                     1      647.9432        <.0001
+REP_Gender                  2      571.8269        <.0001
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -0.8716      0.1405         38.47        <.0001                       0.418
+AffluenceGrade                       1      0.2416     0.00909        705.78        <.0001          0.4537       1.273
+FacebookLike          0              1     -0.3462      0.0280        152.40        <.0001                       0.707
+MobileApplications    0              1     -0.3187      0.0281        128.19        <.0001                       0.727
+PreviousCampaign      0              1     -0.2562      0.0280         83.79        <.0001                       0.774
+REP_Age                              1     -0.0567     0.00223        647.94        <.0001         -0.4129       0.945
+REP_Gender            F              1      1.0280      0.0431        567.74        <.0001                       2.796
+REP_Gender            M              1     -0.2171      0.0526         17.01        <.0001                       0.805
+
+
+                   Odds Ratio Estimates
+                             
+                                                     Point
+Effect                                            Estimate
+
+AffluenceGrade                                       1.273
+FacebookLike          0 vs 1                         0.500
+MobileApplications    0 vs 1                         0.529
+PreviousCampaign      0 vs 1                         0.599
+REP_Age                                              0.945
+REP_Gender            F vs U                         6.290
+REP_Gender            M vs U                         1.811
+
+
+Step 7: Effect NightRepairProducts entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates               9
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                        5627.950098
+Max Abs Gradient Element                 948.40255591                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             4146       1481.5       447.5         0        1.022
+   2            0           3              0             4011        135.7     68.2717         0        1.129
+   3            0           4              0             4004       7.2394      4.1922         0        1.047
+   4            0           5              0             4003       0.0408      0.0259         0        1.005
+   5            0           6              0             4003     2.043E-6    1.363E-6         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                        4003.481577  Max Abs Gradient Element                 1.3626022E-6
+Ridge                                               0  Actual Over Pred Change                  1.0000406942
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+  11255.900        8006.963      3248.9370        8         <.0001
+
+
+               Type 3 Analysis of Effects
+ 
+                                       Wald
+Effect                     DF    Chi-Square    Pr > ChiSq
+
+AffluenceGrade              1      693.6078        <.0001
+FacebookLike                1      156.2048        <.0001
+MobileApplications          1      127.4994        <.0001
+NightRepairProducts         1       82.4682        <.0001
+PreviousCampaign            1       88.1341        <.0001
+REP_Age                     1      640.2482        <.0001
+REP_Gender                  2      567.4397        <.0001
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -1.1900      0.1459         66.57        <.0001                       0.304
+AffluenceGrade                       1      0.2408     0.00915        693.61        <.0001          0.4523       1.272
+FacebookLike          0              1     -0.3529      0.0282        156.20        <.0001                       0.703
+MobileApplications    0              1     -0.3198      0.0283        127.50        <.0001                       0.726
+NightRepairProducts                  1      0.3122      0.0344         82.47        <.0001          0.1409       1.366
+PreviousCampaign      0              1     -0.2647      0.0282         88.13        <.0001                       0.767
+REP_Age                              1     -0.0567     0.00224        640.25        <.0001         -0.4128       0.945
+REP_Gender            F              1      1.0295      0.0434        563.68        <.0001                       2.800
+REP_Gender            M              1     -0.2148      0.0529         16.50        <.0001                       0.807
+
+
+                   Odds Ratio Estimates
+                             
+                                                     Point
+Effect                                            Estimate
+
+AffluenceGrade                                       1.272
+FacebookLike          0 vs 1                         0.494
+MobileApplications    0 vs 1                         0.528
+NightRepairProducts                                  1.366
+PreviousCampaign      0 vs 1                         0.589
+REP_Age                                              0.945
+REP_Gender            F vs U                         6.323
+REP_Gender            M vs U                         1.822
+
+
+Step 8: Effect DayCareProducts entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates              10
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                        5627.950098
+Max Abs Gradient Element                 948.40255591                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             4133       1494.8       449.5         0        1.022
+   2            0           3              0             3995        138.0     69.2261         0        1.130
+   3            0           4              0             3988       7.4884      4.3190         0        1.048
+   4            0           5              0             3988       0.0434      0.0274         0        1.005
+   5            0           6              0             3988     2.293E-6    1.523E-6         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       3987.6236754  Max Abs Gradient Element                 1.5228792E-6
+Ridge                                               0  Actual Over Pred Change                   1.000041994
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+  11255.900        7975.247      3280.6528        9         <.0001
+
+
+               Type 3 Analysis of Effects
+ 
+                                       Wald
+Effect                     DF    Chi-Square    Pr > ChiSq
+
+AffluenceGrade              1      687.8005        <.0001
+DayCareProducts             1       31.5551        <.0001
+FacebookLike                1      155.2664        <.0001
+MobileApplications          1      129.0917        <.0001
+NightRepairProducts         1       77.0302        <.0001
+PreviousCampaign            1       92.0779        <.0001
+REP_Age                     1      642.1123        <.0001
+REP_Gender                  2      566.4477        <.0001
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -1.3822      0.1503         84.54        <.0001                       0.251
+AffluenceGrade                       1      0.2405     0.00917        687.80        <.0001          0.4517       1.272
+DayCareProducts                      1      0.1424      0.0254         31.56        <.0001          0.0877       1.153
+FacebookLike          0              1     -0.3526      0.0283        155.27        <.0001                       0.703
+MobileApplications    0              1     -0.3226      0.0284        129.09        <.0001                       0.724
+NightRepairProducts                  1      0.3030      0.0345         77.03        <.0001          0.1367       1.354
+PreviousCampaign      0              1     -0.2715      0.0283         92.08        <.0001                       0.762
+REP_Age                              1     -0.0569     0.00225        642.11        <.0001         -0.4143       0.945
+REP_Gender            F              1      1.0304      0.0434        562.61        <.0001                       2.802
+REP_Gender            M              1     -0.2160      0.0529         16.64        <.0001                       0.806
+
+
+                   Odds Ratio Estimates
+                             
+                                                     Point
+Effect                                            Estimate
+
+AffluenceGrade                                       1.272
+DayCareProducts                                      1.153
+FacebookLike          0 vs 1                         0.494
+MobileApplications    0 vs 1                         0.525
+NightRepairProducts                                  1.354
+PreviousCampaign      0 vs 1                         0.581
+REP_Age                                              0.945
+REP_Gender            F vs U                         6.327
+REP_Gender            M vs U                         1.819
+
+
+Step 9: Effect TimeSinceLastPurchase entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates              11
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                        5627.950098
+Max Abs Gradient Element                 948.40255591                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             4130       1497.8       450.1         0        1.023
+   2            0           3              0             3991        138.8     69.5338         0        1.130
+   3            0           4              0             3984       7.5905      4.3658         0        1.048
+   4            0           5              0             3984       0.0445      0.0280         0        1.005
+   5            0           6              0             3984     2.388E-6    1.582E-6         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                       3983.6478297  Max Abs Gradient Element                 1.5819825E-6
+Ridge                                               0  Actual Over Pred Change                  1.0000366959
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+  11255.900        7967.296      3288.6045       10         <.0001
+
+
+               Type 3 Analysis of Effects
+ 
+                                       Wald
+Effect                     DF    Chi-Square    Pr > ChiSq
+
+AffluenceGrade              1      688.8882        <.0001
+DayCareProducts             1       31.5709        <.0001
+FacebookLike                1      156.1310        <.0001
+MobileApplications          1      131.4499        <.0001
+NightRepairProducts         1       76.3987        <.0001
+PreviousCampaign            1       91.5530        <.0001
+REP_Age                     1      641.1091        <.0001
+REP_Gender                  2      567.2932        <.0001
+TimeSinceLastPurchase       1        8.2823        0.0040
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -1.4004      0.1504         86.70        <.0001                       0.246
+AffluenceGrade                       1      0.2409     0.00918        688.89        <.0001          0.4524       1.272
+DayCareProducts                      1      0.1425      0.0254         31.57        <.0001          0.0878       1.153
+FacebookLike          0              1     -0.3539      0.0283        156.13        <.0001                       0.702
+MobileApplications    0              1     -0.3261      0.0284        131.45        <.0001                       0.722
+NightRepairProducts                  1      0.3019      0.0345         76.40        <.0001          0.1362       1.352
+PreviousCampaign      0              1     -0.2709      0.0283         91.55        <.0001                       0.763
+REP_Age                              1     -0.0582     0.00230        641.11        <.0001         -0.4237       0.943
+REP_Gender            F              1      1.0316      0.0435        563.43        <.0001                       2.806
+REP_Gender            M              1     -0.2170      0.0530         16.79        <.0001                       0.805
+TimeSinceLastPurchase                1      0.0235     0.00818          8.28        0.0040          0.0479       1.024
+
+
+                   Odds Ratio Estimates
+                             
+                                                     Point
+Effect                                            Estimate
+
+AffluenceGrade                                       1.272
+DayCareProducts                                      1.153
+FacebookLike          0 vs 1                         0.493
+MobileApplications    0 vs 1                         0.521
+NightRepairProducts                                  1.352
+PreviousCampaign      0 vs 1                         0.582
+REP_Age                                              0.943
+REP_Gender            F vs U                         6.336
+REP_Gender            M vs U                         1.818
+TimeSinceLastPurchase                                1.024
+
+
+Step 10: Effect LoyaltyClass entered.
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+
+The DMREG Procedure
+
+Newton-Raphson Ridge Optimization
+
+Without Parameter Scaling
+
+Parameter Estimates              14
+
+                                             Optimization Start
+
+Active Constraints                                  0  Objective Function                        5627.950098
+Max Abs Gradient Element                 948.40255591                                                       
+
+
+                                                                                                        Ratio
+                                                                                                      Between
+                                                                                                       Actual
+                                                                 Objective     Max Abs                    and
+                     Function         Active        Objective     Function    Gradient              Predicted
+Iter     Restarts       Calls    Constraints         Function       Change     Element     Ridge       Change
+
+   1            0           2              0             4127       1501.0       450.8         0        1.023
+   2            0           3              0             3987        139.6     69.8249         0        1.131
+   3            0           4              0             3980       7.6856      4.4144         0        1.048
+   4            0           5              0             3980       0.0456      0.0287         0        1.005
+   5            0           6              0             3980     2.497E-6    1.652E-6         0        1.000
+
+                                            Optimization Results
+
+Iterations                                          5  Function Calls                                      8
+Hessian Calls                                       6  Active Constraints                                  0
+Objective Function                         3979.65273  Max Abs Gradient Element                 1.6517793E-6
+Ridge                                               0  Actual Over Pred Change                  1.0000364779
+
+Convergence criterion (GCONV=1E-6) satisfied.                                                     
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+  11255.900        7959.305      3296.5947       13         <.0001
+
+
+               Type 3 Analysis of Effects
+ 
+                                       Wald
+Effect                     DF    Chi-Square    Pr > ChiSq
+
+AffluenceGrade              1      689.2374        <.0001
+DayCareProducts             1       31.2969        <.0001
+FacebookLike                1      156.8941        <.0001
+LoyaltyClass                3        7.8281        0.0497
+MobileApplications          1      132.1620        <.0001
+NightRepairProducts         1       76.7723        <.0001
+PreviousCampaign            1       91.3046        <.0001
+REP_Age                     1      595.0162        <.0001
+REP_Gender                  2      568.7063        <.0001
+TimeSinceLastPurchase       1        7.9631        0.0048
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -1.4096      0.1649         73.05        <.0001                       0.244
+AffluenceGrade                       1      0.2410     0.00918        689.24        <.0001          0.4527       1.273
+DayCareProducts                      1      0.1420      0.0254         31.30        <.0001          0.0874       1.153
+FacebookLike          0              1     -0.3563      0.0284        156.89        <.0001                       0.700
+LoyaltyClass          Diamond        1     -0.2207      0.1355          2.65        0.1034                       0.802
+LoyaltyClass          Gold           1      0.0956      0.0589          2.64        0.1044                       1.100
+LoyaltyClass          Platinum       1      0.1455      0.0636          5.24        0.0220                       1.157
+MobileApplications    0              1     -0.3275      0.0285        132.16        <.0001                       0.721
+NightRepairProducts                  1      0.3029      0.0346         76.77        <.0001          0.1367       1.354
+PreviousCampaign      0              1     -0.2707      0.0283         91.30        <.0001                       0.763
+REP_Age                              1     -0.0593     0.00243        595.02        <.0001         -0.4317       0.942
+REP_Gender            F              1      1.0339      0.0435        564.90        <.0001                       2.812
+REP_Gender            M              1     -0.2164      0.0530         16.69        <.0001                       0.805
+TimeSinceLastPurchase                1      0.0232     0.00821          7.96        0.0048          0.0472       1.023
+
+
+                   Odds Ratio Estimates
+                             
+                                                     Point
+Effect                                            Estimate
+
+AffluenceGrade                                       1.273
+DayCareProducts                                      1.153
+FacebookLike          0 vs 1                         0.490
+LoyaltyClass          Diamond vs Silver              0.818
+LoyaltyClass          Gold vs Silver                 1.123
+LoyaltyClass          Platinum vs Silver             1.180
+MobileApplications    0 vs 1                         0.519
+NightRepairProducts                                  1.354
+PreviousCampaign      0 vs 1                         0.582
+REP_Age                                              0.942
+REP_Gender            F vs U                         6.369
+REP_Gender            M vs U                         1.824
+TimeSinceLastPurchase                                1.023
+
+
+NOTE: No (additional) effects met the 0.05 significance level for entry into the model.
+
+
+                                Summary of Stepwise Selection
+ 
+                   Effect                    Number         Score          Wald
+    Step    Entered                    DF        In    Chi-Square    Chi-Square    Pr > ChiSq
+
+       1    AffluenceGrade              1         1     1252.2115                      <.0001
+       2    REP_Age                     1         2      816.1545                      <.0001
+       3    REP_Gender                  2         3      678.8165                      <.0001
+       4    FacebookLike                1         4      152.7683                      <.0001
+       5    MobileApplications          1         5      119.0922                      <.0001
+       6    PreviousCampaign            1         6       84.6138                      <.0001
+       7    NightRepairProducts         1         7       83.3023                      <.0001
+       8    DayCareProducts             1         8       31.6812                      <.0001
+       9    TimeSinceLastPurchase       1         9        8.3314                      0.0039
+      10    LoyaltyClass                3        10        7.8471                      0.0493
+
+
+The selected model is the model trained in the last step (Step 10). It consists of the following effects:
+
+Intercept  AffluenceGrade  DayCareProducts  FacebookLike  LoyaltyClass  MobileApplications  NightRepairProducts  PreviousCampaign  REP_Age  REP_Gender  TimeSinceLastPurchase  
+
+
+     Likelihood Ratio Test for Global Null Hypothesis: BETA=0
+ 
+     -2 Log Likelihood          Likelihood
+  Intercept     Intercept &          Ratio
+       Only      Covariates     Chi-Square       DF     Pr > ChiSq
+
+  11255.900        7959.305      3296.5947       13         <.0001
+
+
+               Type 3 Analysis of Effects
+ 
+                                       Wald
+Effect                     DF    Chi-Square    Pr > ChiSq
+
+AffluenceGrade              1      689.2374        <.0001
+DayCareProducts             1       31.2969        <.0001
+FacebookLike                1      156.8941        <.0001
+LoyaltyClass                3        7.8281        0.0497
+MobileApplications          1      132.1620        <.0001
+NightRepairProducts         1       76.7723        <.0001
+PreviousCampaign            1       91.3046        <.0001
+REP_Age                     1      595.0162        <.0001
+REP_Gender                  2      568.7063        <.0001
+TimeSinceLastPurchase       1        7.9631        0.0048
+
+
+                                       Analysis of Maximum Likelihood Estimates
+ 
+                                                      Standard          Wald                  Standardized
+Parameter                           DF    Estimate       Error    Chi-Square    Pr > ChiSq        Estimate    Exp(Est)
+
+Intercept                            1     -1.4096      0.1649         73.05        <.0001                       0.244
+AffluenceGrade                       1      0.2410     0.00918        689.24        <.0001          0.4527       1.273
+DayCareProducts                      1      0.1420      0.0254         31.30        <.0001          0.0874       1.153
+FacebookLike          0              1     -0.3563      0.0284        156.89        <.0001                       0.700
+LoyaltyClass          Diamond        1     -0.2207      0.1355          2.65        0.1034                       0.802
+LoyaltyClass          Gold           1      0.0956      0.0589          2.64        0.1044                       1.100
+LoyaltyClass          Platinum       1      0.1455      0.0636          5.24        0.0220                       1.157
+MobileApplications    0              1     -0.3275      0.0285        132.16        <.0001                       0.721
+NightRepairProducts                  1      0.3029      0.0346         76.77        <.0001          0.1367       1.354
+PreviousCampaign      0              1     -0.2707      0.0283         91.30        <.0001                       0.763
+REP_Age                              1     -0.0593     0.00243        595.02        <.0001         -0.4317       0.942
+REP_Gender            F              1      1.0339      0.0435        564.90        <.0001                       2.812
+REP_Gender            M              1     -0.2164      0.0530         16.69        <.0001                       0.805
+TimeSinceLastPurchase                1      0.0232     0.00821          7.96        0.0048          0.0472       1.023
+
+
+                   Odds Ratio Estimates
+                             
+                                                     Point
+Effect                                            Estimate
+
+AffluenceGrade                                       1.273
+DayCareProducts                                      1.153
+FacebookLike          0 vs 1                         0.490
+LoyaltyClass          Diamond vs Silver              0.818
+LoyaltyClass          Gold vs Silver                 1.123
+LoyaltyClass          Platinum vs Silver             1.180
+MobileApplications    0 vs 1                         0.519
+NightRepairProducts                                  1.354
+PreviousCampaign      0 vs 1                         0.582
+REP_Age                                              0.942
+REP_Gender            F vs U                         6.369
+REP_Gender            M vs U                         1.824
+TimeSinceLastPurchase                                1.023

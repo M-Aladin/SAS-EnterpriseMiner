@@ -1,0 +1,14 @@
+ 
+                                                                                                                                                                                                                                                                
+ 
+ 
+Variable Importance
+
+                                Number of    Number of
+                                Splitting    Surrogate
+Variable Name          Label      Rules        Rules      Importance
+
+FacebookLike                        1            0          1.00000 
+CampaignViewedEmail                 3            0          0.89589 
+PreviousCampaign                    3            0          0.83749 
+MobileApplications                  4            1          0.79722 
